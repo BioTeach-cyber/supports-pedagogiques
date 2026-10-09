@@ -1,5 +1,9 @@
 ---
-const { classes } = Astro.props;
+interface Props {
+  classes: string[];
+}
+
+const { classes } = Astro.props as Props;
 ---
 <div class="filtres">
   <button class="actif" data-filtre="toutes">Toutes</button>
@@ -7,12 +11,12 @@ const { classes } = Astro.props;
 </div>
 
 <script>
-  const boutons = document.querySelectorAll('.filtres button');
+  const boutons = document.querySelectorAll<HTMLButtonElement>('.filtres button');
   boutons.forEach((b) => b.addEventListener('click', () => {
     boutons.forEach((x) => x.classList.remove('actif'));
     b.classList.add('actif');
     const f = b.dataset.filtre;
-    document.querySelectorAll('#grille-cours .vignette').forEach((v) => {
+    document.querySelectorAll<HTMLElement>('#grille-cours .vignette').forEach((v) => {
       v.hidden = f !== 'toutes' && v.dataset.classe !== f;
     });
   }));

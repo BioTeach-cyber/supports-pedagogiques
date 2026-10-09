@@ -1,8 +1,10 @@
 ---
+import { chemin } from '../Utils/Chemin.js';
+
 const { titre } = Astro.props;
 ---
 <header class="entete">
-  <a href={import.meta.env.BASE_URL}><img src="/logo.svg" alt="Logo" class="pastille" /></a>
+  <a href={chemin()}><img src={chemin('favicon.svg')} alt="Logo" class="pastille" /></a>
   <h1>{titre}</h1>
   <div class="pastille qr" title="QR code de la page"></div>
 </header>

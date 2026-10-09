@@ -1,18 +1,19 @@
 ---
 import { chemin } from '../Utils/Chemin.js';
-import '../styles/global.css';
-import EnTete from '../components/EnTete.astro';
-import PiedDePage from '../components/PiedDePage.astro';
+import '../Styles/Global.css';
+import EnTete from '../Components/EnTete.astro';
+import PiedDePage from '../Components/PiedDePage.astro';
 
 const { titre, couleur = '#b7b7b7', indexer = true } = Astro.props;
 ---
+<!doctype html>
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href={chemin('favicon.svg')} />
-    <link rel="icon" href={chemin('favicon.ico')} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     {!indexer && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="icon" type="image/svg+xml" href={chemin('favicon.svg')} />
+    <link rel="icon" href={chemin('favicon.ico')} />
     <title>{titre}</title>
   </head>
   <body style={`--theme: ${couleur}`}>

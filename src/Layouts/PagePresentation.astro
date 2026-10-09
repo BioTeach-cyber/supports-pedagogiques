@@ -1,0 +1,16 @@
+---
+import Banniere from '../Components/Banniere.astro';
+import PiedDePage from '../Components/PiedDePage.astro';
+const { titre = 'Supports pédagogiques' } = Astro.props;
+---
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>{titre}</title>
+  </head>
+  <body>
+    <Banniere />
+    <main><slot /></main>
+    <PiedDePage />
+  </body>
+</html>
