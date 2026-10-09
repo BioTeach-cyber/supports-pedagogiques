@@ -1,0 +1,18 @@
+---
+import site from '../../data/site.json';
+const { consigne = site.ia.consigne } = Astro.props;
+---
+<aside class="encart-ia">
+  <p>{consigne}</p>
+  <a href={site.ia.lien} target="_blank" rel="noopener">Ouvrir l'assistant IA ↗</a>
+</aside>
+
+<style>
+  .encart-ia {
+    border: 3px solid var(--theme);
+    background: var(--theme-clair);
+    border-radius: var(--rayon);
+    padding: 24px; margin: 30px 0;
+  }
+  a { color: var(--theme-fonce); font-weight: 700; }
+</style>

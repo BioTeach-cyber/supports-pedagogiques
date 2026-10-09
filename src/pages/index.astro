@@ -1,16 +1,42 @@
 ---
----
+import Base from '../layouts/Base.astro';
+import Vignette from '../components/Vignette.astro';
+import FiltreClasses from '../components/FiltreClasses.astro';
+import { chemin } from '../utils/chemin.js';
+import cours from '../data/cours.json';
+import blog from '../data/blog.json';
+import formations from '../data/formations.json';
+import site from '../data/site.json';
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+const coursActifs = cours.filter((c) => !c.archive);
+const classes = [...new Set(coursActifs.map((c) => c.classe))];
+---
+<Base titre={site.titreAccueil} indexer={false}>
+
+  <h2 class="banniere">Cours</h2>
+  <FiltreClasses classes={classes} />
+  <div class="grille" id="grille-cours">
+    {coursActifs.map((c) => (
+      <Vignette titre={c.titre} lien={chemin(`${c.id}/`)} image={chemin(c.image)}
+                couleur={c.couleur} pastille={c.niveau} classe={c.classe} />
+    ))}
+  </div>
+  <a class="bouton" href={chemin('archives/')}>Archives</a>
+
+  <h2 class="banniere">Blog</h2>
+  <div class="grille">
+    {blog.slice(0, 5).map((a) => (
+      <Vignette titre={a.titre} lien={chemin(a.lien)} image={chemin(a.image)} couleur="#e62d32" />
+    ))}
+  </div>
+  <a class="bouton" href={chemin('blog/')}>Voir plus</a>
+
+  <h2 class="banniere">Formation</h2>
+  <div class="grille">
+    {formations.slice(0, 5).map((f) => (
+      <Vignette titre={f.titre} lien={chemin(f.lien)} image={chemin(f.image)} couleur="#e898b5" />
+    ))}
+  </div>
+  <a class="bouton" href={chemin('formation/')}>Voir plus</a>
+
+</Base>

@@ -1,0 +1,34 @@
+[
+  {
+    "id": "biologie-ecologie",
+    "titre": "Biologie Écologie",
+    "classe": "Bac Pro",
+    "niveau": "Tle",
+    "couleur": "#7fbc48",
+    "image": "/images/bio-ecologie.svg",
+    "archive": false,
+    "presentation": "https://view.genial.ly/xxxx",
+    "chapitres": [
+      {
+        "id": "theme-1",
+        "titre": "Thème 1 : les écosystèmes",
+        "couleur": "#2a9d8f",
+        "presentation": "https://monpseudo.github.io/simulateur-ecosysteme/"
+      },
+      {
+        "id": "theme-2",
+        "titre": "Thème 2 : la cellule"
+      }
+    ]
+  },
+  {
+    "id": "physique-chimie",
+    "titre": "Physique Chimie",
+    "classe": "CAPa",
+    "niveau": "1re",
+    "couleur": "#a6539b",
+    "image": "/images/physique-chimie.svg",
+    "archive": false,
+    "chapitres": []
+  }
+]

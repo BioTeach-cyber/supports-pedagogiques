@@ -1,0 +1,29 @@
+---
+const { classes } = Astro.props;
+---
+<div class="filtres">
+  <button class="actif" data-filtre="toutes">Toutes</button>
+  {classes.map((c) => <button data-filtre={c}>{c}</button>)}
+</div>
+
+<script>
+  const boutons = document.querySelectorAll('.filtres button');
+  boutons.forEach((b) => b.addEventListener('click', () => {
+    boutons.forEach((x) => x.classList.remove('actif'));
+    b.classList.add('actif');
+    const f = b.dataset.filtre;
+    document.querySelectorAll('#grille-cours .vignette').forEach((v) => {
+      v.hidden = f !== 'toutes' && v.dataset.classe !== f;
+    });
+  }));
+</script>
+
+<style>
+  .filtres { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
+  button {
+    padding: 8px 18px; border-radius: 20px; cursor: pointer;
+    border: 2px solid var(--texte); background: white;
+    font-weight: 700; color: var(--texte);
+  }
+  button.actif { background: var(--texte); color: white; }
+</style>

@@ -1,0 +1,22 @@
+---
+const { titre } = Astro.props;
+---
+<header class="entete">
+  <a href={import.meta.env.BASE_URL}><img src="/logo.svg" alt="Logo" class="pastille" /></a>
+  <h1>{titre}</h1>
+  <div class="pastille qr" title="QR code de la page"></div>
+</header>
+
+<style>
+  .entete {
+    background: var(--theme);
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    border-radius: 0 0 var(--rayon) var(--rayon);
+  }
+  h1 { color: white; font-size: clamp(28px, 4.6vw, 63px); }
+  .pastille { width: 90px; height: 90px; border-radius: 50%; background: white; }
+</style>
