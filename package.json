@@ -12,13 +12,16 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^7.3.6"
+    "astro": "^7.3.6",
+    "lottie-web": "^5.13.0",
+    "vis-network": "^10.1.2"
   },
   "allowScripts": {
     "esbuild": true
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "@types/node": "^26.6.5",
     "typescript": "^6.0.3"
   }
 }

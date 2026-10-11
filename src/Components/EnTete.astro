@@ -1,24 +1,112 @@
 ---
 import { chemin } from '../Utils/Chemin.js';
 
-const { titre } = Astro.props;
+const { titre, sousTitre = '', logoLottie = '/favicon.json', couleurLogo = '#b7b7b7' } = Astro.props;
 ---
 <header class="entete">
-  <a href={chemin()}><img src={chemin('favicon.svg')} alt="Logo" class="pastille" /></a>
-  <h1>{titre}</h1>
+  <a href={chemin()} class="logo" aria-label="Accueil">
+    <span class="lottie-logo" data-lottie={logoLottie} data-couleur={couleurLogo} aria-hidden="true"></span>
+  </a>
+  <div class="titres">
+    <h1>{titre}</h1>
+    {sousTitre && <p>{sousTitre}</p>}
+  </div>
   <div class="pastille qr" title="QR code de la page"></div>
 </header>
+
+<script>
+  import lottie from 'lottie-web';
+
+  const logo = document.querySelector<HTMLElement>('.lottie-logo');
+  const source = logo?.dataset.lottie;
+  const color = logo?.dataset.couleur ?? '#b7b7b7';
+
+  if (logo && source) {
+    const cheminLottie = source.replace(/^\//, '').split('/').map(encodeURIComponent).join('/');
+    const url = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${cheminLottie}`;
+    fetch(url)
+      .then(async (response) => {
+        if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+        const contenu = await response.text();
+        if (!contenu.trim()) throw new Error('Le fichier est vide.');
+        try {
+          return JSON.parse(contenu);
+        } catch {
+          throw new Error('Le fichier ne contient pas un JSON valide.');
+        }
+      })
+      .then((animationData) => {
+        const hex = color.match(/^#([\da-f]{6})$/i)?.[1];
+        const rgb = hex
+          ? [0, 2, 4].map((index) => parseInt(hex.slice(index, index + 2), 16) / 255)
+          : [0.2, 0.8, 0.8];
+        const recolorer = (value: unknown): void => {
+          if (!value || typeof value !== 'object') return;
+          if (Array.isArray(value)) {
+            value.forEach(recolorer);
+            return;
+          }
+          const object = value as Record<string, unknown>;
+          const stroke = object.c as { k?: unknown } | undefined;
+          if (stroke && Array.isArray(stroke.k)) {
+            const recolorerValeur = (value: unknown[]): void => {
+              if (typeof value[0] !== 'number' || typeof value[1] !== 'number' || typeof value[2] !== 'number') return;
+              const [rouge, vert, bleu] = value as number[];
+              const estNoir = rouge < 0.04 && vert < 0.04 && bleu < 0.04;
+              if (!estNoir) {
+                value.splice(0, 4, ...rgb, typeof value[3] === 'number' ? value[3] : 1);
+              }
+            };
+            if (typeof stroke.k[0] === 'number') {
+              recolorerValeur(stroke.k);
+            } else {
+              for (const frame of stroke.k) {
+                if (!frame || typeof frame !== 'object') continue;
+                const keyframe = frame as { s?: unknown[]; e?: unknown[] };
+                if (Array.isArray(keyframe.s)) recolorerValeur(keyframe.s);
+                if (Array.isArray(keyframe.e)) recolorerValeur(keyframe.e);
+              }
+            }
+          }
+          Object.values(object).forEach(recolorer);
+        };
+        recolorer(animationData);
+        const animation = lottie.loadAnimation({ container: logo, renderer: 'svg', loop: true, autoplay: true, animationData });
+        animation.addEventListener('data_failed', () => console.error('Lottie invalide :', url));
+      })
+      .catch((error: unknown) => console.error('Impossible de charger le Lottie du logo :', url, error));
+  }
+</script>
 
 <style>
   .entete {
     background: var(--theme);
-    height: 120px;
+    min-height: 120px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
+    gap: 20px;
+    padding: 15px 20px;
     border-radius: 0 0 var(--rayon) var(--rayon);
   }
+  .titres { flex: 1; text-align: center; }
   h1 { color: white; font-size: clamp(28px, 4.6vw, 63px); }
-  .pastille { width: 90px; height: 90px; border-radius: 50%; background: white; }
+  .titres p { margin-top: 4px; color: white; font-size: clamp(14px, 2vw, 20px); font-weight: 700; }
+  .logo {
+    display: grid;
+    place-items: center;
+    flex: 0 0 90px;
+    width: 90px;
+    height: 90px;
+    overflow: hidden;
+    border-radius: 50%;
+    background: white;
+  }
+  .lottie-logo { display: block; width: 100%; height: 100%; }
+  .lottie-logo :global(svg) { display: block; width: 100%; height: 100%; }
+  .qr { flex: 0 0 90px; width: 90px; height: 90px; border-radius: 50%; background: white; }
+  @media (max-width: 540px) {
+    .entete { gap: 10px; padding: 12px; }
+    .logo, .qr { flex-basis: 56px; width: 56px; height: 56px; }
+  }
 </style>

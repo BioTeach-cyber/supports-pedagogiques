@@ -1,0 +1,278 @@
+---
+interface Activite {
+  id?: string;
+  titre?: string;
+  description?: string;
+  Lotties_activité?: string;
+  lotties_activité?: string;
+  Lotties_activite?: string;
+  lotties_activite?: string;
+  lottie?: string;
+}
+
+interface Noeud {
+  id: string;
+  etiquette: string;
+  lottie: string;
+  type: 'cours' | 'chapitre' | 'activite';
+  description?: string;
+}
+
+interface Props {
+  cours: {
+    titre: string;
+    couleur: string;
+    Lotties_cours?: string;
+    chapitres: Array<Record<string, unknown>>;
+  };
+}
+
+const { cours } = Astro.props as Props;
+const normaliserLottie = (chemin: unknown) => {
+  if (typeof chemin !== 'string' || !chemin) return '';
+  return `/${chemin.replace(/^\/?public\//i, '').replace(/^\//, '')}`;
+};
+const noeuds: Noeud[] = [
+  {
+    id: 'cours',
+    etiquette: '',
+    lottie: normaliserLottie(cours.Lotties_cours) || '/favicon.json',
+    type: 'cours',
+  },
+];
+const aretes: Array<{ from: string; to: string }> = [];
+
+cours.chapitres.forEach((chapitre, chapitreIndex) => {
+  const identifiant = `chapitre-${chapitreIndex + 1}`;
+  const idChapitre = String(chapitre.id ?? `Chapitre ${String(chapitreIndex + 1).padStart(2, '0')}`);
+  const objectifs = Object.entries(chapitre)
+    .filter(([cle, valeur]) => /^obj\d+$/.test(cle) && typeof valeur === 'string' && valeur)
+    .sort(([a], [b]) => Number(a.slice(3)) - Number(b.slice(3)));
+  const activites: Activite[] = Array.isArray(chapitre.activites)
+    ? chapitre.activites as Activite[]
+    : objectifs.map(([cle]) => ({
+        id: `Activité ${cle.slice(3).padStart(2, '0')}`,
+        Lotties_activité: `public/Images/Numbers/${cle.slice(3).padStart(2, '0')}.json`,
+      }));
+
+  noeuds.push({
+    id: identifiant,
+    etiquette: idChapitre,
+    lottie: normaliserLottie(chapitre.Lotties_chapitre),
+    type: 'chapitre',
+    description: typeof chapitre.Contexte === 'string'
+      ? chapitre.Contexte
+      : typeof chapitre.description === 'string' ? chapitre.description : '',
+  });
+  aretes.push({ from: 'cours', to: identifiant });
+
+  activites.forEach((activite, activiteIndex) => {
+    const idActivite = `${identifiant}-activite-${activiteIndex + 1}`;
+    noeuds.push({
+      id: idActivite,
+      etiquette: '',
+      lottie: normaliserLottie(
+        activite.Lotties_activité ?? activite.lotties_activité ?? activite.Lotties_activite ?? activite.lotties_activite,
+      ),
+      type: 'activite',
+    });
+    aretes.push({ from: identifiant, to: idActivite });
+  });
+});
+---
+<section class="reseau-section" aria-label={`Réseau du cours ${cours.titre}`}>
+  <div class="reseau" data-noeuds={JSON.stringify(noeuds)} data-aretes={JSON.stringify(aretes)}></div>
+  <aside class="description" aria-live="polite">
+    <h2>Sélectionnez un chapitre</h2>
+    <p>Les activités sont affichées autour de chaque chapitre.</p>
+  </aside>
+</section>
+
+<script>
+  import lottie from 'lottie-web';
+  import { Network } from 'vis-network/standalone';
+  import type { Edge, Node } from 'vis-network';
+
+  interface GraphNode extends Node {
+    id: string;
+    etiquette: string;
+    type: 'cours' | 'chapitre' | 'activite';
+    lottie: string;
+    description?: string;
+  }
+
+  const conteneur = document.querySelector<HTMLElement>('.reseau');
+  const panneau = document.querySelector<HTMLElement>('.description');
+
+  if (conteneur && panneau) {
+    let noeuds: GraphNode[];
+    let aretes: Edge[];
+    try {
+      noeuds = JSON.parse(conteneur.dataset.noeuds || '[]') as GraphNode[];
+      aretes = JSON.parse(conteneur.dataset.aretes || '[]') as Edge[];
+    } catch (error) {
+      console.error('Les données du réseau sont invalides.', error);
+      noeuds = [];
+      aretes = [];
+    }
+    const elements = new Map<string, HTMLDivElement>();
+    const animations: ReturnType<typeof lottie.loadAnimation>[] = [];
+    const decodeURIComponentSafe = (value: string) => {
+      try {
+        return decodeURIComponent(value);
+      } catch {
+        return value;
+      }
+    };
+    const positionsVisuelles = document.createElement('div');
+    positionsVisuelles.className = 'lotties-reseau';
+
+    const couleurTheme = getComputedStyle(document.body).getPropertyValue('--theme').trim() || '#b7b7b7';
+    for (const noeud of noeuds) {
+      const element = document.createElement('div');
+      element.className = `icone-noeud icone-${noeud.type}`;
+      element.setAttribute('aria-hidden', 'true');
+      positionsVisuelles.append(element);
+      elements.set(String(noeud.id), element);
+
+      if (noeud.lottie) {
+        const cheminLottie = noeud.lottie.replace(/^\//, '').split('/').map(decodeURIComponentSafe).join('/');
+        const urlLottie = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${cheminLottie}`;
+        fetch(urlLottie)
+          .then(async (response) => {
+            if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+            const contenu = await response.text();
+            if (!contenu.trim()) throw new Error('Le fichier est vide.');
+            try {
+              return JSON.parse(contenu);
+            } catch {
+              throw new Error('Le fichier ne contient pas un JSON valide.');
+            }
+          })
+          .then((animationData) => {
+            if (!animationData) return;
+            const hex = couleurTheme.match(/^#([\da-f]{6})$/i)?.[1];
+            const rgb = hex
+              ? [0, 2, 4].map((index) => parseInt(hex.slice(index, index + 2), 16) / 255)
+              : [0.2, 0.8, 0.8];
+            const recolorer = (valeur: unknown): void => {
+              if (!valeur || typeof valeur !== 'object') return;
+              if (Array.isArray(valeur)) {
+                valeur.forEach(recolorer);
+                return;
+              }
+              const objet = valeur as Record<string, unknown>;
+              const couleur = objet.c as { k?: unknown } | undefined;
+              if (couleur && Array.isArray(couleur.k)) {
+                const recolorerValeur = (valeurCouleur: unknown[]): void => {
+                  if (
+                    typeof valeurCouleur[0] !== 'number' ||
+                    typeof valeurCouleur[1] !== 'number' ||
+                    typeof valeurCouleur[2] !== 'number'
+                  ) return;
+                  const [rouge, vert, bleu] = valeurCouleur as number[];
+                  const estNoir = rouge < 0.04 && vert < 0.04 && bleu < 0.04;
+                  if (!estNoir) {
+                    valeurCouleur.splice(0, 4, ...rgb, typeof valeurCouleur[3] === 'number' ? valeurCouleur[3] : 1);
+                  }
+                };
+                if (typeof couleur.k[0] === 'number') {
+                  recolorerValeur(couleur.k);
+                } else {
+                  for (const imageCle of couleur.k) {
+                    if (!imageCle || typeof imageCle !== 'object') continue;
+                    const frame = imageCle as { s?: unknown[]; e?: unknown[] };
+                    if (Array.isArray(frame.s)) recolorerValeur(frame.s);
+                    if (Array.isArray(frame.e)) recolorerValeur(frame.e);
+                  }
+                }
+              }
+              Object.values(objet).forEach(recolorer);
+            };
+            recolorer(animationData);
+            const animation = lottie.loadAnimation({
+              container: element,
+              renderer: 'svg',
+              loop: true,
+              autoplay: true,
+              animationData,
+            });
+            animation.addEventListener('data_failed', () => console.error('Lottie invalide :', urlLottie));
+            animations.push(animation);
+          })
+          .catch((error: unknown) => console.error('Impossible de charger le Lottie :', urlLottie, error));
+      }
+    }
+
+    const donneesNoeuds: Node[] = noeuds.map((noeud) => ({
+      id: noeud.id,
+      label: noeud.etiquette,
+      shape: 'dot',
+      size: noeud.type === 'cours' ? 48 : noeud.type === 'chapitre' ? 38 : 30,
+      color: { background: 'white', border: couleurTheme },
+      borderWidth: 2,
+      font: { color: '#333', size: 15, face: 'Arial' },
+      physics: true,
+    }));
+    const network = new Network(conteneur, { nodes: donneesNoeuds, edges: aretes }, {
+      autoResize: true,
+      nodes: { shape: 'dot', scaling: { min: 18, max: 44 } },
+      edges: { color: { color: '#9aa0a6', opacity: 0.65 }, smooth: { enabled: true, type: 'continuous', roundness: 0.35 } },
+      physics: {
+        enabled: true,
+        solver: 'forceAtlas2Based',
+        forceAtlas2Based: { gravitationalConstant: -55, centralGravity: 0.012, springLength: 130, springConstant: 0.08, damping: 0.42, avoidOverlap: 0.7 },
+        stabilization: { enabled: true, iterations: 180, updateInterval: 25 },
+        minVelocity: 0.5,
+      },
+      interaction: { hover: true, tooltipDelay: 150, navigationButtons: true, keyboard: true },
+    });
+    conteneur.append(positionsVisuelles);
+
+    const synchroniserPositions = () => {
+      const positions = network.getPositions(noeuds.map((noeud) => String(noeud.id)));
+      for (const [id, element] of elements) {
+        const position = positions[id];
+        if (!position) continue;
+        const point = network.canvasToDOM(position);
+        element.style.left = `${point.x}px`;
+        element.style.top = `${point.y}px`;
+      }
+    };
+    network.on('afterDrawing', synchroniserPositions);
+    network.on('zoom', synchroniserPositions);
+    network.on('dragging', synchroniserPositions);
+    network.on('stabilizationIterationsDone', synchroniserPositions);
+    network.on('selectNode', ({ nodes: selection }) => {
+      const selectionnee = noeuds.find((noeud) => noeud.id === selection[0]);
+      if (!selectionnee || selectionnee.type !== 'chapitre') return;
+      panneau.innerHTML = `<h2></h2><p></p>`;
+      panneau.querySelector('h2')!.textContent = selectionnee.etiquette;
+      panneau.querySelector('p')!.textContent = selectionnee.description ?? '';
+    });
+    synchroniserPositions();
+
+    window.addEventListener('beforeunload', () => {
+      animations.forEach((animation) => animation.destroy());
+      network.destroy();
+    }, { once: true });
+  }
+</script>
+
+<style>
+  .reseau-section { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 20px; align-items: stretch; margin: 28px 0 48px; }
+  .reseau { position: relative; min-width: 0; height: min(72vh, 760px); min-height: 460px; overflow: hidden; border: 2px solid color-mix(in srgb, var(--theme) 45%, white); border-radius: var(--rayon); background: radial-gradient(circle at center, color-mix(in srgb, var(--theme) 12%, white), white 70%); }
+  .reseau :global(.lotties-reseau) { position: absolute; z-index: 2; inset: 0; pointer-events: none; overflow: hidden; }
+  .reseau :global(.icone-noeud) { position: absolute; display: grid; place-items: center; border-radius: 50%; background: #fff; transform: translate(-50%, -50%); overflow: hidden; }
+  .reseau :global(.icone-noeud svg) { display: block; width: 100%; height: 100%; }
+  .reseau :global(.icone-cours) { width: 80px; height: 80px; }
+  .reseau :global(.icone-chapitre) { width: 58px; height: 58px; }
+  .reseau :global(.icone-activite) { width: 40px; height: 40px; }
+  .description { padding: 20px; border-left: 5px solid var(--theme); border-radius: var(--rayon); background: white; box-shadow: 0 4px 18px #0000000d; }
+  .description h2 { margin-bottom: 12px; color: var(--theme-fonce); font-size: 1.2rem; }
+  .description p { line-height: 1.55; white-space: pre-line; }
+  @media (max-width: 760px) {
+    .reseau-section { grid-template-columns: 1fr; }
+    .reseau { height: 62vh; min-height: 400px; }
+  }
+</style>

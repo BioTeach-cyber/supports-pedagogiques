@@ -18,14 +18,148 @@
       {
         "id": "theme-2",
         "titre": "Thème 2 : la cellule"
+      },
+            {
+        "id": "theme-1",
+        "titre": "Thème 1 : les écosystèmes",
+        "couleur": "#2a9d8f",
+        "presentation": "https://monpseudo.github.io/simulateur-ecosysteme/"
+      },
+            {
+        "id": "theme-1",
+        "titre": "Thème 1 : les écosystèmes",
+        "couleur": "#2a9d8f",
+        "presentation": "https://monpseudo.github.io/simulateur-ecosysteme/"
+      },
+            {
+        "id": "theme-1",
+        "titre": "Thème 1 : les écosystèmes",
+        "couleur": "#2a9d8f",
+        "presentation": "https://monpseudo.github.io/simulateur-ecosysteme/"
+      },
+            {
+        "id": "theme-1",
+        "titre": "Thème 1 : les écosystèmes",
+        "couleur": "#2a9d8f",
+        "presentation": "https://monpseudo.github.io/simulateur-ecosysteme/"
       }
     ]
   },
+{
+  "id": "EP2 - Ecologie",
+  "titre": "EP2 - Ecologie",
+  "classe": "Bac Pro",
+  "niveau": "2de",
+  "couleur": "#F3912B",
+  "image": "public/Images/Vignettes/EP2-Ecologie.jpg",
+  "Lotties_cours": "public/Images/Lotties/Environnement.json",
+  "archive": false,
+  "presentation": "",
+  "chapitres": [
+    {
+      "id": "Chapitre 01",
+      "titre": "« Qui vit ici ? » Reconnaître et classer les êtres vivants d'un territoire rural.",
+      "Lotties_chapitre": "public/Images/Lotties/Cladogramme.json",
+      "presentation": "",
+      "Contexte": "Vous réalisez un stage dans un accueil de jour pour personnes âgées installé dans un ancien logement en centre ville, proche d'un grand parc. Le parc dispose d'un grand jardin communautaire, d'une haie, d'un verger et d'une mare, et l'équipe souhaite développer des ateliers « nature et mémoire » pour ses usagers. La responsable a constaté que les résidents, souvent d'anciens agriculteurs ou jardiniers, retrouvent le plaisir de parler quand on leur montre une plante ou un animal qu'ils reconnaissent. Elle vous confie la préparation d'un jeu de cartes illustrées présentant les êtres vivants du parc. Chaque carte devra comporter le nom courant de l'espèce, son nom scientifique, une photographie et le groupe auquel elle appartient. Pour construire ce support, vous devez d'abord apprendre à observer les êtres vivants, à relever leurs caractéristiques, à utiliser une clé de détermination et à les ranger dans les grands groupes utilisés par les scientifiques. Vous devrez également comprendre dans quel milieu chaque espèce vit, car les animateurs veulent pouvoir dire aux usagers où retrouver chaque plante ou chaque animal lors des promenades dans le parc.",
+      "activites": [
+        {
+          "id": "Activité 01",
+          "Lotties_activité": "public/Images/Numbers/01.json",
+          "titre": "Ouvrez l'œil ! Premières observations au parc",
+          "presentation": "",
+          "obj01": "Définir les notions de biotope, de biocénose et d'écosystème.",
+          "obj02": "Distinguer les éléments du biotope et de la biocénose sur un exemple de territoire rural."
+        },
+        {
+          "id": "Activité 02",
+          "Lotties_activité": "public/Images/Numbers/02.json",
+          "titre": "Un seul nom pour tout le monde !",
+          "presentation": "",
+          "obj01": "Décrire l'action du sol, de l'eau et du climat sur la répartition des êtres vivants.",
+          "obj02": "Décrire les actions des êtres vivants sur leur milieu de vie."
+        },
+        {
+          "id": "Activité 03",
+          "Lotties_activité": "public/Images/Numbers/03.json",
+          "titre": "Mène l'enquête : qui es-tu, petite bête ?",
+          "presentation": "",
+          "obj01": "Distinguer les niveaux trophiques (producteurs, consommateurs, décomposeurs).",
+          "obj02": "Construire une chaîne alimentaire puis un réseau trophique à partir d'espèces du territoire."
+        },
+        {
+          "id": "Activité 04",
+          "Lotties_activité": "public/Images/Numbers/04.json",
+          "titre": "Cinq grandes familles pour ranger le vivant",
+          "presentation": "",
+          "obj01": "Définir les relations de prédation, compétition, parasitisme, symbiose et coopération.",
+          "obj02": "Identifier le type de relation existant entre deux espèces à partir d'une situation décrite."
+        },
+        {
+          "id": "Activité 05",
+          "Lotties_activité": "public/Images/Numbers/05.json",
+          "titre": "L'être humain aussi a sa place, et chacun a son coin de parc",
+          "presentation": "",
+          "obj01": "Comparer les contributions respectives de la reproduction sexuée et de la multiplication végétative dans l'occupation de l'espace.",
+          "obj02": "Expliquer comment la dispersion des espèces et la biodiversité contribuent à la durabilité d'un écosystème."
+        }
+      ]
+    },
+    {
+      "id": "Chapitre 02",
+      "titre": "« Comment les êtres vivants vivent-ils ensemble ? » Interactions, relations et occupation du territoire",
+      "Lotties_chapitre": "public/Images/Lotties/Reseau_trophic.json",
+      "presentation": "",
+      "activites": [
+        {
+          "id": "Activité 01",
+          "Lotties_activité": "public/Images/Numbers/01.json",
+          "titre": "",
+          "presentation": "",
+          "obj01": "Définir les notions de biotope, de biocénose et d'écosystème.",
+          "obj02": "Distinguer les éléments du biotope et de la biocénose sur un exemple de territoire rural."
+        },
+        {
+          "id": "Activité 02",
+          "Lotties_activité": "public/Images/Numbers/02.json",
+          "titre": "",
+          "presentation": "",
+          "obj01": "Décrire l'action du sol, de l'eau et du climat sur la répartition des êtres vivants.",
+          "obj02": "Décrire les actions des êtres vivants sur leur milieu de vie."
+        },
+        {
+          "id": "Activité 03",
+          "Lotties_activité": "public/Images/Numbers/03.json",
+          "titre": "",
+          "presentation": "",
+          "obj01": "Distinguer les niveaux trophiques (producteurs, consommateurs, décomposeurs).",
+          "obj02": "Construire une chaîne alimentaire puis un réseau trophique à partir d'espèces du territoire."
+        },
+        {
+          "id": "Activité 04",
+          "Lotties_activité": "public/Images/Numbers/04.json",
+          "titre": "",
+          "presentation": "",
+          "obj01": "Définir les relations de prédation, compétition, parasitisme, symbiose et coopération.",
+          "obj02": "Identifier le type de relation existant entre deux espèces à partir d'une situation décrite."
+        },
+        {
+          "id": "Activité 05",
+          "Lotties_activité": "public/Images/Numbers/05.json",
+          "titre": "",
+          "presentation": "",
+          "obj01": "Comparer les contributions respectives de la reproduction sexuée et de la multiplication végétative dans l'occupation de l'espace.",
+          "obj02": "Expliquer comment la dispersion des espèces et la biodiversité contribuent à la durabilité d'un écosystème."
+        }
+      ]
+    }
+  ]
+},
   {
     "id": "physique-chimie",
     "titre": "Physique Chimie",
     "classe": "CAPa",
-    "niveau": "1re",
+    "niveau": "CAPa1",
     "couleur": "#a6539b",
     "image": "/images/physique-chimie.svg",
     "archive": false,

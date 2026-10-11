@@ -1,10 +1,16 @@
 ---
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { chemin } from '../Utils/Chemin.js';
 import '../Styles/Global.css';
 import EnTete from '../Components/EnTete.astro';
 import PiedDePage from '../Components/PiedDePage.astro';
 
-const { titre, couleur = '#b7b7b7', indexer = true } = Astro.props;
+const { titre, couleur = '#b7b7b7', indexer = true, sousTitre = '', logoLottie = '/favicon.json', couleurLogo = couleur } = Astro.props;
+const couleurFavicon = /^#[\da-f]{6}$/i.test(couleur) ? couleur : '#b7b7b7';
+const dessinFavicon = readFileSync(resolve(process.cwd(), 'public/favicon.svg'), 'utf8')
+  .replace(/#33cccc/gi, couleurFavicon);
+const faviconDynamique = `data:image/svg+xml,${encodeURIComponent(dessinFavicon)}`;
 ---
 <!doctype html>
 <html lang="fr">
@@ -12,12 +18,12 @@ const { titre, couleur = '#b7b7b7', indexer = true } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     {!indexer && <meta name="robots" content="noindex, nofollow" />}
-    <link rel="icon" type="image/svg+xml" href={chemin('favicon.svg')} />
+    <link rel="icon" type="image/svg+xml" href={faviconDynamique} />
     <link rel="icon" href={chemin('favicon.ico')} />
     <title>{titre}</title>
   </head>
   <body style={`--theme: ${couleur}`}>
-    <EnTete titre={titre} />
+    <EnTete titre={titre} sousTitre={sousTitre} logoLottie={logoLottie} couleurLogo={couleurLogo} />
     <main class="conteneur"><slot /></main>
     <PiedDePage />
   </body>

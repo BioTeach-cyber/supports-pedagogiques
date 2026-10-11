@@ -1,0 +1,33 @@
+---
+import Base from '../Layouts/Base.astro';
+import ReseauCours from '../Components/ReseauCours.astro';
+import cours from '../Data/Cours.json';
+
+export function getStaticPaths() {
+  return cours.map((cours) => ({
+    params: { id: cours.id },
+    props: { cours },
+  }));
+}
+
+const { cours: coursSelectionne } = Astro.props;
+const chapitres = coursSelectionne.chapitres as Array<Record<string, unknown>>;
+const lottieDuCours = typeof coursSelectionne.Lotties_cours === 'string' ? coursSelectionne.Lotties_cours : '';
+const premierLottieChapitre = chapitres.find((chapitre) => typeof chapitre.Lotties_chapitre === 'string');
+const lottieEntete = typeof premierLottieChapitre?.Lotties_chapitre === 'string'
+  ? premierLottieChapitre.Lotties_chapitre
+  : lottieDuCours;
+---
+<Base
+  titre={coursSelectionne.titre}
+  couleur={coursSelectionne.couleur}
+  sousTitre={`Formation ${coursSelectionne.classe} · Niveau ${coursSelectionne.niveau}`}
+  logoLottie={lottieEntete.replace(/^\/?public\//i, '').replace(/^\//, '')}
+  couleurLogo={coursSelectionne.couleur}
+>
+  <ReseauCours cours={coursSelectionne} />
+</Base>
+
+<style>
+  .retour { display: inline-block; margin-top: 24px; color: var(--texte); font-weight: 700; }
+</style>
