@@ -16,6 +16,7 @@ const { titre, sousTitre = '', logoLottie = '/favicon.json', couleurLogo = '#b7b
 
 <script>
   import lottie from 'lottie-web';
+  import { recolorerLottie } from '../Utils/RecolorerLottie';
 
   const logo = document.querySelector<HTMLElement>('.lottie-logo');
   const source = logo?.dataset.lottie;
@@ -36,41 +37,7 @@ const { titre, sousTitre = '', logoLottie = '/favicon.json', couleurLogo = '#b7b
         }
       })
       .then((animationData) => {
-        const hex = color.match(/^#([\da-f]{6})$/i)?.[1];
-        const rgb = hex
-          ? [0, 2, 4].map((index) => parseInt(hex.slice(index, index + 2), 16) / 255)
-          : [0.2, 0.8, 0.8];
-        const recolorer = (value: unknown): void => {
-          if (!value || typeof value !== 'object') return;
-          if (Array.isArray(value)) {
-            value.forEach(recolorer);
-            return;
-          }
-          const object = value as Record<string, unknown>;
-          const stroke = object.c as { k?: unknown } | undefined;
-          if (stroke && Array.isArray(stroke.k)) {
-            const recolorerValeur = (value: unknown[]): void => {
-              if (typeof value[0] !== 'number' || typeof value[1] !== 'number' || typeof value[2] !== 'number') return;
-              const [rouge, vert, bleu] = value as number[];
-              const estNoir = rouge < 0.04 && vert < 0.04 && bleu < 0.04;
-              if (!estNoir) {
-                value.splice(0, 4, ...rgb, typeof value[3] === 'number' ? value[3] : 1);
-              }
-            };
-            if (typeof stroke.k[0] === 'number') {
-              recolorerValeur(stroke.k);
-            } else {
-              for (const frame of stroke.k) {
-                if (!frame || typeof frame !== 'object') continue;
-                const keyframe = frame as { s?: unknown[]; e?: unknown[] };
-                if (Array.isArray(keyframe.s)) recolorerValeur(keyframe.s);
-                if (Array.isArray(keyframe.e)) recolorerValeur(keyframe.e);
-              }
-            }
-          }
-          Object.values(object).forEach(recolorer);
-        };
-        recolorer(animationData);
+        recolorerLottie(animationData, color);
         const animation = lottie.loadAnimation({ container: logo, renderer: 'svg', loop: true, autoplay: true, animationData });
         animation.addEventListener('data_failed', () => console.error('Lottie invalide :', url));
       })
