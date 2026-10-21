@@ -286,7 +286,17 @@
     const overlay = element('div', 'network-lotties');
     overlay.setAttribute('aria-hidden', 'true');
     networkSection.append(networkHost, overlay);
-    content.append(networkSection);
+    const legend = element('div', 'network-legend');
+    const supportLegend = element('div', 'network-legend-item');
+    const supportMarker = element('span', 'network-legend-marker');
+    supportMarker.style.setProperty('--node-color', color);
+    supportLegend.append(supportMarker, element('span', '', 'Support de cours'));
+    const evaluationLegend = element('div', 'network-legend-item');
+    const evaluationMarker = element('span', 'network-legend-marker evaluation-legend-marker');
+    evaluationMarker.style.setProperty('--node-color', color);
+    evaluationLegend.append(evaluationMarker, element('span', '', 'Evaluations'));
+    legend.append(supportLegend, evaluationLegend);
+    content.append(networkSection, legend);
 
     const visNetwork = window.vis?.Network || window.Network || globalThis.Network;
     const visDataSet = window.vis?.DataSet || window.DataSet || globalThis.DataSet;
@@ -347,20 +357,20 @@
         from: rootId,
         to: chapterNodeId(chapter),
         color: { color: `${color}99`, highlight: color },
-        width: 2
+        width: 10
       })),
       ...activityNodes.map(({ chapter, index }) => ({
         from: chapterNodeId(chapter),
         to: activityNodeId(chapter, index),
         color: { color: `${color}77`, highlight: color },
-        width: 1.5
+        width: 7
       })),
       ...evaluationItems.map(({ chapter, kind, index }) => ({
         from: chapterNodeId(chapter),
         to: evaluationNodeId(chapter, kind, index),
         color: { color: `${color}99`, highlight: color },
-        width: 1.5,
-        dashes: [6, 5]
+        width: 7,
+        dashes: [8, 10]
       }))
     ]);
     const instance = new visNetwork(networkHost, { nodes, edges }, {
@@ -476,9 +486,37 @@
       if (evaluationPage) location.href = courseDataUrl(courseId, evaluationPage);
     };
     instance.on('click', (event) => navigateToNode(event.nodes[0]));
-    overlay.addEventListener('click', (event) => {
+    let pointerInteraction = null;
+    overlay.addEventListener('pointerdown', (event) => {
       const node = event.target.closest('[data-node-id]');
-      if (node) navigateToNode(node.dataset.nodeId);
+      if (!node || event.button !== 0) return;
+      pointerInteraction = {
+        id: node.dataset.nodeId,
+        pointerId: event.pointerId,
+        startX: event.clientX,
+        startY: event.clientY,
+        moved: false
+      };
+      event.preventDefault();
+    });
+    window.addEventListener('pointermove', (event) => {
+      if (!pointerInteraction || event.pointerId !== pointerInteraction.pointerId) return;
+      const deltaX = event.clientX - pointerInteraction.startX;
+      const deltaY = event.clientY - pointerInteraction.startY;
+      if (!pointerInteraction.moved && Math.hypot(deltaX, deltaY) < 4) return;
+      pointerInteraction.moved = true;
+      const bounds = networkHost.getBoundingClientRect();
+      const position = instance.DOMtoCanvas({ x: event.clientX - bounds.left, y: event.clientY - bounds.top });
+      instance.moveNode(pointerInteraction.id, position.x, position.y);
+    });
+    window.addEventListener('pointerup', (event) => {
+      if (!pointerInteraction || event.pointerId !== pointerInteraction.pointerId) return;
+      const interaction = pointerInteraction;
+      pointerInteraction = null;
+      if (!interaction.moved) navigateToNode(interaction.id);
+    });
+    window.addEventListener('pointercancel', (event) => {
+      if (pointerInteraction?.pointerId === event.pointerId) pointerInteraction = null;
     });
     requestAnimationFrame(updateOverlay);
   };

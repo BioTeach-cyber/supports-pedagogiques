@@ -101,6 +101,10 @@ button { font: inherit; }
 .reseau-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(250px, 320px); gap: 20px; align-items: stretch; }
 .network-shell { position: relative; min-width: 0; height: min(70vh, 760px); min-height: 480px; overflow: hidden; border: 1px solid var(--line); border-radius: 10px; background-color: #fff; background-image: radial-gradient(#dfe5ea 1px, transparent 1px); background-size: 22px 22px; }
 .course-network-shell { width: 100%; min-height: 560px; }
+.network-legend { display: flex; justify-content: center; align-items: center; gap: 28px; margin-top: 16px; }
+.network-legend-item { display: inline-flex; align-items: center; gap: 9px; color: var(--ink); font-size: .92rem; }
+.network-legend-marker { display: inline-block; width: 30px; height: 30px; flex: 0 0 auto; border: 3px solid var(--node-color); border-radius: 50%; }
+.evaluation-legend-marker { border-style: dotted; }
 .course-network, .network-lotties { position: absolute; inset: 0; width: 100%; height: 100%; }
 .network-lotties { pointer-events: none; overflow: hidden; }
 .chapter-node-overlay, .activity-node-lottie, .evaluation-node-overlay { pointer-events: auto; cursor: pointer; }
