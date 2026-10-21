@@ -103,6 +103,7 @@ button { font: inherit; }
 .course-network-shell { width: 100%; min-height: 560px; }
 .course-network, .network-lotties { position: absolute; inset: 0; width: 100%; height: 100%; }
 .network-lotties { pointer-events: none; overflow: hidden; }
+.chapter-node-overlay, .activity-node-lottie, .evaluation-node-overlay { pointer-events: auto; cursor: pointer; }
 .network-node-lottie { position: absolute; width: 66px; height: 58px; transform: translate(-50%, -50%); }
 .network-node-lottie svg { width: 100% !important; height: 100% !important; }
 .lottie-error { display: grid; place-items: center; padding: 8px; border: 1px solid #b42318; border-radius: 8px; background: #fff2f0; color: #8f1d14; font-size: .7rem; text-align: center; }

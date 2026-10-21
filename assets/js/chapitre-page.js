@@ -121,7 +121,7 @@
     document.getElementById('course-link').href = courseUrl;
     document.getElementById('back-link').href = courseUrl;
     document.getElementById('footer-link').href = courseUrl;
-    mountLottie(document.getElementById('course-lottie'), course.lottie, color);
+    mountLottie(document.getElementById('course-lottie'), chapter.lottie || course.lottie, color);
 
     content.append(
       element('p', 'eyebrow', `Chapitre ${chapter.Periode || chapter.id} · ${(course.classes || []).join(' · ')}`),

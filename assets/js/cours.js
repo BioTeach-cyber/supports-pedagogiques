@@ -337,7 +337,9 @@
         borderWidth: 2,
         color: { background: '#ffffff', border: color },
         shapeProperties: { borderDashes: [6, 5] },
-        url: evaluation.component ? courseDataUrl(courseId, evaluation.component) : undefined
+          url: evaluation.page || evaluation.component
+            ? courseDataUrl(courseId, evaluation.page || evaluation.component)
+            : undefined
       }))
     ]);
     const edges = new visDataSet([
@@ -456,9 +458,7 @@
       instance.fit({ animation: { duration: 400, easingFunction: 'easeInOutQuad' } });
       updateOverlay();
     });
-    instance.on('click', (event) => {
-      const id = event.nodes[0];
-      if (!id) return;
+    const navigateToNode = (id) => {
       const chapter = chapters.find((item) => chapterNodeId(item) === id);
       if (chapter) {
         location.href = chapterPageUrl(courseId, chapter);
@@ -466,11 +466,19 @@
       }
       const activity = activityNodes.find((item) => activityNodeId(item.chapter, item.index) === id);
       if (activity) {
-        location.href = courseUrl(courseId, activity.chapter.id, activity.activity.id || `activite-${activity.index + 1}`);
+        location.href = activity.activity.page
+          ? courseDataUrl(courseId, activity.activity.page)
+          : courseUrl(courseId, activity.chapter.id, activity.activity.id || `activite-${activity.index + 1}`);
         return;
       }
       const evaluation = evaluationItems.find((item) => evaluationNodeId(item.chapter, item.kind, item.index) === id);
-      if (evaluation?.evaluation.component) location.href = courseDataUrl(courseId, evaluation.evaluation.component);
+      const evaluationPage = evaluation?.evaluation.page || evaluation?.evaluation.component;
+      if (evaluationPage) location.href = courseDataUrl(courseId, evaluationPage);
+    };
+    instance.on('click', (event) => navigateToNode(event.nodes[0]));
+    overlay.addEventListener('click', (event) => {
+      const node = event.target.closest('[data-node-id]');
+      if (node) navigateToNode(node.dataset.nodeId);
     });
     requestAnimationFrame(updateOverlay);
   };
