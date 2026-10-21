@@ -1,0 +1,39 @@
+{
+  "titre": "Mes ressources pédagogiques",
+  "sousTitre": "Sciences, numérique et services en espace rural",
+  "couleurParDefaut": "#3a6ea5",
+  "sections": [
+    {
+      "id": "cours",
+      "titre": "Cours",
+      "description": "Les cours par classe et par chapitre",
+      "icone": "📚",
+      "couleur": "#2a9d8f",
+      "lien": "cours/"
+    },
+    {
+      "id": "applications",
+      "titre": "Applications",
+      "description": "Simulateurs et outils interactifs",
+      "icone": "🧪",
+      "couleur": "#e76f51",
+      "lien": "applications/"
+    },
+    {
+      "id": "formations",
+      "titre": "Formations",
+      "description": "Supports de formation pour adultes",
+      "icone": "🎓",
+      "couleur": "#6a4c93",
+      "lien": "formations/"
+    },
+    {
+      "id": "blog",
+      "titre": "Blog",
+      "description": "Questionnements et recherches pédagogiques",
+      "icone": "✍️",
+      "couleur": "#e9a03b",
+      "lien": "blog/"
+    }
+  ]
+}

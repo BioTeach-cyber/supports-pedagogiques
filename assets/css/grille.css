@@ -1,0 +1,38 @@
+body { font-family: Arial, sans-serif; font-size: 14px; margin: 20px; }
+
+table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+th, td { border: 1px solid #333; padding: 6px; vertical-align: middle; }
+th { background: #2e7d32; color: #fff; }
+
+.entete th { font-size: 18px; }
+
+.capacite   { width: 14%; background: #e8f5e9; text-align: center; }
+.critere    { width: 16%; background: #f1f8e9; font-weight: bold; }
+.indicateur { width: 40%; }
+.niveau     { width: 4%; text-align: center; }
+.evaluation { width: 8%; text-align: center; }
+.appreciation { width: 14%; }
+
+input[type="text"], input[type="date"], textarea {
+  width: 100%;
+  min-width: 0;
+  font: inherit;
+}
+
+textarea { min-height: 5rem; resize: vertical; }
+input[type="radio"], select { min-height: 24px; }
+.pied td { height: 80px; vertical-align: top; width: 50%; }
+
+@media (max-width: 700px) {
+  body { margin: 8px; font-size: 12px; }
+  table { display: block; overflow-x: auto; }
+  th, td { padding: 4px; }
+}
+
+/* Impression : une grille propre sur A4 paysage */
+@media print {
+  @page { size: A4 landscape; margin: 10mm; }
+  body { margin: 0; font-size: 11px; }
+  th { background: #ccc !important; color: #000; -webkit-print-color-adjust: exact; }
+  select { border: none; appearance: none; }
+}

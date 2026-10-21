@@ -1,0 +1,19 @@
+/* Les variantes sont recalculées sur :root ET sur tout élément .theme
+   qui définit sa propre couleur (ex : chaque vignette de l'accueil). */
+:root,
+.theme {
+  --couleur-theme: #3a6ea5;
+
+  --theme-tres-clair: color-mix(in srgb, var(--couleur-theme) 8%, white);
+  --theme-clair:      color-mix(in srgb, var(--couleur-theme) 25%, white);
+  --theme-moyen:      var(--couleur-theme);
+  --theme-fonce:      color-mix(in srgb, var(--couleur-theme) 70%, black);
+  --theme-tres-fonce: color-mix(in srgb, var(--couleur-theme) 40%, black);
+
+  --texte: #1f2933;
+  --texte-doux: #52606d;
+  --fond: #f7f8fa;
+  --rayon: 16px;
+  --ombre: 0 4px 14px rgb(0 0 0 / 0.08);
+  --ombre-survol: 0 12px 28px rgb(0 0 0 / 0.15);
+}

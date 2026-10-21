@@ -1,0 +1,49 @@
+{
+  "entete": {
+    "examen": "Examen Bac Pro SAPAT",
+    "titre": "Drogues légales et illégales : Où placer la limite entre plaisir et danger ?",
+    "epreuve": "MG1 Biologie-Ecologie",
+    "session": "2026-2027",
+    "etablissement": "AgroTech Le Cleusmeur",
+    "coefficient": 1
+  },
+  "niveaux": ["- -", "-", "+", "+ +"],
+  "capacites": [
+    {
+      "code": "C1.3",
+      "intitule": "Exploiter la modélisation d'un phénomène",
+      "criteres": [
+        {
+          "intitule": "Analyse d'un phénomène dans son contexte",
+          "indicateurs": [
+            "Identifier les substances psychoactives présentes dans une situation et préciser leur statut juridique en France (légale, réglementée, illégale)",
+            "Expliquer les effets à court terme et les atteintes à long terme des substances sur les principaux organes",
+            "Analyser une situation professionnelle et évaluer le degré d'urgence de la prise en charge en justifiant à l'aide des indices relevés"
+          ]
+        },
+        {
+          "intitule": "Utilisation d'un ou de plusieurs modèle(s) adapté(s) au phénomène étudié",
+          "indicateurs": [
+            "Classer les substances psychoactives dans les trois familles d'effets : dépresseurs, stimulants, perturbateurs",
+            "Décrire, à l'aide d'un schéma ou d'un modèle, le trajet d'une substance psychoactive de son entrée dans l'organisme jusqu'au cerveau",
+            "Expliquer, à partir du modèle du circuit de la récompense, le mécanisme biologique conduisant à l'addiction (dopamine, tolérance, manque)"
+          ]
+        },
+        {
+          "intitule": "Validation d'une conjecture ou d'une théorie",
+          "indicateurs": [
+            "Expliquer le fonctionnement du circuit de la récompense (dopamine, plaisir, tolérance) et son rôle dans l'installation de l'addiction",
+            "Repérer dans une situation concrète les signes physiques et comportementaux évocateurs d'une addiction"
+          ]
+        },
+        {
+          "intitule": "Communication / diffusion de la réponse",
+          "indicateurs": [
+            "Analyser une situation professionnelle afin d'évaluer le degré d'urgence et de justifier une réaction adaptée",
+            "Argumenter les limites du rôle du professionnel SAPAT et proposer une conduite à tenir respectant la déontologie (secret professionnel, non-jugement, transmission)"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Calque_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 5664 2465">
+  <!-- Generator: Adobe Illustrator 30.8.2, SVG Export Plug-In . SVG Version: 2.1.4 Build 7)  -->
+  <defs>
+    <style>
+      .st0 {
+        font-size: 37px;
+      }
+
+      .st0, .st1, .st2, .st3, .st4, .st5, .st6 {
+        fill: #fff;
+      }
+
+      .st0, .st1, .st3, .st7, .st4, .st8, .st9, .st6 {
+        isolation: isolate;
+      }
+
+      .st0, .st1, .st3, .st4, .st8, .st9, .st6 {
+        font-family: Arial-BoldMT, Arial;
+        font-weight: 700;
+      }
+
+      .st10 {
+        fill: #7fbc48;
+      }
+
+      .st10, .st11, .st12, .st13, .st14, .st15, .st16, .st17 {
+        stroke-miterlimit: 10;
+      }
+
+      .st10, .st11, .st14, .st15, .st5, .st18, .st16, .st17 {
+        stroke: #494949;
+      }
+
+      .st1 {
+        font-size: 63px;
+      }
+
+      .st3 {
+        font-size: 15px;
+      }
+
+      .st19, .st14, .st8 {
+        fill: #e7708c;
+      }
+
+      .st11, .st5, .st18, .st20 {
+        stroke-width: 3px;
+      }
+
+      .st11, .st21 {
+        fill: #b7b7b7;
+      }
+
+      .st12 {
+        stroke: #a5706c;
+      }
+
+      .st12, .st13, .st18, .st20 {
+        fill: none;
+      }
+
+      .st13, .st20 {
+        stroke: #e7708c;
+      }
+
+      .st4, .st9 {
+        font-size: 25px;
+      }
+
+      .st15 {
+        fill: #53a4db;
+      }
+
+      .st5, .st18, .st20 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .st16 {
+        fill: #f3912b;
+      }
+
+      .st17 {
+        fill: #a6539b;
+      }
+
+      .st8 {
+        font-size: 30px;
+      }
+
+      .st9 {
+        fill: #494949;
+      }
+
+      .st6 {
+        font-size: 18px;
+      }
+    </style>
+  </defs>
+  <g id="Accueil">
+    <g id="Pied_x5F_de_x5F_page">
+      <g id="Fond_x5F_pied_x5F_de_x5F_page">
+        <path class="st21" d="M1386,2085v-63.6c0-3.9-5.4-7.1-12-7.1H32c-6.6,0-12,3.2-12,7.1v63.6h1366Z"/>
+      </g>
+      <g id="Auteur" class="st7">
+        <text class="st3" transform="translate(60.0005 2058.5664)"><tspan x="0" y="0">Créé par Vincent APREMONT</tspan></text>
+      </g>
+      <g id="Licence" class="st7">
+        <text class="st3" transform="translate(502.2727 2058.5664)"><tspan x="0" y="0">Licence</tspan></text>
+      </g>
+      <g id="Mise_x5F_a_x5F_jour" class="st7">
+        <text class="st3" transform="translate(1186.7634 2058.5664)"><tspan x="0" y="0">Mise à jour jj/mm/aaaa</tspan></text>
+      </g>
+      <g id="Credits" class="st7">
+        <text class="st3" transform="translate(849.9561 2058.5664)"><tspan x="0" y="0">Credits</tspan></text>
+      </g>
+    </g>
+    <g id="Grille_x5F_cours">
+      <g id="Vignette_x5F_Physique_x5F_Chimie">
+        <path id="Fond_x5F_titre_x5F_cours_x5F_TIM-SNT" class="st17" d="M282.7,496H72c-6.6,0-12-5.4-12-12v-46.7h234.7v46.7c0,6.6-5.4,12-12,12Z"/>
+        <rect id="Vignette" class="st18" x="60" y="261.3" width="234.7" height="234.7"/>
+        <path id="Image_x5F_vignette" class="st18" d="M60,437.3v-163.1c0-7.1,5.4-12.9,12-12.9h210.7c6.6,0,12,5.8,12,12.9v163.1H60Z"/>
+        <g class="st7">
+          <text class="st6" transform="translate(104.8 473.1)"><tspan x="0" y="0">Physique Chimie</tspan></text>
+        </g>
+        <circle id="Fond_x5F_Classe" class="st5" cx="93.3" cy="294.7" r="23.3"/>
+        <g id="Classe" class="st7">
+          <text class="st9" transform="translate(75.3 303.6)"><tspan x="0" y="0">Tle</tspan></text>
+        </g>
+      </g>
+      <g id="Vignette_x5F_Biologie_x5F_humaine">
+        <path id="Fond_x5F_titre_x5F_cours_x5F_TIM-SNT1" class="st14" d="M810.9,496h-210.7c-6.6,0-12-5.4-12-12v-46.7h234.7v46.7c0,6.6-5.4,12-12,12Z"/>
+        <rect id="Vignette1" class="st18" x="588.2" y="261.3" width="234.7" height="234.7"/>
+        <path id="Image_x5F_vignette1" class="st18" d="M588.2,437.3v-163.1c0-7.1,5.4-12.9,12-12.9h210.7c6.6,0,12,5.8,12,12.9v163.1h-234.7Z"/>
+        <g class="st7">
+          <text class="st6" transform="translate(629.5 473.1)"><tspan x="0" y="0">Biologie Humaine</tspan></text>
+        </g>
+        <circle id="Fond_x5F_Classe1" class="st5" cx="621.6" cy="294.7" r="23.3"/>
+        <g id="Classe1" class="st7">
+          <text class="st9" transform="translate(603.5 303.6)"><tspan x="0" y="0">Tle</tspan></text>
+        </g>
+      </g>
+      <g id="Vignette_x5F_Biologie_x5F_Ecologie">
+        <path id="Fond_x5F_titre_x5F_cours_x5F_TIM-SNT2" class="st10" d="M546.8,496h-210.7c-6.6,0-12-5.4-12-12v-46.7h234.7v46.7c0,6.6-5.4,12-12,12Z"/>
+        <rect id="Vignette2" class="st18" x="324.1" y="261.3" width="234.7" height="234.7"/>
+        <path id="Image_x5F_vignette2" class="st18" d="M324.1,437.3v-163.1c0-7.1,5.4-12.9,12-12.9h210.7c6.6,0,12,5.8,12,12.9v163.1h-234.7Z"/>
+        <g class="st7">
+          <text class="st6" transform="translate(365.9 473.1)"><tspan x="0" y="0">Biologie Ecologie</tspan></text>
+        </g>
+        <circle id="Fond_x5F_Classe2" class="st5" cx="357.4" cy="294.7" r="23.3"/>
+        <g id="Classe2" class="st7">
+          <text class="st9" transform="translate(339.4 303.6)"><tspan x="0" y="0">Tle</tspan></text>
+        </g>
+      </g>
+      <g id="Vignette_x5F_TIM-SNT">
+        <path id="Fond_x5F_titre_x5F_cours_x5F_TIM-SNT3" class="st15" d="M1075,496h-210.7c-6.6,0-12-5.4-12-12v-46.7h234.7v46.7c0,6.6-5.4,12-12,12Z"/>
+        <rect id="Vignette3" class="st18" x="852.3" y="261.3" width="234.7" height="234.7"/>
+        <path id="Image_x5F_vignette3" class="st18" d="M852.3,437.3v-163.1c0-7.1,5.4-12.9,12-12.9h210.7c6.6,0,12,5.8,12,12.9v163.1h-234.7Z"/>
+        <g class="st7">
+          <text class="st6" transform="translate(928.7 473.1)"><tspan x="0" y="0">TIM / SNT</tspan></text>
+        </g>
+        <circle id="Fond_x5F_Classe3" class="st5" cx="885.7" cy="294.7" r="23.3"/>
+        <g id="Classe3" class="st7">
+          <text class="st9" transform="translate(867.6 303.6)"><tspan x="0" y="0">Tle</tspan></text>
+        </g>
+      </g>
+      <g id="Vignette_x5F_Physique_x5F_Chimie1">
+        <path id="Fond_x5F_titre_x5F_cours_x5F_TIM-SNT4" class="st17" d="M282.7,773.3H72c-6.6,0-12-5.4-12-12v-46.7h234.7v46.7c0,6.6-5.4,12-12,12Z"/>
+        <rect id="Vignette4" class="st18" x="60" y="538.7" width="234.7" height="234.7"/>
+        <path id="Image_x5F_vignette4" class="st18" d="M60,714.6v-163.1c0-7.1,5.4-12.9,12-12.9h210.7c6.6,0,12,5.8,12,12.9v163.1H60Z"/>
+        <g class="st7">
+          <text class="st6" transform="translate(104.8 750.4)"><tspan x="0" y="0">Physique Chimie</tspan></text>
+        </g>
+        <circle id="Fond_x5F_Classe4" class="st5" cx="93.3" cy="572" r="23.3"/>
+        <g id="Classe4" class="st7">
+          <text class="st9" transform="translate(75.3 580.9)"><tspan x="0" y="0">Tle</tspan></text>
+        </g>
+      </g>
+      <g id="Vignette_x5F_Biologie_x5F_humaine1">
+        <path id="Fond_x5F_titre_x5F_cours_x5F_TIM-SNT5" class="st14" d="M810.9,773.3h-210.7c-6.6,0-12-5.4-12-12v-46.7h234.7v46.7c0,6.6-5.4,12-12,12Z"/>
+        <rect id="Vignette5" class="st18" x="588.2" y="538.7" width="234.7" height="234.7"/>
+        <path id="Image_x5F_vignette5" class="st18" d="M588.2,714.6v-163.1c0-7.1,5.4-12.9,12-12.9h210.7c6.6,0,12,5.8,12,12.9v163.1h-234.7Z"/>
+        <g class="st7">
+          <text class="st6" transform="translate(629.5 750.4)"><tspan x="0" y="0">Biologie Humaine</tspan></text>
+        </g>
+        <circle id="Fond_x5F_Classe5" class="st5" cx="621.6" cy="572" r="23.3"/>
+        <g id="Classe5" class="st7">
+          <text class="st9" transform="translate(603.5 580.9)"><tspan x="0" y="0">Tle</tspan></text>
+        </g>
+      </g>
+      <g id="Vignette_x5F_Biologie_x5F_Ecologie1">
+        <path id="Fond_x5F_titre_x5F_cours_x5F_TIM-SNT6" class="st10" d="M546.8,773.3h-210.7c-6.6,0-12-5.4-12-12v-46.7h234.7v46.7c0,6.6-5.4,12-12,12Z"/>
+        <rect id="Vignette6" class="st18" x="324.1" y="538.7" width="234.7" height="234.7"/>
+        <path id="Image_x5F_vignette6" class="st18" d="M324.1,714.6v-163.1c0-7.1,5.4-12.9,12-12.9h210.7c6.6,0,12,5.8,12,12.9v163.1h-234.7Z"/>
+        <g class="st7">
+          <text class="st6" transform="translate(365.9 750.4)"><tspan x="0" y="0">Biologie Ecologie</tspan></text>
+        </g>
+        <circle id="Fond_x5F_Classe6" class="st5" cx="357.4" cy="572" r="23.3"/>
+        <g id="Classe6" class="st7">
+          <text class="st9" transform="translate(339.4 580.9)"><tspan x="0" y="0">Tle</tspan></text>
+        </g>
+      </g>
+      <g id="Vignette_x5F_TIM-SNT1">
+        <path id="Fond_x5F_titre_x5F_cours_x5F_TIM-SNT7" class="st15" d="M1075,773.3h-210.7c-6.6,0-12-5.4-12-12v-46.7h234.7v46.7c0,6.6-5.4,12-12,12Z"/>
+        <rect id="Vignette7" class="st18" x="852.3" y="538.7" width="234.7" height="234.7"/>
+        <path id="Image_x5F_vignette7" class="st18" d="M852.3,714.6v-163.1c0-7.1,5.4-12.9,12-12.9h210.7c6.6,0,12,5.8,12,12.9v163.1h-234.7Z"/>
+        <g class="st7">
+          <text class="st6" transform="translate(928.7 750.4)"><tspan x="0" y="0">TIM / SNT</tspan></text>
+        </g>
+        <circle id="Fond_x5F_Classe7" class="st5" cx="885.7" cy="572" r="23.3"/>
+        <g id="Classe7" class="st7">
+          <text class="st9" transform="translate(867.6 580.9)"><tspan x="0" y="0">Tle</tspan></text>
+        </g>
+      </g>
+      <g id="Vignette_x5F_Ecologie">
+        <path id="Fond_x5F_titre_x5F_cours_x5F_TIM-SNT8" class="st16" d="M1339.1,496h-210.7c-6.6,0-12-5.4-12-12v-46.7h234.7v46.7c0,6.6-5.4,12-12,12Z"/>
+        <rect id="Vignette8" class="st18" x="1116.4" y="261.3" width="234.7" height="234.7"/>
+        <path id="Image_x5F_vignette8" class="st18" d="M1116.4,437.3v-163.1c0-7.1,5.4-12.9,12-12.9h210.7c6.6,0,12,5.8,12,12.9v163.1h-234.7Z"/>
+        <g class="st7">
+          <text class="st6" transform="translate(1196.2705 473.0922)"><tspan x="0" y="0">Ecologie</tspan></text>
+        </g>
+        <circle id="Fond_x5F_Classe8" class="st5" cx="1149.8" cy="294.7" r="23.3"/>
+        <g id="Classe8" class="st7">
+          <text class="st9" transform="translate(1131.7173 303.6167)"><tspan x="0" y="0">Tle</tspan></text>
+        </g>
+      </g>
+      <g id="Vignette_x5F_Ecologie1">
+        <path id="Fond_x5F_titre_x5F_cours_x5F_TIM-SNT9" class="st16" d="M1339.1,773.3h-210.7c-6.6,0-12-5.4-12-12v-46.7h234.7v46.7c0,6.6-5.4,12-12,12Z"/>
+        <rect id="Vignette9" class="st18" x="1116.4" y="538.7" width="234.7" height="234.7"/>
+        <path id="Image_x5F_vignette9" class="st18" d="M1116.4,714.6v-163.1c0-7.1,5.4-12.9,12-12.9h210.7c6.6,0,12,5.8,12,12.9v163.1h-234.7Z"/>
+        <g class="st7">
+          <text class="st6" transform="translate(1196.2705 750.4255)"><tspan x="0" y="0">Ecologie</tspan></text>
+        </g>
+        <circle id="Fond_x5F_Classe9" class="st5" cx="1149.8" cy="572" r="23.3"/>
+        <g id="Classe9" class="st7">
+          <text class="st9" transform="translate(1131.7173 580.95)"><tspan x="0" y="0">Tle</tspan></text>
+        </g>
+      </g>
+      <rect id="Archives_x5F_bouton" class="st11" x="1117.5" y="816" width="232.5" height="65.3"/>
+      <g class="st7">
+        <text class="st4" transform="translate(1180.9705 856.2832)"><tspan x="0" y="0">Archives</tspan></text>
+      </g>
+      <rect id="Bannière_x5F_Cours" class="st21" x="60" y="158" width="1291.1" height="65.3"/>
+      <g class="st7">
+        <text class="st0" transform="translate(107.6 203.9)"><tspan x="0" y="0">Cours</tspan></text>
+      </g>
+    </g>
+    <g id="En-tete">
+      <g id="Banniere">
+        <path class="st21" d="M20,0v108c0,6.6,5.4,12,12,12h1342c6.6,0,12-5.4,12-12V0H20Z"/>
+      </g>
+      <circle id="Logo" class="st2" cx="85" cy="60" r="45"/>
+      <circle id="QRCode" class="st2" cx="1321" cy="60" r="45"/>
+      <g id="Titre" class="st7">
+        <text class="st1" transform="translate(491.2 82.6)"><tspan x="0" y="0">Titre d’accueil</tspan></text>
+      </g>
+    </g>
+  </g>
+  <g id="Page_x5F_de_x5F_cours">
+    <rect id="espace_x5F_interactif_x5F_presentation" class="st12" x="1446" y="120" width="1366" height="790.3"/>
+    <g id="Banniere1">
+      <path class="st19" d="M1446,0v108c0,6.6,5.4,12,12,12h1342c6.6,0,12-5.4,12-12V0h-1366Z"/>
+    </g>
+    <circle id="Logo1" class="st2" cx="1511" cy="60" r="45"/>
+    <circle id="QRCode1" class="st2" cx="2747" cy="60" r="45"/>
+    <g id="Titre_x5F_cours" class="st7">
+      <text class="st1" transform="translate(1918.9741 82.5535)"><tspan x="0" y="0">Titre du cours</tspan></text>
+    </g>
+    <circle id="Logo_x5F_TND" class="st13" cx="2747" cy="173.6" r="40.6"/>
+  </g>
+  <g id="Page_x5F_de_x5F_chapitre">
+    <rect id="espace_x5F_interactif_x5F_presentation1" class="st12" x="2872" y="120" width="1366" height="790.3"/>
+    <path class="st19" d="M2872,0v108c0,6.6,5.4,12,12,12h1342c6.6,0,12-5.4,12-12V0h-1366Z"/>
+    <circle id="Logo2" class="st2" cx="2937" cy="60" r="45"/>
+    <circle id="QRCode2" class="st2" cx="4173" cy="60" r="45"/>
+    <g id="Titre_x5F_chapitre" class="st7">
+      <text class="st1" transform="translate(3308.2 82.6)"><tspan x="0" y="0">Titre du chapitre</tspan></text>
+    </g>
+    <circle id="Logo_x5F_TND1" class="st13" cx="4173" cy="173.6" r="40.6"/>
+  </g>
+  <g id="Contenu">
+    <g id="Banniere2">
+      <path class="st19" d="M4298,0v108c0,6.6,5.4,12,12,12h1342c6.6,0,12-5.4,12-12V0h-1366Z"/>
+    </g>
+    <circle id="Logo3" class="st2" cx="4363" cy="60" r="45"/>
+    <circle id="QRCode3" class="st2" cx="5599" cy="60" r="45"/>
+    <g id="Titre_x5F_du_x5F_contenu" class="st7">
+      <text class="st1" transform="translate(4734.3 82.6)"><tspan x="0" y="0">Titre du contenu</tspan></text>
+    </g>
+    <polyline id="Lien_x5F_vers_x5F_activite_x5F_precedente" class="st20" points="4792.6 148 4774.7 165.9 4791.3 182.4"/>
+    <polyline id="Lien_x5F_vers_x5F_activite_x5F_suivante" class="st20" points="5169.4 182.4 5187.3 164.6 5170.7 148"/>
+    <g class="st7">
+      <text class="st8" transform="translate(4334.2 293.5)"><tspan x="0" y="0">Objectifs pédagogiques</tspan></text>
+    </g>
+    <g class="st7">
+      <text class="st8" transform="translate(4334.2 486.4)"><tspan x="0" y="0">Problématique</tspan></text>
+    </g>
+    <g class="st7">
+      <text class="st8" transform="translate(4334.2 686.4)"><tspan x="0" y="0">Questionnements intermédaire</tspan></text>
+    </g>
+    <g class="st7">
+      <text class="st8" transform="translate(4334.2227 1068.351)"><tspan x="0" y="0">Documents</tspan></text>
+    </g>
+    <g id="Numéro_document_01" class="st7">
+      <text class="st8" transform="translate(4656.0385 1068.351)"><tspan x="0" y="0">1</tspan></text>
+    </g>
+    <g id="Numéro_document_02" class="st7">
+      <text class="st8" transform="translate(4867.8783 1068.351)"><tspan x="0" y="0">2</tspan></text>
+    </g>
+    <g id="Numéro_document_03" class="st7">
+      <text class="st8" transform="translate(5079.7181 1068.351)"><tspan x="0" y="0">3</tspan></text>
+    </g>
+    <g id="Numéro_document_04" class="st7">
+      <text class="st8" transform="translate(5291.558 1068.351)"><tspan x="0" y="0">4</tspan></text>
+    </g>
+    <g id="Numéro_document_05" class="st7">
+      <text class="st8" transform="translate(5503.3978 1068.351)"><tspan x="0" y="0">5</tspan></text>
+    </g>
+    <path id="forme_x5F_encadré_x5F_document_x5F_selectionne" class="st20" d="M5616.4,1106.8h-652.9v-84c0-6.6-5.4-12-12-12h-155.6c-6.6,0-12,5.4-12,12v84h-437.7c-6.6,0-12,5.4-12,12v511.1c0,6.6,5.4,12,12,12h1270.2c6.6,0,12-5.4,12-12v-511.1c0-6.6-5.4-12-12-12h0Z"/>
+    <rect id="Encart_x5F_document_x5F_synchronise_x5F_IA_x5F_pedagogique_x5F_numero_x5F_01" class="st20" x="4336.4" y="1684.3" width="1292" height="240" rx="12" ry="12"/>
+    <rect id="Encart_x5F_document_x5F_synchronise_x5F_IA_x5F_pedagogique_x5F_numero_x5F_011" class="st20" x="4336.4" y="1964.3" width="1292" height="240" rx="12" ry="12"/>
+    <circle id="Lien_x5F_activite_x5F_01" class="st13" cx="4835.2" cy="165.2" r="32.6" transform="translate(2832.2244 4569.1231) rotate(-67.5)"/>
+    <circle id="Lien_x5F_activite_x5F_02" class="st13" cx="4908.1" cy="165.2" r="32.6"/>
+    <circle id="Lien_x5F_activite_x5F_03" class="st13" cx="4981" cy="165.2" r="32.6"/>
+    <circle id="Lien_x5F_activite_x5F_04" class="st13" cx="5053.9" cy="165.2" r="32.6"/>
+    <circle id="Lien_x5F_activite_x5F_05" class="st13" cx="5126.8" cy="165.2" r="32.6"/>
+    <circle id="Logo_x5F_TND2" class="st13" cx="5599" cy="173.6" r="40.6"/>
+  </g>
+</svg>

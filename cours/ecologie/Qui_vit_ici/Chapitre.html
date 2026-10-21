@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3912b">
+  <title>Qui vit ici ? — EP2 Écologie</title>
+  <link rel="stylesheet" href="../../../assets/css/cours.css">
+  <script src="../../../assets/js/lib/lottie.min.js" defer></script>
+  <script src="../../../assets/js/lib/qrcode.min.js" defer></script>
+</head>
+<body>
+  <div class="site-shell standalone-chapter" style="--course-color:#f3912b">
+    <header class="page-header">
+      <a class="brand-mark" href="../../../cours/?cours=ecologie" aria-label="Retour au réseau du cours">
+        <span class="brand-animation" data-lottie="../../../assets/lotties/Environnement.json" aria-hidden="true"></span>
+      </a>
+      <h1>« Qui vit ici ? » Reconnaître et classer les êtres vivants d'un territoire rural</h1>
+      <button class="qr-wrap" type="button" aria-label="Agrandir le QR code de cette page" aria-haspopup="dialog">
+        <span class="page-qr" data-qr aria-hidden="true"></span>
+      </button>
+      <dialog class="qr-dialog" aria-label="QR code de cette page">
+        <button class="qr-dialog-close" type="button" aria-label="Fermer le QR code">×</button>
+        <div class="page-qr-large" data-qr-large aria-label="QR code agrandi"></div>
+        <p>Scannez pour ouvrir cette page</p>
+      </dialog>
+    </header>
+    <main class="page-content">
+      <a class="back-link" href="../../../cours/?cours=ecologie">← Retour au réseau du cours</a>
+      <p class="eyebrow">Chapitre 01 · Écologie · Seconde</p>
+      <p class="chapter-description">Vous réalisez un stage dans un accueil de jour pour personnes âgées installé dans un ancien logement en centre ville, proche d'un grand parc. Le parc dispose d'un grand jardin communautaire, d'une haie, d'un verger et d'une mare, et l'équipe souhaite développer des ateliers « nature et mémoire » pour ses usagers. La responsable a constaté que les résidents, souvent d'anciens agriculteurs ou jardiniers, retrouvent le plaisir de parler quand on leur montre une plante ou un animal qu'ils reconnaissent. Elle vous confie la préparation d'un jeu de cartes illustrées présentant les êtres vivants du parc. Chaque carte devra comporter le nom courant de l'espèce, son nom scientifique, une photographie et le groupe auquel elle appartient. Pour construire ce support, vous devez d'abord apprendre à observer les êtres vivants, à relever leurs caractéristiques, à utiliser une clé de détermination et à les ranger dans les grands groupes utilisés par les scientifiques. Vous devrez également comprendre dans quel milieu chaque espèce vit, car les animateurs veulent pouvoir dire aux usagers où retrouver chaque plante ou chaque animal lors des promenades dans le parc.</p>
+      <section class="detail-section">
+        <h2 class="section-title">Objectifs pédagogiques</h2>
+        <ul class="objective-list">
+          <li>Situer l'être humain dans la classification de Whittaker et justifier ce classement.</li>
+          <li>Associer chaque espèce identifiée au milieu de vie dans lequel elle a été observée.</li>
+          <li>Distinguer le nom vernaculaire du nom scientifique d'une espèce.</li>
+          <li>Expliquer l'intérêt d'un nom scientifique commun à tous les pays.</li>
+          <li>Utiliser une clé de détermination dichotomique pour identifier un végétal ou un animal.</li>
+          <li>Construire une clé de détermination simple à partir d'un petit nombre d'espèces.</li>
+          <li>Décrire les cinq règnes de la classification de Whittaker.</li>
+          <li>Classer des végétaux et des animaux du territoire dans la classification de Whittaker.</li>
+        </ul>
+      </section>
+      <section class="detail-section">
+        <h2 class="section-title">Activités du chapitre</h2>
+        <div class="activity-grid">
+          <a class="activity-card" href="cours/Activité_01.html"><span class="activity-lottie" data-lottie="../../../assets/lotties/Numbers/01.json" aria-hidden="true"></span><strong>Ouvrez l'œil ! Premières observations au parc</strong></a>
+          <a class="activity-card" href="cours/Activité_02.html"><span class="activity-lottie" data-lottie="../../../assets/lotties/Numbers/02.json" aria-hidden="true"></span><strong>Un seul nom pour tout le monde !</strong></a>
+          <a class="activity-card" href="cours/Activité_03.html"><span class="activity-lottie" data-lottie="../../../assets/lotties/Numbers/03.json" aria-hidden="true"></span><strong>Mène l'enquête : qui es-tu, petite bête ?</strong></a>
+          <a class="activity-card" href="cours/Activité_04.html"><span class="activity-lottie" data-lottie="../../../assets/lotties/Numbers/04.json" aria-hidden="true"></span><strong>Cinq grandes familles pour ranger le vivant</strong></a>
+          <a class="activity-card" href="cours/Activité_05.html"><span class="activity-lottie" data-lottie="../../../assets/lotties/Numbers/05.json" aria-hidden="true"></span><strong>L'être humain aussi a sa place, et chacun a son coin de parc</strong></a>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><a href="../../../cours/?cours=ecologie">Retour au cours</a><span>Ressources pédagogiques</span></footer>
+  </div>
+  <script>
+    document.querySelectorAll('[data-lottie]').forEach((container) => {
+      fetch(container.dataset.lottie).then((response) => response.json()).then((animationData) => {
+        lottie.loadAnimation({ container, renderer: 'svg', loop: true, autoplay: true, animationData });
+      });
+    });
+    document.querySelectorAll('[data-qr]').forEach((target) => new QRCode(target, { text: location.href, width: 64, height: 64, correctLevel: QRCode.CorrectLevel.M }));
+    document.querySelectorAll('[data-qr-large]').forEach((target) => new QRCode(target, { text: location.href, width: 280, height: 280, correctLevel: QRCode.CorrectLevel.M }));
+    const dialog = document.querySelector('dialog');
+    document.querySelector('.qr-wrap').addEventListener('click', () => dialog.showModal());
+    document.querySelector('.qr-dialog-close').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
+  </script>
+</body>
+</html>
