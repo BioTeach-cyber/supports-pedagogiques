@@ -2,7 +2,7 @@
 
 :root {
   color-scheme: light;
-  --course-color: #7fbc48;
+  --course-color: #b7b7b7;
   --ink: #283443;
   --muted: #617181;
   --line: #dce3e8;
@@ -19,7 +19,7 @@ button { font: inherit; }
 
 .site-shell { width: min(1320px, calc(100% - 40px)); margin: 28px auto; }
 .page-header {
-  --course-color: #7fbc48;
+  --course-color: #b7b7b7;
   position: relative;
   display: grid;
   grid-template-columns: 76px minmax(0, 1fr) 76px;

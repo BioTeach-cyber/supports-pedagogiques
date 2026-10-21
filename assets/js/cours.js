@@ -52,7 +52,7 @@
     : objective?.libelle || '';
 
   const setTheme = (course) => {
-    const color = course?.couleur || '#7fbc48';
+    const color = course?.couleur || '#b7b7b7';
     document.documentElement.style.setProperty('--course-color', color);
     header.style.setProperty('--course-color', color);
     document.querySelector('meta[name="theme-color"]').content = color;
