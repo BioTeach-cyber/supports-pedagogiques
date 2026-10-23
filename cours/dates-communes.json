@@ -1,0 +1,67 @@
+{
+  "evenements": [
+    {
+      "id": "vacances-toussaint-2026-2027",
+      "type": "vacances",
+      "titre": "Vacances de la Toussaint",
+      "classes": ["Seconde"],
+      "annee": "2026-2027",
+      "start": "2026-10-17",
+      "end": "2026-11-01"
+    },
+    {
+      "id": "vacances-noel-2026-2027",
+      "type": "vacances",
+      "titre": "Vacances de Noël",
+      "classes": ["Seconde"],
+      "annee": "2026-2027",
+      "start": null,
+      "end": null
+    },
+    {
+      "id": "vacances-hiver-2026-2027",
+      "type": "vacances",
+      "titre": "Vacances d'hiver",
+      "classes": ["Seconde"],
+      "annee": "2026-2027",
+      "start": null,
+      "end": null
+    },
+    {
+      "id": "vacances-printemps-2026-2027",
+      "type": "vacances",
+      "titre": "Vacances de printemps",
+      "classes": ["Seconde"],
+      "annee": "2026-2027",
+      "start": null,
+      "end": null
+    },
+    {
+      "id": "vacances-ete-2026-2027",
+      "type": "vacances",
+      "titre": "Vacances d'été",
+      "classes": ["Seconde"],
+      "annee": "2026-2027",
+      "start": null,
+      "end": null
+    },
+    {
+      "id": "stage-2026-2027",
+      "type": "stage",
+      "titre": "Période de stage",
+      "classes": ["Seconde"],
+      "annee": "2026-2027",
+      "start": null,
+      "end": null
+    },
+    {
+      "id": "examens-2026-2027",
+      "type": "examen",
+      "titre": "Examens",
+      "classes": ["Seconde"],
+      "annee": "2026-2027",
+      "start": null,
+      "end": null
+    }
+  ]
+}

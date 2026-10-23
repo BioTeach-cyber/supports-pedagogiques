@@ -28,6 +28,34 @@
     return new URL(normalizedCoursePath, courseRoot).href;
   };
 
+  let timelineAssetsPromise;
+  const loadTimelineAssets = () => {
+    if (timelineAssetsPromise) return timelineAssetsPromise;
+    timelineAssetsPromise = new Promise((resolve, reject) => {
+      const stylesheet = document.createElement('link');
+      stylesheet.rel = 'stylesheet';
+      stylesheet.href = 'https://unpkg.com/vis-timeline@7.7.3/styles/vis-timeline-graph2d.min.css';
+      document.head.append(stylesheet);
+      const script = document.createElement('script');
+      script.src = 'https://unpkg.com/vis-timeline@7.7.3/standalone/umd/vis-timeline-graph2d.min.js';
+      script.onload = () => {
+        const timelineLibrary = window.vis || {};
+        const networkLibrary = window.visNetworkLibrary || {};
+        window.vis = { ...timelineLibrary, ...networkLibrary, Timeline: timelineLibrary.Timeline };
+        delete window.visNetworkLibrary;
+        resolve();
+      };
+      window.visNetworkLibrary = window.vis || {};
+      script.onerror = () => {
+        window.vis = window.visNetworkLibrary || window.vis;
+        delete window.visNetworkLibrary;
+        reject(new Error('La bibliothèque vis.timeline n’a pas pu être chargée.'));
+      };
+      document.head.append(script);
+    });
+    return timelineAssetsPromise;
+  };
+
   const chapterPageUrl = (courseId, chapter) => chapter.page
     ? courseDataUrl(courseId, chapter.page)
     : courseUrl(courseId, chapter.id);
@@ -273,6 +301,227 @@
     else content.append(grid);
   };
 
+  const renderTimeline = async (course, host, message) => {
+    const status = element('p', 'empty-state', 'Chargement des dates communes…');
+    message.append(status);
+
+    let commonEvents = [];
+    try {
+      const response = await fetch(new URL('cours/dates-communes.json', ROOT));
+      if (!response.ok) throw new Error('Les dates communes sont indisponibles.');
+      const data = await response.json();
+      commonEvents = data.evenements || [];
+    } catch {
+      status.textContent = 'Les dates communes n’ont pas pu être chargées.';
+    }
+
+    const [firstYear, secondYear] = schoolYear.split('-').map(Number);
+    const schoolYearStart = new Date(firstYear, 8, 1);
+    const schoolYearEnd = new Date(secondYear, 7, 31, 23, 59, 59, 999);
+    const chapterEvents = (course.chapitres || []).flatMap((chapter, chapterIndex) => [
+      {
+        ...chapter,
+        id: `chapter-${chapter.id || chapterIndex}`,
+        type: 'chapitre',
+        source: 'cours'
+      },
+      ...(chapter.evaluationsSecondaires || []).map((evaluation, index) => ({
+        ...evaluation,
+        id: `evaluation-secondary-${chapter.id || chapterIndex}-${index}`,
+        titre: `${chapter.id || `Chapitre ${chapterIndex + 1}`} — ${evaluation.titre || evaluation.type || 'Évaluation'}`,
+        type: 'evaluation',
+        source: 'cours'
+      })),
+      ...(chapter.evaluationFinale ? [{
+        ...chapter.evaluationFinale,
+        id: `evaluation-final-${chapter.id || chapterIndex}`,
+        titre: `${chapter.id || `Chapitre ${chapterIndex + 1}`} — ${chapter.evaluationFinale.titre || chapter.evaluationFinale.type || 'Évaluation finale'}`,
+        type: 'evaluation',
+        source: 'cours'
+      }] : [])
+    ]);
+    const classes = course.classes || [];
+    const events = [
+      ...chapterEvents,
+      ...commonEvents
+        .filter((event) => event.annee === schoolYear && (event.classes || []).some((className) => classes.includes(className)))
+        .map((event) => ({ ...event, source: 'commun' }))
+    ];
+    const categoryForEvent = (event) => {
+      if (event.type === 'evaluation') return 'evaluations';
+      if (event.type === 'chapitre' || event.type === 'cours') return 'cours';
+      if (event.type === 'stage' || event.type === 'stages') return 'stages';
+      if (event.type === 'examen' || event.type === 'examens') return 'examens';
+      return 'vacances';
+    };
+    const datedEvents = events.filter((event) => {
+      const start = Date.parse(event.start);
+      const end = event.end == null || event.type === 'evaluation' ? null : Date.parse(event.end);
+      return Number.isFinite(start)
+        && start >= schoolYearStart.getTime()
+        && start <= schoolYearEnd.getTime()
+        && (end === null || (Number.isFinite(end) && end >= start));
+    });
+
+    host.replaceChildren();
+    if (!datedEvents.length) {
+      status.textContent = 'Aucune date renseignée pour l’année scolaire en cours.';
+      return;
+    }
+
+    status.remove();
+    try {
+      await loadTimelineAssets();
+    } catch {
+      message.append(status);
+      status.textContent = 'La bibliothèque de timeline n’a pas pu être chargée.';
+      return;
+    }
+
+    const Timeline = window.vis?.Timeline;
+    const DataSet = window.vis?.DataSet;
+    if (!Timeline || !DataSet) {
+      message.append(status);
+      status.textContent = 'La bibliothèque de timeline n’a pas pu être chargée.';
+      return;
+    }
+    const categoryDefinitions = [
+      { id: 'vacances', content: 'Vacances', order: 1, className: 'timeline-group-vacances' },
+      { id: 'stages', content: 'Stages', order: 2, className: 'timeline-group-stages' },
+      { id: 'cours', content: 'Cours', order: 3, className: 'timeline-group-cours' },
+      { id: 'evaluations', content: 'Évaluations', order: 4, className: 'timeline-group-evaluations' },
+      { id: 'examens', content: 'Examens', order: 5, className: 'timeline-group-examens' }
+    ];
+    const visibleCategories = new Set(datedEvents.map(categoryForEvent));
+    const categories = categoryDefinitions.filter((category) => visibleCategories.has(category.id));
+    const items = datedEvents.map((event) => ({
+      id: `${event.source}-${event.id}`,
+      group: categoryForEvent(event),
+      content: event.titre || event.type || 'Événement',
+      start: event.start,
+      ...(event.type !== 'evaluation' && event.end
+        ? { end: event.end, type: 'range' }
+        : { type: 'point' }),
+      className: `timeline-item-${categoryForEvent(event)}`,
+      title: event.titre || event.type || 'Événement'
+    }));
+    const controls = element('div', 'timeline-controls');
+    controls.setAttribute('aria-label', 'Commandes de la timeline');
+    const zoomIn = element('button', 'secondary-button', 'Zoom +');
+    zoomIn.type = 'button';
+    zoomIn.setAttribute('aria-label', 'Zoomer dans la timeline');
+    const zoomOut = element('button', 'secondary-button', 'Zoom −');
+    zoomOut.type = 'button';
+    zoomOut.setAttribute('aria-label', 'Dézoomer dans la timeline');
+    const today = element('button', 'primary-button', 'Aujourd’hui');
+    today.type = 'button';
+    today.setAttribute('aria-label', 'Centrer la timeline sur aujourd’hui');
+    controls.append(zoomIn, zoomOut, today);
+    host.before(controls);
+    const details = element('article', 'timeline-details');
+    details.setAttribute('aria-live', 'polite');
+    details.append(element('p', 'empty-state', 'Sélectionnez un élément de la timeline pour afficher ses détails.'));
+    const timeline = new Timeline(host, new DataSet(items), new DataSet(categories), {
+      locale: 'fr',
+      height: '360px',
+      start: schoolYearStart,
+      end: schoolYearEnd,
+      min: schoolYearStart,
+      max: schoolYearEnd,
+      zoomMin: 1000 * 60 * 60 * 24 * 7,
+      zoomMax: 1000 * 60 * 60 * 24 * 365,
+      moveable: true,
+      zoomable: true,
+      selectable: true,
+      groupOrder: 'order'
+    });
+    const zoomTimeline = (factor) => {
+      const range = timeline.getWindow();
+      const center = (range.start.getTime() + range.end.getTime()) / 2;
+      const halfDuration = (range.end.getTime() - range.start.getTime()) * factor / 2;
+      const start = Math.max(schoolYearStart.getTime(), center - halfDuration);
+      const end = Math.min(schoolYearEnd.getTime(), center + halfDuration);
+      if (end - start < 1000 * 60 * 60 * 24 * 7) return;
+      timeline.setWindow(new Date(start), new Date(end), { animation: { duration: 250, easingFunction: 'easeInOutQuad' } });
+    };
+    zoomIn.addEventListener('click', () => zoomTimeline(0.7));
+    zoomOut.addEventListener('click', () => zoomTimeline(1.4));
+    today.addEventListener('click', () => {
+      const now = new Date();
+      const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const todayEnd = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+      const dayDuration = 1000 * 60 * 60 * 24;
+      const currentRange = timeline.getWindow();
+      const duration = Math.max(dayDuration * 30, Math.min(currentRange.end.getTime() - currentRange.start.getTime(), dayDuration * 90));
+      const start = Math.max(schoolYearStart.getTime(), todayStart.getTime() - duration / 2);
+      const end = Math.min(schoolYearEnd.getTime(), todayEnd.getTime() + duration / 2);
+      if (now < schoolYearStart || now > schoolYearEnd) {
+        timeline.setWindow(schoolYearStart, schoolYearEnd, { animation: { duration: 400, easingFunction: 'easeInOutQuad' } });
+        return;
+      }
+      timeline.setWindow(new Date(start), new Date(end), { animation: { duration: 400, easingFunction: 'easeInOutQuad' } });
+    });
+    host.after(details);
+    let detailAnimation;
+    timeline.on('select', async ({ items: selectedItems }) => {
+      detailAnimation?.destroy();
+      detailAnimation = null;
+      const event = datedEvents.find((item) => `${item.source}-${item.id}` === selectedItems[0]);
+      if (!event) {
+        details.replaceChildren(element('p', 'empty-state', 'Sélectionnez un élément de la timeline pour afficher ses détails.'));
+        return;
+      }
+      details.replaceChildren();
+      const heading = element('h3', '', event.titre || event.type || 'Événement');
+      details.append(heading);
+      const eventCategory = categoryForEvent(event);
+      const eventType = eventCategory === 'cours'
+        ? 'Cours'
+        : eventCategory === 'evaluations'
+          ? 'Évaluation'
+          : eventCategory === 'stages'
+            ? 'Stage'
+            : eventCategory === 'examens'
+              ? 'Examen'
+              : 'Vacances';
+      details.append(element('p', 'timeline-detail-type', eventType));
+      details.style.setProperty('--timeline-category-color', `var(--timeline-${eventCategory})`);
+      const dateLabel = event.end && event.type !== 'evaluation'
+        ? `Du ${new Date(event.start).toLocaleDateString('fr-FR')} au ${new Date(event.end).toLocaleDateString('fr-FR')}`
+        : `Le ${new Date(event.start).toLocaleDateString('fr-FR')}`;
+      details.append(element('p', 'timeline-detail-date', dateLabel));
+      if (event.description) details.append(element('p', 'timeline-detail-description', event.description));
+      if (event.classes?.length) details.append(element('p', 'timeline-detail-description', `Classe(s) : ${event.classes.join(', ')}`));
+      if (event.lottie) {
+        const visual = element('span', 'timeline-detail-lottie');
+        visual.setAttribute('aria-hidden', 'true');
+        details.append(visual);
+        detailAnimation = await mountLottie(visual, event.lottie, course.couleur || '#7fbc48');
+      }
+      const targetPage = event.page || event.component || event.url;
+      if (targetPage) {
+        let targetUrl;
+        try {
+          targetUrl = event.source === 'cours' && !event.url
+            ? new URL(courseDataUrl(params.get('cours'), targetPage))
+            : new URL(targetPage, ROOT);
+        } catch {
+          targetUrl = null;
+        }
+        if (targetUrl && ['http:', 'https:'].includes(targetUrl.protocol)) {
+          const linkLabel = eventCategory === 'evaluations' ? 'Ouvrir l’évaluation' : 'Ouvrir le contenu associé';
+          const link = element('a', `${eventCategory === 'evaluations' ? 'primary-button' : 'secondary-button'} timeline-detail-link`, linkLabel);
+          link.href = targetUrl.href;
+          if (targetUrl.origin !== location.origin) {
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+          }
+          details.append(link);
+        }
+      }
+    });
+  };
+
   const renderNetwork = async (course, courseId) => {
     const color = setTheme(course);
     pageTitle.textContent = course.titre;
@@ -296,10 +545,18 @@
     evaluationMarker.style.setProperty('--node-color', color);
     evaluationLegend.append(evaluationMarker, element('span', '', 'Evaluations'));
     legend.append(supportLegend, evaluationLegend);
-    content.append(networkSection, legend);
+    const timelineSection = element('section', 'timeline-section');
+    timelineSection.setAttribute('aria-label', 'Calendrier du cours');
+    timelineSection.setAttribute('role', 'separator');
+    const timelineMessage = element('div', 'timeline-message');
+    const timelineHost = element('div', 'course-timeline');
+    timelineHost.setAttribute('aria-label', `Calendrier du cours ${course.titre}`);
+    timelineSection.append(timelineMessage, timelineHost);
+    content.append(networkSection, legend, timelineSection);
 
     const visNetwork = window.vis?.Network || window.Network || globalThis.Network;
     const visDataSet = window.vis?.DataSet || window.DataSet || globalThis.DataSet;
+    renderTimeline(course, timelineHost, timelineMessage);
     if (!visNetwork || !visDataSet) {
       networkHost.hidden = true;
       content.append(element('p', 'empty-state', 'Le réseau interactif n’a pas pu être chargé.'));

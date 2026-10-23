@@ -107,6 +107,35 @@ button { font: inherit; }
 .evaluation-legend-marker { border-style: dotted; }
 .course-network, .network-lotties { position: absolute; inset: 0; width: 100%; height: 100%; }
 .network-lotties { pointer-events: none; overflow: hidden; }
+.timeline-section { margin-top: 48px; padding-top: 28px; border-top: 10px solid var(--course-color); }
+.timeline-section { --timeline-vacances: color-mix(in srgb, var(--course-color) 58%, #4b91d1); --timeline-stages: color-mix(in srgb, var(--course-color) 52%, #6f8e31); --timeline-cours: color-mix(in srgb, var(--course-color) 82%, white); --timeline-evaluations: color-mix(in srgb, var(--course-color) 62%, #d14e4e); --timeline-examens: color-mix(in srgb, var(--course-color) 58%, #8053ad); }
+.timeline-message { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+.timeline-message .empty-state { margin: 0; }
+.timeline-controls { display: flex; justify-content: flex-end; gap: 8px; margin: 0 0 10px; }
+.timeline-controls .primary-button, .timeline-controls .secondary-button { min-height: 38px; padding: 7px 13px; }
+.course-timeline { min-height: 80px; border-radius: 8px; }
+.course-timeline .vis-timeline { border-color: var(--line); border-radius: 8px; font-family: inherit; }
+.course-timeline .vis-item { border-color: var(--item-color, var(--course-color)); background-color: var(--item-tint, color-mix(in srgb, var(--course-color) 18%, white)); color: var(--ink); }
+.course-timeline .timeline-item-vacances { --item-color: var(--timeline-vacances); --item-tint: color-mix(in srgb, var(--timeline-vacances) 18%, white); }
+.course-timeline .timeline-item-stages { --item-color: var(--timeline-stages); --item-tint: color-mix(in srgb, var(--timeline-stages) 18%, white); }
+.course-timeline .timeline-item-cours { --item-color: var(--timeline-cours); --item-tint: color-mix(in srgb, var(--timeline-cours) 18%, white); }
+.course-timeline .timeline-item-evaluations { --item-color: var(--timeline-evaluations); --item-tint: color-mix(in srgb, var(--timeline-evaluations) 18%, white); }
+.course-timeline .timeline-item-examens { --item-color: var(--timeline-examens); --item-tint: color-mix(in srgb, var(--timeline-examens) 18%, white); }
+.course-timeline .vis-labelset .timeline-group-vacances { border-left: 4px solid var(--timeline-vacances); }
+.course-timeline .vis-labelset .timeline-group-stages { border-left: 4px solid var(--timeline-stages); }
+.course-timeline .vis-labelset .timeline-group-cours { border-left: 4px solid var(--timeline-cours); }
+.course-timeline .vis-labelset .timeline-group-evaluations { border-left: 4px solid var(--timeline-evaluations); }
+.course-timeline .vis-labelset .timeline-group-examens { border-left: 4px solid var(--timeline-examens); }
+.timeline-details { --timeline-category-color: var(--course-color); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px 20px; align-items: start; margin-top: 16px; padding: 18px 20px; border: 1px solid var(--line); border-left: 5px solid var(--timeline-category-color); border-radius: 8px; background: #fbfcfd; }
+.timeline-details h3, .timeline-detail-type, .timeline-detail-date, .timeline-detail-description { grid-column: 1; margin: 0; }
+.timeline-details h3 { font-size: 1.15rem; }
+.timeline-detail-type { color: var(--muted); font-size: .9rem; font-weight: 700; }
+.timeline-detail-date { font-weight: 700; }
+.timeline-detail-description { line-height: 1.6; }
+.timeline-detail-lottie { grid-column: 2; grid-row: 1 / span 4; display: grid; width: 130px; min-height: 100px; place-items: center; }
+.timeline-detail-lottie svg { width: 100% !important; height: 100px !important; }
+.timeline-detail-link { grid-column: 1; justify-self: start; border-color: var(--timeline-category-color); }
+.timeline-detail-link.primary-button { background: var(--timeline-category-color); color: #fff; }
 .chapter-node-overlay, .activity-node-lottie, .evaluation-node-overlay { pointer-events: auto; cursor: pointer; }
 .network-node-lottie { position: absolute; width: 66px; height: 58px; transform: translate(-50%, -50%); }
 .network-node-lottie svg { width: 100% !important; height: 100% !important; }
@@ -175,6 +204,9 @@ button { font: inherit; }
   .activity-card { min-height: 170px; }
   .activity-lottie { width: 120px; height: 120px; }
   .activity-navigation { flex-direction: column; }
+  .timeline-details { grid-template-columns: 1fr; }
+  .timeline-controls { justify-content: flex-start; flex-wrap: wrap; }
+  .timeline-detail-lottie { grid-column: 1; grid-row: auto; width: 100px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
