@@ -1,0 +1,150 @@
+{
+  "chapitreId": "chap10",
+  "activiteId": "activite3",
+  "exercices": [
+    {
+      "themeId": "Basket",
+      "titre": "Le ballon de basket sur la Lune",
+      "objectifId": "obj1",
+      "enonce": "Léa joue au basket. Son ballon a une masse de 0,6 kg. Sur Terre, on calcule le poids avec : P = m x 9,8. Sur la Lune, on calcule le poids avec : P = m x 1,6. La masse ne change jamais d'un astre à l'autre.",
+      "question": "1. Calcule le poids du ballon sur Terre.\n2. Calcule le poids du ballon sur la Lune.\n3. Explique pourquoi la masse reste la même.",
+      "reponse": "1. P = 0,6 x 9,8 = 5,88 N. Le poids sur Terre est environ 5,9 N.\n2. P = 0,6 x 1,6 = 0,96 N. Le poids sur la Lune est environ 1 N.\n3. La masse est la quantité de matière du ballon. Cette matière ne change pas quand on change d'astre. Le poids, lui, dépend de l'attraction de l'astre. La Lune attire moins fort que la Terre. Donc le poids diminue mais la masse reste 0,6 kg."
+    },
+    {
+      "themeId": "Musculation",
+      "titre": "Soulever de la fonte sur Mars",
+      "objectifId": "obj1",
+      "enonce": "Hugo soulève une barre de 50 kg en salle de musculation. Sur Terre, le poids se calcule avec P = m x 9,8. Sur Mars, il se calcule avec P = m x 3,7. Hugo se demande s'il serait plus fort sur Mars.",
+      "question": "1. Calcule le poids de la barre sur Terre puis sur Mars.\n2. Déduis si Hugo devient plus fort sur Mars.",
+      "reponse": "1. Sur Terre : P = 50 x 9,8 = 490 N. Sur Mars : P = 50 x 3,7 = 185 N.\n2. Hugo n'est pas plus fort. Ses muscles sont les mêmes. C'est la barre qui est moins attirée par Mars. Son poids passe de 490 N à 185 N. La masse reste 50 kg. La barre paraît donc plus légère sur Mars."
+    },
+    {
+      "themeId": "Foot",
+      "titre": "Le pied qui change la trajectoire",
+      "objectifId": "obj2",
+      "enonce": "Sofiane tire un corner. Le ballon part vers le centre du terrain. Un défenseur saute et frappe le ballon de la tête. Le ballon repart alors vers le côté du terrain.",
+      "question": "Identifie l'effet de la force exercée par la tête du défenseur sur le mouvement du ballon.",
+      "reponse": "La tête du défenseur exerce une force sur le ballon. Cette force ne l'arrête pas et ne le met pas en mouvement, car il bougeait déjà. Elle change la direction du ballon. C'est une déviation de la trajectoire. Une force peut donc dévier un objet en mouvement."
+    },
+    {
+      "themeId": "Vélo",
+      "titre": "Freiner en descente à vélo",
+      "objectifId": "obj2",
+      "enonce": "Camille descend une côte à vélo. Elle roule vite. Elle serre les freins. Les patins frottent sur la roue. Le vélo ralentit puis s'arrête en bas de la côte.",
+      "question": "1. Nomme la force qui fait ralentir le vélo.\n2. Explique l'effet de cette force sur le mouvement.",
+      "reponse": "1. C'est la force de frottement des patins de frein sur la roue.\n2. Cette force s'oppose au mouvement du vélo. Elle fait diminuer la vitesse : c'est un freinage. Si la force dure assez longtemps, le vélo s'arrête. Une force peut donc ralentir un objet en mouvement."
+    },
+    {
+      "themeId": "Forza Horizon 6",
+      "titre": "Accélérer et virer en course",
+      "objectifId": "obj2",
+      "enonce": "Nino joue à Forza Horizon 6. Il appuie sur l'accélérateur : la voiture passe de 0 à 150 km/h. Ensuite il tourne le volant : la voiture prend un virage. Enfin il freine avant l'arrivée.",
+      "question": "Classe les trois actions de Nino selon l'effet de la force : mise en mouvement, déviation, freinage.",
+      "reponse": "1. L'accélérateur : le moteur exerce une force sur la voiture. Elle part de 0 km/h. C'est une mise en mouvement, puis une accélération.\n2. Le volant : les roues exercent une force sur le côté. La voiture change de direction. C'est une déviation.\n3. Le frein : une force s'oppose au mouvement. La vitesse diminue. C'est un freinage.\nUne force peut donc mettre en mouvement, dévier ou ralentir un objet."
+    },
+    {
+      "themeId": "Escalade",
+      "titre": "Grimper sur une autre planète",
+      "objectifId": "obj1",
+      "enonce": "Inès fait de l'escalade. Elle a une masse de 45 kg. Sur Terre, son poids est de 441 N. Sur Jupiter, on calcule le poids avec P = m x 24,8. Elle imagine grimper sur Jupiter.",
+      "question": "1. Calcule le poids d'Inès sur Jupiter.\n2. Déduis si l'escalade est plus facile ou plus difficile sur Jupiter.",
+      "reponse": "1. P = 45 x 24,8 = 1116 N.\n2. Sur Jupiter, Inès pèse 1116 N contre 441 N sur Terre. Son poids est plus de deux fois plus grand. Ses bras doivent donc tirer beaucoup plus fort. L'escalade est bien plus difficile. Sa masse reste pourtant 45 kg."
+    },
+    {
+      "themeId": "Tennis de table",
+      "titre": "La balle déviée par la raquette",
+      "objectifId": "obj2",
+      "enonce": "Yanis joue au tennis de table. La balle arrive vers lui en ligne droite. Il place sa raquette et frappe. La balle repart aussitôt de l'autre côté de la table.",
+      "question": "Explique pourquoi la balle change de sens après le contact avec la raquette.",
+      "reponse": "La raquette exerce une force de contact sur la balle. Cette force est dirigée vers l'avant, dans le sens opposé à l'arrivée de la balle. Elle modifie donc la direction et le sens du mouvement. La balle repart en sens inverse. Une force peut changer le sens du mouvement d'un objet."
+    },
+    {
+      "themeId": "Pêche",
+      "titre": "Le plomb et la ligne de pêche",
+      "objectifId": "obj2",
+      "enonce": "Théo pêche au bord d'un étang. Il accroche un plomb de 0,02 kg sur sa ligne. Sur Terre, P = m x 9,8. Sans plomb, l'appât reste en surface. Avec le plomb, il descend au fond.",
+      "question": "1. Calcule le poids du plomb.\n2. Explique le rôle de ce poids sur le mouvement de la ligne.",
+      "reponse": "1. P = 0,02 x 9,8 = 0,196 N. Le poids est environ 0,2 N.\n2. Le poids est une force verticale dirigée vers le bas. Elle met la ligne en mouvement vers le fond. Sans le plomb, la force vers le bas est trop faible. L'appât reste alors en surface."
+    },
+    {
+      "themeId": "Flight Simulator",
+      "titre": "Décollage et virage en avion",
+      "objectifId": "obj2",
+      "enonce": "Maëlys joue à Flight Simulator. Au sol, l'avion est arrêté. Elle pousse les moteurs : l'avion avance puis décolle. En vol, elle incline l'avion et il tourne vers la gauche.",
+      "question": "1. Nomme l'effet de la force des moteurs au départ.\n2. Nomme l'effet de la force quand l'avion tourne.",
+      "reponse": "1. L'avion est immobile au départ. La force des moteurs le met en mouvement. Sa vitesse augmente : c'est une accélération.\n2. En virage, une force pousse l'avion sur le côté. Sa trajectoire change de direction. C'est une déviation."
+    },
+    {
+      "themeId": "Animaux",
+      "titre": "Un chien sur la Lune",
+      "objectifId": "obj1",
+      "enonce": "Sarah a un chien de 12 kg. Sur Terre, P = m x 9,8. Sur la Lune, P = m x 1,6. Sarah dit : « Sur la Lune, mon chien serait moins lourd, donc il aurait moins de matière. »",
+      "question": "Justifie si Sarah a raison ou non.",
+      "reponse": "Sarah a tort. Sur Terre, P = 12 x 9,8 = 117,6 N. Sur la Lune, P = 12 x 1,6 = 19,2 N. Le poids diminue car la Lune attire moins fort. Mais la masse du chien reste 12 kg. La quantité de matière ne change pas. Sarah confond le poids et la masse."
+    },
+    {
+      "themeId": "Karting",
+      "titre": "Le kart qui part en glissade",
+      "objectifId": "obj2",
+      "enonce": "Élias roule en kart sur une piste. Il arrive vite dans un virage. La piste est mouillée. Le kart ne tourne pas : il continue tout droit et sort de la piste.",
+      "question": "Propose l'explication la plus probable de cette sortie de piste.",
+      "reponse": "Pour tourner, il faut une force qui dévie le kart. Cette force vient du frottement des pneus sur la piste. Avec l'eau, le frottement devient trop faible. La force de déviation est donc trop petite. Le kart garde sa trajectoire en ligne droite et sort de la piste."
+    },
+    {
+      "themeId": "Équitation",
+      "titre": "Le cheval qui saute l'obstacle",
+      "objectifId": "obj2",
+      "enonce": "Jade monte un cheval. Le cheval saute un obstacle. En l'air, il monte, puis il redescend vers le sol. Aucun appui ne le touche pendant le saut.",
+      "question": "Explique pourquoi le cheval redescend toujours vers le sol.",
+      "reponse": "Pendant le saut, la Terre attire le cheval et la cavalière. Cette force s'appelle le poids. Elle est verticale et dirigée vers le bas. Elle freine d'abord la montée, puis elle fait redescendre le cheval. Une force peut donc ralentir puis changer le sens du mouvement."
+    },
+    {
+      "themeId": "Rocket League",
+      "titre": "Boost, mur et arrêt",
+      "objectifId": "obj2",
+      "enonce": "Lina joue à Rocket League. Elle utilise le boost : sa voiture accélère. Sa voiture heurte un mur : elle repart dans l'autre sens. Elle lâche tout : la voiture ralentit puis s'arrête.",
+      "question": "Relie chacune des trois situations à l'effet de la force : accélération, déviation, freinage.",
+      "reponse": "1. Le boost : la force du moteur augmente la vitesse. C'est une accélération.\n2. Le mur : il exerce une force de contact. La voiture change de sens. C'est une déviation.\n3. Sans boost : les frottements exercent une force contre le mouvement. La vitesse diminue puis s'annule. C'est un freinage."
+    },
+    {
+      "themeId": "Natation",
+      "titre": "Flotter dans l'eau et l'espace",
+      "objectifId": "obj1",
+      "enonce": "Adam nage à la piscine. Il a une masse de 55 kg. Dans l'eau, il se sent léger. Un astronaute de 55 kg flotte aussi dans sa station spatiale. Sur Terre, P = m x 9,8.",
+      "question": "1. Calcule le poids d'Adam sur Terre.\n2. Explique si sa masse change quand il entre dans l'eau.",
+      "reponse": "1. P = 55 x 9,8 = 539 N.\n2. Sa masse ne change pas : elle reste 55 kg. Dans l'eau, son poids existe toujours. Mais l'eau le pousse vers le haut. Cette poussée compense en partie le poids. Adam se sent donc léger sans perdre de matière."
+    },
+    {
+      "themeId": "Minecraft",
+      "titre": "La chute du bloc de sable",
+      "objectifId": "obj2",
+      "enonce": "Nolan joue à Minecraft. Il pose un bloc de sable en l'air. Le bloc tombe tout de suite vers le bas. Il pose ensuite un bloc de pierre en l'air : la pierre reste en place.",
+      "question": "Compare les deux blocs et explique pourquoi seul le sable tombe.",
+      "reponse": "Dans le jeu, le sable subit la gravité : une force verticale vers le bas le met en mouvement. Rien ne le retient, il tombe. La pierre subit aussi une force vers le bas dans la réalité. Mais le jeu la maintient en place, comme si une force la retenait. Quand deux forces se compensent, l'objet reste immobile."
+    },
+    {
+      "themeId": "MotoCross",
+      "titre": "Le saut en moto-cross",
+      "objectifId": "obj2",
+      "enonce": "Océane roule en moto-cross. Elle prend un tremplin à pleine vitesse. La moto s'envole et monte de 3 mètres. Puis elle retombe sur la piste et l'amortisseur la freine.",
+      "question": "1. Nomme la force qui fait retomber la moto.\n2. Explique l'effet de l'amortisseur à l'atterrissage.",
+      "reponse": "1. C'est le poids : la Terre attire la moto et la pilote vers le bas.\n2. À l'atterrissage, l'amortisseur exerce une force vers le haut. Cette force s'oppose au mouvement de descente. Elle freine la moto en douceur. Sans lui, l'arrêt serait brutal."
+    },
+    {
+      "themeId": "Tir à l'arc",
+      "titre": "La flèche qui pique vers le sol",
+      "objectifId": "obj2",
+      "enonce": "Ryan tire à l'arc sur une cible à 30 mètres. Il vise le centre. La flèche part droit. Elle arrive pourtant plus bas que le centre de la cible.",
+      "question": "Propose l'explication la plus probable de ce point d'impact trop bas.",
+      "reponse": "Pendant son vol, la flèche subit son poids. Cette force est verticale et dirigée vers le bas. Elle dévie peu à peu la trajectoire vers le sol. Plus la distance est longue, plus la chute est visible. Ryan doit donc viser un peu plus haut que le centre."
+    },
+    {
+      "themeId": "Voile",
+      "titre": "Le vent qui pousse le bateau",
+      "objectifId": "obj2",
+      "enonce": "Clara fait de la voile. Le bateau est arrêté, voile baissée. Elle hisse la voile : le vent la remplit. Le bateau se met à avancer puis va de plus en plus vite.",
+      "question": "Explique l'effet de la force du vent sur le mouvement du bateau.",
+      "reponse": "Le vent exerce une force sur la voile. Au départ, le bateau est immobile. Cette force le met en mouvement. Tant que le vent souffle, la force agit et la vitesse augmente : c'est une accélération. Une force peut donc mettre en mouvement puis accélérer un objet."
+    }
+  ]
+}

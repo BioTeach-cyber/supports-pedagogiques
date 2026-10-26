@@ -1,0 +1,90 @@
+{
+  "chapitreId": "chap11",
+  "activiteId": "activite1",
+  "exercices": [
+    {
+      "themeId": "Vélo",
+      "titre": "Vélo sur la piste",
+      "enonce": "Lina roule à vélo sur une piste droite. Sami reste immobile au bord de la piste. Il observe Lina avancer sans tourner.",
+      "question": "Décris le mouvement de Lina dans le référentiel de Sami avec le mot adapté à sa trajectoire.",
+      "reponse": "Dans le référentiel de Sami, Lina est en mouvement. Sa trajectoire est rectiligne : elle suit une ligne droite."
+    },
+    {
+      "themeId": "Basket",
+      "titre": "Basket et lancer franc",
+      "enonce": "Au basket, trois tirs partent du même endroit. Le ballon monte, puis descend vers le panier à chaque tir. Nora observe les tirs depuis le bord du terrain.",
+      "question": "Déduis le type de trajectoire du ballon dans le référentiel de Nora.",
+      "reponse": "Pour chaque tir, le ballon monte puis descend en suivant une courbe. Sa trajectoire est curviligne dans le référentiel de Nora."
+    },
+    {
+      "themeId": "Roller",
+      "titre": "Roller et impression de recul",
+      "enonce": "Yanis avance en roller sur une piste droite. Un banc reste immobile au bord de la piste. Yanis voit le banc sembler reculer.",
+      "question": "Explique cette impression et précise la trajectoire du banc dans le référentiel de Yanis.",
+      "reponse": "Le banc est immobile dans le référentiel de la piste. Il semble reculer en ligne droite dans le référentiel de Yanis. Sa trajectoire y est rectiligne."
+    },
+    {
+      "themeId": "Équitation",
+      "titre": "Équitation autour du manège",
+      "enonce": "Zoé monte un cheval sur un cercle tracé au sol. Elle reste assise sur la selle. Adam reste immobile près du cercle.",
+      "question": "Compare le mouvement de Zoé dans le référentiel du cheval et dans celui d'Adam.",
+      "reponse": "Zoé est immobile dans le référentiel du cheval. Dans le référentiel d'Adam, elle suit le cercle tracé au sol. Sa trajectoire est circulaire."
+    },
+    {
+      "themeId": "Foot",
+      "titre": "Foot et passes au sol",
+      "enonce": "Maya observe trois passes depuis le bord du terrain. Chaque ballon roule en ligne droite entre deux joueurs. Maya reste immobile pendant les passes.",
+      "question": "Déduis le type de trajectoire commun aux trois ballons dans le référentiel de Maya.",
+      "reponse": "Les trois ballons roulent en ligne droite dans le référentiel de Maya. Leurs trajectoires sont rectilignes."
+    },
+    {
+      "themeId": "Danse",
+      "titre": "Danse sur une scène",
+      "enonce": "En danse, Ilyes tient un ruban tendu et tourne sur place. La pointe du ruban tourne autour de sa main. Sarah observe la scène depuis un siège fixe.",
+      "question": "Décris la trajectoire de la pointe du ruban dans le référentiel de Sarah.",
+      "reponse": "Dans le référentiel de Sarah, la pointe du ruban suit un cercle autour de la main d'Ilyes. Sa trajectoire est circulaire."
+    },
+    {
+      "themeId": "Course à pied",
+      "titre": "Course à pied sur tapis",
+      "enonce": "Nina court sur un tapis roulant. Elle garde la même place dans la salle. Ses chaussures avancent puis reculent sur le tapis à chaque foulée.",
+      "question": "Compare le mouvement de Nina et celui de ses chaussures dans le référentiel de la salle.",
+      "reponse": "Nina reste globalement immobile dans le référentiel de la salle. Ses chaussures sont en mouvement pendant chaque foulée."
+    },
+    {
+      "themeId": "Voile",
+      "titre": "Voile et sac posé",
+      "enonce": "Un voilier avance en ligne droite. Un sac reste posé sur le pont. Depuis le quai, Amel voit le bateau et le sac avancer.",
+      "question": "Compare le mouvement du sac dans le référentiel du bateau et dans celui du quai.",
+      "reponse": "Le sac est immobile dans le référentiel du bateau. Dans le référentiel du quai, il avance en ligne droite. Sa trajectoire est rectiligne."
+    },
+    {
+      "themeId": "Karting",
+      "titre": "Karting dans le virage",
+      "enonce": "En karting, le kart de Tom suit un virage courbe. Une caméra fixe filme la piste. Tom reste assis dans son kart.",
+      "question": "Compare le mouvement de Tom dans le référentiel du kart et dans celui de la caméra.",
+      "reponse": "Tom est immobile dans le référentiel du kart. Dans le référentiel de la caméra, il suit une courbe. Sa trajectoire est curviligne."
+    },
+    {
+      "themeId": "Camion",
+      "titre": "Camion et boîte immobile",
+      "enonce": "Un camion avance sur une route droite. Une boîte reste posée sur son plancher. Karim, assis dans le camion, voit la boîte immobile. Léa observe le camion depuis un trottoir fixe.",
+      "question": "Déduis le mouvement et le type de trajectoire de la boîte dans le référentiel de Léa.",
+      "reponse": "Dans le référentiel de Léa, la boîte avance avec le camion. Elle suit une ligne droite : sa trajectoire est rectiligne."
+    },
+    {
+      "themeId": "Piscine",
+      "titre": "Piscine et nageur observé",
+      "enonce": "À la piscine, Hugo nage en ligne droite dans son couloir. Aya reste immobile au bord du bassin. Hugo voit Aya sembler reculer.",
+      "question": "Explique cette impression et précise la trajectoire d'Aya dans le référentiel de Hugo.",
+      "reponse": "Aya est immobile dans le référentiel du bassin. Elle semble reculer en ligne droite dans le référentiel de Hugo. Sa trajectoire y est rectiligne."
+    },
+    {
+      "themeId": "MotoCross",
+      "titre": "MotoCross et saut",
+      "enonce": "En MotoCross, une moto quitte une bosse, puis retombe. Son pilote reste assis sur la moto. Une caméra fixe filme le saut depuis le bord de la piste.",
+      "question": "Décris la trajectoire du pilote dans le référentiel de la caméra.",
+      "reponse": "Dans le référentiel de la caméra, le pilote monte puis descend en suivant une courbe. Sa trajectoire est curviligne."
+    }
+  ]
+}

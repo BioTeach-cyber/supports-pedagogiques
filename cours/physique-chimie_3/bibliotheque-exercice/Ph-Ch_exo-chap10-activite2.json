@@ -1,0 +1,126 @@
+{
+  "chapitreId": "chap10",
+  "activiteId": "activite2",
+  "exercices": [
+    {
+      "themeId": "Musculation",
+      "titre": "Le disque de fonte en musculation",
+      "objectifId": "obj2",
+      "enonce": "Léo soulève un disque de fonte à la salle de sport. La masse du disque est de 10 kg. Sur Terre, l'intensité de la pesanteur vaut g = 10 N/kg. La règle est la suivante : le poids se calcule avec P = m × g. Le poids s'exprime en newtons (N).",
+      "question": "1. Calcule le poids du disque de Léo.\n2. Explique la différence entre la masse et le poids de ce disque.",
+      "reponse": "1. On applique la règle P = m × g. Donc P = 10 × 10 = 100 N. Le poids du disque est de 100 N.\n2. La masse est la quantité de matière du disque. Elle vaut 10 kg. Elle ne change pas si on déplace le disque. Le poids est la force d'attraction de la Terre sur le disque. Il vaut 100 N. Il change si l'intensité de la pesanteur change. La masse se mesure en kilogrammes, le poids se mesure en newtons."
+    },
+    {
+      "themeId": "Escalade",
+      "titre": "Le grimpeur et son sac",
+      "objectifId": "obj2",
+      "enonce": "Maëlle fait de l'escalade. Elle porte un sac à dos de 5 kg. Sur Terre, l'intensité de la pesanteur vaut g = 10 N/kg. On calcule le poids avec la formule P = m × g. Plus le poids est grand, plus la corde est tendue.",
+      "question": "Calcule le poids du sac à dos de Maëlle.",
+      "reponse": "On utilise la formule P = m × g. La masse est m = 5 kg. L'intensité de la pesanteur est g = 10 N/kg. Donc P = 5 × 10 = 50 N. Le poids du sac de Maëlle est de 50 N. C'est la force avec laquelle la Terre attire le sac vers le bas."
+    },
+    {
+      "themeId": "Équitation",
+      "titre": "La selle du cheval",
+      "objectifId": "obj2",
+      "enonce": "Nour prépare son cheval. La selle a une masse de 8 kg. Sur Terre, l'intensité de la pesanteur vaut g = 10 N/kg. Le poids se calcule avec P = m × g. Nour se demande si la selle appuie fort sur le dos du cheval.",
+      "question": "Calcule le poids de la selle, puis justifie l'unité que tu utilises.",
+      "reponse": "On applique P = m × g. Donc P = 8 × 10 = 80 N. Le poids de la selle est de 80 N. L'unité est le newton (N), car le poids est une force. On ne dit pas 80 kg pour un poids. Le kilogramme sert seulement à mesurer la masse."
+    },
+    {
+      "themeId": "Cuisine",
+      "titre": "Le sac de farine en cuisine",
+      "objectifId": "obj1",
+      "enonce": "Ryan cuisine avec un sac de farine. Sur l'emballage, on lit : 2 kg. Ryan pense que 2 kg est le poids du sac. Son professeur lui dit que c'est faux. Sur Terre, g = 10 N/kg et P = m × g.",
+      "question": "Explique l'erreur de Ryan, puis calcule le vrai poids du sac.",
+      "reponse": "Ryan confond la masse et le poids. Les 2 kg écrits sur l'emballage indiquent la masse du sac. La masse se mesure en kilogrammes. Le poids est une force, il se mesure en newtons. On calcule P = m × g = 2 × 10 = 20 N. Le poids du sac de farine est donc de 20 N."
+    },
+    {
+      "themeId": "Flight Simulator",
+      "titre": "La valise dans l'avion",
+      "objectifId": "obj2",
+      "enonce": "Inès joue à Flight Simulator. Elle charge une valise de 20 kg dans la soute de l'avion. Sur Terre, l'intensité de la pesanteur vaut g = 10 N/kg. Le poids se calcule avec P = m × g. L'avion doit soulever ce poids pour décoller.",
+      "question": "Calcule le poids de la valise chargée par Inès.",
+      "reponse": "On utilise la règle P = m × g. La masse est m = 20 kg. L'intensité de la pesanteur est g = 10 N/kg. Donc P = 20 × 10 = 200 N. Le poids de la valise est de 200 N. C'est la force que l'avion doit compenser pour décoller."
+    },
+    {
+      "themeId": "Mario Kart",
+      "titre": "Une course sur la Lune",
+      "objectifId": "obj1",
+      "enonce": "Tom joue à Mario Kart sur un circuit lunaire. Son kart a une masse de 150 kg. Sur Terre, g = 10 N/kg. Sur la Lune, g = 1,6 N/kg. On calcule le poids avec P = m × g. Tom trouve que le kart saute beaucoup plus haut sur la Lune.",
+      "question": "1. Calcule le poids du kart sur Terre puis sur la Lune.\n2. Déduis ce qui change et ce qui ne change pas entre la Terre et la Lune.",
+      "reponse": "1. Sur Terre : P = 150 × 10 = 1500 N. Sur la Lune : P = 150 × 1,6 = 240 N.\n2. La masse du kart ne change pas. Elle vaut 150 kg sur Terre et sur la Lune. C'est la même quantité de matière. Le poids, lui, change. Il passe de 1500 N à 240 N. Le poids est plus faible sur la Lune car l'intensité de la pesanteur y est plus petite. C'est pour cela que le kart saute plus haut."
+    },
+    {
+      "themeId": "Farming Simulator",
+      "titre": "Le sac d'engrais du tracteur",
+      "objectifId": "obj2",
+      "enonce": "Sarah joue à Farming Simulator. Elle charge un sac d'engrais de 25 kg sur sa remorque. Sur Terre, l'intensité de la pesanteur vaut g = 10 N/kg. La règle est P = m × g.",
+      "question": "Calcule le poids du sac d'engrais.",
+      "reponse": "On applique la règle P = m × g. La masse est m = 25 kg. L'intensité de la pesanteur est g = 10 N/kg. Donc P = 25 × 10 = 250 N. Le poids du sac d'engrais est de 250 N."
+    },
+    {
+      "themeId": "Pêche",
+      "titre": "Le poisson au bout de la ligne",
+      "objectifId": "obj2",
+      "enonce": "Enzo pêche au bord de l'étang. Il attrape un poisson de 3 kg. Sa ligne peut supporter une force de 40 N au maximum. Sur Terre, g = 10 N/kg. Le poids se calcule avec P = m × g.",
+      "question": "Calcule le poids du poisson, puis déduis si la ligne d'Enzo va casser.",
+      "reponse": "On calcule le poids du poisson : P = m × g = 3 × 10 = 30 N. La ligne supporte jusqu'à 40 N. Or 30 N est plus petit que 40 N. Donc la ligne ne casse pas. Enzo peut sortir son poisson de l'eau."
+    },
+    {
+      "themeId": "Voile",
+      "titre": "Le lest du bateau",
+      "objectifId": "obj2",
+      "enonce": "Jade prépare son bateau à voile. Elle place un lest de 40 kg au fond de la coque. Le lest est une masse lourde qui stabilise le bateau. Sur Terre, g = 10 N/kg. On calcule le poids avec P = m × g.",
+      "question": "Calcule le poids du lest placé par Jade.",
+      "reponse": "On utilise la formule P = m × g. La masse du lest est m = 40 kg. L'intensité de la pesanteur est g = 10 N/kg. Donc P = 40 × 10 = 400 N. Le poids du lest est de 400 N. Cette force vers le bas empêche le bateau de se coucher."
+    },
+    {
+      "themeId": "Moto",
+      "titre": "Le casque sur la balance",
+      "objectifId": "obj1",
+      "enonce": "Kylian pose son casque de moto sur une balance. La balance affiche 1,5 kg. Sur Terre, l'intensité de la pesanteur vaut g = 10 N/kg. Le poids se calcule avec P = m × g.",
+      "question": "1. Nomme la grandeur mesurée par la balance.\n2. Calcule le poids du casque.",
+      "reponse": "1. La balance mesure la masse du casque. Elle vaut 1,5 kg. Une balance de cuisine ne mesure pas le poids, elle mesure la masse.\n2. On applique P = m × g = 1,5 × 10 = 15 N. Le poids du casque est de 15 N."
+    },
+    {
+      "themeId": "Velo",
+      "titre": "Le vélo et la planète Mars",
+      "objectifId": "obj2",
+      "enonce": "Amir a un VTT de 12 kg. Sur Terre, l'intensité de la pesanteur vaut g = 10 N/kg. Sur Mars, elle vaut g = 3,7 N/kg. On calcule le poids avec P = m × g.",
+      "question": "Compare le poids du VTT sur Terre et sur Mars.",
+      "reponse": "Sur Terre : P = 12 × 10 = 120 N. Sur Mars : P = 12 × 3,7 = 44,4 N. Le poids du VTT est donc plus petit sur Mars que sur Terre. La masse reste la même : 12 kg. Seule l'intensité de la pesanteur change. Sur Mars, elle est plus faible, donc le poids est plus faible."
+    },
+    {
+      "themeId": "Légo",
+      "titre": "La tour en Légo s'écrase",
+      "objectifId": "obj2",
+      "enonce": "Lina construit une tour en Légo. Elle pose une plaque de 0,5 kg tout en haut. La tour s'écrase d'un coup. Sur Terre, g = 10 N/kg. Le poids se calcule avec P = m × g. Les pièces du bas supportent une force de 4 N au maximum.",
+      "question": "Explique pourquoi la tour de Lina s'est écrasée.",
+      "reponse": "On calcule le poids de la plaque : P = m × g = 0,5 × 10 = 5 N. Les pièces du bas supportent seulement 4 N. Or 5 N est plus grand que 4 N. Le poids de la plaque dépasse donc la force supportée. C'est l'explication la plus probable de l'écrasement de la tour."
+    },
+    {
+      "themeId": "Camion",
+      "titre": "Le pont et le camion",
+      "objectifId": "obj2",
+      "enonce": "Un camion transporte des palettes. La masse totale du camion chargé est de 3000 kg. Sur Terre, g = 10 N/kg. Le poids se calcule avec P = m × g. Un panneau indique que le pont supporte un poids maximum de 25 000 N.",
+      "question": "Calcule le poids du camion, puis choisis si le camion peut passer sur le pont.",
+      "reponse": "On calcule P = m × g = 3000 × 10 = 30 000 N. Le poids du camion est de 30 000 N. Le pont supporte 25 000 N au maximum. Or 30 000 N est plus grand que 25 000 N. Le camion ne peut donc pas passer sur le pont."
+    },
+    {
+      "themeId": "Basket",
+      "titre": "Trois ballons, une règle",
+      "objectifId": "obj2",
+      "enonce": "Dans le gymnase, Chloé pèse trois ballons de basket. Le ballon A a une masse de 0,5 kg et un poids de 5 N. Le ballon B a une masse de 0,6 kg et un poids de 6 N. Le ballon C a une masse de 0,8 kg et un poids de 8 N.",
+      "question": "Déduis la règle qui relie la masse et le poids de ces ballons.",
+      "reponse": "Pour le ballon A : 5 ÷ 0,5 = 10. Pour le ballon B : 6 ÷ 0,6 = 10. Pour le ballon C : 8 ÷ 0,8 = 10. On trouve toujours le même nombre : 10. Donc le poids est égal à la masse multipliée par 10. La règle générale est P = m × g, avec g = 10 N/kg sur Terre."
+    },
+    {
+      "themeId": "Boxe",
+      "titre": "Le sac de frappe accroché",
+      "objectifId": "obj2",
+      "enonce": "Maxime accroche un sac de frappe au plafond. La masse du sac est de 35 kg. Sur Terre, g = 10 N/kg. Le poids se calcule avec P = m × g. Le crochet du plafond supporte une force de 300 N au maximum.",
+      "question": "Calcule le poids du sac de frappe, puis justifie si le crochet tiendra.",
+      "reponse": "On calcule P = m × g = 35 × 10 = 350 N. Le poids du sac est de 350 N. Le crochet supporte seulement 300 N. Or 350 N est plus grand que 300 N. Le crochet ne tiendra donc pas. Maxime doit choisir un crochet plus résistant."
+    }
+  ]
+}

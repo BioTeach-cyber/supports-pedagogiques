@@ -122,6 +122,29 @@ video.activity-document-media { width: 100%; }
 .activity-document-table th { background: color-mix(in srgb, var(--course-color) 12%, white); }
 .activity-document-link { display: inline-flex; padding: 10px 14px; border-radius: 6px; background: var(--course-color); color: #fff; font-weight: 700; text-decoration: none; }
 .activity-document-empty { color: var(--muted); line-height: 1.6; }
+.activity-exercise-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.activity-exercise-filter { padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--ink); font: inherit; cursor: pointer; }
+.activity-exercise-filter:hover, .activity-exercise-filter:focus-visible { border-color: var(--course-color); outline: none; }
+.activity-exercise-filter[aria-pressed="true"] { border-color: var(--course-color); background: var(--course-color); color: #fff; }
+.activity-exercise-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: 16px; }
+.activity-exercise-card { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+.activity-exercise-tile { display: grid; min-height: 205px; justify-items: center; align-content: center; gap: 12px; padding: 20px; text-align: center; }
+.activity-exercise-theme-visual { display: grid; width: 92px; height: 92px; place-items: center; border-radius: 50%; background: color-mix(in srgb, var(--course-color) 10%, white); color: var(--course-color); font-size: 1.4rem; font-weight: 700; }
+.activity-exercise-theme-visual svg { width: 100% !important; height: 100% !important; }
+.activity-exercise-theme-visual .activity-exercise-theme-logo { width: 72px; height: 72px; object-fit: contain; }
+.activity-exercise-theme { margin: -6px 0 0; color: var(--muted); font-size: .9rem; }
+.activity-exercise-title { max-width: 26ch; margin: 0; font-size: 1.05rem; }
+.activity-exercise-more { min-height: 38px; padding: 7px 16px; border: 1px solid var(--course-color); border-radius: 999px; background: #fff; color: var(--course-color); font: inherit; font-weight: 700; cursor: pointer; }
+.activity-exercise-more:hover, .activity-exercise-more:focus-visible { background: var(--course-color); color: #fff; outline: none; }
+.activity-exercise-details { padding: 18px; border-top: 1px solid var(--line); }
+.activity-exercise-details[hidden] { display: none; }
+.activity-exercise-statement, .activity-exercise-question, .activity-exercise-answer p { line-height: 1.65; white-space: pre-line; }
+.activity-exercise-question { font-weight: 700; }
+.activity-exercise-answer { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
+.activity-exercise-answer summary { color: var(--course-color); font-weight: 700; cursor: pointer; }
+.activity-exercise-categories { margin-top: 12px; color: var(--muted); font-size: .9rem; }
+.activity-exercise-theme-visual-fallback { font-size: 1.4rem; }
+.activity-exercise-library-empty { color: var(--muted); line-height: 1.6; }
 
 @media (max-width: 640px) {
   .activity-banner { gap: 4px; padding: 6px 8px; border-radius: 16px; }
