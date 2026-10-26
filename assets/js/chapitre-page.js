@@ -112,7 +112,7 @@
     const chapter = (course.chapitres || []).find((item) => item.id === folderId);
     if (!chapter) throw new Error(`Aucun chapitre ne correspond au dossier « ${folderId} ».`);
 
-    const color = course.couleur || '#7fbc48';
+    const color = chapter.couleur || course.couleur || '#7fbc48';
     document.documentElement.style.setProperty('--course-color', color);
     document.getElementById('page-header').style.setProperty('--course-color', color);
     colorMeta.content = color;

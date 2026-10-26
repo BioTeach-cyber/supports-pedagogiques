@@ -172,7 +172,7 @@
     if (currentIndex < 0) throw new Error('Cette activité est introuvable dans les données du cours.');
 
     const activity = activities[currentIndex];
-    const color = course.couleur || '#b7b7b7';
+    const color = chapter.couleur || course.couleur || '#b7b7b7';
     document.documentElement.style.setProperty('--course-color', color);
     header.style.setProperty('--course-color', color);
     colorMeta.content = color;

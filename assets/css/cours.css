@@ -144,7 +144,7 @@ button { font: inherit; }
 .chapter-node-overlay { position: absolute; display: flex; width: 132px; flex-direction: column; align-items: center; gap: 5px; transform: translate(-50%, -50%); }
 .chapter-node-lottie { position: static; display: block; width: 82px; height: 82px; padding: 7px; border: 3px solid var(--node-color); border-radius: 50%; background: #fff; transform: none; }
 .chapter-node-label { display: -webkit-box; width: 100%; overflow: hidden; color: var(--ink); font-size: .82rem; font-weight: 700; line-height: 1.25; text-align: center; text-overflow: ellipsis; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
-.activity-node-lottie { width: 76px; height: 76px; padding: 6px; border: 2px solid var(--course-color); border-radius: 50%; background: #fff; }
+.activity-node-lottie { width: 76px; height: 76px; padding: 6px; border: 2px solid var(--node-color); border-radius: 50%; background: #fff; }
 .evaluation-node-overlay { position: absolute; display: flex; width: 112px; flex-direction: column; align-items: center; gap: 3px; transform: translate(-50%, -50%); }
 .evaluation-node-lottie { position: relative; display: grid; width: 76px; height: 76px; flex: 0 0 auto; place-items: center; padding: 6px; overflow: hidden; border: 2px dashed var(--node-color); border-radius: 50%; background: #fff; transform: none; }
 .evaluation-node-label { max-width: 112px; color: var(--ink); font-size: .68rem; font-weight: 700; line-height: 1.15; text-align: center; }

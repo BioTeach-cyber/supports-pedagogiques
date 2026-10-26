@@ -565,6 +565,7 @@
 
     const rootId = 'course-root';
     const chapters = course.chapitres || [];
+    const chapterColor = (chapter) => chapter.couleur || color;
     const chapterNodeId = (chapter) => `chapter-${chapter.id}`;
     const activityNodeId = (chapter, index) => `activity-${chapter.id}-${index}`;
     const evaluationNodeId = (chapter, kind, index) => `evaluation-${chapter.id}-${kind}-${index}`;
@@ -602,7 +603,7 @@
         ),
         size: 68,
         borderWidth: 2,
-        color: { background: '#ffffff', border: color },
+        color: { background: '#ffffff', border: chapterColor(chapter) },
         shapeProperties: { borderDashes: [6, 5] },
           url: evaluation.page || evaluation.component
             ? courseDataUrl(courseId, evaluation.page || evaluation.component)
@@ -613,36 +614,39 @@
       ...chapters.map((chapter) => ({
         from: rootId,
         to: chapterNodeId(chapter),
-        color: { color: `${color}99`, highlight: color },
+        color: { color: `${chapterColor(chapter)}99`, highlight: chapterColor(chapter) },
         width: 10
       })),
       ...activityNodes.map(({ chapter, index }) => ({
         from: chapterNodeId(chapter),
         to: activityNodeId(chapter, index),
-        color: { color: `${color}77`, highlight: color },
-        width: 7
+        color: { color: `${chapterColor(chapter)}77`, highlight: chapterColor(chapter) },
+        width: 7,
+        length: 300
       })),
       ...evaluationItems.map(({ chapter, kind, index }) => ({
         from: chapterNodeId(chapter),
         to: evaluationNodeId(chapter, kind, index),
-        color: { color: `${color}99`, highlight: color },
+        color: { color: `${chapterColor(chapter)}99`, highlight: chapterColor(chapter) },
         width: 7,
+        length: 300,
         dashes: [8, 10]
       }))
     ]);
+    const initialZoomScale = 0.4;
     const instance = new visNetwork(networkHost, { nodes, edges }, {
       autoResize: true,
       interaction: { dragNodes: true, dragView: true, zoomView: true, selectable: true },
       nodes: { chosen: false, font: { size: 16, face: 'Arial', color: '#263445' } },
       edges: {
         smooth: { type: 'continuous' },
-        length: 460,
+        length: 620,
         physics: true
       },
       physics: {
         enabled: true,
-        barnesHut: { gravitationalConstant: -18000, centralGravity: 0.08, springLength: 460, springConstant: 0.008, damping: 0.45, avoidOverlap: 1 },
-        stabilization: { enabled: true, iterations: 1000, updateInterval: 25, fit: true }
+        barnesHut: { gravitationalConstant: -18000, centralGravity: 0.05, springLength: 620, springConstant: 0.008, damping: 0.45, avoidOverlap: 1 },
+        stabilization: { enabled: true, iterations: 1000, updateInterval: 25, fit: false }
       }
     });
 
@@ -650,38 +654,42 @@
     rootIcon.style.setProperty('--node-color', color);
     overlay.append(rootIcon);
     const chapterIcons = chapters.map((chapter) => {
+      const nodeColor = chapterColor(chapter);
       const wrapper = element('span', 'chapter-node-overlay');
       wrapper.setAttribute('data-node-id', chapterNodeId(chapter));
       const icon = element('span', 'network-node-lottie chapter-node-lottie');
-      icon.style.setProperty('--node-color', color);
+      icon.style.setProperty('--node-color', nodeColor);
       const label = element('span', 'chapter-node-label', chapter.id);
       wrapper.append(icon, label);
       overlay.append(wrapper);
-      mountLottie(icon, chapter.lottie, color);
+      mountLottie(icon, chapter.lottie, nodeColor);
       return { chapter, wrapper };
     });
     const activityIcons = activityNodes.map(({ chapter, activity, index }) => {
+      const nodeColor = chapterColor(chapter);
       const icon = element('span', 'network-node-lottie activity-node-lottie');
+      icon.style.setProperty('--node-color', nodeColor);
       icon.setAttribute('data-node-id', activityNodeId(chapter, index));
       icon.setAttribute('aria-label', activity.titre || `Activité ${index + 1}`);
       overlay.append(icon);
-      mountLottie(icon, activity.lottie, color);
+      mountLottie(icon, activity.lottie, nodeColor);
       return { chapter, activity, index, icon };
     });
     const evaluationIcons = evaluationItems.map(({ chapter, evaluation, kind, index }) => {
+      const nodeColor = chapterColor(chapter);
       const wrapper = element('span', 'evaluation-node-overlay');
-      wrapper.style.setProperty('--node-color', color);
+      wrapper.style.setProperty('--node-color', nodeColor);
       wrapper.setAttribute('data-node-id', evaluationNodeId(chapter, kind, index));
       wrapper.setAttribute('role', 'img');
       const evaluationType = evaluation.type || (kind === 'final' ? 'Évaluation finale' : 'Évaluation secondaire');
       wrapper.setAttribute('aria-label', evaluationType);
       wrapper.title = evaluationType;
       const icon = element('span', 'network-node-lottie evaluation-node-lottie');
-      icon.style.setProperty('--node-color', color);
+      icon.style.setProperty('--node-color', nodeColor);
       const label = element('span', 'evaluation-node-label', evaluationType);
       wrapper.append(icon, label);
       overlay.append(wrapper);
-      mountLottie(icon, evaluation.lottie, color);
+      mountLottie(icon, evaluation.lottie, nodeColor);
       return { chapter, evaluation, kind, index, wrapper };
     });
     await mountLottie(rootIcon, course.lottie, color);
@@ -722,7 +730,7 @@
     };
     instance.on('afterDrawing', updateOverlay);
     instance.once('stabilized', () => {
-      instance.fit({ animation: { duration: 400, easingFunction: 'easeInOutQuad' } });
+      instance.moveTo({ scale: initialZoomScale, animation: false });
       updateOverlay();
     });
     const navigateToNode = (id) => {
