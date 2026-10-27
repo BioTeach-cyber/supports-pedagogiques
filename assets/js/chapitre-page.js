@@ -128,7 +128,7 @@
       element('p', 'chapter-description', chapter.description || 'Description à compléter.')
     );
 
-    const activities = chapter.activité || chapter.activites || [];
+    const activities = (chapter.activité || chapter.activites || []).filter((activity) => activity.statut !== 'inactif');
     const objectives = [...new Set(activities.flatMap((activity) =>
       (activity['objectifs pédagogiques'] || activity.objectifs || []).map(objectiveLabel).filter(Boolean)
     ))];
@@ -148,9 +148,9 @@
     const activityGrid = element('div', 'activity-grid');
     activities.forEach((activity, index) => {
       const activityId = activity.id || `activite-${index + 1}`;
-      const activityFile = `Activité_${String(index + 1).padStart(2, '0')}.html`;
+      const activityFile = activity.page || `${folderId}/cours/Activité_${String(index + 1).padStart(2, '0')}.html`;
       const card = element('a', 'activity-card');
-      card.href = new URL(`${encodeURIComponent(folderId)}/cours/${encodeURIComponent(activityFile)}`, new URL(`cours/${encodeURIComponent(courseId)}/`, ROOT)).href;
+      card.href = new URL(activityFile, new URL(`cours/${encodeURIComponent(courseId)}/`, ROOT)).href;
       const icon = element('span', 'activity-lottie');
       icon.setAttribute('aria-hidden', 'true');
       card.append(icon, element('strong', '', activity.titre || activityId));

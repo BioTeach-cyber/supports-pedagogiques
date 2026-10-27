@@ -8,8 +8,10 @@
   "lottie": "assets/lotties/physique-chimie.json",
   "description": "",
 
+  "statut": "actif",
   "chapitres": [
     {
+      "statut": "actif",
       "id": "Chapitre 01",
       "page": "Chapitre 01/Chapitre.html",
       "type": "chapitre",
@@ -22,6 +24,7 @@
       "lottie": "assets/lotties/systeme-solaire.json",
 
       "evaluationFinale": {
+          "statut": "actif",
           "type": "Fin de séquence",
           "start": "",
           "end": "",
@@ -32,6 +35,7 @@
 
       "activité": [
         {
+          "statut": "actif",
           "id": "activité 01",
           "titre": "",
           "lottie": "assets/lotties/Numbers/01.json",
@@ -42,6 +46,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 02",
           "titre": "",
           "lottie": "assets/lotties/Numbers/02.json",
@@ -52,6 +57,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 03",
           "titre": "",
           "lottie": "assets/lotties/Numbers/03.json",
@@ -64,6 +70,7 @@
       ]
     },
     {
+      "statut": "actif",
       "id": "Chapitre 02",
       "page": "Chapitre 02/Chapitre.html",
       "type": "chapitre",
@@ -76,6 +83,7 @@
       "lottie": "assets/lotties/atome.json",
 
       "evaluationFinale": {
+          "statut": "actif",
           "type": "Fin de séquence",
           "start": "",
           "end": "",
@@ -86,6 +94,7 @@
 
       "activité": [
         {
+          "statut": "actif",
           "id": "activité 01",
           "titre": "",
           "lottie": "assets/lotties/Numbers/01.json",
@@ -96,6 +105,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 02",
           "titre": "",
           "lottie": "assets/lotties/Numbers/02.json",
@@ -106,6 +116,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 03",
           "titre": "",
           "lottie": "assets/lotties/Numbers/03.json",
@@ -118,6 +129,7 @@
       ]
     },
     {
+      "statut": "actif",
       "id": "Chapitre 03",
       "page": "Chapitre 03/Chapitre.html",
       "type": "chapitre",
@@ -130,6 +142,7 @@
       "lottie": "assets/lotties/goutte-eau-tombant.json",
 
       "evaluationFinale": {
+          "statut": "actif",
           "type": "Fin de séquence",
           "start": "",
           "end": "",
@@ -140,6 +153,7 @@
 
       "activité": [
         {
+          "statut": "actif",
           "id": "activité 01",
           "titre": "",
           "lottie": "assets/lotties/Numbers/01.json",
@@ -150,6 +164,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 02",
           "titre": "",
           "lottie": "assets/lotties/Numbers/02.json",
@@ -160,6 +175,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 03",
           "titre": "",
           "lottie": "assets/lotties/Numbers/03.json",
@@ -172,6 +188,7 @@
       ]
     },
     {
+      "statut": "actif",
       "id": "Chapitre 04",
       "page": "Chapitre 04/Chapitre.html",
       "type": "chapitre",
@@ -184,6 +201,7 @@
       "lottie": "assets/lotties/bubble-tea.json",
 
       "evaluationFinale": {
+          "statut": "actif",
           "type": "Fin de séquence",
           "start": "",
           "end": "",
@@ -194,6 +212,7 @@
 
       "activité": [
         {
+          "statut": "actif",
           "id": "activité 01",
           "titre": "",
           "lottie": "assets/lotties/Numbers/01.json",
@@ -204,6 +223,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 02",
           "titre": "",
           "lottie": "assets/lotties/Numbers/02.json",
@@ -214,6 +234,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 03",
           "titre": "",
           "lottie": "assets/lotties/Numbers/03.json",
@@ -226,6 +247,7 @@
       ]
     },
     {
+      "statut": "actif",
       "id": "Chapitre 05",
       "page": "Chapitre 05/Chapitre.html",
       "type": "chapitre",
@@ -238,6 +260,7 @@
       "lottie": "assets/lotties/car-speed.json",
 
       "evaluationFinale": {
+          "statut": "actif",
           "type": "Fin de séquence",
           "start": "",
           "end": "",
@@ -248,6 +271,7 @@
 
       "activité": [
         {
+          "statut": "actif",
           "id": "activité 01",
           "titre": "",
           "lottie": "assets/lotties/Numbers/01.json",
@@ -258,6 +282,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 02",
           "titre": "",
           "lottie": "assets/lotties/Numbers/02.json",
@@ -268,6 +293,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 03",
           "titre": "",
           "lottie": "assets/lotties/Numbers/03.json",
@@ -280,6 +306,7 @@
       ]
     },
     {
+      "statut": "actif",
       "id": "Chapitre 06",
       "page": "Chapitre 06/Chapitre.html",
       "type": "chapitre",
@@ -292,6 +319,7 @@
       "lottie": "assets/lotties/renewable-energy.json",
 
       "evaluationFinale": {
+          "statut": "actif",
           "type": "Fin de séquence",
           "start": "",
           "end": "",
@@ -302,6 +330,7 @@
 
       "activité": [
         {
+          "statut": "actif",
           "id": "activité 01",
           "titre": "",
           "lottie": "assets/lotties/Numbers/01.json",
@@ -312,6 +341,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 02",
           "titre": "",
           "lottie": "assets/lotties/Numbers/02.json",
@@ -322,6 +352,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 03",
           "titre": "",
           "lottie": "assets/lotties/Numbers/03.json",
@@ -334,6 +365,7 @@
       ]
     },
     {
+      "statut": "actif",
       "id": "Chapitre 07",
       "page": "Chapitre 07/Chapitre.html",
       "type": "chapitre",
@@ -346,6 +378,7 @@
       "lottie": "assets/lotties/gas-mask.json",
 
       "evaluationFinale": {
+          "statut": "actif",
           "type": "Fin de séquence",
           "start": "",
           "end": "",
@@ -356,6 +389,7 @@
 
       "activité": [
         {
+          "statut": "actif",
           "id": "activité 01",
           "titre": "",
           "lottie": "assets/lotties/Numbers/01.json",
@@ -366,6 +400,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 02",
           "titre": "",
           "lottie": "assets/lotties/Numbers/02.json",
@@ -376,6 +411,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 03",
           "titre": "",
           "lottie": "assets/lotties/Numbers/03.json",
@@ -388,6 +424,7 @@
       ]
     },
     {
+      "statut": "actif",
       "id": "Chapitre 08",
       "page": "Chapitre 08/Chapitre.html",
       "type": "chapitre",
@@ -400,6 +437,7 @@
       "lottie": "assets/lotties/ph.json",
 
       "evaluationFinale": {
+          "statut": "actif",
           "type": "Fin de séquence",
           "start": "",
           "end": "",
@@ -410,6 +448,7 @@
 
       "activité": [
         {
+          "statut": "actif",
           "id": "activité 01",
           "titre": "",
           "lottie": "assets/lotties/Numbers/01.json",
@@ -420,6 +459,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 02",
           "titre": "",
           "lottie": "assets/lotties/Numbers/02.json",
@@ -430,6 +470,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 03",
           "titre": "",
           "lottie": "assets/lotties/Numbers/03.json",
@@ -442,6 +483,7 @@
       ]
     },
     {
+      "statut": "actif",
       "id": "Chapitre 09",
       "page": "Chapitre 09/Chapitre.html",
       "type": "chapitre",
@@ -454,6 +496,7 @@
       "lottie": "assets/lotties/light-bulb.json",
 
       "evaluationFinale": {
+          "statut": "actif",
           "type": "Fin de séquence",
           "start": "",
           "end": "",
@@ -464,6 +507,7 @@
 
       "activité": [
         {
+          "statut": "actif",
           "id": "activité 01",
           "titre": "",
           "lottie": "assets/lotties/Numbers/01.json",
@@ -474,6 +518,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 02",
           "titre": "",
           "lottie": "assets/lotties/Numbers/02.json",
@@ -484,6 +529,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 03",
           "titre": "",
           "lottie": "assets/lotties/Numbers/03.json",

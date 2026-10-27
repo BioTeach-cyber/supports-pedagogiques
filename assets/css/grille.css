@@ -1,38 +1,68 @@
-body { font-family: Arial, sans-serif; font-size: 14px; margin: 20px; }
+* { box-sizing: border-box; }
 
-table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
-th, td { border: 1px solid #333; padding: 6px; vertical-align: middle; }
-th { background: #2e7d32; color: #fff; }
-
-.entete th { font-size: 18px; }
-
-.capacite   { width: 14%; background: #e8f5e9; text-align: center; }
-.critere    { width: 16%; background: #f1f8e9; font-weight: bold; }
-.indicateur { width: 40%; }
-.niveau     { width: 4%; text-align: center; }
-.evaluation { width: 8%; text-align: center; }
-.appreciation { width: 14%; }
-
-input[type="text"], input[type="date"], textarea {
-  width: 100%;
-  min-width: 0;
-  font: inherit;
+:root {
+  color-scheme: light;
+  --grille-color: #7fbc48;
+  --ink: #283443;
+  --muted: #617181;
+  --line: #dce3e8;
+  --surface: #fff;
+  --page: #f3f5f7;
+  font-family: Arial, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--page);
 }
 
-textarea { min-height: 5rem; resize: vertical; }
-input[type="radio"], select { min-height: 24px; }
-.pied td { height: 80px; vertical-align: top; width: 50%; }
+body { min-width: 320px; margin: 0; padding: 0; background: var(--page); }
+#grille { width: 100%; margin: 0; }
+.grille-title-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 3px solid var(--grille-color); }
+.grille-title { flex: 1 1 auto; margin: 0 auto 0 0; color: var(--ink); font-size: clamp(1.45rem, 3vw, 2.2rem); line-height: 1.2; }
+.evaluation-type { flex: 0 0 auto; margin: 0; padding: 7px 13px; border: 1px solid color-mix(in srgb, var(--grille-color) 35%, white); border-radius: 999px; background: color-mix(in srgb, var(--grille-color) 10%, white); color: var(--ink); font-size: .9rem; font-weight: 700; }
+.evaluation-lottie { display: block; width: 72px; height: 72px; flex: 0 0 72px; }
+.evaluation-lottie svg { width: 100% !important; height: 100% !important; }
+table { width: 100%; margin: 0 0 22px; border: 1px solid var(--line); border-collapse: separate; border-spacing: 0; overflow: hidden; border-radius: 10px; background: var(--surface); box-shadow: 0 3px 12px #18253214; }
+th, td { padding: 10px 12px; border: 0; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); vertical-align: middle; }
+tr > :last-child { border-right: 0; }
+tbody tr:last-child > * { border-bottom: 0; }
+th { background: var(--grille-color); color: #fff; font-weight: 700; }
+.entete { table-layout: fixed; }
+.entete th { padding: 16px; font-size: 1.2rem; text-align: center; }
+.entete td { background: var(--surface); }
+.entete tr:nth-child(2) td { background: color-mix(in srgb, var(--grille-color) 8%, white); font-size: 1.05rem; }
+.entete strong { color: var(--grille-color); }
+.grille-scroll { overflow-x: auto; border-radius: 10px; }
+.grille { min-width: 850px; table-layout: fixed; }
+.grille thead th { padding: 12px 8px; text-align: center; }
+.grille tbody tr { transition: background-color .15s ease; }
+.grille tbody tr:hover { background: color-mix(in srgb, var(--grille-color) 4%, white); }
+.capacite { width: 14%; background: color-mix(in srgb, var(--grille-color) 18%, white); color: #000; text-align: center; }
+.critere { width: 16%; background: color-mix(in srgb, var(--grille-color) 10%, white); color: #000; font-weight: 700; }
+.indicateur { width: 40%; }
+.niveau { width: 7.5%; text-align: center; }
+.grille tbody .niveau { min-height: 42px; height: 42px; background: #fff; }
+.grille tbody tr:hover .niveau { background: color-mix(in srgb, var(--grille-color) 4%, white); }
+.pied { width: auto; min-width: min(100%, 340px); margin-left: auto; }
+.pied td { padding: 9px 14px; border: 1px solid var(--line); border-radius: 8px; color: var(--muted); font-size: .85rem; text-align: right; }
 
 @media (max-width: 700px) {
-  body { margin: 8px; font-size: 12px; }
-  table { display: block; overflow-x: auto; }
-  th, td { padding: 4px; }
+  body { padding: 14px 10px; font-size: 13px; }
+  .grille-title-row { align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+  .evaluation-lottie { width: 56px; height: 56px; flex-basis: 56px; }
+  th, td { padding: 8px; }
+  .entete th { padding: 12px; font-size: 1.05rem; }
+  .entete td { overflow-wrap: anywhere; }
 }
 
-/* Impression : une grille propre sur A4 paysage */
 @media print {
   @page { size: A4 landscape; margin: 10mm; }
-  body { margin: 0; font-size: 11px; }
-  th { background: #ccc !important; color: #000; -webkit-print-color-adjust: exact; }
-  select { border: none; appearance: none; }
+  :root { background: #fff; }
+  body { min-width: 0; padding: 0; font-size: 10px; }
+  #grille { width: 100%; }
+  .grille-title { margin-bottom: 10px; padding-bottom: 8px; font-size: 18px; }
+  table { margin-bottom: 10px; box-shadow: none; border-radius: 0; }
+  th, td { padding: 5px; }
+  th { background: var(--grille-color) !important; color: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .grille-scroll { overflow: visible; }
+  .grille { min-width: 0; }
+  .pied { margin-bottom: 0; }
 }

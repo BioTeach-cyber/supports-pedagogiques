@@ -8,8 +8,10 @@
   "lottie": "assets/lotties/Environnement.json",
   "description": "",
 
+  "statut": "actif",
   "chapitres": [
     {
+      "statut": "actif",
       "id": "Chapitre 01",
       "page": "Chapitre 01/Chapitre.html",
       "type": "chapitre",
@@ -22,6 +24,7 @@
       "lottie": "assets/lotties/Cladogramme.json",
 
       "evaluationFinale": {
+          "statut": "actif",
           "type": "Fin de séquence",
           "start": "2026-10-12",
           "end": "2026-10-16",
@@ -32,6 +35,7 @@
 
       "evaluationsSecondaires": [
         {
+          "statut": "actif",
           "type": "Activités",
           "start": "2026-10-09",
           "end": null,
@@ -43,6 +47,7 @@
 
       "activité": [
         {
+          "statut": "actif",
           "id": "activité 01",
           "titre": "Ouvrez l'œil ! Premières observations au parc",
           "lottie": "assets/lotties/Numbers/01.json",
@@ -53,6 +58,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 02",
           "titre": "Un seul nom pour tout le monde !",
           "lottie": "assets/lotties/Numbers/02.json",
@@ -63,6 +69,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 03",
           "titre": "Mène l'enquête : qui es-tu, petite bête ?",
           "lottie": "assets/lotties/Numbers/03.json",
@@ -73,6 +80,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 04",
           "titre": "Cinq grandes familles pour ranger le vivant",
           "lottie": "assets/lotties/Numbers/04.json",
@@ -83,6 +91,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 05",
           "titre": "L'être humain aussi a sa place, et chacun a son coin de parc",
           "lottie": "assets/lotties/Numbers/05.json",
@@ -95,6 +104,7 @@
       ]
     },
     {
+      "statut": "actif",
       "id": "Chapitre 02",
       "page": "Chapitre 02/Chapitre.html",
       "type": "chapitre",
@@ -107,6 +117,7 @@
       "lottie": "assets/lotties/Reseau_trophic.json",
 
       "evaluationFinale": {
+          "statut": "actif",
           "type": "Fin de séquence",
           "start": null,
           "end": null,
@@ -117,6 +128,7 @@
 
       "evaluationsSecondaires": [
         {
+          "statut": "actif",
           "type": "Activités",
           "start": null,
           "end": null,
@@ -128,6 +140,7 @@
 
       "activité": [
         {
+          "statut": "actif",
           "id": "activité 01",
           "titre": "Ouvrez l'œil ! Premières observations au parc",
           "lottie": "assets/lotties/Numbers/01.json",
@@ -138,6 +151,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 02",
           "titre": "Un seul nom pour tout le monde !",
           "lottie": "assets/lotties/Numbers/02.json",
@@ -148,6 +162,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 03",
           "titre": "Mène l'enquête : qui es-tu, petite bête ?",
           "lottie": "assets/lotties/Numbers/03.json",
@@ -158,6 +173,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 04",
           "titre": "Cinq grandes familles pour ranger le vivant",
           "lottie": "assets/lotties/Numbers/04.json",
@@ -168,6 +184,7 @@
           ]
         },
         {
+          "statut": "actif",
           "id": "activité 05",
           "titre": "L'être humain aussi a sa place, et chacun a son coin de parc",
           "lottie": "assets/lotties/Numbers/05.json",

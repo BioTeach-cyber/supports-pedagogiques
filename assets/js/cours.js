@@ -260,6 +260,8 @@
     });
   };
 
+  const isActive = (item) => item?.statut !== 'inactif';
+
   const renderCourseList = async () => {
     pageTitle.textContent = 'Cours';
     document.title = 'Cours — Mes ressources pédagogiques';
@@ -277,6 +279,7 @@
         const courseResponse = await fetch(new URL(`cours/${encodeURIComponent(courseId)}/cours.json`, ROOT));
         if (!courseResponse.ok) continue;
         const course = await courseResponse.json();
+        if (!isActive(course)) continue;
         if (Array.isArray(course.annees) && !course.annees.includes(year)) continue;
         const card = element('a', 'course-card');
         card.href = courseUrl(courseId);
@@ -318,21 +321,21 @@
     const [firstYear, secondYear] = schoolYear.split('-').map(Number);
     const schoolYearStart = new Date(firstYear, 8, 1);
     const schoolYearEnd = new Date(secondYear, 7, 31, 23, 59, 59, 999);
-    const chapterEvents = (course.chapitres || []).flatMap((chapter, chapterIndex) => [
+    const chapterEvents = (course.chapitres || []).filter(isActive).flatMap((chapter, chapterIndex) => [
       {
         ...chapter,
         id: `chapter-${chapter.id || chapterIndex}`,
         type: 'chapitre',
         source: 'cours'
       },
-      ...(chapter.evaluationsSecondaires || []).map((evaluation, index) => ({
+      ...(chapter.evaluationsSecondaires || []).filter(isActive).map((evaluation, index) => ({
         ...evaluation,
         id: `evaluation-secondary-${chapter.id || chapterIndex}-${index}`,
         titre: `${chapter.id || `Chapitre ${chapterIndex + 1}`} — ${evaluation.titre || evaluation.type || 'Évaluation'}`,
         type: 'evaluation',
         source: 'cours'
       })),
-      ...(chapter.evaluationFinale ? [{
+      ...(chapter.evaluationFinale && isActive(chapter.evaluationFinale) ? [{
         ...chapter.evaluationFinale,
         id: `evaluation-final-${chapter.id || chapterIndex}`,
         titre: `${chapter.id || `Chapitre ${chapterIndex + 1}`} — ${chapter.evaluationFinale.titre || chapter.evaluationFinale.type || 'Évaluation finale'}`,
@@ -341,9 +344,9 @@
       }] : [])
     ]);
     const classes = course.classes || [];
-    const events = [
-      ...chapterEvents,
-      ...commonEvents
+      const events = [
+        ...chapterEvents,
+        ...commonEvents
         .filter((event) => event.annee === schoolYear && (event.classes || []).some((className) => classes.includes(className)))
         .map((event) => ({ ...event, source: 'commun' }))
     ];
@@ -564,14 +567,14 @@
     }
 
     const rootId = 'course-root';
-    const chapters = course.chapitres || [];
+    const chapters = (course.chapitres || []).filter(isActive);
     const chapterColor = (chapter) => chapter.couleur || color;
     const chapterNodeId = (chapter) => `chapter-${chapter.id}`;
     const activityNodeId = (chapter, index) => `activity-${chapter.id}-${index}`;
     const evaluationNodeId = (chapter, kind, index) => `evaluation-${chapter.id}-${kind}-${index}`;
     const evaluationItems = chapters.flatMap((chapter) => [
-      ...(chapter.evaluationsSecondaires || []).map((evaluation, index) => ({ chapter, evaluation, kind: 'secondary', index })),
-      ...(chapter.evaluationFinale ? [{ chapter, evaluation: chapter.evaluationFinale, kind: 'final', index: 0 }] : [])
+      ...(chapter.evaluationsSecondaires || []).filter(isActive).map((evaluation, index) => ({ chapter, evaluation, kind: 'secondary', index })),
+      ...(chapter.evaluationFinale && isActive(chapter.evaluationFinale) ? [{ chapter, evaluation: chapter.evaluationFinale, kind: 'final', index: 0 }] : [])
     ]);
     const transparentNode = (id, title, level) => ({
       id,
@@ -585,7 +588,7 @@
       physics: true
     });
     const activityNodes = chapters.flatMap((chapter) =>
-      (chapter.activité || chapter.activites || []).map((activity, index) => ({ chapter, activity, index }))
+      (chapter.activité || chapter.activites || []).filter(isActive).map((activity, index) => ({ chapter, activity, index }))
     );
     const nodes = new visDataSet([
       transparentNode(rootId, course.titre, 0),
@@ -796,15 +799,16 @@
     content.append(back, element('p', 'eyebrow', `${course.titre} · ${chapter.titre}`));
     const navigation = element('nav', 'activity-navigation');
     navigation.setAttribute('aria-label', 'Navigation entre les activités');
-    const siblings = chapter.activité || chapter.activites || [];
-    if (siblings[index - 1]) {
+    const siblings = (chapter.activité || chapter.activites || []).filter(isActive);
+    const siblingIndex = siblings.indexOf(activity);
+    if (siblingIndex > 0) {
       const previous = element('a', 'secondary-button', '← Activité précédente');
-      previous.href = courseUrl(courseId, chapter.id, siblings[index - 1].id || `activite-${index}`);
+      previous.href = courseUrl(courseId, chapter.id, siblings[siblingIndex - 1].id || `activite-${siblingIndex}`);
       navigation.append(previous);
     } else navigation.append(element('span', 'secondary-button disabled', 'Première activité'));
-    if (siblings[index + 1]) {
+    if (siblingIndex >= 0 && siblings[siblingIndex + 1]) {
       const next = element('a', 'primary-button', 'Activité suivante →');
-      next.href = courseUrl(courseId, chapter.id, siblings[index + 1].id || `activite-${index + 2}`);
+      next.href = courseUrl(courseId, chapter.id, siblings[siblingIndex + 1].id || `activite-${siblingIndex + 2}`);
       navigation.append(next);
     } else navigation.append(element('span', 'secondary-button disabled', 'Dernière activité'));
     content.append(navigation);
