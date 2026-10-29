@@ -51,7 +51,11 @@ async function afficherGrille(urlJson, idConteneur) {
     let categorieEvaluation = '';
     let animationEvaluation = '';
     let racineCours;
-    const { course, chapter } = document.body.dataset;
+    const segments = new URL(location.href).pathname.split('/').filter(Boolean).map(decodeURIComponent);
+    const indexCours = segments.lastIndexOf('cours');
+    const { course: courseDataset, chapter: chapterDataset } = document.body.dataset;
+    const course = indexCours >= 0 ? segments[indexCours + 1] : courseDataset;
+    const chapter = indexCours >= 0 ? segments[indexCours + 2] : chapterDataset;
     if (course && chapter) {
       try {
         const racine = new URL('../../../../', document.baseURI);
@@ -110,7 +114,12 @@ async function afficherGrille(urlJson, idConteneur) {
       if (event.target === qrDialog) qrDialog.close();
     });
 
-    const reponse = await fetch(urlJson);
+    const nomFichier = location.pathname.endsWith('/evaluation_activite.html')
+      ? 'evaluation_activite.json'
+      : location.pathname.endsWith('/fin_de_sequence.html')
+        ? 'fin_de_sequence.json'
+        : urlJson;
+    const reponse = await fetch(new URL(nomFichier, document.baseURI));
     if (!reponse.ok) throw new Error('Impossible de charger la grille.');
     const data = await reponse.json();
     const entete = data.entete;

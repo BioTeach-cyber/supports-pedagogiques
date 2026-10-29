@@ -1,3 +1,14 @@
 {
-  "cours": ["ecologie","physique-chimie_4","physique-chimie_3"]
+  "cours": [
+    "Physique - Chimie 4ème",
+    "Physique - Chimie 3ème",
+    "EP1 - Biologie Humaine",
+    "EP2 - Ecologie",
+    "EG1 - Biologie Ecologie",
+    "MG1 - Biologie Ecologie 1ère",
+    "MG1 - TIM",
+    "MP7 - Biologie Humaine",
+    "MG1 - Pluri Capteurs Connectés",
+    "MG1 - Biologie Ecologie Tle"
+  ]
 }

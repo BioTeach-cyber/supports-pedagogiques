@@ -1,0 +1,199 @@
+{
+  "id": "01-Ecologie",
+  "titre": "EP2 - Ecologie",
+  "discipline": "Ecologie",
+  "classes": ["Seconde"],
+  "annees": ["2026-2027"],
+  "couleur": "#f3912b",
+  "lottie": "assets/lotties/Environnement.json",
+  "description": "",
+  "statut": "actif",
+  "chapitres": [
+    {
+      "statut": "actif",
+      "id": "Chapitre 01",
+      "page": "Chapitre 01/Chapitre.html",
+      "type": "chapitre",
+      "Periode": "01",
+      "start": "2026-09-01",
+      "end": "2026-10-09",
+      "titre": "« Qui vit ici ? » Reconnaître et classer les êtres vivants d'un territoire rural",
+      "description": "Vous réalisez un stage dans un accueil de jour pour personnes âgées installé dans un ancien logement en centre ville, proche d'un grand parc. Le parc dispose d'un grand jardin communautaire, d'une haie, d'un verger et d'une mare, et l'équipe souhaite développer des ateliers « nature et mémoire » pour ses usagers. La responsable a constaté que les résidents, souvent d'anciens agriculteurs ou jardiniers, retrouvent le plaisir de parler quand on leur montre une plante ou un animal qu'ils reconnaissent. Elle vous confie la préparation d'un jeu de cartes illustrées présentant les êtres vivants du parc. Chaque carte devra comporter le nom courant de l'espèce, son nom scientifique, une photographie et le groupe auquel elle appartient. Pour construire ce support, vous devez d'abord apprendre à observer les êtres vivants, à relever leurs caractéristiques, à utiliser une clé de détermination et à les ranger dans les grands groupes utilisés par les scientifiques. Vous devrez également comprendre dans quel milieu chaque espèce vit, car les animateurs veulent pouvoir dire aux usagers où retrouver chaque plante ou chaque animal lors des promenades dans le parc.",
+      "couleur": null,
+      "lottie": "assets/lotties/Cladogramme.json",
+
+      "evaluationFinale": {
+          "statut": "actif",
+          "type": "Fin de séquence",
+          "start": "2026-10-12",
+          "end": "2026-10-16",
+          "lottie": "assets/lotties/fin_sequence.json",
+          "component": "",
+          "page": "Chapitre 01/evaluation/fin_de_sequence.html"
+      },
+
+      "evaluationsSecondaires": [
+        {
+          "statut": "actif",
+          "type": "Activités",
+          "start": "2026-10-09",
+          "end": null,
+          "lottie": "assets/lotties/activity.json",
+          "component": "",
+          "page": "Chapitre 01/evaluation/evaluation_activite.html"
+        }
+      ],
+
+      "activité": [
+        {
+          "statut": "actif",
+          "id": "activité 01",
+          "titre": "Ouvrez l'œil ! Premières observations au parc",
+          "lottie": "assets/lotties/Numbers/01.json",
+          "page": "Chapitre 01/cours/Activité_01.html",
+          "objectifs pédagogiques": [
+            { "id": "obj1", "libelle": "Situer l'être humain dans la classification de Whittaker et justifier ce classement." },
+            { "id": "obj02", "libelle": "Associer chaque espèce identifiée au milieu de vie dans lequel elle a été observée." }
+          ]
+        },
+        {
+          "statut": "actif",
+          "id": "activité 02",
+          "titre": "Un seul nom pour tout le monde !",
+          "lottie": "assets/lotties/Numbers/02.json",
+          "page": "Chapitre 01/cours/Activité_02.html",
+          "objectifs pédagogiques": [
+            { "id": "obj03", "libelle": "Distinguer le nom vernaculaire du nom scientifique d'une espèce." },
+            { "id": "obj04", "libelle": "Expliquer l'intérêt d'un nom scientifique commun à tous les pays." }
+          ]
+        },
+        {
+          "statut": "actif",
+          "id": "activité 03",
+          "titre": "Mène l'enquête : qui es-tu, petite bête ?",
+          "lottie": "assets/lotties/Numbers/03.json",
+          "page": "Chapitre 01/cours/Activité_03.html",
+          "objectifs pédagogiques": [
+            { "id": "obj05", "libelle": "Utiliser une clé de détermination dichotomique pour identifier un végétal ou un animal." },
+            { "id": "obj06", "libelle": "Construire une clé de détermination simple à partir d'un petit nombre d'espèces." }
+          ]
+        },
+        {
+          "statut": "actif",
+          "id": "activité 04",
+          "titre": "Cinq grandes familles pour ranger le vivant",
+          "lottie": "assets/lotties/Numbers/04.json",
+          "page": "Chapitre 01/cours/Activité_04.html",
+          "objectifs pédagogiques": [
+            { "id": "obj07", "libelle": "Décrire les cinq règnes de la classification de Whittaker." },
+            { "id": "obj08", "libelle": "Classer des végétaux et des animaux du territoire dans la classification de Whittaker." }
+          ]
+        },
+        {
+          "statut": "actif",
+          "id": "activité 05",
+          "titre": "L'être humain aussi a sa place, et chacun a son coin de parc",
+          "lottie": "assets/lotties/Numbers/05.json",
+          "page": "Chapitre 01/cours/Activité_05.html",
+          "objectifs pédagogiques": [
+            { "id": "obj09", "libelle": "Situer l'être humain dans la classification de Whittaker et justifier ce classement." },
+            { "id": "obj10", "libelle": "Associer chaque espèce identifiée au milieu de vie dans lequel elle a été observée." }
+          ]
+        }
+      ]
+    },
+    {
+      "statut": "actif",
+      "id": "Chapitre 02",
+      "page": "Chapitre 02/Chapitre.html",
+      "type": "chapitre",
+      "Periode": "02",
+      "start": null,
+      "end": null,
+      "titre": "« Comment les êtres vivants vivent-ils ensemble ? » Interactions, relations et occupation du territoire",
+      "description": "La commune rurale dans laquelle vous êtes en formation souhaite aménager un ancien grand terrain communal laissé à l'abandon depuis une dizaine d'années. Trois projets s'opposent : certains habitants veulent y installer un parking goudronné, d'autres un jardin partagé ouvert aux familles, d'autres encore souhaitent laisser la nature reprendre ses droits en créant un espace de promenade. Le maire organise une réunion publique et demande au centre social, où vous effectuez votre stage, d'animer un temps d'information pour aider les habitants à comprendre ce qui se joue sur ce terrain. On vous confie la préparation de cette intervention. Vous devrez expliquer avec des mots simples comment les plantes, les animaux, le sol, l'eau et le climat dépendent les uns des autres sur ce terrain, comment les espèces se nourrissent les unes des autres, s'entraident ou se font concurrence, et comment elles ont réussi à recoloniser ce lieu abandonné. Votre intervention devra aider les habitants à mesurer les conséquences de chaque projet sur la vie du terrain, et à faire un choix durable pour la commune.",
+      "couleur": null,
+      "lottie": "assets/lotties/Reseau_trophic.json",
+
+      "evaluationFinale": {
+          "statut": "actif",
+          "type": "Fin de séquence",
+          "start": null,
+          "end": null,
+          "lottie": "assets/lotties/fin_sequence.json",
+          "component": "",
+          "page": "Chapitre 02/evaluation/fin_de_sequence.html"
+      },
+
+      "evaluationsSecondaires": [
+        {
+          "statut": "actif",
+          "type": "Activités",
+          "start": null,
+          "end": null,
+          "lottie": "assets/lotties/activity.json",
+          "component": "",
+          "page": "Chapitre 02/evaluation/evaluation_activite.html"
+        }
+      ],
+
+      "activité": [
+        {
+          "statut": "actif",
+          "id": "activité 01",
+          "titre": "Ouvrez l'œil ! Premières observations au parc",
+          "lottie": "assets/lotties/Numbers/01.json",
+          "page": "Chapitre 02/cours/Activité_01.html",
+          "objectifs pédagogiques": [
+            { "id": "obj01", "libelle": "Situer l'être humain dans la classification de Whittaker et justifier ce classement." },
+            { "id": "obj02", "libelle": "Associer chaque espèce identifiée au milieu de vie dans lequel elle a été observée." }
+          ]
+        },
+        {
+          "statut": "actif",
+          "id": "activité 02",
+          "titre": "Un seul nom pour tout le monde !",
+          "lottie": "assets/lotties/Numbers/02.json",
+          "page": "Chapitre 02/cours/Activité_02.html",
+          "objectifs pédagogiques": [
+            { "id": "obj03", "libelle": "Distinguer le nom vernaculaire du nom scientifique d'une espèce." },
+            { "id": "obj04", "libelle": "Expliquer l'intérêt d'un nom scientifique commun à tous les pays." }
+          ]
+        },
+        {
+          "statut": "actif",
+          "id": "activité 03",
+          "titre": "Mène l'enquête : qui es-tu, petite bête ?",
+          "lottie": "assets/lotties/Numbers/03.json",
+          "page": "Chapitre 02/cours/Activité_03.html",
+          "objectifs pédagogiques": [
+            { "id": "obj05", "libelle": "Utiliser une clé de détermination dichotomique pour identifier un végétal ou un animal." },
+            { "id": "obj06", "libelle": "Construire une clé de détermination simple à partir d'un petit nombre d'espèces." }
+          ]
+        },
+        {
+          "statut": "actif",
+          "id": "activité 04",
+          "titre": "Cinq grandes familles pour ranger le vivant",
+          "lottie": "assets/lotties/Numbers/04.json",
+          "page": "Chapitre 02/cours/Activité_04.html",
+          "objectifs pédagogiques": [
+            { "id": "obj07", "libelle": "Décrire les cinq règnes de la classification de Whittaker." },
+            { "id": "obj08", "libelle": "Classer des végétaux et des animaux du territoire dans la classification de Whittaker." }
+          ]
+        },
+        {
+          "statut": "actif",
+          "id": "activité 05",
+          "titre": "L'être humain aussi a sa place, et chacun a son coin de parc",
+          "lottie": "assets/lotties/Numbers/05.json",
+          "page": "Chapitre 02/cours/Activité_05.html",
+          "objectifs pédagogiques": [
+            { "id": "obj09", "libelle": "Situer l'être humain dans la classification de Whittaker et justifier ce classement." },
+            { "id": "obj10", "libelle": "Associer chaque espèce identifiée au milieu de vie dans lequel elle a été observée." }
+          ]
+        }
+      ]
+    }
+  ]
+}

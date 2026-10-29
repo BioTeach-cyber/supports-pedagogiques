@@ -1,0 +1,47 @@
+{
+  "entete": {
+    "examen": "Devoir Bac Pro SAPAT",
+    "titre": "",
+    "epreuve": "",
+    "session": "2026-2027",
+    "etablissement": "AgroTech Le Cleusmeur",
+    "coefficient": 1
+  },
+  "niveaux": ["- -", "-", "+", "+ +"],
+  "capacites": [
+    {
+      "code": "",
+      "intitule": "",
+      "criteres": [
+        {
+          "intitule": "",
+          "indicateurs": [
+            "",
+            ""
+          ]
+        },
+        {
+          "intitule": "",
+          "indicateurs": [
+            "",
+            ""
+          ]
+        },
+        {
+          "intitule": "",
+          "indicateurs": [
+            "",
+            ""
+          ]
+        },
+        {
+          "intitule": "",
+          "indicateurs": [
+            "",
+            ""
+          ]
+        }
+      ]
+    }
+  ]
+}

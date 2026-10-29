@@ -1,0 +1,52 @@
+{
+  "entete": {
+    "examen": "Examen Bac Pro SAPAT",
+    "titre": "« Qui vit ici ? » Reconnaître et classer les êtres vivants d'un territoire rural",
+    "epreuve": "EP2 - Ecologie",
+    "session": "2026-2027",
+    "etablissement": "AgroTech Le Cleusmeur",
+    "coefficient": 0.5
+  },
+  "niveaux": ["- -", "-", "+", "+ +"],
+  "capacites": [
+    {
+      "code": "EP2",
+      "intitule": "Identifier les caractéristiques écologiques d'un territoire rural",
+      "criteres": [
+        {
+          "intitule": "Décrire l’organisation du vivant à l’aide de critères d’identification des êtres vivants",
+          "indicateurs": [
+            "Relever des critères d'observation chez un végétal ou un animal (forme, couleur, nombre de parties, présence ou absence d'un organe).",
+            "Décrire un être vivant à l'aide d'un vocabulaire scientifique adapté.",
+            "Distinguer le nom vernaculaire du nom scientifique d'une espèce.",
+            "Expliquer l'intérêt d'un nom scientifique commun à tous les pays.",
+            "Utiliser une clé de détermination dichotomique pour identifier un végétal ou un animal.",
+            "Construire une clé de détermination simple à partir d'un petit nombre d'espèces.",
+            "Décrire les cinq règnes de la classification de Whittaker.",
+            "Classer des végétaux et des animaux du territoire dans la classification de Whittaker.",
+            "Situer l'être humain dans la classification de Whittaker et justifier ce classement.",
+            "Associer chaque espèce identifiée au milieu de vie dans lequel elle a été observée."
+          ]
+        },
+        {
+          "intitule": "Décrire les interactions entre les êtres vivants et le territoire dans un contexte de durabilité",
+          "indicateurs": [
+            "Non évalué"
+          ]
+        },
+        {
+          "intitule": "Décrire des relations entre les êtres vivants du territoire dans un contexte de durabilité",
+          "indicateurs": [
+            "Non évalué"
+          ]
+        },
+        {
+          "intitule": "Décrire des stratégies d’occupation du territoire par les êtres vivants dans un contexte de durabilité",
+          "indicateurs": [
+            "Non évalué"
+          ]
+        }
+      ]
+    }
+  ]
+}

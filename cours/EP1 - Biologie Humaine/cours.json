@@ -1,0 +1,200 @@
+{
+  "id": "01-Biologie Humaine",
+  "titre": "EP1 - Biologie Humaine",
+  "discipline": "Biologie Humaine",
+  "classes": ["Seconde"],
+  "annees": ["2026-2027"],
+  "couleur": "#e7708c",
+  "lottie": "assets/lotties/embryon.json",
+  "description": "",
+  "statut": "actif",
+
+  "chapitres": [
+    {
+      "statut": "inactif",
+      "id": "Chapitre 01",
+      "page": "Chapitre 01/Chapitre.html",
+      "type": "chapitre",
+      "Periode": "01",
+      "start": "",
+      "end": "",
+      "titre": "L'organisation du corps humain",
+      "description": "",
+      "couleur": null,
+      "lottie": "assets/lotties/.json",
+
+      "evaluationFinale": {
+          "statut": "inactif",
+          "type": "Fin de séquence",
+          "start": "",
+          "end": "",
+          "lottie": "assets/lotties/fin_sequence.json",
+          "component": "",
+          "page": "Chapitre 01/evaluation/fin_de_sequence.html"
+      },
+
+      "evaluationsSecondaires": [
+        {
+          "statut": "inactif",
+          "type": "Activités",
+          "start": "",
+          "end": "",
+          "lottie": "assets/lotties/activity.json",
+          "component": "",
+          "page": "Chapitre 01/evaluation/evaluation_activite.html"
+        }
+      ],
+
+      "activité": [
+        {
+          "statut": "inactif",
+          "id": "activité 01",
+          "titre": "",
+          "lottie": "assets/lotties/Numbers/01.json",
+          "page": "Chapitre 01/cours/Activité_01.html",
+          "objectifs pédagogiques": [
+            { "id": "obj01", "libelle": "" },
+            { "id": "obj02", "libelle": "" }
+          ]
+        },
+        {
+          "statut": "inactif",
+          "id": "activité 02",
+          "titre": "",
+          "lottie": "assets/lotties/Numbers/02.json",
+          "page": "Chapitre 01/cours/Activité_02.html",
+          "objectifs pédagogiques": [
+            { "id": "obj03", "libelle": "" },
+            { "id": "obj04", "libelle": "" }
+          ]
+        },
+        {
+          "statut": "inactif",
+          "id": "activité 03",
+          "titre": "",
+          "lottie": "assets/lotties/Numbers/03.json",
+          "page": "Chapitre 01/cours/Activité_03.html",
+          "objectifs pédagogiques": [
+            { "id": "obj05", "libelle": "Utiliser une clé de détermination dichotomique pour identifier un végétal ou un animal." },
+            { "id": "obj06", "libelle": "Construire une clé de détermination simple à partir d'un petit nombre d'espèces." }
+          ]
+        },
+        {
+          "statut": "inactif",
+          "id": "activité 04",
+          "titre": "",
+          "lottie": "assets/lotties/Numbers/04.json",
+          "page": "Chapitre 01/cours/Activité_04.html",
+          "objectifs pédagogiques": [
+            { "id": "obj07", "libelle": "" },
+            { "id": "obj08", "libelle": "" }
+          ]
+        },
+        {
+          "statut": "inactif",
+          "id": "activité 05",
+          "titre": "",
+          "lottie": "assets/lotties/Numbers/05.json",
+          "page": "Chapitre 01/cours/Activité_05.html",
+          "objectifs pédagogiques": [
+            { "id": "obj09", "libelle": "" },
+            { "id": "obj10", "libelle": "" }
+          ]
+        }
+      ]
+    },
+    {
+      "statut": "inactif",
+      "id": "Chapitre 02",
+      "page": "Chapitre 02/Chapitre.html",
+      "type": "chapitre",
+      "Periode": "",
+      "start": "",
+      "end": "",
+      "titre": "",
+      "description": "",
+      "couleur": null,
+      "lottie": "assets/lotties/.json",
+
+      "evaluationFinale": {
+          "statut": "inactif",
+          "type": "Fin de séquence",
+          "start": "",
+          "end": "",
+          "lottie": "assets/lotties/fin_sequence.json",
+          "component": "",
+          "page": "Chapitre 02/evaluation/fin_de_sequence.html"
+      },
+
+      "evaluationsSecondaires": [
+        {
+          "statut": "inactif",
+          "type": "Activités",
+          "start": "",
+          "end": "",
+          "lottie": "assets/lotties/activity.json",
+          "component": "",
+          "page": "Chapitre 02/evaluation/evaluation_activite.html"
+        }
+      ],
+
+      "activité": [
+        {
+          "statut": "inactif",
+          "id": "activité 01",
+          "titre": "",
+          "lottie": "assets/lotties/Numbers/01.json",
+          "page": "Chapitre 02/cours/Activité_01.html",
+          "objectifs pédagogiques": [
+            { "id": "obj01", "libelle": "" },
+            { "id": "obj02", "libelle": "" }
+          ]
+        },
+        {
+          "statut": "inactif",
+          "id": "activité 02",
+          "titre": "",
+          "lottie": "assets/lotties/Numbers/02.json",
+          "page": "Chapitre 02/cours/Activité_02.html",
+          "objectifs pédagogiques": [
+            { "id": "obj03", "libelle": "" },
+            { "id": "obj04", "libelle": "" }
+          ]
+        },
+        {
+          "statut": "inactif",
+          "id": "activité 03",
+          "titre": "",
+          "lottie": "assets/lotties/Numbers/03.json",
+          "page": "Chapitre 02/cours/Activité_03.html",
+          "objectifs pédagogiques": [
+            { "id": "obj05", "libelle": "Utiliser une clé de détermination dichotomique pour identifier un végétal ou un animal." },
+            { "id": "obj06", "libelle": "Construire une clé de détermination simple à partir d'un petit nombre d'espèces." }
+          ]
+        },
+        {
+          "statut": "inactif",
+          "id": "activité 04",
+          "titre": "",
+          "lottie": "assets/lotties/Numbers/04.json",
+          "page": "Chapitre 02/cours/Activité_04.html",
+          "objectifs pédagogiques": [
+            { "id": "obj07", "libelle": "" },
+            { "id": "obj08", "libelle": "" }
+          ]
+        },
+        {
+          "statut": "inactif",
+          "id": "activité 05",
+          "titre": "",
+          "lottie": "assets/lotties/Numbers/05.json",
+          "page": "Chapitre 02/cours/Activité_05.html",
+          "objectifs pédagogiques": [
+            { "id": "obj09", "libelle": "" },
+            { "id": "obj10", "libelle": "" }
+          ]
+        }
+      ]
+    }
+  ]
+}

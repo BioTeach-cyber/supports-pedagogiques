@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#b7b7b7">
+  <title>Activité — Mes ressources pédagogiques</title>
+  <link rel="stylesheet" href="../../../../assets/css/cours.css">
+  <link rel="stylesheet" href="../../../../assets/component/activite.css">
+  <script src="../../../../assets/js/lib/lottie.min.js" defer></script>
+  <script src="../../../../assets/js/lib/qrcode.min.js" defer></script>
+  <script src="../../../../assets/component/contexte-professionnel.js" defer></script>
+  <script src="../../../../assets/component/problematique.js" defer></script>
+  <script src="../../../../assets/component/questionnements-intermediaires.js" defer></script>
+  <script src="../../../../assets/component/documents-lycee.js" defer></script>
+  <script src="../../../../assets/component/activite.js" defer></script>
+</head>
+<body data-course="ecologie">
+  <div class="site-shell">
+    <header class="page-header" id="page-header">
+      <a class="brand-mark" id="course-link" href="../../cours/?cours=ecologie" aria-label="Retour au réseau du cours">
+        <span class="brand-animation" id="course-lottie" aria-hidden="true"></span>
+      </a>
+      <h1 id="activity-title">Chargement de l’activité…</h1>
+      <button class="qr-wrap" id="qr-open" type="button" aria-label="Agrandir le QR code de cette page" aria-haspopup="dialog">
+        <span id="page-qr" class="page-qr" aria-hidden="true"></span>
+      </button>
+      <dialog class="qr-dialog" id="qr-dialog" aria-label="QR code de cette page">
+        <button class="qr-dialog-close" id="qr-close" type="button" aria-label="Fermer le QR code">×</button>
+        <div id="page-qr-large" class="page-qr-large" aria-label="QR code agrandi"></div>
+        <p>Scannez pour ouvrir cette page</p>
+      </dialog>
+    </header>
+    <main id="activity-content" class="page-content activity-page-content">
+      <div data-component="contexte-professionnel" data-title="Contexte professionnel">
+        <script type="text/markdown">
+Vous effectuez un stage dans un **accueil de jour pour personnes âgées**, installé près d’un grand parc.
+
+La responsable souhaite développer des ateliers *« nature et mémoire »*. Elle a remarqué que les résidents aiment reconnaître les plantes et les animaux qu’ils ont connus.
+
+Votre mission : préparer un jeu de cartes illustrées sur les êtres vivants du parc. Pour cela, vous devrez apprendre à les observer, à relever leurs caractéristiques et à identifier leur milieu de vie.
+        </script>
+      </div>
+      <div data-component="problematique" data-title="Problématique">
+        <script type="text/markdown">
+Comment aider les résidents à reconnaître les êtres vivants du parc et à les retrouver dans leur milieu de vie ?
+        </script>
+      </div>
+      <div data-component="questionnements-intermediaires" data-title="Questionnements intermédiaires">
+        <script type="application/json">
+[
+  { "question": "Quelles caractéristiques permettent de distinguer les êtres vivants observés au parc ?" },
+  { "question": "Dans quels milieux de vie les différentes espèces ont-elles été observées ?" }
+]
+        </script>
+      </div>
+      <div data-component="documents-lycee" data-title="Documents">
+          <div data-document data-type="texte" data-title="Document texte">
+  <div data-document-content>
+Un texte en **Markdown**, avec une *mise en forme* et des listes :
+
+- Premier élément
+- Deuxième élément
+  </div>
+</div>
+
+<div data-document data-type="tableau" data-title="Tableau d’observations">
+  <div data-document-content>
+| Espèce | Caractéristique | Milieu |
+| --- | --- | --- |
+| À identifier | Feuilles dentées | Haie |
+| À identifier | Vit dans l’eau | Mare |
+  </div>
+</div>
+
+<div data-document data-type="video" data-title="Vidéo d’observation"
+     data-src="https://youtu.be/fhtTr6chloo"
+     data-poster="../../../../assets/images/affiche.jpg">
+  <div data-transcription>
+La vidéo montre une **mare** et les espèces qui y vivent.
+  </div>
+</div>
+
+<div data-document data-type="audio" data-title="Témoignage audio"
+     data-src="https://app.notion.com/p/vapremont/M-ne-l-enqu-te-qui-es-tu-petite-b-te-c19dca0d1c4282739c75811badcd4c5f?v=35adca0d1c428070b0d7000cb13b0c39&source=copy_link#3dedca0d1c4280e985b2f41aae7c663a">
+  <div data-transcription data-title="Lire la transcription">
+« Je venais souvent me promener près de cette mare… »
+  </div>
+</div>
+
+<div data-document data-type="image matricielle" data-title="Photographie"
+     data-src="../../../../assets/images/vignettes/EP2-Ecologie.jpg"
+     data-alt="Photographie de la mare du parc">
+</div>
+
+<div data-document data-type="image vectorielle" data-title="Schéma SVG"
+     data-src="../../../../maquette_site.svg"
+     data-alt="Schéma des milieux de vie">
+</div>
+
+<div data-document data-type="application" data-title="Application interactive"
+     data-src="https://bioteach-cyber.github.io/outils-pedagogiques/Physique-Chimie/Monopoly.html">
+</div>
+
+<div data-document data-type="lien" data-title="Ressource complémentaire"
+     data-src="https://www.filets-de-peche.fr/109-bichette-demontable"
+     data-label="Consulter la ressource">
+</div>
+
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="site-footer"><a id="footer-link" href="../../Chapitre.html">Retour au chapitre</a><span>Ressources pédagogiques</span></footer>
+  </div>
+</body>
+</html>
