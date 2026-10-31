@@ -138,8 +138,8 @@
       nav.append(link);
       mountLottie(icon, activity.lottie, color);
     });
-    const previous = activities[currentIndex - 1];
-    const next = activities[currentIndex + 1];
+    const previous = currentIndex > 0 ? activities[currentIndex - 1] : undefined;
+    const next = currentIndex >= 0 && currentIndex < activities.length - 1 ? activities[currentIndex + 1] : undefined;
     const controls = element('div', 'activity-navigation');
     const chapterHref = pageUrl(courseRoot, chapter.page);
     if (previous) {
@@ -168,10 +168,12 @@
     if (!chapter) throw new Error(`Aucun chapitre ne correspond au dossier « ${chapterId} ».`);
     const activities = chapter.activité || chapter.activites || [];
     const pathname = decodeURIComponent(location.pathname);
-    const currentIndex = activities.findIndex((activity) => pathname.endsWith(`/${activity.page}`));
-    if (currentIndex < 0) throw new Error('Cette activité est introuvable dans les données du cours.');
+    const activityIndex = activities.findIndex((activity) => pathname.endsWith(`/${activity.page}`));
+    if (activityIndex < 0) throw new Error('Cette activité est introuvable dans les données du cours.');
 
-    const activity = activities[currentIndex];
+    const activity = activities[activityIndex];
+    const activeActivities = activities.filter((item) => item?.statut === 'actif');
+    const currentIndex = activeActivities.indexOf(activity);
     const color = chapter.couleur || course.couleur || '#b7b7b7';
     document.documentElement.style.setProperty('--course-color', color);
     header.style.setProperty('--course-color', color);
@@ -181,7 +183,7 @@
     document.getElementById('course-link').href = new URL(`cours/?cours=${encodeURIComponent(courseId)}`, ROOT).href;
     document.getElementById('footer-link').href = pageUrl(courseRoot, chapter.page);
     await mountLottie(document.getElementById('course-lottie'), chapter.lottie || course.lottie, color);
-    const navigation = renderActivityNavigation(activities, currentIndex, chapter, courseRoot, color);
+    const navigation = renderActivityNavigation(activeActivities, currentIndex, chapter, courseRoot, color);
     content.append(navigation.nav, navigation.controls);
     content.append(renderObjectives(activity));
     Array.from(content.querySelectorAll('[data-activity-block]')).forEach((block) => content.append(block));

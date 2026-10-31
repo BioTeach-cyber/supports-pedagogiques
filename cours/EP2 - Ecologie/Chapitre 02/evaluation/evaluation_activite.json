@@ -1,44 +1,46 @@
 {
   "entete": {
-    "examen": "Devoir Bac Pro SAPAT",
-    "titre": "",
-    "epreuve": "",
+    "examen": "Examen Bac Pro SAPAT",
+    "titre": "« Comment les êtres vivants vivent-ils ensemble ? » Interactions, relations et occupation du territoire",
+    "epreuve": "EP2 - Ecologie",
     "session": "2026-2027",
     "etablissement": "AgroTech Le Cleusmeur",
-    "coefficient": 1
+    "coefficient": 0.5
   },
   "niveaux": ["- -", "-", "+", "+ +"],
   "capacites": [
     {
-      "code": "",
-      "intitule": "",
+      "code": "EP2",
+      "intitule": "Identifier les caractéristiques écologiques d'un territoire rural",
       "criteres": [
         {
-          "intitule": "",
+          "intitule": "Décrire l’organisation du vivant à l’aide de critères d’identification des êtres vivants",
           "indicateurs": [
-            "",
-            ""
+            "Définir les notions de biotope, biocénose et écosystème.",
+            "Distinguer les éléments du biotope et de la biocénose.",
+            "Distinguer les niveaux trophiques (producteurs, consommateurs, décomposeurs)."
           ]
         },
         {
-          "intitule": "",
+          "intitule": "Décrire les interactions entre les êtres vivants et le territoire dans un contexte de durabilité",
           "indicateurs": [
-            "",
-            ""
+            "Décrire l'action du sol, de l'eau et du climat sur la répartition des êtres vivants.",
+            "Décrire les actions des êtres vivants sur leur milieu de vie."
           ]
         },
         {
-          "intitule": "",
+          "intitule": "Décrire des relations entre les êtres vivants du territoire dans un contexte de durabilité",
           "indicateurs": [
-            "",
-            ""
+            "Construire une chaîne alimentaire puis un réseau trophique à partir d'espèces du territoire.",
+            "Définir les relations de prédation, compétition, parasitisme, symbiose et coopération.",
+            "Identifier le type de relation existant entre deux espèces à partir d'une situation décrite."
           ]
         },
         {
-          "intitule": "",
+          "intitule": "Décrire des stratégies d’occupation du territoire par les êtres vivants dans un contexte de durabilité",
           "indicateurs": [
-            "",
-            ""
+            "Comparer les contributions respectives de la reproduction sexuée et de la multiplication végétative dans l'occupation de l'espace.",
+            "Expliquer comment la dispersion des espèces et la biodiversité contribuent à la durabilité d'un écosystème."
           ]
         }
       ]
