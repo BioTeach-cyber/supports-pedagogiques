@@ -60,6 +60,13 @@
 .activity-context-body > :last-child, .activity-problem-body > :last-child { margin-bottom: 0; }
 .activity-context-body blockquote, .activity-problem-body blockquote { margin: 16px 0; padding-left: 16px; border-left: 3px solid var(--course-color); color: var(--muted); }
 .activity-context-body a, .activity-problem-body a { color: var(--ink); text-underline-offset: 3px; }
+.activity-problem-body h3, .activity-problem-body h4, .activity-problem-body h5 { margin: 1.5em 0 .5em; }
+.activity-problem-formula { overflow-x: auto; margin: 18px 0; text-align: center; }
+.activity-problem-formula math { font-size: 1.35em; }
+.activity-problem-table-wrap { overflow-x: auto; margin: 18px 0; }
+.activity-problem-table { width: 100%; border-collapse: collapse; }
+.activity-problem-table th, .activity-problem-table td { min-width: 120px; padding: 11px 13px; border: 1px solid var(--line); text-align: left; }
+.activity-problem-table th { background: color-mix(in srgb, var(--course-color) 12%, white); }
 .activity-question-list { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
 .activity-question-item { display: grid; grid-template-columns: 42px minmax(0, 1fr); align-items: center; gap: 14px; }
 .activity-question-lottie { display: block; width: 42px; height: 42px; }

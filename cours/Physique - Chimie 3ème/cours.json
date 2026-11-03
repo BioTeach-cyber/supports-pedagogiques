@@ -1,6 +1,6 @@
 {
-  "id": "01-physique-chimie",
-  "titre": "Physique-Chimie",
+  "id": "01-physique-chimie-3eme",
+  "titre": "Physique-Chimie 3ème",
   "discipline": "Physique-Chimie",
   "classes": ["Troisième"],
   "annees": ["2026-2027"],
@@ -69,14 +69,14 @@
       ]
     },
     {
-      "statut": "inactif",
+      "statut": "actif",
       "id": "Chapitre 11",
       "page": "Chapitre 11/Chapitre.html",
       "type": "chapitre",
       "Periode": "01",
       "start": "null",
       "end": "null",
-      "titre": "",
+      "titre": "En mouvement ! : vitesse, trajectoire et point de vue",
       "description": "",
       "couleur": "#f3912b",
       "lottie": "assets/lotties/run.json",
@@ -104,14 +104,14 @@
           ]
         },
         {
-          "statut": "inactif",
+          "statut": "actif",
           "id": "activité 02",
-          "titre": "",
+          "titre": "À quelle vitesse roulait-il ?",
           "lottie": "assets/lotties/Numbers/02.json",
           "page": "Chapitre 11/cours/Activité_02.html",
           "objectifs pédagogiques": [
-            { "id": "obj03", "libelle": "" },
-            { "id": "obj04", "libelle": "" }
+            { "id": "obj03", "libelle": "Calculer une vitesse moyenne (v = d / t)" },
+            { "id": "obj04", "libelle": "Convertir des vitesses entre km/h et m/s" }
           ]
         },
         {

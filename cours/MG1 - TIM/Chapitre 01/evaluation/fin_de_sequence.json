@@ -1,8 +1,8 @@
 {
   "entete": {
     "examen": "Devoir Bac Pro SAPAT",
-    "titre": "",
-    "epreuve": "",
+    "titre": "Le diabète dans le finistère : zoom sur Haut Léon Communauté",
+    "epreuve": "MG1 TIM",
     "session": "2026-2027",
     "etablissement": "AgroTech Le Cleusmeur",
     "coefficient": 1
@@ -10,35 +10,51 @@
   "niveaux": ["- -", "-", "+", "+ +"],
   "capacites": [
     {
-      "code": "",
-      "intitule": "",
+      "code": "C1.2",
+      "intitule": "Étudier un phénomène social ou professionnel à l’aide de données notamment en nombre.",
       "criteres": [
         {
-          "intitule": "",
+          "intitule": "Analyse du contexte et de la problématique",
           "indicateurs": [
-            "",
-            ""
+            "Reformuler la problématique par écrit, en une phrase compréhensible sans explication complémentaire. ",
+            "Identifier le destinataire du travail et le besoin auquel il répond.",
+            "Lister les variables (colonnes) nécessaires pour répondre à la problématique.",
+            "Délimiter le périmètre de l'étude (territoire, période, catégories retenues) et le faire apparaître dans le rapport. ",
+            "Sélectionner un ou plusieurs indicateurs clés cohérents avec la problématique annoncée.",
+            "Titrer la carte en faisant apparaître le phénomène étudié et le territoire concerné.",
+            "Identifier les objets géographiques à représenter au regard de la problématique."
           ]
         },
         {
-          "intitule": "",
+          "intitule": "Traitement des données adapté au contexte et à la problématique étudiés",
           "indicateurs": [
-            "",
-            ""
+            "Nommer les étapes appliquées de façon compréhensible, rendant la transformation lisible et reproductible.",
+            "Présenter un fichier sans erreur résiduelle visible.",
+            "Calculer un indicateur de synthèse pertinent à l'aide d'une mesure.",
+            "Regrouper les données selon une ou plusieurs catégories pertinentes pour le phénomène étudié.",
+            "Sauvegarder le rendu dans le format et sous le nom de fichier demandés.",
+            "Importer un tableau de données et corriger les objets mal localisés.",
+            "Organiser l'information en calques nommés de façon explicite.",
+            "Renseigner pour chaque objet les attributs utiles "
           ]
         },
         {
-          "intitule": "",
+          "intitule": "Exposition des données adaptée au contexte et représentative de la problématique étudiée",
           "indicateurs": [
-            "",
-            ""
-          ]
-        },
-        {
-          "intitule": "",
-          "indicateurs": [
-            "",
-            ""
+            "Choisir un type de visuel adapté au message.",
+            "Titrer chaque visuel de manière explicite, compréhensible sans explication orale.",
+            "Légender les axes et les séries en indiquant les unités de mesure.",
+            "Appliquer un format de nombre lisible.",
+            "Trier les données du visuel selon un ordre porteur de sens.",
+            "Respecter les règles de lisibilité. ",
+            "Organiser les visuels selon une hiérarchie de lecture.",
+            "Produire un tableau de bord complet et opérationnel, sans visuel vide, tronqué ou en erreur.",
+            "Formuler par écrit une réponse explicite à la problématique posée.",
+            "Appuyer la conclusion écrite sur au moins deux données chiffrées issues du rapport. ",
+            "Différencier les catégories par la couleur ou l'icône, de manière cohérente. ",
+            "Produire une carte lisible",
+            "Interpréter par écrit la répartition observée",
+            "Partager la carte avec un lien de consultation fonctionnel."
           ]
         }
       ]

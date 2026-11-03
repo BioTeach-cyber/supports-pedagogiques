@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#b7b7b7">
+  <title>Activité — Mes ressources pédagogiques</title>
+  <link rel="stylesheet" href="../../../../assets/css/cours.css">
+  <link rel="stylesheet" href="../../../../assets/component/activite.css">
+  <script src="../../../../assets/js/lib/lottie.min.js" defer></script>
+  <script src="../../../../assets/js/lib/qrcode.min.js" defer></script>
+  <script src="../../../../assets/component/contexte-professionnel.js" defer></script>
+  <script src="../../../../assets/component/problematique.js" defer></script>
+  <script src="../../../../assets/component/questionnements-intermediaires.js" defer></script>
+  <script src="../../../../assets/component/documents-lycee.js" defer></script>
+  <script src="../../../../assets/component/bibliotheque-exercice.js" defer></script>
+  <script src="../../../../assets/component/activite.js" defer></script>
+</head>
+  <body data-course="Physique - Chimie 3ème">
+  <div class="site-shell">
+    <header class="page-header" id="page-header">
+      <a class="brand-mark" id="course-link" href="../../../../cours/?cours=Physique%20-%20Chimie%203ème" aria-label="Retour au réseau du cours">
+        <span class="brand-animation" id="course-lottie" aria-hidden="true"></span>
+      </a>
+      <h1 id="activity-title">Chargement de l’activité…</h1>
+      <button class="qr-wrap" id="qr-open" type="button" aria-label="Agrandir le QR code de cette page" aria-haspopup="dialog">
+        <span id="page-qr" class="page-qr" aria-hidden="true"></span>
+      </button>
+      <dialog class="qr-dialog" id="qr-dialog" aria-label="QR code de cette page">
+        <button class="qr-dialog-close" id="qr-close" type="button" aria-label="Fermer le QR code">×</button>
+        <div id="page-qr-large" class="page-qr-large" aria-label="QR code agrandi"></div>
+        <p>Scannez pour ouvrir cette page</p>
+      </dialog>
+    </header>
+    <main id="activity-content" class="page-content activity-page-content">
+      <div data-component="contexte-professionnel" data-title="Contexte">
+        <script type="text/markdown">
+L'enquête avance. Les gendarmes ont mesuré la trace de freinage sur la route : 18 mètres en 3 secondes. Ils ont aussi récupéré les données du compteur communal installé 900 mètres avant le lieu de l'accident. Le scooter y est passé 1 minute et 30 secondes avant le freinage. Avec ces éléments, les gendarmes vont pouvoir estimer la vitesse du scooter et vérifier s'il respectait la limitation à 50 km/h.
+        </script>
+      </div>
+
+      <section class="activity-section" data-activity-position>
+        <h2 class="activity-section-title">Application</h2>
+        <iframe class="activity-document-application" data-auto-height src="../../../../applications/physique%20-%20chimie/vitesse.html" title="Application interactive sur la vitesse moyenne" loading="lazy" sandbox="allow-scripts allow-forms"></iframe>
+      </section>
+
+      <div data-component="problematique" data-title="Ce que je dois retenir">
+        <script type="text/markdown">
+          ## Calculer une vitesse moyenne
+
+
+La **vitesse moyenne** indique **la distance parcourue** par un objet pendant **une durée donnée**.
+
+## 📐 La formule
+
+$$v = \frac{d}{t}$$
+
+| Lettre | Signification | Unité possible |
+|:---:|:---|:---|
+| **v** | vitesse moyenne | m/s ou km/h |
+| **d** | distance parcourue | m ou km |
+| **t** | temps (durée) | s ou h |
+
+## ⚠️ Attention aux unités
+
+Les unités doivent être **cohérentes** :
+
+- distance en **mètres (m)** et temps en **secondes (s)** → vitesse en **m/s**
+- distance en **kilomètres (km)** et temps en **heures (h)** → vitesse en **km/h**
+
+## ✏️ Exemple guidé
+
+> Un cycliste parcourt **30 km** en **2 h**. Quelle est sa vitesse moyenne ?
+
+1. J'écris la formule : v = d / t
+2. Je remplace par les valeurs : v = 30 / 2
+3. Je calcule : v = 15
+4. J'écris l'unité : **v = 15 km/h**
+
+## 🔄 Les trois formes de la formule
+
+Avec le **triangle de la vitesse**, je cache ce que je cherche :
+
+$$v = \frac{d}{t}$$
+
+- Je cherche **v** → je cache v : **v = d / t**
+- Je cherche **d** → je cache d : **d = v × t**
+- Je cherche **t** → je cache t : **t = d / v**
+
+## 💡 Pourquoi « moyenne » ?
+
+Pendant un trajet, la vitesse **change** (ralentissements, accélérations, arrêts). La vitesse moyenne est la vitesse **qu'il aurait fallu garder tout le temps** pour parcourir la même distance dans la même durée.
+
+
+## Convertir des vitesses entre km/h et m/s
+
+
+On peut exprimer une vitesse en **km/h** ou en **m/s**. Pour passer de l'une à l'autre, il faut connaître **un seul nombre : 3,6**.
+
+## 🧠 D'où vient le 3,6 ?
+
+- **1 km = 1 000 m**
+- **1 h = 3 600 s**
+
+Donc : **1 m/s = 3 600 m en 1 heure = 3,6 km/h**
+
+## 🔁 Les deux règles de conversion
+
+| Je veux passer de... | ...à... | Je fais... | Astuce |
+|:---:|:---:|:---:|:---|
+| **m/s** | **km/h** | **× 3,6** | Le nombre devient **plus grand** |
+| **km/h** | **m/s** | **÷ 3,6** | Le nombre devient **plus petit** |
+
+## ✏️ Exemples guidés
+
+**Exemple 1 : de m/s vers km/h**
+
+> Un sprinteur court à **10 m/s**. Quelle est sa vitesse en km/h ?
+
+10 × 3,6 = **36 km/h**
+
+**Exemple 2 : de km/h vers m/s**
+
+> Une voiture roule à **90 km/h**. Quelle est sa vitesse en m/s ?
+
+90 ÷ 3,6 = **25 m/s**
+
+## ✅ Vérifier mon résultat
+
+Je me pose la question : **mon nombre est-il cohérent ?**
+
+- Un nombre en **km/h** est **toujours plus grand** que le même en **m/s**.
+- Si je convertis des m/s en km/h et que mon résultat est plus petit, **je me suis trompé** : j'ai divisé au lieu de multiplier.
+
+## 📊 Quelques repères à connaître
+
+| Situation | km/h | m/s |
+|:---|:---:|:---:|
+| Marche à pied | 5 | ≈ 1,4 |
+| Vélo | 20 | ≈ 5,6 |
+| Voiture en ville | 50 | ≈ 14 |
+| Voiture sur route | 80 | ≈ 22 |
+        </script>
+      </div>
+      <div data-component="bibliotheque-exercice" data-title="Bibliothèque d'exercices"></div>
+    </main>
+    <footer class="site-footer"><a id="footer-link" href="../Chapitre.html">Retour au chapitre</a><span>Ressources pédagogiques</span></footer>
+  </div>
+</body>
+</html>

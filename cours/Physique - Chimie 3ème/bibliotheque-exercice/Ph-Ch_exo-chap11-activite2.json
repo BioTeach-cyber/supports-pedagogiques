@@ -3,12 +3,132 @@
   "activiteId": "activite2",
   "exercices": [
     {
-      "themeId": "",
-      "titre": "",
-      "objectifId": "",
-      "enonce": "",
-      "question": "",
-      "reponse": ""
+      "themeId": "Course à pied",
+      "titre": "Le footing de Lina",
+      "objectifId": "obj1",
+      "enonce": "Lina fait un footing le dimanche matin. Elle parcourt une distance de 5 km. Sa course dure 0,5 h (une demi-heure). La vitesse moyenne se calcule avec la formule v = d / t (d : distance, t : durée).",
+      "question": "Calcule la vitesse moyenne de Lina en km/h.",
+      "reponse": "On applique la règle donnée : v = d / t.\nd = 5 km et t = 0,5 h.\nv = 5 / 0,5 = 10 km/h.\nLa vitesse moyenne de Lina est de 10 km/h."
+    },
+    {
+      "themeId": "Vélo",
+      "titre": "Balade à vélo avec Hugo",
+      "objectifId": "obj1",
+      "enonce": "Hugo part en balade à vélo avec son père. Ils parcourent 30 km. La balade dure 2 h. On rappelle la formule : v = d / t.",
+      "question": "1. Calcule la vitesse moyenne d'Hugo en km/h.\n2. Explique pourquoi on parle de vitesse « moyenne ».",
+      "reponse": "1. v = d / t = 30 / 2 = 15 km/h. La vitesse moyenne d'Hugo est de 15 km/h.\n2. Pendant la balade, Hugo va parfois plus vite (en descente) et parfois moins vite (en montée ou aux feux). La vitesse moyenne est la vitesse qu'il aurait s'il roulait toujours à la même allure sur tout le trajet."
+    },
+    {
+      "themeId": "Natation",
+      "titre": "Chrono à la natation",
+      "objectifId": "obj1",
+      "enonce": "Au club de natation, trois nageurs font un 100 m. Inès nage le 100 m en 50 s. Malik nage le 100 m en 80 s. Chloé nage le 100 m en 100 s.",
+      "question": "1. Calcule la vitesse moyenne de chaque nageur en m/s.\n2. Déduis une règle : quand la durée augmente pour une même distance, que devient la vitesse ?",
+      "reponse": "1. On utilise v = d / t.\nInès : v = 100 / 50 = 2 m/s.\nMalik : v = 100 / 80 = 1,25 m/s.\nChloé : v = 100 / 100 = 1 m/s.\n2. On observe les trois résultats. Plus le nageur met de temps, plus sa vitesse est petite. Règle : pour une même distance, quand la durée augmente, la vitesse moyenne diminue."
+    },
+    {
+      "themeId": "Équitation",
+      "titre": "Les allures du cheval",
+      "objectifId": "obj1",
+      "enonce": "Sarah observe son cheval Tonnerre sur un parcours de 6 km. Au pas, il met 1 h. Au trot, il met 0,5 h. Au galop, il met 0,2 h.",
+      "question": "1. Calcule la vitesse moyenne de Tonnerre pour chaque allure, en km/h.\n2. Classe les allures de la plus lente à la plus rapide.",
+      "reponse": "1. On applique v = d / t avec d = 6 km.\nPas : v = 6 / 1 = 6 km/h.\nTrot : v = 6 / 0,5 = 12 km/h.\nGalop : v = 6 / 0,2 = 30 km/h.\n2. Classement : pas (6 km/h), puis trot (12 km/h), puis galop (30 km/h). On remarque que plus la durée est courte, plus la vitesse est grande."
+    },
+    {
+      "themeId": "Roller",
+      "titre": "L'erreur d'Emma en roller",
+      "objectifId": "obj1",
+      "enonce": "Emma fait du roller au parc. Elle parcourt 6 km en 30 min. Elle calcule 6 / 30 = 0,2. Elle écrit : « Ma vitesse est de 0,2 km/h ». Pourtant, 0,2 km/h, c'est beaucoup plus lent qu'une personne qui marche.",
+      "question": "1. Propose l'explication la plus probable de l'erreur d'Emma.\n2. Calcule la bonne vitesse moyenne en km/h.",
+      "reponse": "1. Le résultat est impossible : une personne qui marche va environ à 5 km/h. L'explication la plus probable : Emma a divisé des km par des minutes. Pour obtenir des km/h, la durée doit être en heures.\n2. 30 min = 0,5 h. v = d / t = 6 / 0,5 = 12 km/h. La vitesse moyenne d'Emma est de 12 km/h."
+    },
+    {
+      "themeId": "Camion",
+      "titre": "Le camion respecte-t-il la limite",
+      "objectifId": "obj1",
+      "enonce": "Un camion de livraison roule sur une route nationale. La règle dit : un camion ne doit pas dépasser 90 km/h. Le chauffeur, Karim, parcourt 160 km en 2 h.",
+      "question": "Déduis si la vitesse moyenne de Karim respecte la limite. Justifie avec un calcul.",
+      "reponse": "On calcule la vitesse moyenne : v = d / t = 160 / 2 = 80 km/h.\nLa règle impose 90 km/h maximum. Or 80 km/h est inférieur à 90 km/h.\nDonc la vitesse moyenne de Karim respecte la limite.\nAttention : une vitesse moyenne ne prouve pas qu'il n'a jamais dépassé 90 km/h à un moment du trajet."
+    },
+    {
+      "themeId": "Pêche",
+      "titre": "Le bouchon dans le courant",
+      "objectifId": "obj1",
+      "enonce": "Lucas pêche au bord d'une rivière. Son bouchon flotte et suit le courant. Le bouchon parcourt 20 m en 40 s. La formule de la vitesse est v = d / t.",
+      "question": "Calcule la vitesse moyenne du courant de la rivière en m/s.",
+      "reponse": "Le bouchon se laisse porter par l'eau. Sa vitesse est donc la même que celle du courant.\nv = d / t = 20 / 40 = 0,5 m/s.\nLe courant de la rivière avance à 0,5 m/s."
+    },
+    {
+      "themeId": "Mario Kart",
+      "titre": "Mario Kart et vitesse réelle",
+      "objectifId": "obj1",
+      "enonce": "Dans Mario Kart, Yanis sait que le kart le plus rapide fait le tour en moins de temps. Dans la vraie vie, c'est pareil pour un vrai kart. Un vrai kart fait un tour de 1 200 m en 60 s.",
+      "question": "1. Explique, avec l'exemple du jeu, comment on reconnaît le kart le plus rapide sur un même circuit.\n2. Calcule la vitesse moyenne du vrai kart en m/s.",
+      "reponse": "1. Dans le jeu, tous les karts font le même circuit, donc la même distance. Le plus rapide est celui qui met le moins de temps. En physique, c'est la même idée : la vitesse compare une distance à une durée.\n2. v = d / t = 1 200 / 60 = 20 m/s. Le vrai kart roule en moyenne à 20 m/s."
+    },
+    {
+      "themeId": "Karting",
+      "titre": "Un tour de karting",
+      "objectifId": "obj2",
+      "enonce": "Jade fait du karting pour son anniversaire. Elle fait un tour de 800 m en 40 s. Pour passer des m/s aux km/h, on multiplie par 3,6.",
+      "question": "1. Calcule la vitesse moyenne de Jade en m/s.\n2. Convertis cette vitesse en km/h.",
+      "reponse": "1. v = d / t = 800 / 40 = 20 m/s.\n2. On applique la règle : on multiplie par 3,6.\n20 × 3,6 = 72 km/h.\nLa vitesse moyenne de Jade est de 20 m/s, soit 72 km/h."
+    },
+    {
+      "themeId": "Animaux",
+      "titre": "Le secret du nombre 3,6",
+      "objectifId": "obj2",
+      "enonce": "Nora compare des vitesses d'animaux dans un tableau. Un chat à 1 m/s va à 3,6 km/h. Un chien à 10 m/s va à 36 km/h. Un lièvre à 20 m/s va à 72 km/h. Un guépard court à 30 m/s.",
+      "question": "1. Identifie la règle qui permet de passer des m/s aux km/h.\n2. Calcule la vitesse du guépard en km/h.",
+      "reponse": "1. On observe les trois exemples : 1 × 3,6 = 3,6 ; 10 × 3,6 = 36 ; 20 × 3,6 = 72. À chaque fois, on multiplie par 3,6. Règle : pour passer des m/s aux km/h, on multiplie par 3,6.\n2. 30 × 3,6 = 108 km/h. Le guépard court à 108 km/h."
+    },
+    {
+      "themeId": "MotoCross",
+      "titre": "Deux compteurs en MotoCross",
+      "objectifId": "obj2",
+      "enonce": "Théo fait du MotoCross. Le compteur de sa moto indique 54 km/h. Au même moment, un capteur posé sur la piste indique 15 m/s. Théo pense qu'un des deux appareils est en panne.",
+      "question": "Propose l'explication la plus probable. Justifie avec un calcul.",
+      "reponse": "Les deux appareils n'utilisent pas la même unité. Le compteur affiche des km/h. Le capteur affiche des m/s.\nOn convertit : 15 m/s × 3,6 = 54 km/h.\nLes deux valeurs sont donc égales. L'explication la plus probable : aucun appareil n'est en panne, c'est la même vitesse écrite dans deux unités différentes."
+    },
+    {
+      "themeId": "Voiture",
+      "titre": "La voiture sur la route",
+      "objectifId": "obj2",
+      "enonce": "Léa est dans la voiture de sa mère. Sur la route, la voiture roule à 90 km/h. Pour passer des km/h aux m/s, on divise par 3,6.",
+      "question": "1. Convertis la vitesse de la voiture en m/s.\n2. Explique ce que signifie ce résultat en mètres parcourus chaque seconde.",
+      "reponse": "1. On divise par 3,6 : 90 / 3,6 = 25 m/s.\n2. La voiture parcourt 25 mètres chaque seconde. C'est environ la longueur de 5 voitures en une seule seconde."
+    },
+    {
+      "themeId": "Forza Horizon 6",
+      "titre": "Le compteur de Forza Horizon 6",
+      "objectifId": "obj2",
+      "enonce": "Dans Forza Horizon 6, Adam conduit une voiture de sport. Le compteur du jeu affiche 108 km/h. Son prof de physique utilise plutôt les m/s. Pour passer des km/h aux m/s, on divise par 3,6.",
+      "question": "Convertis la vitesse affichée par le jeu en m/s.",
+      "reponse": "On applique la règle : on divise par 3,6.\n108 / 3,6 = 30 m/s.\nLa voiture d'Adam roule à 30 m/s dans le jeu."
+    },
+    {
+      "themeId": "Flight Simulator",
+      "titre": "Un avion dans Flight Simulator",
+      "objectifId": "obj2",
+      "enonce": "Dans Flight Simulator, Manon pilote un avion de ligne. L'écran indique une vitesse de 250 m/s. Pour passer des m/s aux km/h, on multiplie par 3,6.",
+      "question": "Convertis la vitesse de l'avion en km/h.",
+      "reponse": "On applique la règle : on multiplie par 3,6.\n250 × 3,6 = 900 km/h.\nL'avion de Manon vole à 900 km/h."
+    },
+    {
+      "themeId": "Tennis",
+      "titre": "Le service au tennis",
+      "objectifId": "obj2",
+      "enonce": "Au tennis, un joueur professionnel frappe un service à 180 km/h. Elio veut connaître cette vitesse en m/s. Pour passer des km/h aux m/s, on divise par 3,6.",
+      "question": "Convertis la vitesse du service en m/s.",
+      "reponse": "On applique la règle : on divise par 3,6.\n180 / 3,6 = 50 m/s.\nLa balle de service va à 50 m/s. Elle parcourt 50 mètres en une seule seconde."
+    },
+    {
+      "themeId": "Athlétisme",
+      "titre": "Le sprinteur et la voiture",
+      "objectifId": "obj2",
+      "enonce": "En athlétisme, un sprinteur court 100 m en 10 s. En ville, une voiture doit rouler à 30 km/h dans certaines rues. Pour passer des m/s aux km/h, on multiplie par 3,6.",
+      "question": "1. Calcule la vitesse moyenne du sprinteur en m/s.\n2. Convertis cette vitesse en km/h.\n3. Compare la vitesse du sprinteur avec celle de la voiture.",
+      "reponse": "1. v = d / t = 100 / 10 = 10 m/s.\n2. 10 × 3,6 = 36 km/h.\n3. Le sprinteur va à 36 km/h. La voiture roule à 30 km/h. Le sprinteur va donc un peu plus vite que la voiture dans cette rue."
     }
   ]
 }

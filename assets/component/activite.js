@@ -87,6 +87,22 @@
     });
   };
 
+  const mountAutoHeightFrames = (container) => {
+    const frames = [...container.querySelectorAll('iframe[data-auto-height]')];
+    if (!frames.length) return;
+    window.addEventListener('message', (event) => {
+      const frame = frames.find((candidate) => candidate.contentWindow === event.source);
+      const height = event.data?.type === 'application-height' ? Number(event.data.height) : 0;
+      if (!frame || !Number.isFinite(height) || height <= 0) return;
+      frame.style.height = `${Math.ceil(height)}px`;
+    });
+    frames.forEach((frame) => {
+      frame.addEventListener('load', () => {
+        frame.contentWindow?.postMessage({ type: 'application-height-request' }, location.origin);
+      }, { once: true });
+    });
+  };
+
   const mountQrCode = () => {
     const small = document.getElementById('page-qr');
     const large = document.getElementById('page-qr-large');
@@ -186,8 +202,9 @@
     const navigation = renderActivityNavigation(activeActivities, currentIndex, chapter, courseRoot, color);
     content.append(navigation.nav, navigation.controls);
     content.append(renderObjectives(activity));
-    Array.from(content.querySelectorAll('[data-activity-block]')).forEach((block) => content.append(block));
+    Array.from(content.querySelectorAll('[data-activity-block], [data-activity-position]')).forEach((block) => content.append(block));
     mountComponentLotties(content, color);
+    mountAutoHeightFrames(content);
   };
 
   mountQrCode();

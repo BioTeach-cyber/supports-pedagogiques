@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La vitesse moyenne</title>
+  <style>
+    /* ===== 1. VARIABLES DE COULEURS ===== */
+    :root {
+      --bleu: #53a4db;
+      --vert: #7fbc48;
+      --violet: #a6539b;
+      --orange: #f3912b;
+      --gris: #b7b7b7;
+      --rouge: #e62d32;
+      --rose: #ee7bab;
+      --rose-genially: #161213;
+      --jaune: #f4d32e;
+      --marron: #a5706c;
+      --noir: #494949;
+      --fond: #ffffff;
+    }
+
+    /* ===== 2. BASE ===== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; min-height: 100%; }
+    body.embedded { overflow: hidden; }
+    body {
+      background: var(--fond);
+      color: var(--noir);
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.1rem);
+      line-height: 1.5;
+    }
+
+    /* ===== 3. EN-TÊTE ===== */
+    header {
+      background: var(--fond);
+      border-bottom: 4px solid var(--bleu);
+      padding: 0.8rem 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    header h1 { font-size: clamp(1.3rem, 4vw, 1.8rem); color: var(--noir); }
+    header h1 span { color: var(--bleu); }
+    .score {
+      background: var(--jaune);
+      color: var(--noir);
+      font-weight: bold;
+      padding: 0.3rem 0.9rem;
+      border-radius: 2rem;
+    }
+
+    /* ===== 4. ONGLETS ===== */
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      padding: 0.8rem 1rem 0;
+    }
+    .onglet {
+      flex: 1 1 8rem;
+      background: var(--fond);
+      color: var(--noir);
+      border: 2px solid var(--bleu);
+      border-radius: 0.6rem;
+      padding: 0.6rem;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .onglet[aria-selected="true"] { background: var(--bleu); color: #fff; }
+
+    /* ===== 5. CONTENU ===== */
+    main { max-width: 900px; margin: 0 auto; padding: 1rem; }
+    section[role="tabpanel"] { display: none; }
+    section.actif { display: block; }
+    h2 { color: var(--bleu); font-size: clamp(1.2rem, 3.5vw, 1.5rem); margin-bottom: 0.6rem; }
+    h3 { font-size: 1.1rem; margin: 0.8rem 0 0.4rem; }
+    p { margin-bottom: 0.6rem; }
+
+    .carte {
+      background: var(--fond);
+      border: 2px solid var(--gris);
+      border-radius: 0.8rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .formule {
+      display: inline-block;
+      border: 3px solid var(--orange);
+      border-radius: 0.6rem;
+      padding: 0.4rem 1rem;
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin: 0.3rem 0;
+    }
+    .legende { font-size: 0.95rem; }
+
+    /* ===== 6. BOUTONS ET CHAMPS ===== */
+    .btn {
+      background: var(--bleu);
+      color: #fff;
+      border: none;
+      border-radius: 0.6rem;
+      padding: 0.65rem 1.2rem;
+      font-size: 1.05rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 0.3rem 0.3rem 0.3rem 0;
+    }
+    .btn:hover, .onglet:hover { filter: brightness(0.92); }
+    .btn:disabled { background: var(--gris); color: var(--noir); cursor: not-allowed; }
+    .btn-orange { background: var(--orange); }
+    .btn-choix {
+      background: var(--fond);
+      color: var(--noir);
+      border: 2px solid var(--orange);
+    }
+    .btn:focus-visible, .onglet:focus-visible, input:focus-visible, select:focus-visible {
+      outline: 3px solid var(--violet);
+      outline-offset: 2px;
+    }
+    .ligne-saisie {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0.5rem 0;
+    }
+    input[type="text"], select {
+      font-size: 1.1rem;
+      padding: 0.5rem;
+      border: 2px solid var(--bleu);
+      border-radius: 0.5rem;
+      color: var(--noir);
+      background: var(--fond);
+      width: 9rem;
+    }
+    input[type="range"] { width: 100%; accent-color: var(--bleu); }
+
+    /* ===== 7. RETOURS (feedback) ===== */
+    .retour {
+      margin-top: 0.6rem;
+      padding: 0.7rem 1rem;
+      border-radius: 0.5rem;
+      border-left: 6px solid var(--gris);
+      background: var(--fond);
+      display: none;
+    }
+    .retour.ok { display: block; border-left-color: var(--vert); }
+    .retour.erreur { display: block; border-left-color: var(--rouge); }
+    .retour.info { display: block; border-left-color: var(--orange); }
+    .cache { display: none; }
+
+    /* ===== 8. SIMULATION ===== */
+    .piste { width: 100%; height: auto; display: block; }
+    .reglages { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1rem; }
+    .resultat-simu { font-size: 1.2rem; font-weight: bold; }
+
+    /* ===== 9. DÉFI ===== */
+    .grille-defi { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 0.8rem; }
+    .carte-defi {
+      background: var(--fond);
+      border: 3px solid var(--orange);
+      border-radius: 0.8rem;
+      padding: 1rem;
+      font-size: 1.1rem;
+      text-align: center;
+      cursor: pointer;
+      color: var(--noir);
+    }
+    .carte-defi .emoji { font-size: 2.2rem; display: block; }
+    .carte-defi .vitesse { font-weight: bold; font-size: 1.3rem; }
+    .carte-defi.gagnant { border-color: var(--vert); border-width: 5px; }
+    .carte-defi.perdu { border-color: var(--rouge); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🚜 La <span>vitesse</span> moyenne</h1>
+    <div class="score" aria-live="polite">Score : <span id="score">0 / 0</span></div>
+  </header>
+
+  <nav role="tablist" aria-label="Parties de l'application">
+    <button class="onglet" role="tab" aria-selected="true" data-cible="decouvrir">1. Découvrir</button>
+    <button class="onglet" role="tab" aria-selected="false" data-cible="calculer">2. Calculer</button>
+    <button class="onglet" role="tab" aria-selected="false" data-cible="convertir">3. Convertir</button>
+    <button class="onglet" role="tab" aria-selected="false" data-cible="defi">4. Défi</button>
+  </nav>
+
+  <main>
+    <!-- ========== ONGLET 1 : DÉCOUVRIR ========== -->
+    <section id="decouvrir" role="tabpanel" class="actif">
+      <h2>1. Découvrir la vitesse</h2>
+      <p>Règle la <strong>distance</strong> et le <strong>temps</strong>, puis lance le tracteur.</p>
+
+      <div class="carte">
+        <svg class="piste" viewBox="0 0 600 120" role="img" aria-label="Piste avec un tracteur qui avance">
+          <rect x="0" y="85" width="600" height="20" fill="#b7b7b7" />
+          <line x1="0" y1="95" x2="600" y2="95" stroke="#ffffff" stroke-width="3" stroke-dasharray="15 10" />
+          <line x1="40" y1="30" x2="40" y2="110" stroke="#7fbc48" stroke-width="4" />
+          <text x="20" y="22" font-size="14" fill="#494949">Départ</text>
+          <line x1="560" y1="30" x2="560" y2="110" stroke="#e62d32" stroke-width="4" />
+          <text x="540" y="22" font-size="14" fill="#494949">Arrivée</text>
+          <!-- Tracteur -->
+          <g id="tracteur" transform="translate(40,0)">
+            <rect x="-40" y="55" width="40" height="20" fill="#7fbc48" />
+            <rect x="-20" y="38" width="18" height="20" fill="#7fbc48" stroke="#494949" stroke-width="2" />
+            <circle cx="-30" cy="78" r="10" fill="#494949" />
+            <circle cx="-6" cy="80" r="7" fill="#494949" />
+          </g>
+        </svg>
+        <p class="legende">Distance parcourue : <strong id="simuDistanceEnCours">0</strong> m —
+          Temps écoulé : <strong id="simuTempsEnCours">0</strong> s</p>
+      </div>
+
+      <div class="reglages">
+        <div class="carte">
+          <label for="curseurDistance">📏 Distance : <strong id="valeurDistance">400</strong> m</label>
+          <input type="range" id="curseurDistance" min="100" max="1000" step="50" value="400">
+        </div>
+        <div class="carte">
+          <label for="curseurTemps">⏱️ Temps : <strong id="valeurTemps">50</strong> s</label>
+          <input type="range" id="curseurTemps" min="10" max="200" step="10" value="50">
+        </div>
+      </div>
+
+      <button class="btn" id="btnLancer">▶ Lancer le tracteur</button>
+
+      <div class="carte">
+        <p class="formule">v = d ÷ t</p>
+        <p class="resultat-simu" id="resultatSimu" aria-live="polite">v = 400 ÷ 50 = 8 m/s</p>
+        <p class="legende">v = vitesse • d = distance • t = temps</p>
+      </div>
+
+      <div class="carte">
+        <h3>🔎 À toi d'observer !</h3>
+        <p>1. Garde le même temps et <strong>double la distance</strong>. Que devient la vitesse ?</p>
+        <p>2. Garde la même distance et <strong>double le temps</strong>. Que devient la vitesse ?</p>
+        <button class="btn btn-orange" id="btnObservation">Voir la réponse</button>
+        <div class="retour" id="retourObservation"></div>
+      </div>
+    </section>
+
+    <!-- ========== ONGLET 2 : CALCULER ========== -->
+    <section id="calculer" role="tabpanel">
+      <h2>2. Calculer une vitesse moyenne</h2>
+
+      <div class="carte">
+        <p id="enonceCalcul"></p>
+      </div>
+
+      <div class="carte">
+        <h3>Étape 1 : quelle formule utiliser ?</h3>
+        <div id="choixFormules"></div>
+        <div class="retour" id="retourFormule"></div>
+      </div>
+
+      <div class="carte cache" id="etape2Calcul">
+        <h3>Étape 2 : calcule la vitesse</h3>
+        <p id="rappelCalcul"></p>
+        <div class="ligne-saisie">
+          <label for="reponseCalcul">v =</label>
+          <input type="text" id="reponseCalcul" inputmode="decimal" autocomplete="off" aria-label="Valeur de la vitesse">
+          <select id="uniteCalcul" aria-label="Unité de la vitesse">
+            <option value="">Unité ?</option>
+            <option value="km/h">km/h</option>
+            <option value="m/s">m/s</option>
+            <option value="km">km</option>
+            <option value="h">h</option>
+          </select>
+          <button class="btn" id="btnVerifierCalcul">Vérifier</button>
+        </div>
+        <div class="retour" id="retourCalcul"></div>
+      </div>
+
+      <button class="btn btn-orange" id="btnNouveauCalcul">🔄 Nouvel exercice</button>
+    </section>
+
+    <!-- ========== ONGLET 3 : CONVERTIR ========== -->
+    <section id="convertir" role="tabpanel">
+      <h2>3. Convertir une vitesse</h2>
+
+      <div class="carte">
+        <p><strong>km/h ➜ m/s</strong> : on divise par 3,6 &nbsp; <span class="formule">÷ 3,6</span></p>
+        <p><strong>m/s ➜ km/h</strong> : on multiplie par 3,6 &nbsp; <span class="formule">× 3,6</span></p>
+        <button class="btn btn-orange" id="btnPourquoi">🤔 Pourquoi 3,6 ?</button>
+        <div class="retour" id="retourPourquoi"></div>
+      </div>
+
+      <div class="carte">
+        <p id="enonceConversion"></p>
+        <h3>Étape 1 : quelle opération ?</h3>
+        <button class="btn btn-choix" data-operation="multiplier">× 3,6</button>
+        <button class="btn btn-choix" data-operation="diviser">÷ 3,6</button>
+        <div class="retour" id="retourOperation"></div>
+      </div>
+
+      <div class="carte cache" id="etape2Conversion">
+        <h3>Étape 2 : calcule</h3>
+        <div class="ligne-saisie">
+          <label for="reponseConversion" id="libelleConversion"></label>
+          <input type="text" id="reponseConversion" inputmode="decimal" autocomplete="off">
+          <span id="uniteConversion"></span>
+          <button class="btn" id="btnVerifierConversion">Vérifier</button>
+        </div>
+        <div class="retour" id="retourConversion"></div>
+      </div>
+
+      <button class="btn btn-orange" id="btnNouvelleConversion">🔄 Nouvel exercice</button>
+    </section>
+
+    <!-- ========== ONGLET 4 : DÉFI ========== -->
+    <section id="defi" role="tabpanel">
+      <h2>4. Défi : qui est le plus rapide ?</h2>
+      <p>Attention aux unités ! Clique sur le <strong>plus rapide</strong>.</p>
+      <div class="grille-defi" id="grilleDefi"></div>
+      <div class="retour" id="retourDefi"></div>
+      <button class="btn btn-orange" id="btnNouveauDefi">🔄 Nouveau défi</button>
+    </section>
+  </main>
+
+  <script>
+    "use strict";
+
+    const embedded = window.parent !== window;
+    if (embedded) {
+      document.body.classList.add("embedded");
+      const sendHeight = () => {
+        const height = Math.ceil(document.documentElement.scrollHeight);
+        window.parent.postMessage({ type: "application-height", height }, window.location.origin);
+      };
+      window.addEventListener("message", (event) => {
+        if (event.source !== window.parent || event.data?.type !== "application-height-request") return;
+        sendHeight();
+      });
+      new ResizeObserver(sendHeight).observe(document.body);
+      window.addEventListener("load", sendHeight);
+      window.addEventListener("resize", sendHeight);
+      document.querySelectorAll(".onglet").forEach((tab) => tab.addEventListener("click", () => requestAnimationFrame(sendHeight)));
+      sendHeight();
+    }
+
+    /* ===== OUTILS ===== */
+    const $ = (id) => document.getElementById(id);
+    const hasard = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+    const choisir = (tableau) => tableau[Math.floor(Math.random() * tableau.length)];
+    const melanger = (tableau) => tableau.sort(() => Math.random() - 0.5);
+
+    // Affiche un nombre à la française (virgule)
+    const formater = (nombre) => nombre.toLocaleString("fr-FR", { maximumFractionDigits: 2 });
+
+    // Lit un nombre saisi (accepte la virgule ou le point)
+    function lireNombre(texte) {
+      const nettoye = texte.trim().replace(/\s/g, "").replace(",", ".");
+      return nettoye === "" ? NaN : Number(nettoye);
+    }
+
+    // Vérifie si la réponse est proche (marge de 1 % ou 0,05)
+    function estProche(reponse, attendu) {
+      return Math.abs(reponse - attendu) <= Math.max(0.05, Math.abs(attendu) * 0.01);
+    }
+
+    // Affiche un message de retour
+    function afficherRetour(idZone, type, html) {
+      const zone = $(idZone);
+      zone.className = "retour " + type;
+      zone.innerHTML = html;
+    }
+    function cacherRetour(idZone) { $(idZone).className = "retour"; }
+
+    /* ===== SCORE ===== */
+    const score = { bonnes: 0, total: 0 };
+    function compterReponse(estBonne) {
+      score.total++;
+      if (estBonne) score.bonnes++;
+      $("score").textContent = score.bonnes + " / " + score.total;
+    }
+
+    /* ===== ONGLETS ===== */
+    document.querySelectorAll(".onglet").forEach((bouton) => {
+      bouton.addEventListener("click", () => {
+        document.querySelectorAll(".onglet").forEach((b) => b.setAttribute("aria-selected", "false"));
+        document.querySelectorAll("section[role='tabpanel']").forEach((s) => s.classList.remove("actif"));
+        bouton.setAttribute("aria-selected", "true");
+        $(bouton.dataset.cible).classList.add("actif");
+      });
+    });
+
+    /* =========================================================
+       ONGLET 1 : DÉCOUVRIR (simulation)
+       ========================================================= */
+    const curseurDistance = $("curseurDistance");
+    const curseurTemps = $("curseurTemps");
+    let animationEnCours = null;
+
+    function majSimulation() {
+      const distance = Number(curseurDistance.value);
+      const temps = Number(curseurTemps.value);
+      const vitesse = distance / temps;
+      $("valeurDistance").textContent = distance;
+      $("valeurTemps").textContent = temps;
+      $("resultatSimu").textContent =
+        "v = " + distance + " ÷ " + temps + " = " + formater(Math.round(vitesse * 100) / 100) + " m/s";
+    }
+
+    function placerTracteur(fraction) {
+      const positionX = 40 + fraction * 520;
+      $("tracteur").setAttribute("transform", "translate(" + positionX + ",0)");
+      $("simuDistanceEnCours").textContent = Math.round(Number(curseurDistance.value) * fraction);
+      $("simuTempsEnCours").textContent = Math.round(Number(curseurTemps.value) * fraction);
+    }
+
+    function lancerTracteur() {
+      if (animationEnCours) cancelAnimationFrame(animationEnCours);
+      const temps = Number(curseurTemps.value);
+      // Durée réelle de l'animation : proportionnelle au temps choisi (entre 1,5 s et 6 s)
+      const dureeAnimation = Math.min(6000, Math.max(1500, temps * 30));
+      const debut = performance.now();
+
+      function etape(maintenant) {
+        const fraction = Math.min(1, (maintenant - debut) / dureeAnimation);
+        placerTracteur(fraction);
+        if (fraction < 1) animationEnCours = requestAnimationFrame(etape);
+      }
+      animationEnCours = requestAnimationFrame(etape);
+    }
+
+    curseurDistance.addEventListener("input", () => { majSimulation(); placerTracteur(0); });
+    curseurTemps.addEventListener("input", () => { majSimulation(); placerTracteur(0); });
+    $("btnLancer").addEventListener("click", lancerTracteur);
+    $("btnObservation").addEventListener("click", () => {
+      afficherRetour("retourObservation", "info",
+        "1. Si la distance <strong>double</strong> (même temps), la vitesse <strong>double</strong> aussi.<br>" +
+        "2. Si le temps <strong>double</strong> (même distance), la vitesse est <strong>divisée par 2</strong>.<br>" +
+        "👉 Plus on va loin en peu de temps, plus on est rapide !");
+    });
+    majSimulation();
+
+    /* =========================================================
+       ONGLET 2 : CALCULER v = d / t
+       ========================================================= */
+    // Situations : vitesses et temps choisis pour donner des calculs "ronds"
+    const situations = [
+      { qui: "Un tracteur", emoji: "🚜", vmin: 10, vmax: 30, tmin: 1, tmax: 3, unite: "km/h" },
+      { qui: "Un cycliste", emoji: "🚴", vmin: 15, vmax: 25, tmin: 2, tmax: 4, unite: "km/h" },
+      { qui: "Une voiture", emoji: "🚗", vmin: 50, vmax: 90, tmin: 1, tmax: 3, unite: "km/h" },
+      { qui: "Un randonneur", emoji: "🥾", vmin: 3, vmax: 5, tmin: 2, tmax: 5, unite: "km/h" },
+      { qui: "Un coureur", emoji: "🏃", vmin: 4, vmax: 8, tmin: 5, tmax: 20, unite: "m/s" },
+      { qui: "Un cheval au galop", emoji: "🐎", vmin: 8, vmax: 15, tmin: 2, tmax: 6, unite: "m/s" }
+    ];
+    let exerciceCalcul = null;
+
+    function nouvelExerciceCalcul() {
+      const situation = choisir(situations);
+      const vitesse = hasard(situation.vmin, situation.vmax);
+      let temps = hasard(situation.tmin, situation.tmax);
+      if (situation.unite === "m/s") temps *= 10; // temps en secondes (50 à 200 s)
+      const distance = vitesse * temps;
+      const uniteDistance = situation.unite === "km/h" ? "km" : "m";
+      const uniteTemps = situation.unite === "km/h" ? "h" : "s";
+      const motTemps = situation.unite === "km/h" ? (temps > 1 ? "heures" : "heure") : "secondes";
+
+      exerciceCalcul = { vitesse, distance, temps, unite: situation.unite, uniteDistance, uniteTemps, dejaCompte: false };
+
+      $("enonceCalcul").innerHTML = situation.emoji + " " + situation.qui + " parcourt <strong>" +
+        formater(distance) + " " + uniteDistance + "</strong> en <strong>" + temps + " " + motTemps +
+        "</strong>.<br>Quelle est sa vitesse moyenne ?";
+
+      // Boutons de formules mélangés
+      const formules = melanger([
+        { texte: "v = d ÷ t", bonne: true },
+        { texte: "v = d × t", bonne: false },
+        { texte: "v = t ÷ d", bonne: false }
+      ]);
+      const zone = $("choixFormules");
+      zone.innerHTML = "";
+      formules.forEach((f) => {
+        const bouton = document.createElement("button");
+        bouton.className = "btn btn-choix";
+        bouton.textContent = f.texte;
+        bouton.addEventListener("click", () => verifierFormule(f.bonne));
+        zone.appendChild(bouton);
+      });
+
+      cacherRetour("retourFormule");
+      cacherRetour("retourCalcul");
+      $("etape2Calcul").classList.add("cache");
+      $("reponseCalcul").value = "";
+      $("uniteCalcul").value = "";
+    }
+
+    function verifierFormule(estBonne) {
+      if (estBonne) {
+        afficherRetour("retourFormule", "ok", "✅ Oui ! La vitesse, c'est la <strong>distance divisée par le temps</strong>.");
+        $("rappelCalcul").textContent = "v = " + formater(exerciceCalcul.distance) + " " +
+          exerciceCalcul.uniteDistance + " ÷ " + exerciceCalcul.temps + " " + exerciceCalcul.uniteTemps;
+        $("etape2Calcul").classList.remove("cache");
+        $("reponseCalcul").focus();
+      } else {
+        afficherRetour("retourFormule", "erreur",
+          "❌ Pas tout à fait. Réfléchis : on cherche combien de distance on parcourt <strong>pour une unité de temps</strong>. On partage donc la distance par le temps.");
+      }
+    }
+
+    function verifierCalcul() {
+      const reponse = lireNombre($("reponseCalcul").value);
+      const unite = $("uniteCalcul").value;
+      if (isNaN(reponse) || unite === "") {
+        afficherRetour("retourCalcul", "info", "✏️ Écris un nombre <strong>et</strong> choisis une unité.");
+        return;
+      }
+      const bonNombre = estProche(reponse, exerciceCalcul.vitesse);
+      const bonneUnite = unite === exerciceCalcul.unite;
+      const correction = "v = " + formater(exerciceCalcul.distance) + " ÷ " + exerciceCalcul.temps +
+        " = <strong>" + exerciceCalcul.vitesse + " " + exerciceCalcul.unite + "</strong>";
+
+      if (!exerciceCalcul.dejaCompte) {
+        compterReponse(bonNombre && bonneUnite);
+        exerciceCalcul.dejaCompte = true;
+      }
+
+      if (bonNombre && bonneUnite) {
+        afficherRetour("retourCalcul", "ok", "✅ Bravo ! " + correction);
+      } else if (bonNombre) {
+        afficherRetour("retourCalcul", "erreur",
+          "⚠️ Le nombre est juste, mais pas l'unité. Distance en <strong>" + exerciceCalcul.uniteDistance +
+          "</strong> et temps en <strong>" + exerciceCalcul.uniteTemps + "</strong> ➜ vitesse en <strong>" +
+          exerciceCalcul.unite + "</strong>.");
+      } else {
+        afficherRetour("retourCalcul", "erreur", "❌ Ce n'est pas le bon résultat. Correction : " + correction);
+      }
+    }
+
+    $("btnVerifierCalcul").addEventListener("click", verifierCalcul);
+    $("reponseCalcul").addEventListener("keydown", (e) => { if (e.key === "Enter") verifierCalcul(); });
+    $("btnNouveauCalcul").addEventListener("click", nouvelExerciceCalcul);
+    nouvelExerciceCalcul();
+
+    /* =========================================================
+       ONGLET 3 : CONVERTIR km/h <-> m/s
+       ========================================================= */
+    let exerciceConversion = null;
+
+    $("btnPourquoi").addEventListener("click", () => {
+      afficherRetour("retourPourquoi", "info",
+        "🔹 1 km = <strong>1 000 m</strong> &nbsp;&nbsp; 🔹 1 h = <strong>3 600 s</strong><br>" +
+        "Donc 1 m/s = 3 600 m en 1 heure = 3,6 km en 1 heure = <strong>3,6 km/h</strong>.<br>" +
+        "👉 C'est comme un taux de change : 1 m/s « vaut » 3,6 km/h.");
+    });
+
+    function nouvelExerciceConversion() {
+      const vitesseMs = hasard(1, 40);
+      const vitesseKmh = Math.round(vitesseMs * 3.6 * 10) / 10;
+      const sens = choisir(["versMs", "versKmh"]);
+      exerciceConversion = { vitesseMs, vitesseKmh, sens, dejaCompte: false };
+
+      if (sens === "versMs") {
+        $("enonceConversion").innerHTML = "Convertis <strong>" + formater(vitesseKmh) + " km/h</strong> en <strong>m/s</strong>.";
+        $("libelleConversion").textContent = formater(vitesseKmh) + " km/h =";
+        $("uniteConversion").textContent = "m/s";
+      } else {
+        $("enonceConversion").innerHTML = "Convertis <strong>" + vitesseMs + " m/s</strong> en <strong>km/h</strong>.";
+        $("libelleConversion").textContent = vitesseMs + " m/s =";
+        $("uniteConversion").textContent = "km/h";
+      }
+      cacherRetour("retourOperation");
+      cacherRetour("retourConversion");
+      $("etape2Conversion").classList.add("cache");
+      $("reponseConversion").value = "";
+    }
+
+    document.querySelectorAll("[data-operation]").forEach((bouton) => {
+      bouton.addEventListener("click", () => {
+        const attendue = exerciceConversion.sens === "versMs" ? "diviser" : "multiplier";
+        if (bouton.dataset.operation === attendue) {
+          afficherRetour("retourOperation", "ok", "✅ Exact ! On " +
+            (attendue === "diviser" ? "<strong>divise</strong> par 3,6 (le nombre devient plus petit)." :
+              "<strong>multiplie</strong> par 3,6 (le nombre devient plus grand)."));
+          $("etape2Conversion").classList.remove("cache");
+          $("reponseConversion").focus();
+        } else {
+          afficherRetour("retourOperation", "erreur",
+            "❌ Réfléchis : 1 m/s = 3,6 km/h. Le nombre en km/h est donc toujours <strong>plus grand</strong> que celui en m/s.");
+        }
+      });
+    });
+
+    function verifierConversion() {
+      const reponse = lireNombre($("reponseConversion").value);
+      if (isNaN(reponse)) {
+        afficherRetour("retourConversion", "info", "✏️ Écris un nombre.");
+        return;
+      }
+      const ex = exerciceConversion;
+      const attendu = ex.sens === "versMs" ? ex.vitesseMs : ex.vitesseKmh;
+      const correction = ex.sens === "versMs"
+        ? formater(ex.vitesseKmh) + " ÷ 3,6 = <strong>" + ex.vitesseMs + " m/s</strong>"
+        : ex.vitesseMs + " × 3,6 = <strong>" + formater(ex.vitesseKmh) + " km/h</strong>";
+      const estBonne = estProche(reponse, attendu);
+      if (!ex.dejaCompte) { compterReponse(estBonne); ex.dejaCompte = true; }
+      afficherRetour("retourConversion", estBonne ? "ok" : "erreur",
+        (estBonne ? "✅ Bravo ! " : "❌ Ce n'est pas ça. Correction : ") + correction);
+    }
+
+    $("btnVerifierConversion").addEventListener("click", verifierConversion);
+    $("reponseConversion").addEventListener("keydown", (e) => { if (e.key === "Enter") verifierConversion(); });
+    $("btnNouvelleConversion").addEventListener("click", nouvelExerciceConversion);
+    nouvelExerciceConversion();
+
+    /* =========================================================
+       ONGLET 4 : DÉFI "Qui est le plus rapide ?"
+       ========================================================= */
+    const concurrents = [
+      { nom: "Tracteur", emoji: "🚜" }, { nom: "Cheval", emoji: "🐎" },
+      { nom: "Cycliste", emoji: "🚴" }, { nom: "Coureur", emoji: "🏃" },
+      { nom: "Voiture", emoji: "🚗" }, { nom: "Chien", emoji: "🐕" },
+      { nom: "Vache", emoji: "🐄" }, { nom: "Lapin", emoji: "🐇" }
+    ];
+    let defiTermine = false;
+
+    function nouveauDefi() {
+      defiTermine = false;
+      cacherRetour("retourDefi");
+      const choisis = melanger([...concurrents]).slice(0, 3);
+
+      // Vitesses en m/s toutes différentes
+      const vitesses = new Set();
+      while (vitesses.size < 3) vitesses.add(hasard(3, 25));
+      const listeVitesses = [...vitesses];
+
+      // Au moins une vitesse en km/h et une en m/s
+      const unites = melanger(["km/h", "m/s", choisir(["km/h", "m/s"])]);
+
+      const grille = $("grilleDefi");
+      grille.innerHTML = "";
+      const donnees = choisis.map((c, i) => ({
+        ...c,
+        vitesseMs: listeVitesses[i],
+        unite: unites[i],
+        affichage: unites[i] === "m/s" ? listeVitesses[i] + " m/s" : formater(Math.round(listeVitesses[i] * 36) / 10) + " km/h"
+      }));
+      const maxi = Math.max(...listeVitesses);
+
+      donnees.forEach((d) => {
+        const carte = document.createElement("button");
+        carte.className = "carte-defi";
+        carte.setAttribute("aria-label", d.nom + " : " + d.affichage);
+        carte.innerHTML = '<span class="emoji" aria-hidden="true">' + d.emoji + "</span>" + d.nom +
+          '<br><span class="vitesse">' + d.affichage + "</span>";
+        carte.addEventListener("click", () => {
+          if (defiTermine) return;
+          defiTermine = true;
+          const estBonne = d.vitesseMs === maxi;
+          compterReponse(estBonne);
+          grille.querySelectorAll(".carte-defi").forEach((c, i) => {
+            if (donnees[i].vitesseMs === maxi) c.classList.add("gagnant");
+          });
+          if (!estBonne) carte.classList.add("perdu");
+          const explication = donnees.map((x) =>
+            x.emoji + " " + x.nom + " : " + x.affichage + " = <strong>" + formater(Math.round(x.vitesseMs * 36) / 10) + " km/h</strong>"
+          ).join("<br>");
+          afficherRetour("retourDefi", estBonne ? "ok" : "erreur",
+            (estBonne ? "✅ Bien vu ! " : "❌ Raté ! Pour comparer, il faut la <strong>même unité</strong>.<br>") +
+            "<br>" + explication);
+        });
+        grille.appendChild(carte);
+      });
+    }
+
+    $("btnNouveauDefi").addEventListener("click", nouveauDefi);
+    nouveauDefi();
+  </script>
+</body>
+</html>
