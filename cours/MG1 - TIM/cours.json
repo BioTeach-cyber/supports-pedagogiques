@@ -11,7 +11,7 @@
 
   "chapitres": [
     {
-      "statut": "inactif",
+      "statut": "actif",
       "id": "Chapitre 01",
       "page": "Chapitre 01/Chapitre.html",
       "type": "chapitre",
@@ -24,7 +24,7 @@
       "lottie": "assets/lotties/.json",
 
       "evaluationFinale": {
-          "statut": "inactif",
+          "statut": "actif",
           "type": "Fin de séquence",
           "start": "",
           "end": "",
