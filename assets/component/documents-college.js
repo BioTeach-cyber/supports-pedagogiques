@@ -16,6 +16,140 @@
     }
   };
 
+  const renderInline = (text, parent) => {
+    const pattern = /(`[^`]+`|\*\*[^*]+\*\*|\*[^*]+\*|\[[^\]]+\]\([^)]+\))/g;
+    let cursor = 0;
+    for (const match of text.matchAll(pattern)) {
+      if (match.index > cursor) parent.append(document.createTextNode(text.slice(cursor, match.index)));
+      const token = match[0];
+      let node;
+      if (token.startsWith('**')) {
+        node = createElement('strong', '', token.slice(2, -2));
+      } else if (token.startsWith('*')) {
+        node = createElement('em', '', token.slice(1, -1));
+      } else if (token.startsWith('`')) {
+        node = createElement('code', '', token.slice(1, -1));
+      } else {
+        const [, label, target] = token.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+        const href = resolveUrl(target);
+        if (href) {
+          node = createElement('a', '', label);
+          node.href = href;
+          node.rel = 'noopener noreferrer';
+        } else node = document.createTextNode(label);
+      }
+      parent.append(node);
+      cursor = match.index + token.length;
+    }
+    if (cursor < text.length) parent.append(document.createTextNode(text.slice(cursor)));
+  };
+
+  const renderMarkdown = (source, target) => {
+    const lines = source.trim().split(/\r?\n/);
+    let paragraph = [];
+    let list = null;
+    let listType = '';
+    const flushParagraph = () => {
+      if (!paragraph.length) return;
+      const node = createElement('p');
+      renderInline(paragraph.join(' '), node);
+      target.append(node);
+      paragraph = [];
+    };
+    const flushList = () => {
+      if (!list) return;
+      target.append(list);
+      list = null;
+      listType = '';
+    };
+    const isTableDivider = (line) => /^\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?$/.test(line.trim());
+    const skippedLines = new Set();
+    lines.forEach((line, index) => {
+      if (skippedLines.has(index)) return;
+      const trimmed = line.trim();
+      if (!trimmed) {
+        flushParagraph();
+        flushList();
+        return;
+      }
+      if (trimmed.includes('|') && index + 1 < lines.length && isTableDivider(lines[index + 1])) {
+        flushParagraph();
+        flushList();
+        const parseCells = (row) => row.trim().replace(/^\|/, '').replace(/\|$/, '').split('|').map((cell) => cell.trim());
+        const table = createElement('table', 'activity-document-table');
+        const head = createElement('thead');
+        const headerRow = createElement('tr');
+        parseCells(trimmed).forEach((cell) => {
+          const th = createElement('th');
+          renderInline(cell, th);
+          headerRow.append(th);
+        });
+        head.append(headerRow);
+        table.append(head);
+        const body = createElement('tbody');
+        let rowIndex = index + 2;
+        while (rowIndex < lines.length && lines[rowIndex].includes('|') && lines[rowIndex].trim()) {
+          const row = createElement('tr');
+          parseCells(lines[rowIndex]).forEach((cell) => {
+            const td = createElement('td');
+            renderInline(cell, td);
+            row.append(td);
+          });
+          body.append(row);
+          rowIndex += 1;
+        }
+        table.append(body);
+        const wrapper = createElement('div', 'activity-document-table-wrap');
+        wrapper.append(table);
+        target.append(wrapper);
+        for (let skipped = index + 1; skipped < rowIndex; skipped += 1) skippedLines.add(skipped);
+        return;
+      }
+      const heading = trimmed.match(/^(#{1,3})\s+(.+)$/);
+      if (heading) {
+        flushParagraph();
+        flushList();
+        const node = createElement(`h${heading[1].length + 2}`);
+        renderInline(heading[2], node);
+        target.append(node);
+        return;
+      }
+      const quote = trimmed.match(/^>\s?(.*)$/);
+      if (quote) {
+        flushParagraph();
+        flushList();
+        const node = createElement('blockquote');
+        renderInline(quote[1], node);
+        target.append(node);
+        return;
+      }
+      const item = trimmed.match(/^([-*]|\d+[.)])\s+(.+)$/);
+      if (item) {
+        flushParagraph();
+        const type = /^\d/.test(item[1]) ? 'ol' : 'ul';
+        if (listType !== type) flushList();
+        if (!list) {
+          list = createElement(type);
+          listType = type;
+        }
+        const listItem = createElement('li');
+        renderInline(item[2], listItem);
+        list.append(listItem);
+        return;
+      }
+      flushList();
+      paragraph.push(trimmed);
+    });
+    flushParagraph();
+    flushList();
+  };
+
+  const renderMarkdownSource = (source, className) => {
+    const body = createElement('div', className);
+    renderMarkdown(source, body);
+    return body;
+  };
+
   const lotties = {
     video: 'assets/lotties/video-player.json',
     '3d': 'assets/lotties/3d-cube.json',
@@ -28,7 +162,8 @@
     ia: 'assets/lotties/chat-bot.json',
     podcast: 'assets/lotties/headphone-podcast.json',
     audio: 'assets/lotties/headphone-podcast.json',
-    jeu: 'assets/lotties/game-manette.json'
+    jeu: 'assets/lotties/game-manette.json',
+    site: 'assets/lotties/site-web.json'
   };
 
   const videoEmbedUrl = (src) => {
@@ -163,8 +298,9 @@
 
     if (transcript) {
       const details = createElement('details', 'activity-document-transcription');
+      details.open = transcript.hasAttribute('data-open');
       details.append(createElement('summary', '', transcript.dataset.title || 'Transcription'));
-      details.append(createElement('p', 'activity-document-text', transcript.textContent.trim()));
+      details.append(renderMarkdownSource(transcript.textContent, 'activity-document-text'));
       panel.append(details);
     }
     if (content && !['texte', 'tableau', 'table'].includes(type)) {
