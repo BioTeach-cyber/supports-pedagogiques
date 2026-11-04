@@ -1,5 +1,5 @@
 {
-  "id": "01-physique-chimie",
+  "id": "02-physique-chimie",
   "titre": "Physique-Chimie",
   "discipline": "Physique-Chimie",
   "classes": ["Quatrième"],
@@ -128,15 +128,15 @@
       ]
     },
     {
-      "statut": "inactif",
+      "statut": "actif",
       "id": "Chapitre 03",
       "page": "Chapitre 03/Chapitre.html",
       "type": "chapitre",
       "Periode": "01",
       "start": "null",
       "end": "null",
-      "titre": "",
-      "description": "",
+      "titre": "Solide, liquide, gaz : la matière change de costume !",
+      "description": "Ce matin, il a gelé : les flaques sont solides. Vers midi, le soleil tape et la glace fond. L'après-midi, du linge sèche sur un fil alors qu'il ne pleut plus. Le soir, de la buée se forme sur la vitre de ta chambre. Une seule substance — l'eau — mais elle change d'apparence sans arrêt. Comment fait-elle ? Pourquoi ? Et que se passe-t-il vraiment à l'intérieur, au niveau des molécules ?",
       "couleur": "#53a4db",
       "lottie": "assets/lotties/goutte-eau-tombant.json",
 
@@ -152,36 +152,36 @@
 
       "activité": [
         {
-          "statut": "inactif",
+          "statut": "actif",
           "id": "activité 01",
-          "titre": "",
+          "titre": "Solide, liquide, gaz : comment les reconnaître ?",
           "lottie": "assets/lotties/Numbers/01.json",
           "page": "Chapitre 03/cours/Activité_01.html",
           "objectifs pédagogiques": [
-            { "id": "obj01", "libelle": "" },
-            { "id": "obj02", "libelle": "" }
+            { "id": "obj01", "libelle": "Identifier les trois états de la matière à partir de leurs propriétés macroscopiques (forme, volume, compressibilité)" },
+            { "id": "obj02", "libelle": "Classer des exemples du quotidien selon leur état physique" }
           ]
         },
         {
           "statut": "inactif",
           "id": "activité 02",
-          "titre": "",
+          "titre": "La ronde des changements d'état",
           "lottie": "assets/lotties/Numbers/02.json",
           "page": "Chapitre 03/cours/Activité_02.html",
           "objectifs pédagogiques": [
-            { "id": "obj03", "libelle": "" },
-            { "id": "obj04", "libelle": "" }
+            { "id": "obj03", "libelle": "Nommer les six changements d'état et les associer à des situations concrètes (buée, fonte de glace, rosée…)" },
+            { "id": "obj04", "libelle": "Repérer sur un graphique de changement d'état les paliers de température correspondant aux transformations" }
           ]
         },
         {
           "statut": "inactif",
           "id": "activité 03",
-          "titre": "",
+          "titre": "Construis ce que tu bois et respires !",
           "lottie": "assets/lotties/Numbers/03.json",
           "page": "Chapitre 03/cours/Activité_03.html",
           "objectifs pédagogiques": [
-            { "id": "obj05", "libelle": "" },
-            { "id": "obj06", "libelle": "" }
+            { "id": "obj05", "libelle": "Décrire l'organisation des molécules dans chaque état de la matière (modèle microscopique)" },
+            { "id": "obj06", "libelle": "Expliquer un changement d'état en utilisant le modèle particulaire (agitation, rapprochement, éloignement)" }
           ]
         }
       ]

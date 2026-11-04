@@ -98,7 +98,7 @@
     });
     frames.forEach((frame) => {
       frame.addEventListener('load', () => {
-        frame.contentWindow?.postMessage({ type: 'application-height-request' }, location.origin);
+        frame.contentWindow?.postMessage({ type: 'application-height-request' }, '*');
       }, { once: true });
     });
   };

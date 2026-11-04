@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Les 3 états de la matière – 4e</title>
+<style>
+/* =========================================================
+   1. VARIABLES DE COULEURS (charte graphique)
+   ========================================================= */
+:root {
+  --bleu: #53a4db;
+  --vert: #7fbc48;
+  --violet: #a6539b;
+  --orange: #f3912b;
+  --gris: #b7b7b7;
+  --rouge: #e62d32;
+  --rose: #ee7bab;
+  --rose-genially: #161213;
+  --jaune: #f4d32e;
+  --marron: #a5706c;
+  --noir: #494949;
+  --fond: #ffffff;
+
+  /* Code couleur des états */
+  --solide: var(--violet);
+  --liquide: var(--bleu);
+  --gaz: var(--orange);
+}
+
+/* =========================================================
+   2. BASE
+   ========================================================= */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; }
+body {
+  background: var(--fond);
+  color: var(--noir);
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+  line-height: 1.5;
+}
+.app { width: 100%; max-width: 1000px; margin: 0 auto; padding: 0.8rem; background: var(--fond); }
+h1 { font-size: clamp(1.3rem, 4vw, 2rem); }
+h2 { font-size: clamp(1.1rem, 3.2vw, 1.5rem); margin-bottom: 0.6rem; color: var(--noir); border-left: 6px solid var(--bleu); padding-left: 0.6rem; }
+p { margin-bottom: 0.6rem; }
+strong.s { color: var(--solide); }
+strong.l { color: #2f7fb5; } /* bleu un peu foncé pour la lisibilité du texte */
+strong.g { color: #c96d0e; } /* orange un peu foncé pour la lisibilité du texte */
+
+/* =========================================================
+   3. EN-TÊTE ET NAVIGATION
+   ========================================================= */
+header { text-align: center; padding: 0.6rem 0 0.8rem; border-bottom: 4px solid var(--bleu); margin-bottom: 0.8rem; }
+header h1 span { color: var(--bleu); }
+nav { display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: center; margin-bottom: 1rem; }
+.onglet {
+  flex: 1 1 8rem; padding: 0.55rem 0.4rem; border: 2px solid var(--bleu); border-radius: 0.6rem;
+  background: var(--fond); color: var(--noir); font-size: 0.95rem; font-weight: 600; cursor: pointer;
+}
+.onglet[aria-selected="true"] { background: var(--bleu); color: #fff; }
+.onglet:focus-visible, button:focus-visible, select:focus-visible, .bac:focus-visible, .etiquette:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; }
+
+section.etape { display: none; }
+section.etape.active { display: block; animation: apparition 0.3s ease; }
+@keyframes apparition { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* =========================================================
+   4. ÉLÉMENTS COMMUNS
+   ========================================================= */
+.carte { border: 2px solid var(--gris); border-radius: 0.8rem; padding: 1rem; margin-bottom: 1rem; background: var(--fond); }
+.bouton {
+  padding: 0.6rem 1rem; border: 3px solid var(--bleu); border-radius: 0.6rem; background: var(--fond);
+  color: var(--noir); font-weight: 700; font-size: 1rem; cursor: pointer; transition: background 0.2s;
+}
+.bouton:hover { background: #e9f4fb; }
+.bouton.suivant { display: block; margin: 1rem auto 0; }
+.message { margin-top: 0.8rem; padding: 0.7rem; border-radius: 0.6rem; border-left: 6px solid var(--gris); min-height: 2.8rem; }
+.message.ok { border-color: var(--vert); background: #f1f8ea; }
+.message.ko { border-color: var(--rouge); background: #fdecec; }
+.message.info { border-color: var(--bleu); background: #eef6fc; }
+
+/* =========================================================
+   5. ÉTAPE 1 : CONTEXTE
+   ========================================================= */
+.scenes { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 0.7rem; margin: 1rem 0; }
+.scene { text-align: center; border-radius: 0.8rem; padding: 0.8rem; border: 3px solid; }
+.scene .emoji { font-size: 2.6rem; }
+.scene.s { border-color: var(--solide); }
+.scene.l { border-color: var(--liquide); }
+.scene.g { border-color: var(--gaz); }
+.question { font-size: 1.15rem; font-weight: 700; text-align: center; padding: 0.8rem; border: 3px dashed var(--bleu); border-radius: 0.8rem; }
+
+/* =========================================================
+   6. ÉTAPE 2 : LABORATOIRE
+   ========================================================= */
+.labo { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 700px) { .labo { grid-template-columns: 1fr; } }
+.groupe-boutons { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.3rem 0 0.8rem; }
+.choix {
+  flex: 1 1 6rem; padding: 0.55rem; border-radius: 0.6rem; border: 3px solid var(--gris);
+  background: var(--fond); color: var(--noir); font-weight: 700; cursor: pointer; font-size: 0.95rem;
+}
+.choix.s.actif { background: var(--solide); border-color: var(--solide); color: #fff; }
+.choix.l.actif { background: var(--liquide); border-color: var(--liquide); color: #fff; }
+.choix.g.actif { background: var(--gaz); border-color: var(--gaz); color: var(--noir); }
+.choix.r.actif { background: var(--bleu); border-color: var(--bleu); color: #fff; }
+.zone-svg { width: 100%; border: 2px solid var(--gris); border-radius: 0.8rem; background: var(--fond); }
+.zone-svg svg { width: 100%; height: auto; display: block; }
+.carnet li { list-style: none; padding: 0.25rem 0; }
+.carnet li.fait { color: var(--noir); font-weight: 600; }
+.progression { height: 0.8rem; background: #eee; border-radius: 1rem; overflow: hidden; margin: 0.4rem 0; }
+.progression div { height: 100%; width: 0; background: var(--vert); transition: width 0.4s; }
+
+/* =========================================================
+   7. ÉTAPE 3 : TABLEAU-BILAN
+   ========================================================= */
+.tableau-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 30rem; }
+th, td { border: 2px solid var(--gris); padding: 0.5rem; text-align: center; }
+th { background: #eef6fc; }
+td.etat { font-weight: 700; color: #fff; }
+td.etat.s { background: var(--solide); }
+td.etat.l { background: var(--liquide); }
+td.etat.g { background: var(--gaz); color: var(--noir); }
+select { font-size: 1rem; padding: 0.3rem; border-radius: 0.4rem; border: 2px solid var(--gris); background: var(--fond); color: var(--noir); }
+td.juste { background: #e3f1d6; }
+td.faux { background: #fbd5d6; }
+.lexique { margin-top: 0.8rem; font-size: 0.95rem; }
+.lexique dt { font-weight: 700; }
+.lexique dd { margin: 0 0 0.4rem 1rem; }
+
+/* =========================================================
+   8. ÉTAPE 4 : CLASSEMENT
+   ========================================================= */
+.reserve { display: flex; flex-wrap: wrap; gap: 0.5rem; min-height: 3.5rem; padding: 0.6rem; border: 2px dashed var(--gris); border-radius: 0.8rem; margin-bottom: 0.8rem; }
+.etiquette {
+  padding: 0.45rem 0.7rem; border: 2px solid var(--noir); border-radius: 2rem; background: var(--fond);
+  color: var(--noir); cursor: pointer; font-size: 0.95rem; font-weight: 600; user-select: none;
+}
+.etiquette.selection { outline: 4px solid var(--jaune); background: #fffbe5; }
+.etiquette.correcte { border-color: var(--vert); background: #f1f8ea; cursor: default; }
+.etiquette.erreur { animation: secousse 0.4s; border-color: var(--rouge); }
+@keyframes secousse { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+.bacs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
+@media (max-width: 600px) { .bacs { grid-template-columns: 1fr; } }
+.bac { border: 3px solid; border-radius: 0.8rem; min-height: 9rem; padding: 0.5rem; cursor: pointer; display: flex; flex-direction: column; gap: 0.4rem; }
+.bac h3 { text-align: center; font-size: 1.1rem; padding: 0.3rem; border-radius: 0.5rem; }
+.bac.s { border-color: var(--solide); } .bac.s h3 { background: var(--solide); color: #fff; }
+.bac.l { border-color: var(--liquide); } .bac.l h3 { background: var(--liquide); color: #fff; }
+.bac.g { border-color: var(--gaz); } .bac.g h3 { background: var(--gaz); color: var(--noir); }
+.bac.survol { background: #fffbe5; }
+.score { font-weight: 700; text-align: center; margin-top: 0.6rem; }
+
+/* =========================================================
+   9. ÉTAPE 5 : ENQUÊTE
+   ========================================================= */
+.enigme { border-left: 6px solid var(--bleu); }
+.enigme h3 { margin-bottom: 0.4rem; }
+.indices li { margin-left: 1.2rem; margin-bottom: 0.2rem; }
+.reponses-enquete { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.7rem; }
+.reponses-enquete .choix { flex: 1 1 6rem; }
+.reponses-enquete .choix:disabled { opacity: 0.6; cursor: default; }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ================= EN-TÊTE ================= -->
+  <header>
+    <h1>Les <span>3 états</span> de la matière</h1>
+    <p>Solide 🧊 – Liquide 💧 – Gaz 💨</p>
+  </header>
+
+  <!-- ================= NAVIGATION ================= -->
+  <nav role="tablist" aria-label="Étapes de l'activité">
+    <button class="onglet" role="tab" aria-selected="true"  data-cible="etape1">1. Le problème</button>
+    <button class="onglet" role="tab" aria-selected="false" data-cible="etape2">2. J'expérimente</button>
+    <button class="onglet" role="tab" aria-selected="false" data-cible="etape3">3. Je retiens</button>
+    <button class="onglet" role="tab" aria-selected="false" data-cible="etape4">4. Je classe</button>
+    <button class="onglet" role="tab" aria-selected="false" data-cible="etape5">5. J'enquête</button>
+  </nav>
+
+  <main>
+    <!-- ========== ÉTAPE 1 : CONTEXTE ========== -->
+    <section id="etape1" class="etape active" role="tabpanel">
+      <h2>Le problème</h2>
+      <div class="scenes">
+        <div class="scene s"><div class="emoji" aria-hidden="true">🌅🧊</div><p><strong>Le matin</strong><br>La flaque est gelée : c'est dur, ça garde sa forme.</p></div>
+        <div class="scene l"><div class="emoji" aria-hidden="true">☀️💧</div><p><strong>À midi</strong><br>C'est une flaque d'eau : ça coule, ça prend la forme du creux.</p></div>
+        <div class="scene g"><div class="emoji" aria-hidden="true">🌬️❓</div><p><strong>Et l'air ?</strong><br>Il est tout autour de toi… mais tu ne le vois même pas !</p></div>
+      </div>
+      <p class="question">🔎 Comment reconnaître à coup sûr un solide, un liquide et un gaz ?</p>
+      <p style="margin-top:0.8rem">Pour le savoir, tu vas faire <strong>2 tests</strong> sur chaque état :</p>
+      <ul style="margin-left:1.5rem">
+        <li>📦 <strong>Changer de récipient</strong> : est-ce que la forme change ? Et le volume (la place occupée) ?</li>
+        <li>💪 <strong>Appuyer sur un piston</strong> : est-ce qu'on peut l'écraser, le <em>comprimer</em> ?</li>
+      </ul>
+      <button class="bouton suivant" data-aller="etape2">Je commence les expériences ➜</button>
+    </section>
+
+    <!-- ========== ÉTAPE 2 : LABORATOIRE ========== -->
+    <section id="etape2" class="etape" role="tabpanel">
+      <h2>J'expérimente</h2>
+      <div class="labo">
+        <div>
+          <p><strong>① Choisis un état :</strong></p>
+          <div class="groupe-boutons" id="choixEtat">
+            <button class="choix s actif" data-etat="solide">🧊 Glace</button>
+            <button class="choix l" data-etat="liquide">💧 Eau</button>
+            <button class="choix g" data-etat="gaz">💨 Air</button>
+          </div>
+          <p><strong>② Change de récipient :</strong></p>
+          <div class="groupe-boutons" id="choixRecipient">
+            <button class="choix r actif" data-recipient="moyen">Moyen</button>
+            <button class="choix r" data-recipient="haut">Étroit</button>
+            <button class="choix r" data-recipient="large">Large</button>
+          </div>
+          <p><strong>③ Appuie sur le piston :</strong></p>
+          <div class="groupe-boutons">
+            <button class="bouton" id="btnPiston">💪 Appuyer</button>
+            <button class="bouton" id="btnRelacher">↩️ Relâcher</button>
+          </div>
+        </div>
+        <div class="zone-svg">
+          <svg id="dessin" viewBox="0 0 300 220" role="img" aria-label="Récipient contenant la substance choisie"></svg>
+        </div>
+      </div>
+      <div class="message info" id="messageLabo" aria-live="polite">Choisis un état, puis fais les tests !</div>
+
+      <div class="carte" style="margin-top:1rem">
+        <p><strong>📒 Mon carnet d'expériences</strong> (<span id="compteur">0</span>/6)</p>
+        <div class="progression"><div id="barre"></div></div>
+        <ul class="carnet" id="carnet"></ul>
+      </div>
+      <button class="bouton suivant" data-aller="etape3">Je remplis le bilan ➜</button>
+    </section>
+
+    <!-- ========== ÉTAPE 3 : TABLEAU-BILAN ========== -->
+    <section id="etape3" class="etape" role="tabpanel">
+      <h2>Je retiens</h2>
+      <p>D'après tes expériences, complète le tableau avec <strong>Oui</strong> ou <strong>Non</strong>.</p>
+      <div class="tableau-wrap">
+        <table id="tableauBilan">
+          <thead>
+            <tr><th>État</th><th>Forme propre ?</th><th>Volume propre ?</th><th>Compressible ?</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <button class="bouton suivant" id="btnVerifierTableau">✔️ Vérifier</button>
+      <div class="message" id="messageTableau" aria-live="polite"></div>
+
+      <dl class="lexique carte">
+        <dt>📐 Forme propre</dt><dd>La forme ne change pas quand on change de récipient.</dd>
+        <dt>📦 Volume propre</dt><dd>La place occupée reste la même, quel que soit le récipient.</dd>
+        <dt>💪 Compressible</dt><dd>On peut l'écraser pour lui faire prendre moins de place.</dd>
+      </dl>
+      <button class="bouton suivant" data-aller="etape4">Je classe des exemples ➜</button>
+    </section>
+
+    <!-- ========== ÉTAPE 4 : CLASSEMENT ========== -->
+    <section id="etape4" class="etape" role="tabpanel">
+      <h2>Je classe</h2>
+      <p>👆 <strong>Touche une étiquette</strong>, puis <strong>touche le bon bac</strong>. Sur ordinateur, tu peux aussi la faire glisser.</p>
+      <div class="reserve" id="reserve" aria-label="Étiquettes à classer"></div>
+      <div class="bacs">
+        <div class="bac s" data-etat="solide" role="button" tabindex="0" aria-label="Bac Solide"><h3>🧊 Solide</h3></div>
+        <div class="bac l" data-etat="liquide" role="button" tabindex="0" aria-label="Bac Liquide"><h3>💧 Liquide</h3></div>
+        <div class="bac g" data-etat="gaz" role="button" tabindex="0" aria-label="Bac Gaz"><h3>💨 Gaz</h3></div>
+      </div>
+      <div class="message info" id="messageClassement" aria-live="polite">Utilise le tableau : forme ? volume ? compressible ?</div>
+      <p class="score" id="scoreClassement"></p>
+      <button class="bouton suivant" id="btnRejouer">🔄 Recommencer</button>
+      <button class="bouton suivant" data-aller="etape5">Je mène l'enquête ➜</button>
+    </section>
+
+    <!-- ========== ÉTAPE 5 : ENQUÊTE ========== -->
+    <section id="etape5" class="etape" role="tabpanel">
+      <h2>J'enquête 🕵️</h2>
+      <p>Des substances mystères ont été trouvées au labo. Lis les indices et trouve leur état.</p>
+      <div id="enquetes"></div>
+      <p class="score" id="scoreEnquete"></p>
+    </section>
+  </main>
+</div>
+
+<script>
+"use strict";
+
+/* =========================================================
+   1. NAVIGATION ENTRE LES ÉTAPES
+   ========================================================= */
+const onglets = document.querySelectorAll(".onglet");
+const etapes = document.querySelectorAll(".etape");
+
+function afficherEtape(idEtape) {
+  etapes.forEach(etape => etape.classList.toggle("active", etape.id === idEtape));
+  onglets.forEach(onglet => onglet.setAttribute("aria-selected", onglet.dataset.cible === idEtape));
+  document.querySelector(".app").scrollIntoView({ behavior: "smooth" });
+}
+onglets.forEach(onglet => onglet.addEventListener("click", () => afficherEtape(onglet.dataset.cible)));
+document.querySelectorAll("[data-aller]").forEach(bouton =>
+  bouton.addEventListener("click", () => afficherEtape(bouton.dataset.aller)));
+
+/* =========================================================
+   2. LABORATOIRE VIRTUEL (SVG)
+   ========================================================= */
+const svg = document.getElementById("dessin");
+const messageLabo = document.getElementById("messageLabo");
+
+const FOND_Y = 200;          // fond du récipient
+const HAUT_Y = 30;           // position haute du piston
+const CIBLE_PISTON = 160;    // jusqu'où on essaie d'enfoncer le piston
+const VOLUME_LIQUIDE = 4800; // "aire" constante du liquide (le volume se conserve)
+
+const recipients = {
+  haut:  { x: 110, largeur: 80 },
+  moyen: { x: 80,  largeur: 140 },
+  large: { x: 30,  largeur: 240 }
+};
+const couleurs = { solide: "#a6539b", liquide: "#53a4db", gaz: "#f3912b" };
+
+let etatChoisi = "solide";
+let recipientChoisi = "moyen";
+let positionPiston = HAUT_Y;
+let animationEnCours = null;
+
+/* Observations du carnet : 3 états x 2 tests */
+const observations = {
+  solide_recipient:  { fait: false, texte: "🧊 La glace garde sa forme et son volume." },
+  solide_piston:     { fait: false, texte: "🧊 La glace ne se comprime pas." },
+  liquide_recipient: { fait: false, texte: "💧 L'eau prend la forme du récipient, mais garde son volume." },
+  liquide_piston:    { fait: false, texte: "💧 L'eau ne se comprime pas." },
+  gaz_recipient:     { fait: false, texte: "💨 L'air occupe tout le récipient : ni forme, ni volume propres." },
+  gaz_piston:        { fait: false, texte: "💨 L'air se comprime !" }
+};
+
+/* Renvoie la hauteur où le piston est bloqué par la substance */
+function hautSubstance() {
+  const r = recipients[recipientChoisi];
+  if (etatChoisi === "solide") return FOND_Y - 60;
+  if (etatChoisi === "liquide") return FOND_Y - VOLUME_LIQUIDE / r.largeur;
+  return FOND_Y; // le gaz ne bloque pas le piston
+}
+
+/* Dessine la scène complète */
+function dessiner() {
+  const r = recipients[recipientChoisi];
+  const couleur = couleurs[etatChoisi];
+  let contenu = `
+    <defs>
+      <pattern id="points" width="14" height="14" patternUnits="userSpaceOnUse">
+        <circle cx="4" cy="4" r="2" fill="${couleurs.gaz}"/>
+        <circle cx="11" cy="10" r="1.5" fill="${couleurs.gaz}"/>
+      </pattern>
+    </defs>`;
+
+  // Substance
+  if (etatChoisi === "solide") {
+    const xBloc = r.x + r.largeur / 2 - 30;
+    contenu += `<rect x="${xBloc}" y="${FOND_Y - 60}" width="60" height="60" rx="6" fill="${couleur}" opacity="0.85"/>
+                <rect x="${xBloc + 8}" y="${FOND_Y - 52}" width="14" height="8" rx="3" fill="#fff" opacity="0.6"/>`;
+  } else if (etatChoisi === "liquide") {
+    const hauteur = VOLUME_LIQUIDE / r.largeur;
+    contenu += `<rect x="${r.x}" y="${FOND_Y - hauteur}" width="${r.largeur}" height="${hauteur}" fill="${couleur}" opacity="0.75"/>
+                <line x1="${r.x}" y1="${FOND_Y - hauteur}" x2="${r.x + r.largeur}" y2="${FOND_Y - hauteur}" stroke="#2f7fb5" stroke-width="3"/>`;
+  } else {
+    const hauteurGaz = FOND_Y - positionPiston;
+    const opacite = Math.min(0.9, 0.25 * (170 / hauteurGaz)); // plus serré = plus dense
+    contenu += `<rect x="${r.x}" y="${positionPiston}" width="${r.largeur}" height="${hauteurGaz}" fill="${couleur}" opacity="${opacite * 0.5}"/>
+                <rect x="${r.x}" y="${positionPiston}" width="${r.largeur}" height="${hauteurGaz}" fill="url(#points)" opacity="${Math.min(1, opacite + 0.3)}"/>`;
+  }
+
+  // Récipient (parois)
+  contenu += `<path d="M${r.x} ${HAUT_Y - 10} V${FOND_Y} H${r.x + r.largeur} V${HAUT_Y - 10}" fill="none" stroke="#494949" stroke-width="4"/>`;
+
+  // Piston et tige
+  contenu += `<rect x="${r.x + 3}" y="${positionPiston - 10}" width="${r.largeur - 6}" height="10" fill="#b7b7b7" stroke="#494949" stroke-width="2"/>
+              <rect x="${r.x + r.largeur / 2 - 4}" y="0" width="8" height="${positionPiston - 10}" fill="#b7b7b7" stroke="#494949" stroke-width="1.5"/>`;
+
+  svg.innerHTML = contenu;
+}
+
+/* Anime le piston jusqu'à une position cible */
+function animerPiston(cible, apresAnimation) {
+  if (animationEnCours) cancelAnimationFrame(animationEnCours);
+  function etape() {
+    const ecart = cible - positionPiston;
+    if (Math.abs(ecart) < 1) {
+      positionPiston = cible;
+      dessiner();
+      if (apresAnimation) apresAnimation();
+      return;
+    }
+    positionPiston += ecart * 0.12;
+    dessiner();
+    animationEnCours = requestAnimationFrame(etape);
+  }
+  etape();
+}
+
+/* Affiche un message et coche une observation */
+function noterObservation(cle, texteMessage) {
+  messageLabo.className = "message ok";
+  messageLabo.textContent = texteMessage;
+  observations[cle].fait = true;
+  mettreAJourCarnet();
+}
+
+function mettreAJourCarnet() {
+  const liste = document.getElementById("carnet");
+  const nbFaites = Object.values(observations).filter(o => o.fait).length;
+  liste.innerHTML = Object.values(observations)
+    .map(o => `<li class="${o.fait ? "fait" : ""}">${o.fait ? "✅ " + o.texte : "⬜ …"}</li>`).join("");
+  document.getElementById("compteur").textContent = nbFaites;
+  document.getElementById("barre").style.width = (nbFaites / 6 * 100) + "%";
+  if (nbFaites === 6) {
+    messageLabo.textContent += " 🎉 Bravo, toutes les expériences sont faites ! Passe au bilan.";
+  }
+}
+
+/* Boutons d'état */
+document.querySelectorAll("#choixEtat .choix").forEach(bouton => {
+  bouton.addEventListener("click", () => {
+    document.querySelectorAll("#choixEtat .choix").forEach(b => b.classList.remove("actif"));
+    bouton.classList.add("actif");
+    etatChoisi = bouton.dataset.etat;
+    positionPiston = HAUT_Y;
+    dessiner();
+    messageLabo.className = "message info";
+    messageLabo.textContent = "Change de récipient ou appuie sur le piston.";
+  });
+});
+
+/* Boutons de récipient */
+document.querySelectorAll("#choixRecipient .choix").forEach(bouton => {
+  bouton.addEventListener("click", () => {
+    document.querySelectorAll("#choixRecipient .choix").forEach(b => b.classList.remove("actif"));
+    bouton.classList.add("actif");
+    recipientChoisi = bouton.dataset.recipient;
+    positionPiston = HAUT_Y;
+    dessiner();
+    const textes = {
+      solide: "La glace garde la même forme et le même volume : un solide a une forme propre et un volume propre.",
+      liquide: "L'eau prend la forme du récipient… mais elle occupe toujours la même place : un liquide n'a pas de forme propre, mais il a un volume propre.",
+      gaz: "L'air remplit tout le récipient, quelle que soit sa taille : un gaz n'a ni forme propre, ni volume propre."
+    };
+    noterObservation(etatChoisi + "_recipient", textes[etatChoisi]);
+  });
+});
+
+/* Bouton « Appuyer » */
+document.getElementById("btnPiston").addEventListener("click", () => {
+  const blocage = Math.min(CIBLE_PISTON, hautSubstance());
+  animerPiston(blocage, () => {
+    const textes = {
+      solide: "Le piston est bloqué par la glace : impossible de l'écraser. Un solide est incompressible.",
+      liquide: "Le piston s'arrête sur l'eau : impossible de la comprimer. Un liquide est incompressible.",
+      gaz: "Le piston descend : l'air prend moins de place ! Un gaz est compressible."
+    };
+    noterObservation(etatChoisi + "_piston", textes[etatChoisi]);
+  });
+});
+
+/* Bouton « Relâcher » */
+document.getElementById("btnRelacher").addEventListener("click", () => {
+  animerPiston(HAUT_Y, () => {
+    if (etatChoisi === "gaz") {
+      messageLabo.className = "message info";
+      messageLabo.textContent = "Le piston remonte : l'air reprend toute la place disponible.";
+    }
+  });
+});
+
+dessiner();
+mettreAJourCarnet();
+
+/* =========================================================
+   3. TABLEAU-BILAN
+   ========================================================= */
+const reponsesTableau = {
+  solide:  ["oui", "oui", "non"],
+  liquide: ["non", "oui", "non"],
+  gaz:     ["non", "non", "oui"]
+};
+const nomsEtats = { solide: "🧊 Solide", liquide: "💧 Liquide", gaz: "💨 Gaz" };
+const classesEtats = { solide: "s", liquide: "l", gaz: "g" };
+
+const corpsTableau = document.querySelector("#tableauBilan tbody");
+corpsTableau.innerHTML = Object.keys(reponsesTableau).map(etat => `
+  <tr>
+    <td class="etat ${classesEtats[etat]}">${nomsEtats[etat]}</td>
+    ${[0, 1, 2].map(i => `
+      <td><select data-etat="${etat}" data-col="${i}" aria-label="${nomsEtats[etat]}, colonne ${i + 1}">
+        <option value="">?</option><option value="oui">Oui</option><option value="non">Non</option>
+      </select></td>`).join("")}
+  </tr>`).join("");
+
+document.getElementById("btnVerifierTableau").addEventListener("click", () => {
+  let justes = 0;
+  corpsTableau.querySelectorAll("select").forEach(liste => {
+    const attendu = reponsesTableau[liste.dataset.etat][liste.dataset.col];
+    const cellule = liste.parentElement;
+    const correct = liste.value === attendu;
+    cellule.classList.toggle("juste", correct);
+    cellule.classList.toggle("faux", !correct);
+    if (correct) justes++;
+  });
+  const message = document.getElementById("messageTableau");
+  if (justes === 9) {
+    message.className = "message ok";
+    message.innerHTML = "🎉 Parfait ! Retiens bien : <strong class='s'>Solide</strong> = forme + volume propres. <strong class='l'>Liquide</strong> = volume propre seulement. <strong class='g'>Gaz</strong> = rien de propre, mais compressible !";
+  } else {
+    message.className = "message ko";
+    message.textContent = `${justes}/9 bonnes réponses. Les cases rouges sont à corriger : retourne voir ton carnet d'expériences si besoin.`;
+  }
+});
+
+/* =========================================================
+   4. CLASSEMENT D'EXEMPLES DU QUOTIDIEN
+   ========================================================= */
+const exemples = [
+  { nom: "🪨 Caillou", etat: "solide", explication: "Le caillou garde sa forme et son volume." },
+  { nom: "🧊 Glaçon", etat: "solide", explication: "Le glaçon garde sa forme : c'est de l'eau solide." },
+  { nom: "🪵 Bûche de bois", etat: "solide", explication: "Le bois a une forme propre." },
+  { nom: "🧈 Beurre", etat: "solide", explication: "Le beurre garde sa forme (même s'il est mou)." },
+  { nom: "🏖️ Sable", etat: "solide", explication: "Piège ! Le sable « coule », mais chaque grain est un petit solide qui garde sa forme." },
+  { nom: "🥛 Lait", etat: "liquide", explication: "Le lait prend la forme du verre et garde son volume." },
+  { nom: "🫒 Huile", etat: "liquide", explication: "L'huile coule et prend la forme du récipient." },
+  { nom: "🍯 Miel", etat: "liquide", explication: "Piège ! Le miel coule lentement, mais il prend la forme du pot : c'est un liquide." },
+  { nom: "🧃 Jus d'orange", etat: "liquide", explication: "Le jus prend la forme de la bouteille." },
+  { nom: "🎈 Air du ballon", etat: "gaz", explication: "L'air remplit tout le ballon et on peut le comprimer." },
+  { nom: "🔥 Gaz de la gazinière", etat: "gaz", explication: "Le butane est un gaz : il occupe tout l'espace disponible." },
+  { nom: "🫧 Bulles de la limonade", etat: "gaz", explication: "Les bulles contiennent du dioxyde de carbone, un gaz." },
+  { nom: "💨 Vapeur d'eau", etat: "gaz", explication: "La vapeur d'eau est de l'eau à l'état gazeux (invisible !). Le « nuage blanc » qu'on voit, lui, est fait de minuscules gouttelettes." }
+];
+
+const reserve = document.getElementById("reserve");
+const messageClassement = document.getElementById("messageClassement");
+const scoreClassement = document.getElementById("scoreClassement");
+let etiquetteSelectionnee = null;
+let nbReussis = 0;
+let nbErreurs = 0;
+
+/* Mélange un tableau (algorithme de Fisher-Yates) */
+function melanger(tableau) {
+  const copie = [...tableau];
+  for (let i = copie.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copie[i], copie[j]] = [copie[j], copie[i]];
+  }
+  return copie;
+}
+
+/* Prépare ou réinitialise le jeu de classement */
+function initialiserClassement() {
+  reserve.innerHTML = "";
+  document.querySelectorAll(".bac .etiquette").forEach(e => e.remove());
+  etiquetteSelectionnee = null;
+  nbReussis = 0;
+  nbErreurs = 0;
+  messageClassement.className = "message info";
+  messageClassement.textContent = "Utilise le tableau : forme ? volume ? compressible ?";
+  mettreAJourScore();
+
+  melanger(exemples).forEach((exemple, index) => {
+    const etiquette = document.createElement("div");
+    etiquette.className = "etiquette";
+    etiquette.textContent = exemple.nom;
+    etiquette.dataset.index = exemples.indexOf(exemple);
+    etiquette.draggable = true;
+    etiquette.tabIndex = 0;
+    etiquette.setAttribute("role", "button");
+
+    // Sélection au clic / au toucher
+    etiquette.addEventListener("click", () => selectionnerEtiquette(etiquette));
+    etiquette.addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); selectionnerEtiquette(etiquette); }
+    });
+    // Glisser-déposer (ordinateur)
+    etiquette.addEventListener("dragstart", e => {
+      e.dataTransfer.setData("text/plain", etiquette.dataset.index);
+      selectionnerEtiquette(etiquette);
+    });
+    reserve.appendChild(etiquette);
+  });
+}
+
+function selectionnerEtiquette(etiquette) {
+  if (etiquette.classList.contains("correcte")) return;
+  document.querySelectorAll(".etiquette").forEach(e => e.classList.remove("selection"));
+  etiquette.classList.add("selection");
+  etiquetteSelectionnee = etiquette;
+}
+
+function mettreAJourScore() {
+  scoreClassement.textContent = `✅ Réussis : ${nbReussis}/${exemples.length}   |   ❌ Erreurs : ${nbErreurs}`;
+}
+
+/* Place l'étiquette dans un bac et vérifie la réponse */
+function deposerDansBac(bac, etiquette) {
+  if (!etiquette) {
+    messageClassement.className = "message info";
+    messageClassement.textContent = "👆 D'abord, touche une étiquette !";
+    return;
+  }
+  const exemple = exemples[etiquette.dataset.index];
+  if (exemple.etat === bac.dataset.etat) {
+    // Bonne réponse
+    etiquette.classList.remove("selection");
+    etiquette.classList.add("correcte");
+    etiquette.draggable = false;
+    bac.appendChild(etiquette);
+    etiquetteSelectionnee = null;
+    nbReussis++;
+    messageClassement.className = "message ok";
+    messageClassement.textContent = "✅ Bravo ! " + exemple.explication;
+    if (nbReussis === exemples.length) {
+      messageClassement.textContent += " 🎉 Tout est classé ! Passe à l'enquête.";
+    }
+  } else {
+    // Mauvaise réponse
+    nbErreurs++;
+    etiquette.classList.add("erreur");
+    setTimeout(() => etiquette.classList.remove("erreur"), 450);
+    messageClassement.className = "message ko";
+    messageClassement.textContent = "❌ Pas tout à fait. Pose-toi les 3 questions : a-t-il une forme propre ? un volume propre ? est-il compressible ?";
+  }
+  mettreAJourScore();
+}
+
+/* Événements des bacs */
+document.querySelectorAll(".bac").forEach(bac => {
+  bac.addEventListener("click", e => {
+    if (e.target.classList.contains("etiquette")) return; // clic sur une étiquette déjà posée
+    deposerDansBac(bac, etiquetteSelectionnee);
+  });
+  bac.addEventListener("keydown", e => {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); deposerDansBac(bac, etiquetteSelectionnee); }
+  });
+  bac.addEventListener("dragover", e => { e.preventDefault(); bac.classList.add("survol"); });
+  bac.addEventListener("dragleave", () => bac.classList.remove("survol"));
+  bac.addEventListener("drop", e => {
+    e.preventDefault();
+    bac.classList.remove("survol");
+    const index = e.dataTransfer.getData("text/plain");
+    const etiquette = reserve.querySelector(`.etiquette[data-index="${index}"]`);
+    if (etiquette) deposerDansBac(bac, etiquette);
+  });
+});
+
+document.getElementById("btnRejouer").addEventListener("click", initialiserClassement);
+initialiserClassement();
+
+/* =========================================================
+   5. ENQUÊTE : RAISONNEMENT ABDUCTIF
+   ========================================================= */
+const enquetes = [
+  {
+    titre: "🔬 Substance n°1",
+    indices: [
+      "On la verse dans un verre : elle prend la forme du verre.",
+      "On la verse dans une bouteille : le niveau change, mais la quantité reste la même.",
+      "On essaie de l'écraser avec une seringue : impossible."
+    ],
+    etat: "liquide",
+    explication: "Elle n'a pas de forme propre, a un volume propre et n'est pas compressible : c'est un liquide."
+  },
+  {
+    titre: "🔬 Substance n°2",
+    indices: [
+      "Elle est enfermée dans une bouteille fermée et remplit toute la bouteille.",
+      "On ouvre la bouteille dans une grande pièce : elle s'étale partout.",
+      "On appuie sur le piston d'une seringue remplie de cette substance : il s'enfonce facilement."
+    ],
+    etat: "gaz",
+    explication: "Elle remplit tout l'espace et se comprime : c'est un gaz."
+  },
+  {
+    titre: "🔬 Substance n°3",
+    indices: [
+      "On la pose dans un bol, puis dans une assiette : sa forme ne change pas.",
+      "Elle occupe toujours la même place.",
+      "On ne peut pas la comprimer."
+    ],
+    etat: "solide",
+    explication: "Elle garde sa forme et son volume, et ne se comprime pas : c'est un solide."
+  },
+  {
+    titre: "🔬 Substance n°4 (la plus difficile !)",
+    indices: [
+      "Elle est invisible, tu ne la vois pas du tout.",
+      "Mais quand tu gonfles un ballon, elle prend toute la place disponible.",
+      "Si tu serres le ballon, elle se laisse écraser."
+    ],
+    etat: "gaz",
+    explication: "Invisible, elle remplit tout l'espace et se comprime : c'est un gaz. Comme l'air autour de nous (et de la flaque) !"
+  }
+];
+
+const conteneurEnquetes = document.getElementById("enquetes");
+const scoreEnquete = document.getElementById("scoreEnquete");
+let enquetesReussies = 0;
+let enquetesRepondues = 0;
+
+enquetes.forEach(enquete => {
+  const carte = document.createElement("div");
+  carte.className = "carte enigme";
+  carte.innerHTML = `
+    <h3>${enquete.titre}</h3>
+    <ul class="indices">${enquete.indices.map(i => `<li>🔎 ${i}</li>`).join("")}</ul>
+    <p style="margin-top:0.5rem"><strong>À ton avis, c'est…</strong></p>
+    <div class="reponses-enquete">
+      <button class="choix s" data-etat="solide">🧊 Un solide</button>
+      <button class="choix l" data-etat="liquide">💧 Un liquide</button>
+      <button class="choix g" data-etat="gaz">💨 Un gaz</button>
+    </div>
+    <div class="message" aria-live="polite"></div>`;
+
+  const message = carte.querySelector(".message");
+  const boutons = carte.querySelectorAll(".reponses-enquete .choix");
+
+  boutons.forEach(bouton => {
+    bouton.addEventListener("click", () => {
+      if (bouton.dataset.etat === enquete.etat) {
+        // Bonne réponse : on verrouille la carte
+        bouton.classList.add("actif");
+        boutons.forEach(b => b.disabled = true);
+        message.className = "message ok";
+        message.textContent = "✅ Bien joué ! " + enquete.explication;
+        enquetesReussies++;
+        enquetesRepondues++;
+        mettreAJourScoreEnquete();
+      } else {
+        // Mauvaise réponse : on laisse réessayer
+        bouton.disabled = true;
+        message.className = "message ko";
+        message.textContent = "❌ Relis bien les indices. Que se passe-t-il quand on change de récipient ? Et quand on appuie ?";
+      }
+    });
+  });
+  conteneurEnquetes.appendChild(carte);
+});
+
+function mettreAJourScoreEnquete() {
+  if (enquetesReussies === enquetes.length) {
+    scoreEnquete.textContent = "🏆 Bravo, détective ! Tu sais reconnaître les 3 états de la matière !";
+  } else {
+    scoreEnquete.textContent = `Enquêtes résolues : ${enquetesReussies}/${enquetes.length}`;
+  }
+}
+mettreAJourScoreEnquete();
+
+const signalerHauteur = () => {
+  const app = document.querySelector('.app');
+  if (app) parent.postMessage({ type: 'application-height', height: Math.ceil(app.getBoundingClientRect().height) }, '*');
+};
+
+window.addEventListener('message', (event) => {
+  if (event.source === parent && event.data?.type === 'application-height-request') signalerHauteur();
+});
+
+const observateurHauteur = new ResizeObserver(signalerHauteur);
+observateurHauteur.observe(document.querySelector('.app'));
+signalerHauteur();
+</script>
+</body>
+</html>

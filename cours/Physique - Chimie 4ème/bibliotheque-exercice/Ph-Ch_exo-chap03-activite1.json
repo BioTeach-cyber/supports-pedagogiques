@@ -1,14 +1,102 @@
 {
-  "chapitreId": "chap17",
+  "chapitreId": "chap3",
   "activiteId": "activite1",
   "exercices": [
     {
-      "themeId": "",
-      "titre": "",
-      "objectifId": "",
-      "enonce": "",
-      "question": "",
-      "reponse": ""
+      "themeId": "Piscine",
+      "titre": "L'eau de la piscine",
+      "objectifId": "obj1",
+      "enonce": "Léa nage dans la piscine. L'eau prend la forme du bassin. Si Léa verse de l'eau dans un seau, l'eau prend la forme du seau. Le volume d'eau reste le même.",
+      "question": "Identifie l'état physique de l'eau de la piscine. Justifie avec la forme et le volume.",
+      "reponse": "L'eau de la piscine est à l'état liquide. Elle n'a pas de forme propre : elle prend la forme du récipient (bassin, seau). Elle garde un volume constant."
+    },
+    {
+      "themeId": "Roller",
+      "titre": "Rouler sur le bitume",
+      "objectifId": "obj1",
+      "enonce": "Tom fait du roller. Il met son casque dans son sac, puis sur le bitume. Le casque garde toujours la même forme. Il garde aussi le même volume. Tom ne peut pas l'écraser avec ses mains.",
+      "question": "Identifie l'état physique du casque. Justifie avec les trois propriétés : forme, volume et compressibilité (capacité à être écrasé).",
+      "reponse": "Le casque est à l'état solide. Il a une forme propre : elle ne change pas quand on le déplace. Il a un volume constant. Il est incompressible : on ne peut pas l'écraser facilement."
+    },
+    {
+      "themeId": "Vélo",
+      "titre": "Gonfler un pneu de vélo",
+      "objectifId": "obj1",
+      "enonce": "Inès gonfle le pneu de son vélo avec une pompe. Elle pousse le piston de la pompe. Le volume d'air dans la pompe diminue. L'air peut donc être comprimé (écrasé). L'air prend toute la place dans le pneu.",
+      "question": "Identifie l'état physique de l'air dans la pompe. Justifie avec la compressibilité et le volume.",
+      "reponse": "L'air est à l'état gazeux. Il est compressible : son volume diminue quand on pousse le piston. Il n'a pas de volume propre : il occupe toute la place disponible dans le pneu."
+    },
+    {
+      "themeId": "Foot",
+      "titre": "Le ballon et la bouteille",
+      "objectifId": "obj2",
+      "enonce": "Après l'entraînement de foot, Karim regarde son sac. Il y trouve : un ballon, une bouteille d'eau, des crampons, et l'air dans le ballon. Chaque objet ou matière est dans un état physique : solide, liquide ou gaz.",
+      "question": "Classe ces quatre éléments dans un tableau à trois colonnes : solide, liquide, gaz.",
+      "reponse": "Solide : les crampons (et la matière du ballon). Liquide : l'eau de la bouteille. Gaz : l'air dans le ballon. Le ballon gonflé contient un gaz, mais son enveloppe est solide."
+    },
+    {
+      "themeId": "Cuisine",
+      "titre": "Dans la cuisine",
+      "objectifId": "obj2",
+      "enonce": "Sarah prépare le repas. Elle a sur la table : du sucre en morceaux, de l'huile, de la vapeur qui sort de la casserole, et une cuillère en bois.",
+      "question": "1. Classe ces quatre éléments selon leur état physique.\n2. Justifie le classement de l'huile.",
+      "reponse": "1. Solide : le sucre en morceaux et la cuillère en bois. Liquide : l'huile. Gaz : la vapeur d'eau.\n2. L'huile est liquide car elle n'a pas de forme propre : elle prend la forme du récipient. Elle garde un volume constant."
+    },
+    {
+      "themeId": "Minecraft",
+      "titre": "Les blocs de Minecraft",
+      "objectifId": "obj2",
+      "enonce": "Dans Minecraft, Lucas construit une maison. Il utilise des blocs de pierre. Il pose un seau d'eau et un seau de lave. Autour de lui, il y a de l'air. Dans la vie réelle, la lave fondue est liquide.",
+      "question": "Classe la pierre, l'eau, la lave et l'air selon leur état physique : solide, liquide ou gaz.",
+      "reponse": "Solide : la pierre. Liquide : l'eau et la lave. Gaz : l'air. La pierre garde sa forme. L'eau et la lave coulent et prennent la forme du seau."
+    },
+    {
+      "themeId": "Mécanique",
+      "titre": "Le garage de papa",
+      "objectifId": "obj1",
+      "enonce": "Dans le garage, Noa observe trois choses. Le fer d'une clé garde sa forme. L'huile de moteur prend la forme de la bassine. L'air du compresseur est enfermé dans un réservoir : il peut être comprimé.",
+      "question": "Identifie l'état physique de chaque élément : le fer, l'huile et l'air. Explique ton choix pour chacun.",
+      "reponse": "Le fer est solide : il garde sa forme. L'huile est liquide : elle prend la forme de la bassine et garde son volume. L'air est un gaz : il est compressible et occupe tout le réservoir."
+    },
+    {
+      "themeId": "Pêche",
+      "titre": "Une journée de pêche",
+      "objectifId": "obj2",
+      "enonce": "Maël pêche au bord d'un lac. Il a une canne à pêche, un thermos de café chaud, et un poisson dans son seau d'eau. Autour de lui, il y a de l'air. Au-dessus de son café, il voit de la vapeur.",
+      "question": "Classe ces éléments dans un tableau : canne à pêche, café, eau du lac, air, vapeur.",
+      "reponse": "Solide : la canne à pêche. Liquide : le café et l'eau du lac. Gaz : l'air et la vapeur d'eau."
+    },
+    {
+      "themeId": "Animaux",
+      "titre": "Le chien et sa gamelle",
+      "objectifId": "obj1",
+      "enonce": "Chloé remplit la gamelle de son chien. Elle verse de l'eau. L'eau prend la forme de la gamelle. Elle verse ensuite des croquettes. Chaque croquette garde sa forme.",
+      "question": "1. Identifie l'état physique de l'eau.\n2. Identifie l'état physique des croquettes.\n3. Explique la différence entre les deux.",
+      "reponse": "1. L'eau est liquide.\n2. Les croquettes sont solides.\n3. L'eau n'a pas de forme propre : elle prend la forme de la gamelle. Chaque croquette a une forme propre et la garde."
+    },
+    {
+      "themeId": "Travailler dehors",
+      "titre": "Au travail dans les champs",
+      "objectifId": "obj2",
+      "enonce": "Hugo aide son oncle agriculteur. Il manipule de la terre, de l'eau pour arroser, une bêche en métal, et l'air autour de lui. Le vent qui souffle est de l'air en mouvement.",
+      "question": "Classe la terre, l'eau, la bêche et l'air selon leur état physique. Écris une phrase pour justifier le classement de l'air.",
+      "reponse": "Solide : la terre et la bêche. Liquide : l'eau. Gaz : l'air. L'air est un gaz car il n'a ni forme propre ni volume propre : il occupe tout l'espace disponible."
+    },
+    {
+      "themeId": "Voiture",
+      "titre": "Le plein de la voiture",
+      "objectifId": "obj1",
+      "enonce": "Samia accompagne sa mère à la station-service. L'essence coule dans le réservoir et prend sa forme. Les pneus contiennent de l'air. On peut comprimer cet air en les gonflant. La carrosserie garde sa forme.",
+      "question": "Identifie l'état physique de l'essence, de l'air des pneus et de la carrosserie. Justifie chaque réponse en une phrase.",
+      "reponse": "L'essence est liquide : elle prend la forme du réservoir. L'air des pneus est un gaz : il est compressible. La carrosserie est solide : elle garde sa forme et son volume."
+    },
+    {
+      "themeId": "Danse",
+      "titre": "Après le cours de danse",
+      "objectifId": "obj2",
+      "enonce": "Après la danse, Emma prend sa gourde d'eau. Elle essuie sa sueur avec une serviette. Elle ouvre la fenêtre pour faire entrer l'air frais. Son sac de sport est posé au sol.",
+      "question": "Classe l'eau de la gourde, la serviette, l'air frais et le sac de sport selon leur état physique.",
+      "reponse": "Solide : la serviette et le sac de sport. Liquide : l'eau de la gourde. Gaz : l'air frais."
     }
   ]
 }

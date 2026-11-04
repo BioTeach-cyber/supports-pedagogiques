@@ -66,7 +66,7 @@
     }
 
     const libraryUrl = new URL(`cours/${encodeURIComponent(courseId)}/bibliotheque-exercice/`, ROOT);
-    const chapterId = `chap${Number(chapterMatch[1])}`;
+    const chapterId = `chap${String(Number(chapterMatch[1])).padStart(2, '0')}`;
     const activityId = `activite${Number(activityMatch[1])}`;
     const [themesResponse, exercisesResponse] = await Promise.all([
       fetch(new URL('Ph-Ch_exo-themes.json', libraryUrl)),

@@ -14,11 +14,12 @@
   <script src="../../../../assets/component/questionnements-intermediaires.js" defer></script>
   <script src="../../../../assets/component/documents-lycee.js" defer></script>
   <script src="../../../../assets/component/activite.js" defer></script>
+  <script src="../../../../assets/component/bibliotheque-exercice.js" defer></script>
 </head>
-<body data-course="ecologie">
+<body data-course="Physique - Chimie 4ème">
   <div class="site-shell">
     <header class="page-header" id="page-header">
-      <a class="brand-mark" id="course-link" href="../../cours/?cours=ecologie" aria-label="Retour au réseau du cours">
+      <a class="brand-mark" id="course-link" href="../../cours/?cours=Physique%20-%20Chimie%204ème" aria-label="Retour au réseau du cours">
         <span class="brand-animation" id="course-lottie" aria-hidden="true"></span>
       </a>
       <h1 id="activity-title">Chargement de l’activité…</h1>
@@ -34,82 +35,65 @@
     <main id="activity-content" class="page-content activity-page-content">
       <div data-component="contexte-professionnel" data-title="Contexte professionnel">
         <script type="text/markdown">
-Vous effectuez un stage dans un **accueil de jour pour personnes âgées**, installé près d’un grand parc.
-
-La responsable souhaite développer des ateliers *« nature et mémoire »*. Elle a remarqué que les résidents aiment reconnaître les plantes et les animaux qu’ils ont connus.
-
-Votre mission : préparer un jeu de cartes illustrées sur les êtres vivants du parc. Pour cela, vous devrez apprendre à les observer, à relever leurs caractéristiques et à identifier leur milieu de vie.
+Le matin, tu marches sur une flaque gelée : c'est dur, ça garde sa forme. À midi, c'est devenu une flaque d'eau : ça coule, ça prend la forme du creux dans le sol. Et l'air autour de toi ? Tu ne le vois même pas. Comment différencier ces trois états à coup sûr ?
         </script>
       </div>
-      <div data-component="problematique" data-title="Problématique">
+
+      <section class="activity-section" data-activity-position>
+        <h2 class="activity-section-title">Application</h2>
+        <iframe class="activity-document-application" data-auto-height src="../../../../applications/physique - chimie/Les_3_etats_de la_matiere.html" title="Application interactive sur les états de la matière" loading="lazy" scrolling="no" sandbox="allow-scripts allow-forms"></iframe>
+      </section>
+
+      <div data-component="problematique" data-title="Ce que je dois retenir">
         <script type="text/markdown">
-Comment aider les résidents à reconnaître les êtres vivants du parc et à les retrouver dans leur milieu de vie ?
+## 🔹 Les 3 états de la matière
+
+La matière qui nous entoure existe sous **trois états physiques** :
+
+- **Solide** 🧊 (exemple : un glaçon)
+- **Liquide** 💧 (exemple : l'eau du robinet)
+- **Gaz** 💨 (exemple : l'air)
+
+
+## 🔹 Comment reconnaître un état ? Les propriétés
+
+| Propriété | Solide 🧊 | Liquide 💧 | Gaz 💨 |
+|---|---|---|---|
+| **Forme** | Propre (elle ne change pas) | Variable (prend la forme du récipient) | Variable (prend la forme du récipient) |
+| **Volume** | Fixe | Fixe | Variable (occupe tout l'espace disponible) |
+| **Compressible ?** | ❌ Non | ❌ Non | ✅ Oui (on peut le comprimer) |
+
+
+## 🔹 Les mots importants
+
+- **Forme propre** : l'objet garde sa forme tout seul, même sans récipient.
+- **Volume** : la place occupée par la matière.
+- **Compressible** : on peut réduire son volume en appuyant dessus (comme avec une seringue remplie d'air).
+
+
+## 🔹 Exemples du quotidien
+
+| Solide 🧊 | Liquide 💧 | Gaz 💨 |
+|---|---|---|
+| Un caillou | Le lait | L'air d'un ballon |
+| Une table | L'huile | La vapeur d'eau |
+| Le sucre en morceau | Le jus d'orange | Le gaz de la gazinière |
+
+
+## 🔹 Astuces pour ne pas se tromper
+
+- ⚠️ **Le sable et la farine** sont des **solides** : chaque petit grain est un solide, même si le tas "coule".
+- ⚠️ **Un nuage ou la buée** ne sont pas des gaz : ce sont de minuscules gouttelettes d'eau **liquide**.
+- 💡 **Pour trouver l'état** : je me pose 3 questions
+  1. L'objet garde-t-il sa forme tout seul ?
+  2. Occupe-t-il toute la place disponible ?
+  3. Peut-on le comprimer ?
+
+
+✅ **En une phrase** : *Un solide a une forme propre, un liquide prend la forme de son récipient, un gaz occupe tout l'espace et se comprime.*
         </script>
       </div>
-      <div data-component="questionnements-intermediaires" data-title="Questionnements intermédiaires">
-        <script type="application/json">
-[
-  { "question": "Quelles caractéristiques permettent de distinguer les êtres vivants observés au parc ?" },
-  { "question": "Dans quels milieux de vie les différentes espèces ont-elles été observées ?" }
-]
-        </script>
-      </div>
-      <div data-component="documents-lycee" data-title="Documents">
-          <div data-document data-type="texte" data-title="Document texte">
-  <div data-document-content>
-Un texte en **Markdown**, avec une *mise en forme* et des listes :
-
-- Premier élément
-- Deuxième élément
-  </div>
-</div>
-
-<div data-document data-type="tableau" data-title="Tableau d’observations">
-  <div data-document-content>
-| Espèce | Caractéristique | Milieu |
-| --- | --- | --- |
-| À identifier | Feuilles dentées | Haie |
-| À identifier | Vit dans l’eau | Mare |
-  </div>
-</div>
-
-<div data-document data-type="video" data-title="Vidéo d’observation"
-     data-src="https://youtu.be/fhtTr6chloo"
-     data-poster="../../../../assets/images/affiche.jpg">
-  <div data-transcription>
-La vidéo montre une **mare** et les espèces qui y vivent.
-  </div>
-</div>
-
-<div data-document data-type="audio" data-title="Témoignage audio"
-     data-src="https://app.notion.com/p/vapremont/M-ne-l-enqu-te-qui-es-tu-petite-b-te-c19dca0d1c4282739c75811badcd4c5f?v=35adca0d1c428070b0d7000cb13b0c39&source=copy_link#3dedca0d1c4280e985b2f41aae7c663a">
-  <div data-transcription data-title="Lire la transcription">
-« Je venais souvent me promener près de cette mare… »
-  </div>
-</div>
-
-<div data-document data-type="image matricielle" data-title="Photographie"
-     data-src="../../../../assets/images/vignettes/EP2-Ecologie.jpg"
-     data-alt="Photographie de la mare du parc">
-</div>
-
-<div data-document data-type="image vectorielle" data-title="Schéma SVG"
-     data-src="../../../../maquette_site.svg"
-     data-alt="Schéma des milieux de vie">
-</div>
-
-<div data-document data-type="application" data-title="Application interactive"
-     data-src="https://bioteach-cyber.github.io/outils-pedagogiques/Physique-Chimie/Monopoly.html">
-</div>
-
-<div data-document data-type="lien" data-title="Ressource complémentaire"
-     data-src="https://www.filets-de-peche.fr/109-bichette-demontable"
-     data-label="Consulter la ressource">
-</div>
-
-          </div>
-        </div>
-      </div>
+       <div data-component="bibliotheque-exercice" data-title="Bibliothèque d'exercices"></div>
     </main>
     <footer class="site-footer"><a id="footer-link" href="../../Chapitre.html">Retour au chapitre</a><span>Ressources pédagogiques</span></footer>
   </div>
