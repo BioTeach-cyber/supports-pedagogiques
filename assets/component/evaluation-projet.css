@@ -1,0 +1,16 @@
+.evaluation-project-section { margin: 32px 0; }
+.evaluation-project-card { display: flex; min-height: 148px; align-items: center; justify-content: flex-end; gap: 22px; padding: 18px 24px; border: 1px solid var(--line); border-right: 8px solid var(--course-color); border-radius: 8px; background: #fbfcfd; }
+.evaluation-project-content { display: grid; justify-items: start; transform: translateY(14px); }
+.evaluation-project-visual { display: grid; justify-items: center; gap: 4px; }
+.evaluation-project-heading { margin: 0; color: var(--course-color); font-size: clamp(1.2rem, 2vw, 1.55rem); text-align: center; }
+.evaluation-project-button { display: inline-flex; min-height: 42px; align-items: center; justify-content: center; padding: 9px 15px; border: 1px solid var(--course-color); border-radius: 6px; background: var(--course-color); color: #fff; font-weight: 700; text-align: center; text-decoration: none; }
+.evaluation-project-button:hover { filter: brightness(.95); }
+.evaluation-project-button:focus-visible { outline: 3px solid var(--course-color); outline-offset: 3px; }
+.evaluation-project-lottie { display: grid; width: 112px; height: 112px; flex: 0 0 auto; place-items: center; color: var(--course-color); font-size: 2.5rem; font-weight: 700; }
+.evaluation-project-lottie svg { width: 100% !important; height: 100% !important; }
+.evaluation-project-lottie-fallback { border: 2px solid var(--course-color); border-radius: 50%; }
+.evaluation-project-error { padding: 16px; border-left: 4px solid #b42318; background: #fff2f0; color: #8f1d14; }
+@media (max-width: 560px) {
+  .evaluation-project-card { min-height: 120px; gap: 14px; padding: 14px; }
+  .evaluation-project-lottie { width: 84px; height: 84px; }
+}

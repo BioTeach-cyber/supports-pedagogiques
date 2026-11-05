@@ -1,0 +1,29 @@
+.resource-download-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+  margin: 28px 0;
+  padding: clamp(18px, 3vw, 28px);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--course-color);
+  border-radius: 10px;
+  background: #fbfcfd;
+}
+.resource-download-title { margin: 0; color: var(--course-color); font-size: clamp(1.2rem, 2vw, 1.55rem); }
+.resource-download-description { max-width: 90ch; margin: -8px 0 0; color: var(--muted); line-height: 1.65; white-space: pre-line; }
+.resource-download-content { display: flex; align-items: center; gap: 24px; }
+.resource-download-lottie { display: grid; width: 112px; height: 112px; flex: 0 0 auto; place-items: center; color: var(--course-color); font-size: 3rem; font-weight: 700; }
+.resource-download-lottie svg { width: 100% !important; height: 100% !important; }
+.resource-download-lottie-fallback { border: 2px solid var(--course-color); border-radius: 50%; }
+.resource-download-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.resource-download-button, .resource-download-resource-link { display: inline-flex; min-height: 42px; align-items: center; justify-content: center; padding: 9px 15px; border: 1px solid var(--course-color); border-radius: 6px; font-weight: 700; text-decoration: none; }
+.resource-download-button { background: var(--course-color); color: #fff; }
+.resource-download-resource-link { background: #fff; color: var(--ink); }
+.resource-download-button:hover, .resource-download-resource-link:hover { filter: brightness(.95); }
+.resource-download-error { margin: 0; color: #8f1d14; }
+@media (max-width: 560px) {
+  .resource-download-content { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .resource-download-lottie { width: 88px; height: 88px; }
+  .resource-download-actions { align-items: stretch; flex-direction: column; width: 100%; }
+  .resource-download-button, .resource-download-resource-link { width: 100%; }
+}

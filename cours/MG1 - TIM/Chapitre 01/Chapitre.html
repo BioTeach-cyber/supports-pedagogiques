@@ -6,14 +6,23 @@
   <meta name="theme-color" content="#7fbc48">
   <title>Chapitre — Mes ressources pédagogiques</title>
   <link rel="stylesheet" href="../../../assets/css/cours.css">
+  <link rel="stylesheet" href="../../../assets/component/activite.css">
+  <link rel="stylesheet" href="../../../assets/component/telechargement-drive.css">
+  <link rel="stylesheet" href="../../../assets/component/evaluation-projet.css">
   <script src="../../../assets/js/lib/lottie.min.js" defer></script>
   <script src="../../../assets/js/lib/qrcode.min.js" defer></script>
-  <script src="../../../assets/js/chapitre-page.js" defer></script>
+  <script src="../../../assets/js/chapitre-page-libre.js" defer></script>
+  <script src="../../../assets/component/contexte-professionnel.js" defer></script>
+  <script src="../../../assets/component/problematique.js" defer></script>
+  <script src="../../../assets/component/questionnements-intermediaires.js" defer></script>
+  <script src="../../../assets/component/documents-lycee.js" defer></script>
+  <script src="../../../assets/component/telechargement-drive.js" defer></script>
+  <script src="../../../assets/component/evaluation-projet.js" defer></script>
 </head>
-<body data-course="ecologie">
+<body data-course="MG1 - TIM">
   <div class="site-shell">
     <header class="page-header" id="page-header">
-      <a class="brand-mark" id="course-link" href="../../cours/?cours=ecologie" aria-label="Retour au réseau du cours">
+      <a class="brand-mark" id="course-link" href="../../cours/?cours=MG1%20-%20TIM" aria-label="Retour au réseau du cours">
         <span class="brand-animation" id="course-lottie" aria-hidden="true"></span>
       </a>
       <h1 id="chapter-title">Chargement du chapitre…</h1>
@@ -27,9 +36,51 @@
       </dialog>
     </header>
     <main id="chapter-content" class="page-content">
-      <a class="back-link" id="back-link" href="../../cours/?cours=ecologie">← Retour au réseau du cours</a>
+      <a class="back-link" id="back-link" href="../../cours/?cours=MG1 - TIM">← Retour au réseau du cours</a>
+      <div data-component="contexte-professionnel" data-title="Contexte">
+        <script type="text/markdown">
+Vous effectuez un stage au sein du service « Études et Prospective » du Conseil départemental. Ce service prépare le prochain Schéma départemental de l'autonomie, un document officiel qui planifie, pour les cinq années à venir, la création de places en établissement pour les personnes âgées dépendantes. La responsable du service, madame Ferrand, doit présenter dans deux mois un dossier aux élus du département. Elle constate que le nombre de personnes atteintes de la maladie d'Alzheimer ou d'une démence apparentée augmente régulièrement, que cette maladie touche très majoritairement les personnes très âgées, et qu'elle ne frappe pas les hommes et les femmes de la même façon. Elle s'inquiète également de la répartition des établissements sur le territoire : certains habitants vivent à plus de trente kilomètres du premier EHPAD, ce qui éloigne les familles et complique les visites. Ne disposant d'aucun outil de visualisation, elle vous confie une mission : transformer deux bases de données brutes - l'une recensant les effectifs de malades par année, sexe et tranche d'âge, l'autre listant les établissements sanitaires et sociaux avec leurs adresses - en un dossier clair, chiffré et illustré, compréhensible par des élus qui ne sont ni médecins ni informaticiens.
+
+Votre travail servira directement à justifier, ou non, l'ouverture de nouvelles places dans le département.
+        </script>
+      </div>
+      <div data-component="problematique" data-title="Problématique">
+        <script type="text/markdown">
+La maladie d'Alzheimer progresse-t-elle dans le Finistère, et le territoire de la Côte des Légendes dispose-t-il d'une offre d'accueil suffisante pour y faire face ?
+        </script>
+      </div>
+      <div data-component="questionnements-intermediaires" data-title="Questionnements intermédiaires">
+        <script type="application/json">
+[
+  { "question": "Comment le nombre de malades a-t-il évolué dans le Finistère au cours des dernières années ?" },
+  { "question": "Quels âges et quel sexe sont les plus touchés dans le Finistère ?" },
+  { "question": "Les personnes atteintes d'Alzheimer sont-elles plus âgées dans le Finistère que dans les départements voisins ?" },
+  { "question": "Quels établissements existent sur la Côte des Légendes, et sont-ils bien répartis sur ce territoire ?" },
+  { "question": "Le nombre d'établissements de la Côte des Légendes semble-t-il cohérent avec l'évolution observée dans le Finistère ?" }
+]
+        </script>
+      </div>
+
+      <div data-component="telechargement-drive"
+        data-title="Données"
+        data-drive-url="https://drive.google.com/file/d/12Q9Lj-mdwmoa0elto3vMLsQt4rXIClkn/view?usp=sharing"
+        data-download-label="Télécharger les données du projet"
+        data-lottie="assets/lotties/database.json"
+        data-description="">
+        <a data-resource-url="https://www.data.gouv.fr/datasets/pathologies-effectif-de-patients-par-pathologie-sexe-classe-dage-et-territoire-departement-region" data-resource-label="Pathologies : effectif de patients par pathologie, sexe, classe d'âge et territoire (département, région)"></a>
+        <a data-resource-url="https://www.data.gouv.fr/datasets/finess-extraction-du-fichier-des-etablissements" data-resource-label="FINESS Extraction du Fichier des établissements sanitaire et social français"></a>
+      </div>
+      <div data-component="telechargement-drive"
+        data-title="Cartographie SIG"
+        data-drive-url="https://drive.google.com/file/d/1IsS5yLAAB9t-WUeuhHq1yJexXzWRow3u/view?usp=sharing"
+        data-download-label="Télécharger le contour de carte"
+        data-lottie="assets/lotties/emplacement.json"
+        data-description="">
+      </div>
+
+      <div data-component="evaluation-projet" data-title="Grille d’évaluation"></div>
     </main>
-    <footer class="site-footer"><a id="footer-link" href="../../cours/?cours=ecologie">Retour au cours</a><span>Ressources pédagogiques</span></footer>
+    <footer class="site-footer"><a id="footer-link" href="../../cours/?cours=MG1 - TIM">Retour au cours</a><span>Ressources pédagogiques</span></footer>
   </div>
 </body>
 </html>

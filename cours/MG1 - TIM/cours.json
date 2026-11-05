@@ -18,10 +18,10 @@
       "Periode": "",
       "start": "",
       "end": "",
-      "titre": "",
+      "titre": "Alzheimer dans le Finistère, zoom sur la Côte des Légendes",
       "description": "",
       "couleur": null,
-      "lottie": "assets/lotties/.json",
+      "lottie": "assets/lotties/medicine.json",
 
       "evaluationFinale": {
           "statut": "actif",
@@ -35,13 +35,13 @@
 
       "evaluationsSecondaires": [
         {
-          "statut": "inactif",
-          "type": "Activités",
+          "statut": "actif",
+          "type": "Projet",
           "start": "",
           "end": "",
-          "lottie": "assets/lotties/activity.json",
+          "lottie": "assets/lotties/project.json",
           "component": "",
-          "page": "Chapitre 01/evaluation/evaluation_activite.html"
+          "page": "Chapitre 01/evaluation/evaluation_projet.html"
         }
       ],
 
@@ -50,7 +50,7 @@
           "statut": "inactif",
           "id": "activité 01",
           "titre": "",
-          "lottie": "assets/lotties/Numbers/01.json",
+          "lottie": "assets/lotties/medicine.json",
           "page": "Chapitre 01/cours/Activité_01.html",
           "objectifs pédagogiques": [
             { "id": "obj01", "libelle": "" },

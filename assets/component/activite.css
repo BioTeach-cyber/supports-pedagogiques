@@ -55,7 +55,7 @@
 .activity-context { border-left: 5px solid var(--course-color); }
 .activity-problem { border-right: 5px solid var(--course-color); }
 .activity-context .activity-section-title, .activity-problem .activity-section-title { margin-bottom: 12px; }
-.activity-context-body, .activity-problem-body { max-width: 90ch; line-height: 1.75; }
+.activity-context-body, .activity-problem-body { width: 100%; line-height: 1.75; }
 .activity-context-body > :first-child, .activity-problem-body > :first-child { margin-top: 0; }
 .activity-context-body > :last-child, .activity-problem-body > :last-child { margin-bottom: 0; }
 .activity-context-body blockquote, .activity-problem-body blockquote { margin: 16px 0; padding-left: 16px; border-left: 3px solid var(--course-color); color: var(--muted); }

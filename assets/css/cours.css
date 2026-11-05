@@ -53,7 +53,7 @@ button { font: inherit; }
 .page-qr-large { width: min(280px, 70vw); height: min(280px, 70vw); margin: 16px auto; }
 .page-qr-large img, .page-qr-large canvas, .page-qr-large svg { width: 100% !important; height: 100% !important; }
 .qr-dialog p { margin: 8px 0 0; color: var(--muted); }
-.page-content { min-height: 620px; padding: clamp(22px, 4vw, 54px); border: 1px solid var(--line); border-top: 0; background: var(--surface); }
+.page-content { min-height: 620px; padding: clamp(22px, 4vw, 54px); border: 1px solid var(--line); border-top: 0; background: var(--surface); text-align: justify; }
 .site-footer { display: flex; justify-content: space-between; gap: 16px; padding: 18px 24px; color: var(--muted); font-size: .9rem; }
 .site-footer a { color: var(--ink); }
 
