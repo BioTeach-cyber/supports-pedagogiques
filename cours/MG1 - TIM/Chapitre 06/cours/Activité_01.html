@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#b7b7b7">
+  <title>Activité — Mes ressources pédagogiques</title>
+  <link rel="stylesheet" href="../../../../assets/css/cours.css">
+  <link rel="stylesheet" href="../../../../assets/component/activite.css">
+  <script src="../../../../assets/js/lib/lottie.min.js" defer></script>
+  <script src="../../../../assets/js/lib/qrcode.min.js" defer></script>
+  <script src="../../../../assets/component/contexte-professionnel.js" defer></script>
+  <script src="../../../../assets/component/problematique.js" defer></script>
+  <script src="../../../../assets/component/questionnements-intermediaires.js" defer></script>
+  <script src="../../../../assets/component/documents-lycee.js" defer></script>
+  <script src="../../../../assets/component/activite.js" defer></script>
+  <script src="../../../../assets/js/lib/vis-network.min.js" defer></script>
+ <style>
+   #erreur { display:none; margin-bottom:10px; background:#C62828; color:#fff; padding:10px; font-size:15px; }
+   #conteneur { position:relative; display:flex; width:100%; height:min(75vh, 900px); min-height:560px; overflow:hidden; font-family:Arial, sans-serif; }
+    #gauche { position:relative; display:flex; flex:3; min-width:0; flex-direction:column; overflow:hidden; border-right:2px solid #ccc; }
+    #filtres { flex:0 0 auto; padding:6px; box-sizing:border-box; background:#ECEFF1; display:grid;
+               grid-template-columns:repeat(auto-fit, minmax(120px, 1fr)); gap:6px; overflow:hidden; }
+    #filtres button { min-width:0; border:1px solid #555; border-radius:6px; padding:5px 8px; cursor:pointer; font-size:14px; }
+    #filtres button.actif { outline:3px solid #1565C0; }
+    #reseau { position:relative; flex:1 1 auto; min-height:0; overflow:hidden; }
+    #panneau { flex:1; min-width:320px; padding:16px; overflow-y:auto; background:#fafafa; font-size:15px; box-sizing:border-box; }
+    #activity-content > .activity-banner, #activity-content > .activity-navigation { display:none; }
+   #panneau h1 { font-size:19px; margin-top:0; }
+   #panneau h2 { font-size:17px; margin:0 0 6px; }
+   #panneau h3 { font-size:15px; margin:12px 0 4px; }
+   .etiquette { display:inline-block; padding:3px 8px; border-radius:6px; font-size:13px; margin:2px 4px 2px 0; }
+   #panneau ul, #panneau ol { padding-left:20px; margin-top:4px; }
+   #panneau li { margin-bottom:5px; }
+   .boite { padding:10px; border-radius:6px; margin-top:10px; }
+   .objectifs { background:#E3F2FD; border-left:4px solid #1565C0; }
+   .conseils  { background:#FFF8E1; border-left:4px solid #FFA000; }
+   .mots      { background:#E8F5E9; border-left:4px solid #43A047; }
+   .mot { display:inline-block; background:#fff; border:1px solid #81C784; border-radius:12px; padding:2px 9px; margin:2px; }
+   .retour { margin-top:14px; display:inline-block; cursor:pointer; color:#1565C0; text-decoration:underline; }
+   .carre { display:inline-block; width:14px; height:14px; margin-right:6px; vertical-align:middle; border:1px solid #333; }
+    @media (max-width:760px) {
+      #conteneur { display:block; height:auto; min-height:0; overflow:visible; }
+      #gauche { height:min(65vh, 620px); min-height:400px; border-right:0; border-bottom:2px solid #ccc; }
+      #filtres { grid-template-columns:repeat(auto-fit, minmax(105px, 1fr)); }
+      #panneau { min-width:0; min-height:220px; }
+    }
+ </style>
+</head>
+<body data-course="MG1 - TIM">
+  <div class="site-shell">
+    <header class="page-header" id="page-header">
+      <a class="brand-mark" id="course-link" href="../../../../cours/?cours=MG1%20-%20TIM" aria-label="Retour au réseau du cours">
+        <span class="brand-animation" id="course-lottie" aria-hidden="true"></span>
+      </a>
+      <h1 id="activity-title">Chargement de l’activité…</h1>
+      <button class="qr-wrap" id="qr-open" type="button" aria-label="Agrandir le QR code de cette page" aria-haspopup="dialog">
+        <span id="page-qr" class="page-qr" aria-hidden="true"></span>
+      </button>
+      <dialog class="qr-dialog" id="qr-dialog" aria-label="QR code de cette page">
+        <button class="qr-dialog-close" id="qr-close" type="button" aria-label="Fermer le QR code">×</button>
+        <div id="page-qr-large" class="page-qr-large" aria-label="QR code agrandi"></div>
+        <p>Scannez pour ouvrir cette page</p>
+      </dialog>
+    </header>
+    <main id="activity-content" class="page-content activity-page-content">
+
+<div id="erreur"></div>
+<div id="conteneur">
+  <div id="gauche">
+    <div id="filtres"></div>
+    <div id="reseau"></div>
+  </div>
+  <div id="panneau"></div>
+</div>
+
+<script>
+// Affiche toute erreur à l'écran (aide au diagnostic)
+function montrerErreur(msg) {
+  var e = document.getElementById("erreur");
+  e.style.display = "block";
+  e.textContent = "⚠️ " + msg;
+  document.getElementById("conteneur").style.top = "44px";
+}
+window.onerror = function (msg) { montrerErreur("Erreur : " + msg); };
+
+window.addEventListener("load", function () {
+  if (typeof vis === "undefined") {
+    montrerErreur("La bibliothèque vis-network n'a pas pu être chargée. Vérifie la connexion Internet ou le filtrage du réseau de l'établissement.");
+    return;
+  }
+
+  // ===================== OUTILS ET CRITÈRES =====================
+  var OUTILS = {
+    classroom: { nom:"Google Classroom", couleur:"#CFD8DC" },
+    sheets:    { nom:"Google Sheets",    couleur:"#A5D6A7" },
+    docs:      { nom:"Google Docs",      couleur:"#90CAF9" },
+    powerbi:   { nom:"Power BI",         couleur:"#FFE082" },
+    mymaps:    { nom:"Google My Maps",   couleur:"#EF9A9A" },
+    geogebra:  { nom:"GeoGebra",         couleur:"#CE93D8" }
+  };
+  var CRITERES = {
+    C0:"Démarrer (prérequis)",
+    C1:"Critère 1 – Analyser le contexte et la problématique",
+    C2:"Critère 2 – Traiter les données",
+    C3:"Critère 3 – Exposer les données"
+  };
+
+  // ===================== TUTORIELS =====================
+  var TUTOS = [
+    { id:"CL1", titre:"Récupérer une ressource et rendre un travail", outil:"classroom", crit:"C0", x:-450, y:300,
+      objectifs:["Retrouver un devoir et ses ressources dans Google Classroom.",
+                 "Joindre un fichier ou un lien à un devoir.",
+                 "Rendre un travail et vérifier qu'il apparaît comme « Remis »."],
+      conseils:["Montrer où se trouve l'onglet « Travaux et devoirs ».",
+                "Illustrer la différence entre « Ajouter » et « Rendre »."],
+      mots:["devoir","pièce jointe","rendre","lien de partage"] },
+    { id:"SH1", titre:"Lire un jeu de données", outil:"sheets", crit:"C0", x:-450, y:450,
+      objectifs:["Distinguer une ligne (un individu) d'une colonne (une variable).",
+                 "Identifier le type de chaque colonne : texte, nombre, date.",
+                 "Repérer les cases vides ou les valeurs bizarres."],
+      conseils:["Utiliser un petit tableau d'exemple (5 lignes maximum).",
+                "Comparer le tableau à une liste de bénéficiaires d'une aide à domicile."],
+      mots:["donnée","variable","ligne","colonne","valeur manquante"] },
+    { id:"SH2", titre:"Préparer un tableau pour une carte", outil:"sheets", crit:"C0", x:-450, y:700,
+      objectifs:["Structurer un tableau avec une colonne adresse (ou latitude/longitude).",
+                 "Ajouter des colonnes nom, valeur chiffrée et catégorie.",
+                 "Partager ou télécharger le tableau pour My Maps."],
+      conseils:["Montrer une adresse bien écrite et une adresse mal écrite.",
+                "Expliquer pourquoi une seule information doit figurer par case."],
+      mots:["adresse","latitude","longitude","catégorie"] },
+
+    { id:"DOC1", titre:"Reformuler une problématique", outil:"docs", crit:"C1", x:0, y:-200,
+      objectifs:["Reformuler la problématique par écrit dans le rapport, en une phrase compréhensible sans explication complémentaire."],
+      conseils:["Proposer une méthode : Qui ? Quoi ? Où ? Quand ?",
+                "Comparer une bonne et une mauvaise reformulation."],
+      mots:["problématique","reformuler","contexte"] },
+    { id:"DOC2", titre:"Rédiger la conclusion d'une étude", outil:"docs", crit:"C3", x:1350, y:450,
+      objectifs:["Formuler par écrit une réponse explicite à la problématique posée.",
+                 "Appuyer la conclusion écrite sur au moins deux données chiffrées issues du rapport.",
+                 "Exprimer par écrit une limite ou une réserve sur les résultats produits.",
+                 "Employer le vocabulaire technique correct à l'écrit (donnée, variable, mesure, filtre, indicateur, source)."],
+      conseils:["Proposer des débuts de phrases : « Les données montrent que… », « Cependant… ».",
+                "Repérer, dans un exemple de conclusion, les chiffres et la limite."],
+      mots:["conclusion","donnée chiffrée","limite","source","indicateur"] },
+
+    { id:"PB1", titre:"Analyser la problématique et choisir ses variables", outil:"powerbi", crit:"C1", x:0, y:200,
+      objectifs:["Identifier le destinataire du travail et le besoin auquel il répond (à qui sert ce tableau de bord ?).",
+                 "Lister les variables (colonnes) nécessaires pour répondre à la problématique.",
+                 "Justifier par écrit la pertinence du jeu de données retenu (couverture, période, unité).",
+                 "Délimiter le périmètre de l'étude (territoire, période, catégories) et le faire apparaître dans le rapport.",
+                 "Sélectionner un ou plusieurs indicateurs clés cohérents avec la problématique annoncée."],
+      conseils:["Construire un tableau à remplir : destinataire / besoin / variables / périmètre.",
+                "Comparer avec une recette : on choisit les ingrédients selon le plat à préparer."],
+      mots:["destinataire","variable","périmètre","indicateur clé","jeu de données"] },
+    { id:"PB2", titre:"Importer des données et typer les colonnes", outil:"powerbi", crit:"C2", x:450, y:-100,
+      objectifs:["Attribuer à chaque colonne utilisée le type de données correct (texte, entier, décimal, date, booléen)."],
+      conseils:["Montrer l'icône du type dans l'en-tête de colonne.",
+                "Illustrer une erreur fréquente : un nombre lu comme du texte."],
+      mots:["importer","type de données","décimal","booléen"] },
+    { id:"PB3", titre:"Nettoyer les données (Power Query)", outil:"powerbi", crit:"C2", x:450, y:50,
+      objectifs:["Renommer les colonnes avec des intitulés explicites, lisibles par un tiers.",
+                 "Supprimer les colonnes et les lignes inutiles au regard de la problématique.",
+                 "Traiter les valeurs manquantes ou erronées (suppression, remplacement, conservation assumée).",
+                 "Nommer les étapes appliquées de façon compréhensible (transformation lisible et reproductible)."],
+      conseils:["Montrer le volet « Étapes appliquées » avant et après renommage.",
+                "Expliquer quand supprimer, remplacer ou garder une valeur manquante."],
+      mots:["Power Query","étape appliquée","valeur erronée","reproductible"] },
+    { id:"PB4", titre:"Créer une mesure (indicateur clé)", outil:"powerbi", crit:"C2", x:450, y:200,
+      objectifs:["Calculer un indicateur de synthèse pertinent (somme, moyenne, effectif, min, max, médiane) à l'aide d'une mesure.",
+                 "Nommer les mesures de façon explicite (intitulé + unité)."],
+      conseils:["Donner un exemple de formule simple et l'expliquer mot par mot.",
+                "Comparer moyenne et médiane sur un exemple de 5 valeurs."],
+      mots:["mesure","somme","moyenne","médiane","effectif"] },
+    { id:"PB5", titre:"Regrouper les données par catégories", outil:"powerbi", crit:"C2", x:450, y:350,
+      objectifs:["Regrouper les données selon une ou plusieurs catégories pertinentes pour le phénomène étudié."],
+      conseils:["Montrer le même chiffre avant et après regroupement.",
+                "Comparer avec le rangement du linge par couleur."],
+      mots:["catégorie","regrouper","tranche"] },
+    { id:"PB6", titre:"Choisir le bon visuel", outil:"powerbi", crit:"C3", x:900, y:-200,
+      objectifs:["Choisir un type de visuel adapté au message (évolution → courbe ; comparaison → barres ; répartition → secteurs/treemap ; localisation → carte)."],
+      conseils:["Construire un tableau « Je veux montrer… → J'utilise… ».",
+                "Montrer un mauvais choix de visuel et expliquer pourquoi il trompe."],
+      mots:["visuel","évolution","comparaison","répartition"] },
+    { id:"PB7", titre:"Titrer, légender et formater les nombres", outil:"powerbi", crit:"C3", x:900, y:-80,
+      objectifs:["Titrer chaque visuel de manière explicite, compréhensible sans explication orale.",
+                 "Légender les axes et les séries en indiquant les unités de mesure.",
+                 "Appliquer un format de nombre lisible (séparateur de milliers, décimales cohérentes, symbole d'unité)."],
+      conseils:["Montrer où se trouve le volet « Format » du visuel.",
+                "Comparer un visuel sans titre et le même visuel bien titré."],
+      mots:["titre","légende","axe","unité","format"] },
+    { id:"PB8", titre:"Trier et mettre en valeur", outil:"powerbi", crit:"C3", x:900, y:40,
+      objectifs:["Trier les données du visuel selon un ordre porteur de sens (croissant, décroissant, chronologique).",
+                 "Utiliser une mise en forme conditionnelle pour faire ressortir les valeurs remarquables."],
+      conseils:["Montrer le menu « … » du visuel pour trier.",
+                "Expliquer quelle valeur on veut faire remarquer et pourquoi."],
+      mots:["trier","croissant","chronologique","mise en forme conditionnelle"] },
+    { id:"PB9", titre:"Ajouter un filtre ou un segment", outil:"powerbi", crit:"C3", x:900, y:160,
+      objectifs:["Insérer au moins un filtre ou segment permettant d'explorer les données."],
+      conseils:["Montrer l'effet d'un segment sur tous les visuels de la page.",
+                "Distinguer filtre (caché) et segment (visible par le lecteur)."],
+      mots:["filtre","segment","explorer"] },
+    { id:"PB10", titre:"Mettre en page le tableau de bord", outil:"powerbi", crit:"C3", x:900, y:280,
+      objectifs:["Organiser le plan de travail de manière lisible.",
+                 "Organiser les visuels selon une hiérarchie de lecture (indicateur clé en premier, détail ensuite).",
+                 "Respecter les règles de lisibilité (échelle non trompeuse, couleurs limitées, contraste, pas de surcharge).",
+                 "Harmoniser la mise en page (alignement, tailles, thème de couleurs, police)."],
+      conseils:["Comparer avec la une d'un journal : le plus important en haut à gauche.",
+                "Montrer un tableau de bord surchargé et sa version corrigée."],
+      mots:["tableau de bord","hiérarchie","lisibilité","thème"] },
+    { id:"PB11", titre:"Contrôler et livrer le rapport", outil:"powerbi", crit:"C3", x:900, y:400,
+      objectifs:["Présenter un fichier sans erreur résiduelle visible (colonnes en « Error », visuels en défaut).",
+                 "Produire un tableau de bord complet et opérationnel, sans visuel vide, tronqué ou en erreur.",
+                 "Mentionner dans le rapport la source, la date des données et l'auteur.",
+                 "Sauvegarder le rendu dans le format et sous le nom de fichier demandés."],
+      conseils:["Construire une liste de vérification à cocher avant de rendre.",
+                "Montrer un exemple de nom de fichier correct."],
+      mots:["source","auteur","format .pbix","vérification"] },
+
+    { id:"MM1", titre:"Définir sa carte : titre et objets", outil:"mymaps", crit:"C1", x:0, y:700,
+      objectifs:["Titrer la carte en faisant apparaître le phénomène étudié et le territoire concerné.",
+                 "Identifier les objets géographiques à représenter (points, tracés, zones)."],
+      conseils:["Donner un modèle de titre : « [phénomène] à/dans [territoire] ».",
+                "Illustrer un exemple de point, de tracé et de zone."],
+      mots:["phénomène","territoire","point","tracé","zone"] },
+    { id:"MM2", titre:"Importer un tableau et corriger les localisations", outil:"mymaps", crit:"C2", x:450, y:580,
+      objectifs:["Importer un tableau de données et corriger les objets mal localisés."],
+      conseils:["Montrer les deux choix à l'import : colonne de position et colonne de titre.",
+                "Expliquer comment repérer un point placé dans la mauvaise commune."],
+      mots:["importer","géolocaliser","calque"] },
+    { id:"MM3", titre:"Organiser les calques et les attributs", outil:"mymaps", crit:"C2", x:450, y:710,
+      objectifs:["Organiser l'information en calques nommés de façon explicite.",
+                 "Renseigner pour chaque objet les attributs utiles (nom, valeur chiffrée, catégorie)."],
+      conseils:["Comparer les calques à des feuilles transparentes posées l'une sur l'autre.",
+                "Montrer le tableau de données d'un calque."],
+      mots:["calque","attribut","catégorie"] },
+    { id:"MM4", titre:"Mesurer une distance", outil:"mymaps", crit:"C2", x:450, y:840,
+      objectifs:["Mesurer une distance permettant de répondre à la problématique."],
+      conseils:["Montrer l'outil règle et la lecture du résultat.",
+                "Distinguer distance à vol d'oiseau et distance par la route."],
+      mots:["distance","kilomètre","itinéraire"] },
+    { id:"MM5", titre:"Symboliser et rendre la carte lisible", outil:"mymaps", crit:"C3", x:900, y:640,
+      objectifs:["Différencier les catégories par la couleur ou l'icône, de manière cohérente.",
+                 "Produire une carte lisible (légende compréhensible, fond adapté, absence de surcharge)."],
+      conseils:["Montrer l'option « Styles uniformes / par catégorie ».",
+                "Comparer deux fonds de carte et choisir le plus lisible."],
+      mots:["symbole","légende","fond de carte"] },
+    { id:"MM6", titre:"Interpréter, décrire et partager la carte", outil:"mymaps", crit:"C3", x:900, y:790,
+      objectifs:["Interpréter par écrit la répartition observée (concentration, dispersion, absence).",
+                 "Formuler dans la description de la carte une réponse explicite à la problématique.",
+                 "Partager la carte avec un lien de consultation fonctionnel."],
+      conseils:["Illustrer avec trois mini-cartes : concentration, dispersion, absence.",
+                "Montrer comment tester le lien dans une fenêtre de navigation privée."],
+      mots:["répartition","concentration","dispersion","partager"] },
+
+    { id:"GG1", titre:"Poser la question du diagramme", outil:"geogebra", crit:"C1", x:0, y:1050,
+      objectifs:["Reformuler dans une zone de texte la question à laquelle le diagramme doit répondre.",
+                 "Identifier la grandeur étudiée et son unité.",
+                 "Distinguer les séries à comparer et les nommer explicitement."],
+      conseils:["Montrer l'outil « Texte » de GeoGebra.",
+                "Donner un exemple : grandeur = temps de trajet, unité = minutes."],
+      mots:["grandeur","unité","série"] },
+    { id:"GG2", titre:"Saisir une série dans le tableur", outil:"geogebra", crit:"C2", x:450, y:990,
+      objectifs:["Saisir la série dans le tableur sans erreur ni valeur manquante."],
+      conseils:["Montrer comment afficher le tableur (menu Affichage).",
+                "Expliquer le piège de la virgule et du point décimal."],
+      mots:["tableur","cellule","série"] },
+    { id:"GG3", titre:"Calculer et contrôler les 5 indicateurs", outil:"geogebra", crit:"C2", x:450, y:1120,
+      objectifs:["Relever les cinq indicateurs de la boîte (minimum, Q1, médiane, Q3, maximum).",
+                 "Contrôler la cohérence des valeurs relevées avec les données de départ (ordre de grandeur, unité)."],
+      conseils:["Montrer l'outil « Statistiques à une variable ».",
+                "Expliquer pourquoi une médiane plus grande que le maximum est impossible."],
+      mots:["minimum","quartile","médiane","maximum"] },
+    { id:"GG4", titre:"Tracer et régler les boîtes à moustaches", outil:"geogebra", crit:"C3", x:900, y:990,
+      objectifs:["Régler la fenêtre graphique pour que la ou les boîtes soient entièrement visibles.",
+                 "Graduer et nommer l'axe des abscisses en indiquant la grandeur et son unité.",
+                 "Superposer les boîtes à des hauteurs distinctes et les différencier par la couleur ou une étiquette."],
+      conseils:["Expliquer la commande BoîteMoustaches( hauteur, épaisseur, liste ).",
+                "Montrer les réglages du graphique (clic droit sur le fond)."],
+      mots:["boîte à moustaches","abscisse","graduation"] },
+    { id:"GG5", titre:"Lire et comparer des boîtes à moustaches", outil:"geogebra", crit:"C3", x:900, y:1120,
+      objectifs:["Rédiger une phrase de lecture appuyée sur des valeurs chiffrées (médiane, étendue, écart interquartile).",
+                 "Comparer les séries en s'appuyant sur la position et la dispersion des boîtes.",
+                 "Formuler par écrit une réponse explicite à la question posée."],
+      conseils:["Proposer une phrase modèle : « La moitié des … ont une valeur inférieure à … ».",
+                "Comparer deux boîtes : laquelle est plus à droite ? laquelle est plus large ?"],
+      mots:["étendue","écart interquartile","dispersion","position"] }
+  ];
+
+  // ===================== PRÉREQUIS (flèches) =====================
+  var LIENS = [
+    ["CL1","SH1"],["CL1","DOC1"],["CL1","PB11"],
+    ["SH1","SH2"],["SH1","PB2"],["SH1","GG2"],["SH2","MM2"],
+    ["DOC1","PB1"],["DOC1","MM1"],["DOC1","GG1"],
+    ["PB1","PB2"],["PB2","PB3"],["PB3","PB4"],["PB4","PB5"],["PB5","PB6"],
+    ["PB6","PB7"],["PB7","PB8"],["PB8","PB9"],["PB9","PB10"],["PB10","PB11"],["PB11","DOC2"],
+    ["MM1","MM2"],["MM2","MM3"],["MM3","MM4"],["MM3","MM5"],["MM4","MM6"],["MM5","MM6"],["MM6","DOC2"],
+    ["GG1","GG2"],["GG2","GG3"],["GG3","GG4"],["GG4","GG5"],["GG5","DOC2"]
+  ];
+
+  // ===================== CONSTRUCTION DU RÉSEAU =====================
+  var listeNoeuds = TUTOS.map(function (t) {
+    return {
+      id:t.id, label:t.id + "\n" + t.titre, x:t.x, y:t.y,
+      shape:"box", margin:10, borderWidth:2,
+      widthConstraint:{ minimum:210, maximum:210 },
+      font:{ size:14, face:"Arial", color:"#000000" },
+      color:{ background:OUTILS[t.outil].couleur, border:"#333333",
+              highlight:{ background:OUTILS[t.outil].couleur, border:"#000000" },
+              hover:{ background:OUTILS[t.outil].couleur, border:"#000000" } },
+      title:t.titre + " (" + OUTILS[t.outil].nom + ")"
+    };
+  });
+  var titres = [
+    { id:"H0", label:"DÉMARRER",      x:-450, y:-380 },
+    { id:"H1", label:"C1 · ANALYSER", x:0,    y:-380 },
+    { id:"H2", label:"C2 · TRAITER",  x:450,  y:-380 },
+    { id:"H3", label:"C3 · EXPOSER",  x:900,  y:-380 },
+    { id:"H4", label:"CONCLURE",      x:1350, y:-380 }
+  ];
+  titres.forEach(function (h) {
+    listeNoeuds.push({ id:h.id, label:h.label, x:h.x, y:h.y, shape:"text",
+                       font:{ size:26, face:"Arial", color:"#37474F" } });
+  });
+
+  var noeuds = new vis.DataSet(listeNoeuds);
+  var aretes = new vis.DataSet(LIENS.map(function (l, i) {
+    return { id:"E" + i, from:l[0], to:l[1] };
+  }));
+
+  var reseau = new vis.Network(
+    document.getElementById("reseau"),
+    { nodes:noeuds, edges:aretes },
+    {
+      physics:{ enabled:false },
+      layout:{ randomSeed:1 },
+      interaction:{ dragNodes:false, hover:true, zoomView:true, dragView:true },
+      edges:{ arrows:{ to:{ enabled:true, scaleFactor:0.7 } }, width:1.5,
+              color:{ color:"#90A4AE", highlight:"#1565C0", hover:"#1565C0" },
+              smooth:{ enabled:true, type:"cubicBezier", forceDirection:"horizontal", roundness:0.4 } }
+    }
+  );
+  reseau.once("afterDrawing", function () { reseau.fit(); });
+
+  // ===================== FILTRES PAR OUTIL =====================
+  var zoneFiltres = document.getElementById("filtres");
+  var html = '<button data-outil="tous" class="actif" style="background:#fff">Tout afficher</button>';
+  Object.keys(OUTILS).forEach(function (k) {
+    html += '<button data-outil="' + k + '" style="background:' + OUTILS[k].couleur + '">' + OUTILS[k].nom + '</button>';
+  });
+  zoneFiltres.innerHTML = html;
+
+  function filtrer(outil) {
+    noeuds.update(TUTOS.map(function (t) {
+      var visible = (outil === "tous") || (t.outil === outil) || (t.id === "DOC2");
+      return { id:t.id, hidden:!visible };
+    }));
+    zoneFiltres.querySelectorAll("button").forEach(function (b) {
+      b.classList.toggle("actif", b.getAttribute("data-outil") === outil);
+    });
+    reseau.fit({ animation:{ duration:500 } });
+  }
+  zoneFiltres.querySelectorAll("button").forEach(function (b) {
+    b.addEventListener("click", function () { filtrer(b.getAttribute("data-outil")); });
+  });
+
+  // ===================== PANNEAU =====================
+  var panneau = document.getElementById("panneau");
+
+  function accueil() {
+    var legende = "";
+    Object.keys(OUTILS).forEach(function (k) {
+      legende += '<div><span class="carre" style="background:' + OUTILS[k].couleur + '"></span>' + OUTILS[k].nom + '</div>';
+    });
+    panneau.innerHTML =
+      '<h1>Carte des tutoriels</h1>' +
+      '<p>Cette carte te montre <strong>tous les tutoriels à construire</strong> et <strong>dans quel ordre</strong>.</p>' +
+      '<p>👉 Clique sur un tutoriel pour savoir ce qu\'il doit contenir.<br>' +
+      '👉 Une flèche veut dire : « il faut savoir faire ceci <em>avant</em> ».<br>' +
+      '👉 Molette de la souris = zoom. Clic maintenu sur le fond = déplacer.</p>' +
+      '<div class="boite conseils"><h3>📝 Comment construire ton tutoriel</h3><ol>' +
+      '<li><strong>Titre et code</strong> (ex. : PB3 – Nettoyer les données)</li>' +
+      '<li><strong>À quoi ça sert ?</strong> 2 lignes + un exemple du métier</li>' +
+      '<li><strong>Avant de commencer :</strong> les tutoriels à connaître</li>' +
+      '<li><strong>Les étapes :</strong> 1 étape = 1 capture d\'écran annotée + 1 phrase courte</li>' +
+      '<li><strong>Une analogie</strong> avec la vie de tous les jours</li>' +
+      '<li><strong>Le piège à éviter</strong> et comment le corriger</li>' +
+      '<li><strong>Je vérifie :</strong> 2 ou 3 questions pour le lecteur</li>' +
+      '<li><strong>Mots-clés :</strong> les mots expliqués simplement</li>' +
+      '</ol></div><h3>Légende</h3>' + legende;
+  }
+
+  function afficher(id) {
+    var t = TUTOS.filter(function (x) { return x.id === id; })[0];
+    if (!t) return;
+    var avant = LIENS.filter(function (l) { return l[1] === id; }).map(function (l) { return l[0]; });
+    var apres = LIENS.filter(function (l) { return l[0] === id; }).map(function (l) { return l[1]; });
+    panneau.innerHTML =
+      '<h2>' + t.id + ' – ' + t.titre + '</h2>' +
+      '<span class="etiquette" style="background:' + OUTILS[t.outil].couleur + '">' + OUTILS[t.outil].nom + '</span>' +
+      '<span class="etiquette" style="background:#ECEFF1">' + CRITERES[t.crit] + '</span>' +
+      '<div class="boite objectifs"><h3>🎯 Ton tutoriel doit apprendre à :</h3><ul>' +
+        t.objectifs.map(function (o) { return '<li>' + o + '</li>'; }).join("") + '</ul></div>' +
+      '<div class="boite conseils"><h3>💡 Dans ton tutoriel, pense à :</h3><ul>' +
+        t.conseils.map(function (c) { return '<li>' + c + '</li>'; }).join("") + '</ul></div>' +
+      '<div class="boite mots"><h3>🔤 Mots-clés à expliquer :</h3>' +
+        t.mots.map(function (m) { return '<span class="mot">' + m + '</span>'; }).join("") + '</div>' +
+      '<p><strong>⬅️ À savoir faire avant :</strong> ' + (avant.length ? avant.join(", ") : "rien, tu peux commencer ici !") + '</p>' +
+      '<p><strong>➡️ Ensuite :</strong> ' + (apres.length ? apres.join(", ") : "fin du parcours") + '</p>' +
+      '<span class="retour" id="btnRetour">↩ Revenir à la méthode</span>';
+    document.getElementById("btnRetour").addEventListener("click", accueil);
+  }
+
+  reseau.on("click", function (p) {
+    if (p.nodes.length && String(p.nodes[0]).charAt(0) !== "H") afficher(p.nodes[0]);
+  });
+
+  accueil();
+});
+</script>
+
+    </main>
+    <footer class="site-footer"><a id="footer-link" href="../Chapitre.html">Retour au chapitre</a><span>Ressources pédagogiques</span></footer>
+  </div>
+</body>
+</html>

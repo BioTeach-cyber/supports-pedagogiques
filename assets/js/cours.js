@@ -321,7 +321,7 @@
     const [firstYear, secondYear] = schoolYear.split('-').map(Number);
     const schoolYearStart = new Date(firstYear, 8, 1);
     const schoolYearEnd = new Date(secondYear, 7, 31, 23, 59, 59, 999);
-    const chapterEvents = (course.chapitres || []).filter(isActive).flatMap((chapter, chapterIndex) => [
+    const chapterEvents = (course.chapitres || []).filter((chapter) => isActive(chapter) && chapter.type !== 'tutoriel').flatMap((chapter, chapterIndex) => [
       {
         ...chapter,
         id: `chapter-${chapter.id || chapterIndex}`,
@@ -567,9 +567,12 @@
     }
 
     const rootId = 'course-root';
-    const chapters = (course.chapitres || []).filter(isActive);
+    const allChapters = (course.chapitres || []).filter(isActive);
+    const chapters = allChapters.filter((chapter) => chapter.type !== 'tutoriel');
+    const tutorialNodes = allChapters.filter((chapter) => chapter.type === 'tutoriel' && chapter.page);
     const chapterColor = (chapter) => chapter.couleur || color;
     const chapterNodeId = (chapter) => `chapter-${chapter.id}`;
+    const tutorialNodeId = (chapter) => `tutorial-${chapter.id}`;
     const activityNodeId = (chapter, index) => `activity-${chapter.id}-${index}`;
     const evaluationNodeId = (chapter, kind, index) => `evaluation-${chapter.id}-${kind}-${index}`;
     const evaluationItems = chapters.flatMap((chapter) => [
@@ -598,6 +601,12 @@
         activity.titre || `Activité ${index + 1}`,
         2
       )),
+      ...tutorialNodes.map((chapter) => ({
+        ...transparentNode(tutorialNodeId(chapter), chapter.titre || chapter.id, 2),
+        size: 74,
+        borderWidth: 2,
+        color: { background: '#ffffff', border: chapterColor(chapter) }
+      })),
       ...evaluationItems.map(({ chapter, evaluation, kind, index }) => ({
         ...transparentNode(
           evaluationNodeId(chapter, kind, index),
@@ -626,6 +635,14 @@
         color: { color: `${chapterColor(chapter)}77`, highlight: chapterColor(chapter) },
         width: 7,
         length: 300
+      })),
+      ...tutorialNodes.map((chapter) => ({
+        from: rootId,
+        to: tutorialNodeId(chapter),
+        color: { color: `${chapterColor(chapter)}99`, highlight: chapterColor(chapter) },
+        width: 7,
+        length: 360,
+        dashes: [4, 4]
       })),
       ...evaluationItems.map(({ chapter, kind, index }) => ({
         from: chapterNodeId(chapter),
@@ -668,6 +685,18 @@
       mountLottie(icon, chapter.lottie, nodeColor);
       return { chapter, wrapper };
     });
+    const tutorialIcons = tutorialNodes.map((chapter) => {
+      const nodeColor = chapterColor(chapter);
+      const wrapper = element('span', 'chapter-node-overlay');
+      wrapper.setAttribute('data-node-id', tutorialNodeId(chapter));
+      const icon = element('span', 'network-node-lottie chapter-node-lottie');
+      icon.style.setProperty('--node-color', nodeColor);
+      const label = element('span', 'chapter-node-label', chapter.titre || chapter.id);
+      wrapper.append(icon, label);
+      overlay.append(wrapper);
+      mountLottie(icon, chapter.lottie, nodeColor);
+      return { chapter, wrapper };
+    });
     const activityIcons = activityNodes.map(({ chapter, activity, index }) => {
       const nodeColor = chapterColor(chapter);
       const icon = element('span', 'network-node-lottie activity-node-lottie');
@@ -700,6 +729,7 @@
       const positions = instance.getPositions([
         rootId,
         ...chapters.map(chapterNodeId),
+        ...tutorialNodes.map(tutorialNodeId),
         ...activityNodes.map(({ chapter, index }) => activityNodeId(chapter, index)),
         ...evaluationItems.map(({ chapter, kind, index }) => evaluationNodeId(chapter, kind, index))
       ]);
@@ -711,6 +741,13 @@
       }
       chapterIcons.forEach(({ chapter, wrapper }) => {
         const position = positions[chapterNodeId(chapter)];
+        if (!position) return;
+        const point = instance.canvasToDOM(position);
+        wrapper.style.left = `${point.x}px`;
+        wrapper.style.top = `${point.y}px`;
+      });
+      tutorialIcons.forEach(({ chapter, wrapper }) => {
+        const position = positions[tutorialNodeId(chapter)];
         if (!position) return;
         const point = instance.canvasToDOM(position);
         wrapper.style.left = `${point.x}px`;
@@ -740,6 +777,11 @@
       const chapter = chapters.find((item) => chapterNodeId(item) === id);
       if (chapter) {
         location.href = chapterPageUrl(courseId, chapter);
+        return;
+      }
+      const tutorial = tutorialNodes.find((item) => tutorialNodeId(item) === id);
+      if (tutorial) {
+        location.href = courseDataUrl(courseId, tutorial.page);
         return;
       }
       const activity = activityNodes.find((item) => activityNodeId(item.chapter, item.index) === id);
