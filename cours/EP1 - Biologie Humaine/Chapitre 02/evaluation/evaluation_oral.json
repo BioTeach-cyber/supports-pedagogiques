@@ -1,0 +1,54 @@
+{
+  "entete": {
+    "examen": "Devoir Bac Pro SAPAT",
+    "titre": "L'appareil digestif",
+    "epreuve": "EP1 - Biologie Humaine",
+    "session": "2026-2027",
+    "etablissement": "AgroTech Le Cleusmeur",
+    "coefficient": 0.5
+  },
+  "niveaux": ["- -", "-", "+", "+ +"],
+  "capacites": [
+    {
+      "code": "C7.1",
+      "intitule": "Intervenir en soutien auprès de la personne dans les actes essentiels de la vie quotidienne",
+      "criteres": [
+        {
+          "intitule": "Posture d'accompagnement – mobilisation des ressources de la personne",
+          "indicateurs": [
+            "Localiser l'organe dans le corps humain, décrire sa forme et ses relations avec les autres organes du système digestif à l'aide d'un schéma.",
+            "Expliquer le rôle de l'organe dans la digestion (production de sucs, transport, stockage, absorption…).",
+            "Comparer le fonctionnement normal de l'organe avec son fonctionnement perturbé par la pathologie.",
+            "Décrire les options de traitement (médical, diététique, chirurgical) et les conseils de prévention.",
+            "Identifier dans le contexte ce que la personne peut encore faire seule (capacités, envies, habitudes) et les personnes qui peuvent l'aider (famille, médecin, infirmier, diététicien).",
+            "Proposer des conseils pratiques adaptés aux symptômes (alimentation, posture, hygiène, activité) qui font participer la personne, en faisant « avec elle » et non « à sa place ».",
+            "Justifier chaque conseil en le reliant au fonctionnement de l'organe ou au mécanisme de la pathologie (exemple : « Elle doit rester assise après le repas, car l'acide remonte de l'estomac vers l'œsophage »)."
+          ]
+        },
+        {
+          "intitule": "Relation interpersonnelle de proximité et distanciée",
+          "indicateurs": [
+            "Nommer la pathologie et définir les mots scientifiques utilisés pendant l'exposé.",
+            "Reformuler le mécanisme de la pathologie avec des mots simples ou une analogie compréhensible par la personne accompagnée (exemple : « Le calcul bouche le canal comme un caillou dans un tuyau »).",
+            "Choisir des images et des schémas pertinents qui rendent l'explication compréhensible sans texte.",
+            "Décrire une attitude de communication adaptée à la personne (écoute, vocabulaire simple, reformulation, patience, prise en compte de l'âge).",
+            "Illustrer par un exemple concret comment respecter la dignité, l'intimité et les émotions de la personne (honte, peur, tristesse, culpabilité).",
+            "Distinguer ce qui relève de son rôle de ce qui n'en relève pas (ne pas faire de diagnostic, ne pas donner de médicament, orienter vers un professionnel de santé, respecter la confidentialité)."
+          ]
+        },
+        {
+          "intitule": "Réalisation des interventions en toute sécurité pour la personne et l'accompagnant",
+          "indicateurs": [
+            "Citer les causes principales et les facteurs de risque de la pathologie.",
+            "Décrire les symptômes de la pathologie.",
+            "Expliquer les complications possibles si la pathologie n'est pas prise en charge.",
+            "Identifier les risques liés à la pathologie dans la vie quotidienne de la personne (fausse route, déshydratation, dénutrition, irritation de la peau, rechute…).",
+            "Repérer les signes d'alerte qui doivent faire prévenir un responsable, la famille ou un soignant, et citer qui prévenir.",
+            "Expliquer les règles d'hygiène à appliquer (lavage des mains, port de gants, hygiène alimentaire, gestion des aliments interdits).",
+            "Décrire les gestes et les postures qui protègent à la fois la personne et le professionnel (installation pour le repas, aide aux toilettes, protection du dos, matériel adapté)."
+          ]
+        }
+      ]
+    }
+  ]
+}

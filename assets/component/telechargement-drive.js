@@ -24,6 +24,11 @@
     if (!sharedUrl) return '';
     try {
       const url = new URL(sharedUrl);
+      if (url.hostname === 'docs.google.com') {
+        const spreadsheetId = url.pathname.match(/^\/spreadsheets\/d\/([^/]+)/)?.[1];
+        if (!spreadsheetId) return '';
+        return `https://docs.google.com/spreadsheets/d/${encodeURIComponent(spreadsheetId)}/export?format=xlsx`;
+      }
       if (url.hostname !== 'drive.google.com') return '';
       const fileId = url.pathname.match(/\/file\/d\/([^/]+)/)?.[1] || url.searchParams.get('id');
       if (!fileId) return sharedUrl;

@@ -104,22 +104,22 @@
       ]
     },
     {
-      "statut": "inactif",
+      "statut": "actif",
       "id": "Chapitre 02",
       "page": "Chapitre 02/Chapitre.html",
       "type": "chapitre",
-      "Periode": "",
-      "start": "",
-      "end": "",
-      "titre": "",
-      "description": "",
-      "couleur": null,
-      "lottie": "assets/lotties/.json",
+      "Periode": "02",
+      "start": "2026-11-09",
+      "end": "2026-11-20",
+      "titre": "Mammifères marins : survivants extraordinaires ou espèces condamnées par nos activités ?",
+      "description": "Et si le plus grand plongeur de la planète respirait de l'air, comme vous ?\n\nCachalots, éléphants de mer, baleines à bec... Ces géants des océans descendent à plus de 2 000 mètres de profondeur, restent plus d'une heure sans respirer et affrontent une eau glaciale, là où un humain tient à peine une minute.\n\nComment font-ils ? Dans ce chapitre, vous allez mener l'enquête : décortiquer leur corps hors du commun, comprendre comment ils stockent l'oxygène et résistent au froid, puis comparer leurs exploits aux limites du corps humain.\n\nMais ces champions des océans sont aussi en danger. Plastiques, pollution, bruit des bateaux, réchauffement de l'eau... Vous découvrirez comment nos activités humaines les menacent, comment les polluants remontent la chaîne alimentaire jusqu'à notre assiette, et comment chacun peut agir à son niveau.\n\nÀ la fin du chapitre, vous serez capable de :\n\n• Expliquer les secrets de ces plongeurs d'exception, avec vos propres mots.\n• Comprendre le lien entre l'état des océans et votre santé.\n• Partager des gestes simples et utiles, comme le ferait un professionnel auprès des personnes que vous accompagnerez.\n\nPrenez une grande inspiration... et plongez ! 🌊",
+      "couleur": "#53a4db",
+      "lottie": "assets/lotties/baleine.json",
 
       "evaluationFinale": {
-          "statut": "inactif",
+          "statut": "actif",
           "type": "Fin de séquence",
-          "start": "",
+          "start": "2026-11-24",
           "end": "",
           "lottie": "assets/lotties/fin_sequence.json",
           "component": "",
@@ -128,7 +128,7 @@
 
       "evaluationsSecondaires": [
         {
-          "statut": "inactif",
+          "statut": "actif",
           "type": "Activités",
           "start": "",
           "end": "",
@@ -140,14 +140,16 @@
 
       "activité": [
         {
-          "statut": "inactif",
+          "statut": "actif",
           "id": "activité 01",
-          "titre": "",
+          "titre": "Plongée en apnée : les secrets des champions des océans",
           "lottie": "assets/lotties/Numbers/01.json",
           "page": "Chapitre 02/cours/Activité_01.html",
           "objectifs pédagogiques": [
-            { "id": "obj01", "libelle": "" },
-            { "id": "obj02", "libelle": "" }
+            { "id": "obj01", "libelle": "Identifier les adaptations du corps des mammifères marins (poumons, sang riche en oxygène, couche de graisse) à partir de schémas et de modèles." },
+            { "id": "obj02", "libelle": "Expliquer comment ces adaptations permettent de rester longtemps sous l'eau et de lutter contre le froid." },
+            { "id": "obj03", "libelle": "Comparer la respiration et la régulation de la température chez l'humain et chez un mammifère marin, à l'aide d'une modélisation simple." },
+            { "id": "obj04", "libelle": "Relever et classer, à partir des documents, les profondeurs maximales atteintes par différentes espèces (cachalot, éléphant de mer, baleine à bec), puis relier leurs performances aux adaptations de leur corps." }
           ]
         },
         {
@@ -157,41 +159,10 @@
           "lottie": "assets/lotties/Numbers/02.json",
           "page": "Chapitre 02/cours/Activité_02.html",
           "objectifs pédagogiques": [
-            { "id": "obj03", "libelle": "" },
-            { "id": "obj04", "libelle": "" }
-          ]
-        },
-        {
-          "statut": "inactif",
-          "id": "activité 03",
-          "titre": "",
-          "lottie": "assets/lotties/Numbers/03.json",
-          "page": "Chapitre 02/cours/Activité_03.html",
-          "objectifs pédagogiques": [
-            { "id": "obj05", "libelle": "Utiliser une clé de détermination dichotomique pour identifier un végétal ou un animal." },
-            { "id": "obj06", "libelle": "Construire une clé de détermination simple à partir d'un petit nombre d'espèces." }
-          ]
-        },
-        {
-          "statut": "inactif",
-          "id": "activité 04",
-          "titre": "",
-          "lottie": "assets/lotties/Numbers/04.json",
-          "page": "Chapitre 02/cours/Activité_04.html",
-          "objectifs pédagogiques": [
-            { "id": "obj07", "libelle": "" },
-            { "id": "obj08", "libelle": "" }
-          ]
-        },
-        {
-          "statut": "inactif",
-          "id": "activité 05",
-          "titre": "",
-          "lottie": "assets/lotties/Numbers/05.json",
-          "page": "Chapitre 02/cours/Activité_05.html",
-          "objectifs pédagogiques": [
-            { "id": "obj09", "libelle": "" },
-            { "id": "obj10", "libelle": "" }
+            { "id": "obj05", "libelle": "Décrire les principales menaces liées aux activités humaines (plastiques, polluants, bruit sous-marin, réchauffement de l'eau) à partir de documents." },
+            { "id": "obj06", "libelle": "Expliquer l'accumulation des polluants le long de la chaîne alimentaire jusqu'aux mammifères marins, à partir d'un modèle de réseau trophique." },
+            { "id": "obj07", "libelle": "Analyser les conséquences de cette accumulation sur la santé des mammifères marins, sur la biodiversité et sur l'humain qui consomme des produits de la mer." },
+            { "id": "obj08", "libelle": "Proposer des gestes et des conseils adaptés, dans un contexte professionnel de services à la personne, pour limiter l'impact humain sur les océans et protéger sa santé." }
           ]
         }
       ]

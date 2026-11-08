@@ -2,43 +2,43 @@
   "entete": {
     "examen": "Devoir Bac Pro SAPAT",
     "titre": "",
-    "epreuve": "",
+    "epreuve": "MG1 Biologie - Ecologie",
     "session": "2026-2027",
     "etablissement": "AgroTech Le Cleusmeur",
-    "coefficient": 1
+    "coefficient": 0.5
   },
   "niveaux": ["- -", "-", "+", "+ +"],
   "capacites": [
     {
-      "code": "",
-      "intitule": "",
+      "code": "C1.3",
+      "intitule": "Exploiter la modélisation d’un phénomène",
       "criteres": [
         {
-          "intitule": "",
+          "intitule": "Utilisation d’un ou de plusieurs modèle adapté(s) au phénomène étudié",
           "indicateurs": [
-            "",
-            ""
+            "Identifier les adaptations du corps des mammifères marins (poumons, sang riche en oxygène, couche de graisse) à partir de schémas et de modèles.",
+            "Expliquer comment ces adaptations permettent de rester longtemps sous l'eau et de lutter contre le froid."
           ]
         },
         {
-          "intitule": "",
+          "intitule": "Analyse d’un phénomène dans son contexte",
           "indicateurs": [
-            "",
-            ""
+            "Décrire les principales menaces liées aux activités humaines (plastiques, polluants, bruit sous-marin, réchauffement de l'eau) à partir de documents.",
+            "Analyser les conséquences de cette accumulation sur la santé des mammifères marins, sur la biodiversité et sur l'humain qui consomme des produits de la mer."
           ]
         },
         {
-          "intitule": "",
+          "intitule": "Validation d’une conjecture ou d’une théorie",
           "indicateurs": [
-            "",
-            ""
+            "Comparer la respiration et la régulation de la température chez l'humain et chez un mammifère marin, à l'aide d'une modélisation simple.",
+            "Expliquer l'accumulation des polluants le long de la chaîne alimentaire jusqu'aux mammifères marins, à partir d'un modèle de réseau trophique."
           ]
         },
         {
-          "intitule": "",
+          "intitule": "Communication / diffusion de la réponse",
           "indicateurs": [
-            "",
-            ""
+            "Analyser un graphique modélisant les plongées de différentes espèces (cachalot, éléphant de mer, baleine à bec, humain) pour relier les profondeurs et les durées atteintes aux adaptations du corps.",
+            "Proposer des gestes et des conseils adaptés, dans un contexte professionnel de services à la personne, pour limiter l'impact humain sur les océans et protéger sa santé."
           ]
         }
       ]

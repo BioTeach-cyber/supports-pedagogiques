@@ -13,7 +13,8 @@
       const questions = JSON.parse(source);
       if (!Array.isArray(questions)) throw new TypeError('Le contenu attendu est un tableau JSON.');
       questions.forEach((entry, index) => {
-        const question = typeof entry === 'string' ? entry : entry?.question;
+        const isTask = typeof entry !== 'string' && typeof entry?.tache === 'string' && typeof entry?.question !== 'string';
+        const question = typeof entry === 'string' ? entry : entry?.question ?? entry?.tache;
         if (typeof question !== 'string' || !question.trim()) return;
         const item = document.createElement('li');
         item.className = 'activity-question-item';
@@ -24,7 +25,7 @@
         const text = document.createElement('p');
         text.className = 'activity-question-text';
         const prefix = document.createElement('strong');
-        prefix.textContent = `Question ${String(index + 1).padStart(2, '0')} : `;
+        prefix.textContent = `${isTask ? 'Tâche' : 'Question'} ${String(index + 1).padStart(2, '0')} : `;
         text.append(prefix, document.createTextNode(question.trim()));
         item.append(icon, text);
         list.append(item);

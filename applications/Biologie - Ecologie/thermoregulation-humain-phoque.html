@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thermorégulation : Humain vs Phoque</title>
+<style>
+/* =========================================================
+   1. VARIABLES DE COULEURS (charte graphique)
+   ========================================================= */
+:root {
+  --bleu: #53a4db;
+  --vert: #7fbc48;
+  --violet: #a6539b;
+  --orange: #f3912b;
+  --gris: #b7b7b7;
+  --rouge: #e62d32;
+  --rose: #ee7bab;
+  --rose-genially: #161213;
+  --jaune: #f4d32e;
+  --marron: #a5706c;
+  --noir: #494949;
+  --fond: #ffffff;
+  --rayon: 0.8rem;
+}
+
+/* =========================================================
+   2. BASE
+   ========================================================= */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  width: 100%;
+  min-height: 100%;
+  background: var(--fond);
+  color: var(--noir);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: clamp(15px, 0.9rem + 0.25vw, 18px);
+  line-height: 1.5;
+}
+.conteneur { width: 100%; max-width: 1100px; margin: 0 auto; padding: 1rem; background: var(--fond); }
+h1, h2, h3 { line-height: 1.25; }
+h2 { color: var(--bleu); margin-bottom: 0.8rem; font-size: clamp(1.2rem, 1rem + 1vw, 1.6rem); }
+h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
+p { margin-bottom: 0.6rem; }
+strong { color: var(--noir); }
+
+/* =========================================================
+   3. EN-TÊTE ET NAVIGATION PAR ÉTAPES
+   ========================================================= */
+header { text-align: center; padding: 1rem 0 0.5rem; border-bottom: 4px solid var(--bleu); margin-bottom: 1rem; }
+header h1 { color: var(--bleu); font-size: clamp(1.3rem, 1rem + 2vw, 2.1rem); }
+header p { margin: 0.3rem 0 0; }
+
+.etapes { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.2rem; }
+.btn-etape {
+  flex: 1 1 9rem; max-width: 15rem;
+  padding: 0.7rem 0.8rem; border: 3px solid var(--bleu); border-radius: var(--rayon);
+  background: var(--fond); color: var(--noir); font-weight: 700; font-size: 1rem; cursor: pointer;
+}
+.btn-etape[aria-selected="true"] { background: var(--bleu); color: #fff; }
+.btn-etape:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid var(--violet); outline-offset: 2px; }
+
+.etape { display: none; }
+.etape.active { display: block; animation: apparition 0.3s ease; }
+@keyframes apparition { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* =========================================================
+   4. CARTES ET GRILLES
+   ========================================================= */
+.grille-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1rem; }
+.carte { background: var(--fond); border: 2px solid var(--gris); border-radius: var(--rayon); padding: 1rem; margin-bottom: 1rem; }
+.carte.bleue { border-color: var(--bleu); }
+.carte.orange { border-color: var(--orange); }
+.carte.verte { border-color: var(--vert); }
+.carte.violette { border-color: var(--violet); }
+.titre-humain { color: var(--orange); }
+.titre-phoque { color: var(--bleu); }
+.emoji { font-size: 1.6rem; vertical-align: middle; }
+ul.liste { padding-left: 1.3rem; margin-bottom: 0.6rem; }
+ul.liste li { margin-bottom: 0.3rem; }
+
+/* Schéma de la balance thermique */
+.balance { display: flex; align-items: stretch; gap: 0.6rem; flex-wrap: wrap; justify-content: center; margin: 0.8rem 0; }
+.plateau { flex: 1 1 12rem; border-radius: var(--rayon); padding: 0.8rem; text-align: center; font-weight: 600; }
+.plateau.gain { border: 3px solid var(--orange); }
+.plateau.perte { border: 3px solid var(--bleu); }
+.signe { align-self: center; font-size: 1.8rem; font-weight: 800; }
+.encadre { background: var(--jaune); color: var(--noir); border-radius: var(--rayon); padding: 0.8rem 1rem; font-weight: 600; margin: 0.8rem 0; }
+
+/* =========================================================
+   5. BOUTONS
+   ========================================================= */
+.btn {
+  display: inline-block; padding: 0.7rem 1.2rem; border: none; border-radius: var(--rayon);
+  font-size: 1rem; font-weight: 700; cursor: pointer; color: #fff; background: var(--bleu);
+}
+.btn:hover { filter: brightness(0.93); }
+.btn:disabled { background: var(--gris); color: var(--noir); cursor: not-allowed; }
+.btn.vert { background: var(--vert); color: var(--noir); }
+.btn.orange { background: var(--orange); color: var(--noir); }
+.centre { text-align: center; margin-top: 1rem; }
+
+/* =========================================================
+   6. MISSIONS
+   ========================================================= */
+.missions { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: 0.6rem; }
+.btn-mission {
+  text-align: left; padding: 0.6rem 0.8rem; border: 2px solid var(--bleu); border-radius: var(--rayon);
+  background: var(--fond); color: var(--noir); cursor: pointer; font-size: 0.95rem;
+}
+.btn-mission.active { border-width: 3px; border-color: var(--violet); }
+.btn-mission.faite { border-color: var(--vert); }
+.btn-mission .num { font-weight: 800; color: var(--bleu); }
+.btn-mission.faite .num::after { content: " ✅"; }
+.consigne-mission { margin-top: 0.8rem; padding: 0.8rem; border-left: 5px solid var(--violet); border-radius: 0.3rem; display: none; }
+.consigne-mission.visible { display: block; }
+
+/* =========================================================
+   7. RÉGLAGES
+   ========================================================= */
+.reglage { margin-bottom: 0.9rem; }
+.reglage label, .reglage legend { display: block; font-weight: 700; margin-bottom: 0.3rem; }
+.reglage fieldset { border: none; }
+.choix { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.choix label {
+  display: flex; align-items: center; gap: 0.35rem; font-weight: 500;
+  border: 2px solid var(--gris); border-radius: 2rem; padding: 0.35rem 0.8rem; cursor: pointer;
+}
+.choix input:checked + span { font-weight: 800; }
+.choix label:has(input:checked) { border-color: var(--bleu); }
+input[type="range"] { width: 100%; accent-color: var(--bleu); height: 2rem; }
+.valeur { font-weight: 800; color: var(--bleu); }
+
+/* =========================================================
+   8. GRAPHIQUE ET RÉSULTATS
+   ========================================================= */
+.zone-graphique { position: relative; width: 100%; height: clamp(230px, 42vh, 380px); }
+#graphique { width: 100%; height: 100%; display: block; }
+.legende { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 0.5rem; font-size: 0.9rem; }
+.pastille { display: inline-block; width: 1rem; height: 0.6rem; border-radius: 0.2rem; vertical-align: middle; margin-right: 0.3rem; }
+
+.thermo { font-size: clamp(1.8rem, 1.4rem + 2vw, 2.6rem); font-weight: 800; }
+.statut { display: inline-block; padding: 0.2rem 0.7rem; border-radius: 2rem; font-weight: 700; color: var(--noir); background: var(--gris); }
+.statut.ok { background: var(--vert); }
+.statut.attention { background: var(--orange); }
+.statut.danger { background: var(--rouge); color: #fff; }
+
+.barre-ligne { margin: 0.4rem 0; font-size: 0.9rem; }
+.barre-fond { width: 100%; height: 1rem; border: 1px solid var(--gris); border-radius: 0.5rem; overflow: hidden; background: var(--fond); }
+.barre { height: 100%; width: 0; transition: width 0.15s; }
+.barre.produite { background: var(--orange); }
+.barre.perdue { background: var(--bleu); }
+.barre.sueur { background: var(--violet); }
+
+.message { padding: 0.8rem 1rem; border-radius: var(--rayon); margin-top: 0.8rem; border: 2px solid var(--gris); display: none; }
+.message.visible { display: block; }
+.message.bon { border-color: var(--vert); }
+.message.faux { border-color: var(--orange); }
+
+/* Tableaux */
+.table-defile { width: 100%; overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; min-width: 520px; }
+th, td { border: 1px solid var(--gris); padding: 0.45rem; text-align: center; }
+th { background: var(--bleu); color: #fff; }
+
+/* =========================================================
+   9. QUIZ
+   ========================================================= */
+.question { margin-bottom: 1rem; }
+.question p { font-weight: 700; }
+.reponses { display: grid; gap: 0.4rem; }
+.btn-reponse {
+  text-align: left; padding: 0.6rem 0.8rem; border: 2px solid var(--gris); border-radius: var(--rayon);
+  background: var(--fond); color: var(--noir); font-size: 0.95rem; cursor: pointer;
+}
+.btn-reponse.correcte { border-color: var(--vert); border-width: 3px; font-weight: 700; }
+.btn-reponse.incorrecte { border-color: var(--rouge); border-width: 3px; }
+.btn-reponse:disabled { cursor: default; }
+.explication { margin-top: 0.4rem; padding: 0.5rem 0.8rem; border-left: 4px solid var(--bleu); display: none; }
+.explication.visible { display: block; }
+#bilan { display: none; }
+#bilan.visible { display: block; }
+
+/* =========================================================
+   10. RESPONSIVE
+   ========================================================= */
+@media (max-width: 600px) {
+  .conteneur { padding: 0.6rem; }
+  .btn { width: 100%; }
+}
+</style>
+</head>
+<body>
+<div class="conteneur">
+
+  <!-- ===================== EN-TÊTE ===================== -->
+  <header>
+    <h1>🌡️ Garder 37 °C : Humain <span aria-hidden="true">🧍</span> ou Phoque <span aria-hidden="true">🦭</span> ?</h1>
+    <p>Biologie-Écologie · 1re Bac Pro SAPAT · La régulation de la température</p>
+  </header>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="etapes" role="tablist" aria-label="Étapes de l'activité">
+    <button class="btn-etape" role="tab" aria-selected="true" data-etape="1" id="onglet-1">① Comprendre</button>
+    <button class="btn-etape" role="tab" aria-selected="false" data-etape="2" id="onglet-2">② Expérimenter</button>
+    <button class="btn-etape" role="tab" aria-selected="false" data-etape="3" id="onglet-3">③ Conclure</button>
+  </nav>
+
+  <main>
+    <!-- ===================== ÉTAPE 1 : COMPRENDRE ===================== -->
+    <section class="etape active" id="etape-1" role="tabpanel" aria-labelledby="onglet-1">
+      <h2>① Comprendre le modèle</h2>
+
+      <div class="carte bleue">
+        <h3>L'humain et le phoque sont des <strong>homéothermes</strong></h3>
+        <p>Leur corps garde une température <strong>constante, proche de 37 °C</strong>, même quand il fait froid ou chaud dehors.</p>
+        <p>Pour cela, le corps fait un <strong>bilan</strong>, comme un porte-monnaie :</p>
+
+        <div class="balance" aria-label="Schéma du bilan de chaleur">
+          <div class="plateau gain">🔥 Chaleur PRODUITE<br><small>(fonctionnement des organes, muscles, frissons)</small></div>
+          <div class="signe" aria-hidden="true">–</div>
+          <div class="plateau perte">❄️ Chaleur PERDUE<br><small>(vers l'air ou l'eau, transpiration)</small></div>
+        </div>
+
+        <div class="encadre">
+          ➜ Si produite = perdue : la température reste stable ✅<br>
+          ➜ Si perdue > produite : la température <u>baisse</u> (risque d'hypothermie)<br>
+          ➜ Si produite > perdue : la température <u>monte</u> (risque d'hyperthermie)
+        </div>
+
+        <p>💧 À savoir : <strong>l'eau fait perdre la chaleur environ 25 fois plus vite que l'air</strong> à la même température.</p>
+      </div>
+
+      <div class="grille-2">
+        <div class="carte orange">
+          <h3 class="titre-humain"><span class="emoji" aria-hidden="true">🧍</span> L'humain</h3>
+          <ul class="liste">
+            <li>Couche de graisse sous la peau : environ <strong>1 cm</strong></li>
+            <li>Peu de poils : il utilise des <strong>vêtements</strong></li>
+            <li>Il <strong>transpire</strong> quand il a chaud (la sueur rafraîchit)</li>
+            <li>Il <strong>frissonne</strong> quand il a froid (les muscles produisent de la chaleur)</li>
+            <li>Les vaisseaux de sa peau se <strong>resserrent</strong> au froid (vasoconstriction) et se <strong>dilatent</strong> au chaud (vasodilatation)</li>
+          </ul>
+        </div>
+        <div class="carte bleue">
+          <h3 class="titre-phoque"><span class="emoji" aria-hidden="true">🦭</span> Le phoque</h3>
+          <ul class="liste">
+            <li>Épaisse couche de graisse (le « lard ») : <strong>4 à 8 cm</strong></li>
+            <li>Corps <strong>massif et arrondi</strong> : moins de surface pour perdre la chaleur</li>
+            <li>Il produit <strong>plus de chaleur</strong> que l'humain (métabolisme élevé)</li>
+            <li>Dans ses nageoires, le sang chaud qui part réchauffe le sang froid qui revient : c'est un <strong>échangeur à contre-courant</strong></li>
+            <li>Il ne transpire presque pas</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="centre">
+        <button class="btn" type="button" data-aller="2">Je passe à l'expérience ➜</button>
+      </div>
+    </section>
+
+    <!-- ===================== ÉTAPE 2 : EXPÉRIMENTER ===================== -->
+    <section class="etape" id="etape-2" role="tabpanel" aria-labelledby="onglet-2">
+      <h2>② Expérimenter avec le simulateur</h2>
+
+      <!-- Missions -->
+      <div class="carte violette">
+        <h3>🎯 Tes missions : choisis-en une, elle règle le simulateur pour toi</h3>
+        <div class="missions" id="zone-missions"></div>
+        <div class="consigne-mission" id="consigne-mission" aria-live="polite"></div>
+      </div>
+
+      <div class="grille-2">
+        <!-- Réglages -->
+        <div class="carte bleue">
+          <h3>⚙️ Réglages</h3>
+
+          <div class="reglage">
+            <fieldset>
+              <legend>Milieu</legend>
+              <div class="choix">
+                <label><input type="radio" name="milieu" value="air" checked><span>🌬️ Air</span></label>
+                <label><input type="radio" name="milieu" value="eau"><span>🌊 Eau</span></label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="reglage">
+            <label for="temp-milieu">Température du milieu : <span class="valeur" id="affiche-temp">20</span> °C</label>
+            <input type="range" id="temp-milieu" min="-2" max="40" step="1" value="20">
+          </div>
+
+          <div class="reglage">
+            <label for="vetement">🧍 Tenue de l'humain</label>
+            <select id="vetement" style="width:100%;padding:0.5rem;font-size:1rem;border:2px solid var(--orange);border-radius:0.5rem;background:#fff;color:var(--noir);">
+              <option value="aucun">Maillot de bain (aucune isolation)</option>
+              <option value="habits" selected>Habits normaux</option>
+              <option value="neoprene">Combinaison de plongée en néoprène</option>
+            </select>
+          </div>
+
+          <div class="reglage">
+            <label for="graisse">🦭 Épaisseur de graisse du phoque : <span class="valeur" id="affiche-graisse">6</span> cm</label>
+            <input type="range" id="graisse" min="1" max="8" step="1" value="6">
+          </div>
+        </div>
+
+        <!-- Prédiction -->
+        <div class="carte orange">
+          <h3>🤔 Avant de lancer : ta prédiction</h3>
+          <p>Après 3 heures, qui gardera une température normale (entre 36 et 38 °C) ?</p>
+          <div class="choix" role="radiogroup" aria-label="Ta prédiction">
+            <label><input type="radio" name="prediction" value="humain"><span>🧍 L'humain seul</span></label>
+            <label><input type="radio" name="prediction" value="phoque"><span>🦭 Le phoque seul</span></label>
+            <label><input type="radio" name="prediction" value="les-deux"><span>Les deux</span></label>
+            <label><input type="radio" name="prediction" value="aucun"><span>Aucun</span></label>
+          </div>
+          <div class="centre">
+            <button class="btn orange" type="button" id="btn-lancer">▶ Lancer la simulation (3 h)</button>
+          </div>
+          <div class="message" id="message-prediction" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <!-- Graphique -->
+      <div class="carte bleue">
+        <h3>📈 Température du corps au cours du temps</h3>
+        <div class="zone-graphique">
+          <canvas id="graphique" role="img" aria-label="Graphique de la température du corps de l'humain et du phoque en fonction du temps"></canvas>
+        </div>
+        <div class="legende">
+          <span><span class="pastille" style="background:var(--orange)"></span>Humain</span>
+          <span><span class="pastille" style="background:var(--bleu)"></span>Phoque</span>
+          <span><span class="pastille" style="background:var(--vert);opacity:.35"></span>Zone normale</span>
+          <span><span class="pastille" style="background:var(--rouge);opacity:.25"></span>Zone de danger</span>
+        </div>
+      </div>
+
+      <!-- Résultats en direct -->
+      <div class="grille-2">
+        <div class="carte orange" aria-live="polite">
+          <h3 class="titre-humain">🧍 Humain</h3>
+          <div class="thermo" id="temp-humain">37,0 °C</div>
+          <span class="statut ok" id="statut-humain">Stable ✅</span>
+          <div class="barre-ligne">🔥 Chaleur produite
+            <div class="barre-fond"><div class="barre produite" id="barre-p-humain"></div></div></div>
+          <div class="barre-ligne">❄️ Chaleur perdue (milieu)
+            <div class="barre-fond"><div class="barre perdue" id="barre-l-humain"></div></div></div>
+          <div class="barre-ligne">💦 Chaleur perdue par la sueur
+            <div class="barre-fond"><div class="barre sueur" id="barre-s-humain"></div></div></div>
+        </div>
+
+        <div class="carte bleue" aria-live="polite">
+          <h3 class="titre-phoque">🦭 Phoque</h3>
+          <div class="thermo" id="temp-phoque">37,0 °C</div>
+          <span class="statut ok" id="statut-phoque">Stable ✅</span>
+          <div class="barre-ligne">🔥 Chaleur produite
+            <div class="barre-fond"><div class="barre produite" id="barre-p-phoque"></div></div></div>
+          <div class="barre-ligne">❄️ Chaleur perdue (milieu)
+            <div class="barre-fond"><div class="barre perdue" id="barre-l-phoque"></div></div></div>
+          <div class="barre-ligne">💦 Chaleur perdue par la sueur
+            <div class="barre-fond"><div class="barre sueur" id="barre-s-phoque"></div></div></div>
+        </div>
+      </div>
+
+      <!-- Carnet de résultats -->
+      <div class="carte verte">
+        <h3>📒 Mon carnet de résultats</h3>
+        <p>Chaque simulation s'ajoute ici. Recopie ce tableau sur ton cahier.</p>
+        <div class="table-defile">
+          <table>
+            <thead>
+              <tr>
+                <th>N°</th><th>Milieu</th><th>T° milieu</th><th>Tenue humain</th>
+                <th>Graisse phoque</th><th>🧍 T° finale</th><th>🦭 T° finale</th><th>Ma prédiction</th>
+              </tr>
+            </thead>
+            <tbody id="corps-carnet">
+              <tr><td colspan="8">Aucune simulation pour l'instant.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="centre">
+        <button class="btn" type="button" data-aller="3">Je passe à la conclusion ➜</button>
+      </div>
+    </section>
+
+    <!-- ===================== ÉTAPE 3 : CONCLURE ===================== -->
+    <section class="etape" id="etape-3" role="tabpanel" aria-labelledby="onglet-3">
+      <h2>③ Conclure : je vérifie ce que j'ai compris</h2>
+
+      <div class="carte violette">
+        <h3>📝 Quiz (réponds à toutes les questions)</h3>
+        <div id="zone-quiz"></div>
+        <p id="score-quiz" style="font-weight:800;"></p>
+      </div>
+
+      <div class="carte verte" id="bilan">
+        <h3>✅ Bilan à recopier</h3>
+        <div class="table-defile">
+          <table>
+            <thead>
+              <tr><th>Critère</th><th>🧍 Humain</th><th>🦭 Phoque</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Température du corps</td><td>≈ 37 °C</td><td>≈ 37 °C</td></tr>
+              <tr><td>Isolation</td><td>Faible (1 cm de graisse) → vêtements</td><td>Forte (4 à 8 cm de graisse)</td></tr>
+              <tr><td>Production de chaleur</td><td>Moyenne, frissons au froid</td><td>Élevée</td></tr>
+              <tr><td>Lutte contre la chaleur</td><td>Transpiration, vasodilatation</td><td>Vasodilatation des nageoires, retour à l'eau</td></tr>
+              <tr><td>Dans l'eau froide</td><td>Hypothermie rapide sans combinaison</td><td>Température stable</td></tr>
+              <tr><td>Au soleil, sur terre</td><td>Température stable (sueur)</td><td>Risque de surchauffe</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="encadre" style="margin-top:1rem;">
+          À retenir : l'humain et le phoque gardent leur corps à 37 °C en équilibrant
+          la chaleur produite et la chaleur perdue. Le phoque est <u>adapté au milieu marin</u> grâce à
+          son épaisse couche de graisse isolante, sa forme arrondie et son métabolisme élevé.
+          L'humain, peu isolé, a besoin d'une combinaison (même rôle que la graisse) pour rester dans l'eau froide.
+          Mais sur terre, quand il fait chaud, c'est l'humain qui s'en sort le mieux grâce à la transpiration.
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+"use strict";
+
+const signalerHauteurApplication = () => {
+  if (window.parent === window) return;
+  window.parent.postMessage({ type: "application-height", height: Math.ceil(document.documentElement.scrollHeight) }, "*");
+};
+
+if (window.parent !== window) {
+  window.addEventListener("message", (event) => {
+    if (event.source === window.parent && event.data?.type === "application-height-request") signalerHauteurApplication();
+  });
+  window.addEventListener("load", signalerHauteurApplication);
+  window.addEventListener("resize", signalerHauteurApplication);
+  new ResizeObserver(signalerHauteurApplication).observe(document.querySelector(".conteneur"));
+  new MutationObserver(() => requestAnimationFrame(signalerHauteurApplication)).observe(document.querySelector("main"), { childList: true, characterData: true, subtree: true });
+  signalerHauteurApplication();
+}
+
+/* =========================================================
+   1. PARAMÈTRES DU MODÈLE (unités simplifiées)
+   Chaleur perdue = (T corps - T milieu) / résistance totale × facteur de forme
+   Résistance totale = tissus (graisse) + vêtement + milieu
+   L'eau a une résistance 25 fois plus faible que l'air.
+   ========================================================= */
+const MODELE = {
+  dureeMinutes: 180,
+  resistanceMilieu: { air: 6, eau: 0.24 },
+  resistanceVetement: { aucun: 0, habits: 4, neoprene: 6 },
+  humain: {
+    productionBase: 1, productionMax: 4,      // frissons : jusqu'à 4 fois la base
+    resistanceTissus: 2,                     // environ 1 cm de graisse
+    facteurForme: 1,
+    sueurMax: 3,
+    reductionSiChaud: 0.6,                   // vasodilatation
+    inertie: 0.005
+  },
+  phoque: {
+    productionBase: 1.8, productionMax: 5,   // métabolisme élevé
+    resistanceParCm: 1.5,                    // isolation par cm de graisse
+    facteurForme: 0.7,                       // forme arrondie et contre-courant
+    sueurMax: 0.2,                           // il ne transpire presque pas
+    reductionSiChaud: 0.4,                   // vasodilatation des nageoires
+    inertie: 0.008
+  }
+};
+
+const LIBELLES_TENUE = { aucun: "Maillot", habits: "Habits", neoprene: "Néoprène" };
+const LIBELLES_PREDICTION = { humain: "Humain seul", phoque: "Phoque seul", "les-deux": "Les deux", aucun: "Aucun" };
+
+/* =========================================================
+   2. MISSIONS GUIDÉES
+   ========================================================= */
+const MISSIONS = [
+  {
+    titre: "Le plongeon dans la mer froide",
+    reglages: { milieu: "eau", temperature: 10, vetement: "aucun", graisse: 6 },
+    consigne: "🌊 Mer à 10 °C, l'humain est en maillot de bain. Fais ta prédiction puis lance. <strong>Question :</strong> qui garde 37 °C ? Regarde les barres : pour l'humain, la chaleur perdue est-elle plus grande ou plus petite que la chaleur produite ?"
+  },
+  {
+    titre: "La combinaison de plongée",
+    reglages: { milieu: "eau", temperature: 10, vetement: "neoprene", graisse: 6 },
+    consigne: "🤿 Même mer, mais l'humain porte une combinaison en néoprène. <strong>Question :</strong> que change la combinaison ? À quelle partie du corps du phoque peut-on la comparer ?"
+  },
+  {
+    titre: "Le phoque trop maigre",
+    reglages: { milieu: "eau", temperature: 2, vetement: "habits", graisse: 1 },
+    consigne: "🧊 Mer à 2 °C et phoque avec seulement 1 cm de graisse. Lance, puis <strong>augmente la graisse de 1 cm à chaque essai</strong>. <strong>Question :</strong> quelle épaisseur minimum faut-il pour que le phoque reste à 37 °C ? Quelle règle peux-tu en tirer ?"
+  },
+  {
+    titre: "La plage en plein soleil",
+    reglages: { milieu: "air", temperature: 35, vetement: "aucun", graisse: 6 },
+    consigne: "☀️ Sur la plage à 35 °C. <strong>Question :</strong> cette fois, qui est en difficulté ? Regarde la barre violette « sueur » : quelle différence entre les deux ?"
+  },
+  {
+    titre: "Le mystère du nageur",
+    reglages: { milieu: "eau", temperature: 20, vetement: "aucun", graisse: 6 },
+    consigne: "🕵️ Un nageur sort d'un lac à 20 °C après 3 h en maillot. Il tremble et sa température est d'environ 34 °C. Pourtant 20 °C, ce n'est pas très froid ! <strong>Question :</strong> trouve l'explication la plus probable. Aide-toi d'un 2e essai : même température, mais dans l'air."
+  }
+];
+
+/* =========================================================
+   3. ÉLÉMENTS DE LA PAGE
+   ========================================================= */
+const elTempMilieu = document.getElementById("temp-milieu");
+const elAfficheTemp = document.getElementById("affiche-temp");
+const elVetement = document.getElementById("vetement");
+const elGraisse = document.getElementById("graisse");
+const elAfficheGraisse = document.getElementById("affiche-graisse");
+const elBtnLancer = document.getElementById("btn-lancer");
+const elMessage = document.getElementById("message-prediction");
+const elCarnet = document.getElementById("corps-carnet");
+const canvas = document.getElementById("graphique");
+const ctx = canvas.getContext("2d");
+
+let missionActive = null;
+let simulationEnCours = false;
+let numeroEssai = 0;
+let etat = null;
+
+/* =========================================================
+   4. NAVIGATION ENTRE LES ÉTAPES
+   ========================================================= */
+function allerEtape(numero) {
+  document.querySelectorAll(".etape").forEach(function (section) {
+    section.classList.toggle("active", section.id === "etape-" + numero);
+  });
+  document.querySelectorAll(".btn-etape").forEach(function (bouton) {
+    bouton.setAttribute("aria-selected", bouton.dataset.etape === String(numero) ? "true" : "false");
+  });
+  window.scrollTo(0, 0);
+  if (numero === 2) dessinerGraphique();
+}
+document.querySelectorAll("[data-etape]").forEach(function (b) {
+  b.addEventListener("click", function () { allerEtape(Number(b.dataset.etape)); });
+});
+document.querySelectorAll("[data-aller]").forEach(function (b) {
+  b.addEventListener("click", function () { allerEtape(Number(b.dataset.aller)); });
+});
+
+/* =========================================================
+   5. LECTURE DES RÉGLAGES
+   ========================================================= */
+function lireReglages() {
+  return {
+    milieu: document.querySelector('input[name="milieu"]:checked').value,
+    temperature: Number(elTempMilieu.value),
+    vetement: elVetement.value,
+    graisse: Number(elGraisse.value)
+  };
+}
+
+function formaterTemp(valeur) {
+  return valeur.toFixed(1).replace(".", ",") + " °C";
+}
+
+/* =========================================================
+   6. CALCUL D'UNE MINUTE DE SIMULATION
+   ========================================================= */
+function calculerMinute(espece, temperatureCorps, reglages) {
+  const p = MODELE[espece];
+
+  // Isolation par les tissus (graisse)
+  let resistanceTissus = espece === "humain" ? p.resistanceTissus : reglages.graisse * p.resistanceParCm;
+  if (temperatureCorps > 37.2) resistanceTissus *= p.reductionSiChaud; // vasodilatation
+
+  const resistanceVetement = espece === "humain" ? MODELE.resistanceVetement[reglages.vetement] : 0;
+  const resistanceTotale = resistanceTissus + resistanceVetement + MODELE.resistanceMilieu[reglages.milieu];
+
+  const chaleurPerdue = (temperatureCorps - reglages.temperature) / resistanceTotale * p.facteurForme;
+  const sueurPossible = reglages.milieu === "eau" ? 0 : p.sueurMax; // la sueur ne sert à rien dans l'eau
+
+  // Le corps essaie d'équilibrer et de revenir à 37 °C
+  const besoin = chaleurPerdue + 0.5 * (37 - temperatureCorps);
+  let production = p.productionBase;
+  let sueur = 0;
+  if (besoin >= p.productionBase) {
+    production = Math.min(p.productionMax, besoin);   // frissons
+  } else {
+    sueur = Math.min(sueurPossible, p.productionBase - besoin); // transpiration
+  }
+
+  const bilan = production - chaleurPerdue - sueur;
+  let nouvelleTemp = temperatureCorps + bilan * p.inertie;
+  nouvelleTemp = Math.max(25, Math.min(43, nouvelleTemp));
+
+  return { temperature: nouvelleTemp, production: production, perdue: chaleurPerdue, sueur: sueur };
+}
+
+/* =========================================================
+   7. ÉTAT, AFFICHAGE DES RÉSULTATS
+   ========================================================= */
+function etatInitial() {
+  return {
+    minute: 0,
+    humain: { temperature: 37, historique: [37], production: 0, perdue: 0, sueur: 0 },
+    phoque: { temperature: 37, historique: [37], production: 0, perdue: 0, sueur: 0 }
+  };
+}
+
+function statutTemperature(t) {
+  if (t < 35) return { classe: "danger", texte: "Hypothermie ❄️" };
+  if (t > 39) return { classe: "danger", texte: "Hyperthermie 🔥" };
+  if (t < 36) return { classe: "attention", texte: "Se refroidit ⚠️" };
+  if (t > 38) return { classe: "attention", texte: "Se réchauffe trop ⚠️" };
+  return { classe: "ok", texte: "Stable ✅" };
+}
+
+function majAffichageEspece(espece) {
+  const donnees = etat[espece];
+  const statut = statutTemperature(donnees.temperature);
+  document.getElementById("temp-" + espece).textContent = formaterTemp(donnees.temperature);
+  const elStatut = document.getElementById("statut-" + espece);
+  elStatut.className = "statut " + statut.classe;
+  elStatut.textContent = statut.texte;
+
+  const echelle = 8; // valeur qui remplit la barre à 100 %
+  const pourcent = function (v) { return Math.max(0, Math.min(100, v / echelle * 100)) + "%"; };
+  document.getElementById("barre-p-" + espece).style.width = pourcent(donnees.production);
+  document.getElementById("barre-l-" + espece).style.width = pourcent(donnees.perdue);
+  document.getElementById("barre-s-" + espece).style.width = pourcent(donnees.sueur);
+}
+
+function majAffichage() {
+  majAffichageEspece("humain");
+  majAffichageEspece("phoque");
+  dessinerGraphique();
+}
+
+/* =========================================================
+   8. GRAPHIQUE (canvas)
+   ========================================================= */
+const T_MIN = 28, T_MAX = 42;
+
+function dessinerGraphique() {
+  const rect = canvas.getBoundingClientRect();
+  if (rect.width === 0) return; // étape cachée
+  const ratio = window.devicePixelRatio || 1;
+  canvas.width = rect.width * ratio;
+  canvas.height = rect.height * ratio;
+  ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+  const largeur = rect.width, hauteur = rect.height;
+  const marge = { gauche: 48, droite: 12, haut: 10, bas: 32 };
+  const x = function (minute) { return marge.gauche + minute / MODELE.dureeMinutes * (largeur - marge.gauche - marge.droite); };
+  const y = function (t) { return marge.haut + (T_MAX - t) / (T_MAX - T_MIN) * (hauteur - marge.haut - marge.bas); };
+
+  ctx.clearRect(0, 0, largeur, hauteur);
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, largeur, hauteur);
+
+  // Zones colorées
+  const zoneLargeur = x(MODELE.dureeMinutes) - x(0);
+  ctx.fillStyle = "rgba(127,188,72,0.3)";
+  ctx.fillRect(x(0), y(38), zoneLargeur, y(36) - y(38));
+  ctx.fillStyle = "rgba(230,45,50,0.15)";
+  ctx.fillRect(x(0), y(35), zoneLargeur, y(T_MIN) - y(35));
+  ctx.fillRect(x(0), y(T_MAX), zoneLargeur, y(39) - y(T_MAX));
+
+  // Quadrillage et graduations
+  ctx.strokeStyle = "#b7b7b7";
+  ctx.fillStyle = "#494949";
+  ctx.lineWidth = 1;
+  ctx.font = "12px system-ui, sans-serif";
+  ctx.textAlign = "right";
+  ctx.textBaseline = "middle";
+  for (let t = T_MIN; t <= T_MAX; t += 2) {
+    ctx.beginPath(); ctx.moveTo(x(0), y(t)); ctx.lineTo(x(MODELE.dureeMinutes), y(t)); ctx.stroke();
+    ctx.fillText(t + " °C", x(0) - 4, y(t));
+  }
+  ctx.textAlign = "center";
+  ctx.textBaseline = "top";
+  for (let m = 0; m <= MODELE.dureeMinutes; m += 30) {
+    const heures = Math.floor(m / 60), minutes = m % 60;
+    ctx.fillText(heures + " h" + (minutes ? minutes : ""), x(m), y(T_MIN) + 6);
+  }
+
+  // Ligne de 37 °C
+  ctx.setLineDash([5, 4]);
+  ctx.strokeStyle = "#7fbc48";
+  ctx.beginPath(); ctx.moveTo(x(0), y(37)); ctx.lineTo(x(MODELE.dureeMinutes), y(37)); ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Courbes
+  if (!etat) return;
+  const tracer = function (historique, couleur) {
+    ctx.strokeStyle = couleur;
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    historique.forEach(function (t, minute) {
+      if (minute === 0) ctx.moveTo(x(minute), y(t)); else ctx.lineTo(x(minute), y(t));
+    });
+    ctx.stroke();
+  };
+  tracer(etat.humain.historique, "#f3912b");
+  tracer(etat.phoque.historique, "#53a4db");
+}
+
+if ("ResizeObserver" in window) {
+  new ResizeObserver(dessinerGraphique).observe(canvas);
+} else {
+  window.addEventListener("resize", dessinerGraphique);
+}
+
+/* =========================================================
+   9. LANCEMENT ET FIN DE SIMULATION
+   ========================================================= */
+function reinitialiser() {
+  simulationEnCours = false;
+  elBtnLancer.disabled = false;
+  etat = etatInitial();
+  elMessage.className = "message";
+  elMessage.textContent = "";
+  majAffichage();
+}
+
+function lancerSimulation() {
+  const choixPrediction = document.querySelector('input[name="prediction"]:checked');
+  if (!choixPrediction) {
+    elMessage.className = "message visible faux";
+    elMessage.textContent = "✋ Choisis d'abord ta prédiction : un scientifique prédit toujours avant d'expérimenter !";
+    return;
+  }
+  const reglages = lireReglages();
+  etat = etatInitial();
+  simulationEnCours = true;
+  elBtnLancer.disabled = true;
+  elMessage.className = "message";
+
+  function avancer() {
+    if (!simulationEnCours) return;
+    ["humain", "phoque"].forEach(function (espece) {
+      const resultat = calculerMinute(espece, etat[espece].temperature, reglages);
+      etat[espece].temperature = resultat.temperature;
+      etat[espece].production = resultat.production;
+      etat[espece].perdue = resultat.perdue;
+      etat[espece].sueur = resultat.sueur;
+      etat[espece].historique.push(resultat.temperature);
+    });
+    etat.minute++;
+    majAffichage();
+    if (etat.minute < MODELE.dureeMinutes) {
+      requestAnimationFrame(avancer);
+    } else {
+      terminerSimulation(reglages, choixPrediction.value);
+    }
+  }
+  requestAnimationFrame(avancer);
+}
+
+function terminerSimulation(reglages, prediction) {
+  simulationEnCours = false;
+  elBtnLancer.disabled = false;
+
+  const estNormal = function (t) { return t >= 36 && t <= 38; };
+  const humainOk = estNormal(etat.humain.temperature);
+  const phoqueOk = estNormal(etat.phoque.temperature);
+
+  let reponse;
+  if (humainOk && phoqueOk) reponse = "les-deux";
+  else if (humainOk) reponse = "humain";
+  else if (phoqueOk) reponse = "phoque";
+  else reponse = "aucun";
+
+  const gagne = prediction === reponse;
+  const explications = {
+    "les-deux": "Les deux gardent une température normale : chacun équilibre chaleur produite et chaleur perdue.",
+    humain: "Seul l'humain garde une température normale : ses pertes restent compensées (vêtement, sueur…) alors que celles du phoque ne le sont pas.",
+    phoque: "Seul le phoque garde une température normale : sa graisse limite les pertes de chaleur, alors que l'humain en perd plus qu'il n'en produit.",
+    aucun: "Aucun des deux ne garde une température normale : les pertes de chaleur sont trop importantes (ou la chaleur du milieu trop forte) pour être compensées."
+  };
+
+  elMessage.className = "message visible " + (gagne ? "bon" : "faux");
+  elMessage.innerHTML = (gagne ? "🎉 <strong>Bravo, ta prédiction est juste !</strong> " : "🔎 <strong>Ta prédiction ne correspond pas.</strong> ") +
+    "Résultat : 🧍 humain " + formaterTemp(etat.humain.temperature) +
+    " et 🦭 phoque " + formaterTemp(etat.phoque.temperature) + ". " + explications[reponse];
+
+  ajouterAuCarnet(reglages, prediction, gagne);
+  if (missionActive !== null && missionActive >= 0) {
+    elZoneMissions.children[missionActive].classList.add("faite");
+  }
+}
+
+/* =========================================================
+   10. CARNET DE RÉSULTATS
+   ========================================================= */
+function ajouterAuCarnet(reglages, prediction, gagne) {
+  numeroEssai++;
+  if (numeroEssai === 1) elCarnet.innerHTML = "";
+
+  const ligne = document.createElement("tr");
+  const cellules = [
+    numeroEssai,
+    reglages.milieu === "air" ? "Air" : "Eau",
+    reglages.temperature + " °C",
+    LIBELLES_TENUE[reglages.vetement],
+    reglages.graisse + " cm",
+    formaterTemp(etat.humain.temperature),
+    formaterTemp(etat.phoque.temperature),
+    (gagne ? "✅ " : "❌ ") + LIBELLES_PREDICTION[prediction]
+  ];
+  cellules.forEach(function (texte) {
+    const td = document.createElement("td");
+    td.textContent = texte;
+    ligne.appendChild(td);
+  });
+  elCarnet.appendChild(ligne);
+}
+
+/* =========================================================
+   11. RÉGLAGES : AFFICHAGE ET ÉVÉNEMENTS
+   ========================================================= */
+function majAffichageReglages() {
+  elAfficheTemp.textContent = elTempMilieu.value + " °C";
+  elAfficheGraisse.textContent = elGraisse.value + " cm";
+}
+
+function appliquerReglages(reglages) {
+  document.querySelector('input[name="milieu"][value="' + reglages.milieu + '"]').checked = true;
+  elTempMilieu.value = reglages.temperature;
+  elVetement.value = reglages.vetement;
+  elGraisse.value = reglages.graisse;
+  majAffichageReglages();
+}
+
+elTempMilieu.addEventListener("input", function () { majAffichageReglages(); reinitialiser(); });
+elGraisse.addEventListener("input", function () { majAffichageReglages(); reinitialiser(); });
+elVetement.addEventListener("change", reinitialiser);
+document.querySelectorAll('input[name="milieu"]').forEach(function (radio) {
+  radio.addEventListener("change", reinitialiser);
+});
+elBtnLancer.addEventListener("click", lancerSimulation);
+
+/* =========================================================
+   12. MISSIONS
+   ========================================================= */
+const elZoneMissions = document.getElementById("zone-missions");
+const elConsigneMission = document.getElementById("consigne-mission");
+
+function construireMissions() {
+  MISSIONS.forEach(function (mission, index) {
+    const bouton = document.createElement("button");
+    bouton.type = "button";
+    bouton.className = "btn-mission";
+    bouton.setAttribute("aria-pressed", "false");
+    const numero = document.createElement("span");
+    numero.className = "num";
+    numero.textContent = String(index + 1);
+    bouton.append(numero, document.createTextNode(" " + mission.titre));
+    bouton.title = mission.titre;
+    bouton.addEventListener("click", function () { choisirMission(index); });
+    elZoneMissions.appendChild(bouton);
+  });
+  const libre = document.createElement("button");
+  libre.type = "button";
+  libre.className = "btn-mission";
+  libre.textContent = "Mode libre";
+  libre.addEventListener("click", function () { choisirMission(-1); });
+  elZoneMissions.appendChild(libre);
+}
+
+function choisirMission(index) {
+  missionActive = index;
+  Array.from(elZoneMissions.children).forEach(function (bouton, i) {
+    const actif = (index === -1 && i === MISSIONS.length) || i === index;
+    bouton.classList.toggle("active", actif);
+    if (i < MISSIONS.length) bouton.setAttribute("aria-pressed", actif ? "true" : "false");
+  });
+  if (index === -1) {
+    elConsigneMission.innerHTML = "🔓 <strong>Mode libre :</strong> change les réglages comme tu veux et observe ce qui se passe.";
+  } else {
+    const mission = MISSIONS[index];
+    appliquerReglages(mission.reglages);
+    elConsigneMission.innerHTML = "<strong>Mission " + (index + 1) + " : " + mission.titre + "</strong><br>" + mission.consigne;
+  }
+  document.querySelectorAll('input[name="prediction"]').forEach(function (r) { r.checked = false; });
+  reinitialiser();
+}
+
+/* =========================================================
+   13. QUIZ
+   ========================================================= */
+const QUESTIONS = [
+  {
+    question: "Quelle est la température normale du corps de l'humain et du phoque ?",
+    options: ["Environ 20 °C", "Environ 37 °C", "Elle change comme celle du milieu"],
+    bonne: 1,
+    explication: "Ce sont deux mammifères <strong>homéothermes</strong> : leur température interne reste constante (environ 37 °C)."
+  },
+  {
+    question: "À quoi sert la couche de graisse du phoque ?",
+    options: ["À produire de la sueur", "À isoler : elle limite les pertes de chaleur", "À stocker de l'eau"],
+    bonne: 1,
+    explication: "La graisse est un <strong>isolant thermique</strong> : elle freine le passage de la chaleur vers l'eau froide."
+  },
+  {
+    question: "Dans l'eau à 10 °C, pourquoi l'humain en maillot se refroidit-il très vite ?",
+    options: [
+      "Parce que l'eau conduit la chaleur bien mieux que l'air",
+      "Parce que l'eau est plus lourde",
+      "Parce que l'humain ne produit plus de chaleur"
+    ],
+    bonne: 0,
+    explication: "L'eau enlève la chaleur du corps environ 25 fois plus vite que l'air à la même température."
+  },
+  {
+    question: "Quel élément joue chez l'humain le même rôle que la graisse du phoque ?",
+    options: ["La combinaison de plongée", "Le maillot de bain", "La transpiration"],
+    bonne: 0,
+    explication: "La combinaison en néoprène est un isolant qui remplace la graisse : c'est une <strong>analogie</strong>."
+  },
+  {
+    question: "Au soleil, sur la plage à 35 °C, pourquoi le phoque risque-t-il de surchauffer ?",
+    options: [
+      "Il a une peau trop claire",
+      "Il transpire peu et sa graisse retient la chaleur",
+      "Il ne produit plus de chaleur"
+    ],
+    bonne: 1,
+    explication: "Isolé par sa graisse et presque sans sueur, il évacue mal sa chaleur : il retourne souvent à l'eau pour se rafraîchir."
+  },
+  {
+    question: "Que fait le corps humain quand il a trop froid ?",
+    options: [
+      "Il transpire",
+      "Il frissonne pour produire plus de chaleur",
+      "Il dilate ses vaisseaux sanguins de la peau"
+    ],
+    bonne: 1,
+    explication: "Les frissons sont des contractions musculaires qui <strong>produisent de la chaleur</strong>."
+  }
+];
+
+const elZoneQuiz = document.getElementById("zone-quiz");
+const elScoreQuiz = document.getElementById("score-quiz");
+const reponsesQuiz = new Array(QUESTIONS.length).fill(null);
+
+function construireQuiz() {
+  QUESTIONS.forEach(function (q, indexQuestion) {
+    const bloc = document.createElement("div");
+    bloc.className = "question";
+
+    const titre = document.createElement("p");
+    titre.innerHTML = "<strong>" + (indexQuestion + 1) + ". " + q.question + "</strong>";
+    bloc.appendChild(titre);
+
+    const zoneOptions = document.createElement("div");
+    zoneOptions.className = "reponses";
+    q.options.forEach(function (texte, indexOption) {
+      const bouton = document.createElement("button");
+      bouton.type = "button";
+      bouton.className = "btn-reponse";
+      bouton.textContent = texte;
+      bouton.addEventListener("click", function () {
+        validerReponse(indexQuestion, indexOption, zoneOptions, retour);
+      });
+      zoneOptions.appendChild(bouton);
+    });
+    bloc.appendChild(zoneOptions);
+
+    const retour = document.createElement("div");
+    retour.className = "explication";
+    retour.setAttribute("aria-live", "polite");
+    bloc.appendChild(retour);
+
+    elZoneQuiz.appendChild(bloc);
+  });
+}
+
+function validerReponse(indexQuestion, indexOption, zoneOptions, retour) {
+  if (reponsesQuiz[indexQuestion] !== null) return; // une seule réponse par question
+  reponsesQuiz[indexQuestion] = indexOption;
+  const question = QUESTIONS[indexQuestion];
+  const boutons = zoneOptions.querySelectorAll("button");
+
+  boutons.forEach(function (bouton, i) {
+    bouton.disabled = true;
+    if (i === question.bonne) bouton.classList.add("correcte");
+    else if (i === indexOption) bouton.classList.add("incorrecte");
+  });
+
+  const correct = indexOption === question.bonne;
+  retour.className = "explication visible";
+  retour.innerHTML = (correct ? "✅ Bravo ! " : "❌ Pas tout à fait. ") + question.explication;
+  afficherScore();
+}
+
+function afficherScore() {
+  const repondues = reponsesQuiz.filter(function (r) { return r !== null; }).length;
+  const bonnes = reponsesQuiz.filter(function (r, i) { return r === QUESTIONS[i].bonne; }).length;
+  if (repondues < QUESTIONS.length) {
+    elScoreQuiz.textContent = "Questions répondues : " + repondues + " / " + QUESTIONS.length;
+  } else {
+    document.getElementById("bilan").classList.add("visible");
+    let commentaire = "Relis le tableau-bilan et refais les missions.";
+    if (bonnes === QUESTIONS.length) commentaire = "Parfait, tu as tout compris ! 🏆";
+    else if (bonnes >= 4) commentaire = "Très bien, tu maîtrises l'essentiel. 👍";
+    elScoreQuiz.textContent = "Score : " + bonnes + " / " + QUESTIONS.length + ". " + commentaire;
+  }
+}
+
+/* =========================================================
+   14. INITIALISATION
+   ========================================================= */
+construireMissions();
+construireQuiz();
+majAffichageReglages();
+etat = etatInitial();
+choisirMission(0);
+</script>
+</body>
+</html>

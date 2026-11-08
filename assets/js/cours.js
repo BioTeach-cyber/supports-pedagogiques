@@ -31,28 +31,16 @@
   let timelineAssetsPromise;
   const loadTimelineAssets = () => {
     if (timelineAssetsPromise) return timelineAssetsPromise;
-    timelineAssetsPromise = new Promise((resolve, reject) => {
-      const stylesheet = document.createElement('link');
-      stylesheet.rel = 'stylesheet';
-      stylesheet.href = 'https://unpkg.com/vis-timeline@7.7.3/styles/vis-timeline-graph2d.min.css';
-      document.head.append(stylesheet);
+    const loadScript = (source) => new Promise((resolve, reject) => {
       const script = document.createElement('script');
-      script.src = 'https://unpkg.com/vis-timeline@7.7.3/standalone/umd/vis-timeline-graph2d.min.js';
-      script.onload = () => {
-        const timelineLibrary = window.vis || {};
-        const networkLibrary = window.visNetworkLibrary || {};
-        window.vis = { ...timelineLibrary, ...networkLibrary, Timeline: timelineLibrary.Timeline };
-        delete window.visNetworkLibrary;
-        resolve();
-      };
-      window.visNetworkLibrary = window.vis || {};
-      script.onerror = () => {
-        window.vis = window.visNetworkLibrary || window.vis;
-        delete window.visNetworkLibrary;
-        reject(new Error('La bibliothèque vis.timeline n’a pas pu être chargée.'));
-      };
+      script.src = source;
+      script.onload = resolve;
+      script.onerror = () => reject(new Error(`La bibliothèque ${source} n’a pas pu être chargée.`));
       document.head.append(script);
     });
+    timelineAssetsPromise = loadScript('https://cdn.amcharts.com/lib/5/index.js')
+      .then(() => loadScript('https://cdn.amcharts.com/lib/5/xy.js'))
+      .then(() => loadScript('https://cdn.amcharts.com/lib/5/themes/Animated.js'));
     return timelineAssetsPromise;
   };
 
@@ -305,7 +293,7 @@
   };
 
   const renderTimeline = async (course, host, message) => {
-    const status = element('p', 'empty-state', 'Chargement des dates communes…');
+    const status = element('p', 'empty-state', 'Chargement de la frise…');
     message.append(status);
 
     let commonEvents = [];
@@ -377,116 +365,66 @@
       await loadTimelineAssets();
     } catch {
       message.append(status);
-      status.textContent = 'La bibliothèque de timeline n’a pas pu être chargée.';
+      status.textContent = 'La bibliothèque de la frise n’a pas pu être chargée.';
       return;
     }
 
-    const Timeline = window.vis?.Timeline;
-    const DataSet = window.vis?.DataSet;
-    if (!Timeline || !DataSet) {
+    const am5 = window.am5;
+    const am5xy = window.am5xy;
+    const am5themes_Animated = window.am5themes_Animated;
+    if (!am5 || !am5xy || !am5themes_Animated) {
       message.append(status);
-      status.textContent = 'La bibliothèque de timeline n’a pas pu être chargée.';
+      status.textContent = 'La bibliothèque de la frise n’a pas pu être chargée.';
       return;
     }
     const categoryDefinitions = [
-      { id: 'vacances', content: 'Vacances', order: 1, className: 'timeline-group-vacances' },
-      { id: 'stages', content: 'Stages', order: 2, className: 'timeline-group-stages' },
-      { id: 'cours', content: 'Cours', order: 3, className: 'timeline-group-cours' },
-      { id: 'evaluations', content: 'Évaluations', order: 4, className: 'timeline-group-evaluations' },
-      { id: 'examens', content: 'Examens', order: 5, className: 'timeline-group-examens' }
+      { id: 'vacances', label: 'Vacances', color: '#4b91d1' },
+      { id: 'stages', label: 'Stages', color: '#6f8e31' },
+      { id: 'cours', label: 'Cours', color: course.couleur || '#7fbc48' },
+      { id: 'evaluations', label: 'Évaluations', color: '#d14e4e' },
+      { id: 'examens', label: 'Examens', color: '#8053ad' }
     ];
     const visibleCategories = new Set(datedEvents.map(categoryForEvent));
     const categories = categoryDefinitions.filter((category) => visibleCategories.has(category.id));
-    const items = datedEvents.map((event) => ({
-      id: `${event.source}-${event.id}`,
-      group: categoryForEvent(event),
-      content: event.titre || event.type || 'Événement',
-      start: event.start,
-      ...(event.type !== 'evaluation' && event.end
-        ? { end: event.end, type: 'range' }
-        : { type: 'point' }),
-      className: `timeline-item-${categoryForEvent(event)}`,
-      title: event.titre || event.type || 'Événement'
-    }));
     const controls = element('div', 'timeline-controls');
-    controls.setAttribute('aria-label', 'Commandes de la timeline');
+    controls.setAttribute('aria-label', 'Commandes de la frise');
     const zoomIn = element('button', 'secondary-button', 'Zoom +');
     zoomIn.type = 'button';
-    zoomIn.setAttribute('aria-label', 'Zoomer dans la timeline');
+    zoomIn.setAttribute('aria-label', 'Zoomer sur la frise');
     const zoomOut = element('button', 'secondary-button', 'Zoom −');
     zoomOut.type = 'button';
-    zoomOut.setAttribute('aria-label', 'Dézoomer dans la timeline');
+    zoomOut.setAttribute('aria-label', 'Dézoomer sur la frise');
     const today = element('button', 'primary-button', 'Aujourd’hui');
     today.type = 'button';
-    today.setAttribute('aria-label', 'Centrer la timeline sur aujourd’hui');
+    today.setAttribute('aria-label', 'Afficher les dates autour d’aujourd’hui');
     controls.append(zoomIn, zoomOut, today);
     host.before(controls);
+    const legend = element('div', 'timeline-legend');
+    categories.forEach((category) => {
+      const item = element('span', 'timeline-legend-item');
+      const marker = element('span', 'timeline-legend-marker');
+      marker.style.setProperty('--timeline-legend-color', category.color);
+      marker.setAttribute('aria-hidden', 'true');
+      item.append(marker, element('span', '', category.label));
+      legend.append(item);
+    });
+    host.before(legend);
+    host.setAttribute('role', 'region');
+    host.setAttribute('aria-label', `Frise chronologique serpentine du cours ${course.titre}`);
     const details = element('article', 'timeline-details');
     details.setAttribute('aria-live', 'polite');
-    details.append(element('p', 'empty-state', 'Sélectionnez un élément de la timeline pour afficher ses détails.'));
-    const timeline = new Timeline(host, new DataSet(items), new DataSet(categories), {
-      locale: 'fr',
-      height: '360px',
-      start: schoolYearStart,
-      end: schoolYearEnd,
-      min: schoolYearStart,
-      max: schoolYearEnd,
-      zoomMin: 1000 * 60 * 60 * 24 * 7,
-      zoomMax: 1000 * 60 * 60 * 24 * 365,
-      moveable: true,
-      zoomable: true,
-      selectable: true,
-      groupOrder: 'order'
-    });
-    const zoomTimeline = (factor) => {
-      const range = timeline.getWindow();
-      const center = (range.start.getTime() + range.end.getTime()) / 2;
-      const halfDuration = (range.end.getTime() - range.start.getTime()) * factor / 2;
-      const start = Math.max(schoolYearStart.getTime(), center - halfDuration);
-      const end = Math.min(schoolYearEnd.getTime(), center + halfDuration);
-      if (end - start < 1000 * 60 * 60 * 24 * 7) return;
-      timeline.setWindow(new Date(start), new Date(end), { animation: { duration: 250, easingFunction: 'easeInOutQuad' } });
-    };
-    zoomIn.addEventListener('click', () => zoomTimeline(0.7));
-    zoomOut.addEventListener('click', () => zoomTimeline(1.4));
-    today.addEventListener('click', () => {
-      const now = new Date();
-      const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-      const todayEnd = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-      const dayDuration = 1000 * 60 * 60 * 24;
-      const currentRange = timeline.getWindow();
-      const duration = Math.max(dayDuration * 30, Math.min(currentRange.end.getTime() - currentRange.start.getTime(), dayDuration * 90));
-      const start = Math.max(schoolYearStart.getTime(), todayStart.getTime() - duration / 2);
-      const end = Math.min(schoolYearEnd.getTime(), todayEnd.getTime() + duration / 2);
-      if (now < schoolYearStart || now > schoolYearEnd) {
-        timeline.setWindow(schoolYearStart, schoolYearEnd, { animation: { duration: 400, easingFunction: 'easeInOutQuad' } });
-        return;
-      }
-      timeline.setWindow(new Date(start), new Date(end), { animation: { duration: 400, easingFunction: 'easeInOutQuad' } });
-    });
+    details.append(element('p', 'empty-state', 'Sélectionnez un événement de la frise pour afficher ses détails.'));
     host.after(details);
+
     let detailAnimation;
-    timeline.on('select', async ({ items: selectedItems }) => {
+    const showDetails = async (event) => {
       detailAnimation?.destroy();
       detailAnimation = null;
-      const event = datedEvents.find((item) => `${item.source}-${item.id}` === selectedItems[0]);
-      if (!event) {
-        details.replaceChildren(element('p', 'empty-state', 'Sélectionnez un élément de la timeline pour afficher ses détails.'));
-        return;
-      }
       details.replaceChildren();
       const heading = element('h3', '', event.titre || event.type || 'Événement');
       details.append(heading);
       const eventCategory = categoryForEvent(event);
-      const eventType = eventCategory === 'cours'
-        ? 'Cours'
-        : eventCategory === 'evaluations'
-          ? 'Évaluation'
-          : eventCategory === 'stages'
-            ? 'Stage'
-            : eventCategory === 'examens'
-              ? 'Examen'
-              : 'Vacances';
+      const eventType = categories.find((category) => category.id === eventCategory)?.label || 'Événement';
       details.append(element('p', 'timeline-detail-type', eventType));
       details.style.setProperty('--timeline-category-color', `var(--timeline-${eventCategory})`);
       const dateLabel = event.end && event.type !== 'evaluation'
@@ -522,7 +460,193 @@
           details.append(link);
         }
       }
-    });
+    };
+
+    try {
+      const root = am5.Root.new(host);
+      root.setThemes([am5themes_Animated.new(root)]);
+      const chart = root.container.children.push(am5xy.XYChart.new(root, {
+        panX: false,
+        panY: false,
+        wheelX: 'none',
+        wheelY: 'none',
+        layout: root.verticalLayout,
+        arrangeTooltips: false,
+        paddingLeft: 24,
+        paddingRight: 24,
+        paddingTop: 24,
+        paddingBottom: 20
+      }));
+      const laneCount = categoryDefinitions.length;
+      const rowCount = 4;
+      const rowHeight = laneCount + 1;
+      const yearDuration = schoolYearEnd.getTime() - schoolYearStart.getTime();
+      host.style.height = `${Math.max(560, rowCount * 190 + 100)}px`;
+      const rendererY = am5xy.AxisRendererY.new(root, { minGridDistance: 30, inversed: true });
+      rendererY.labels.template.setAll({ forceHidden: true });
+      rendererY.grid.template.setAll({ forceHidden: true });
+      rendererY.axisFills.template.setAll({ forceHidden: true });
+      const yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+        min: 0,
+        max: rowCount * rowHeight,
+        strictMinMax: true,
+        renderer: rendererY
+      }));
+      const rendererX = am5xy.AxisRendererX.new(root, { minGridDistance: 75 });
+      rendererX.labels.template.setAll({ forceHidden: true });
+      rendererX.grid.template.setAll({ forceHidden: true });
+      const xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
+        min: 0,
+        max: 1,
+        strictMinMax: true,
+        renderer: rendererX
+      }));
+      const trackY = (row) => row * rowHeight + laneCount / 2 + 0.5;
+      const createRoute = (points, showDates = false) => {
+        const route = chart.series.push(am5xy.LineSeries.new(root, {
+          xAxis,
+          yAxis,
+          valueXField: 'x',
+          valueYField: 'y',
+          connect: true,
+          stroke: am5.color(course.couleur || '#7fbc48')
+        }));
+        route.strokes.template.setAll({ strokeWidth: 5, strokeOpacity: 0.36, lineCap: 'round', lineJoin: 'round' });
+        route.fills.template.setAll({ visible: false });
+        if (showDates) {
+          route.bullets.push((bulletRoot, bulletSeries, dataItem) => am5.Bullet.new(bulletRoot, {
+            sprite: am5.Label.new(bulletRoot, {
+              text: dataItem.dataContext.label,
+              centerX: am5.p50,
+              centerY: am5.p50,
+              className: 'timeline-legend-month',
+              populateText: false,
+              fontSize: 11,
+              fontWeight: '600',
+              fill: am5.color(0x617181),
+              background: am5.RoundedRectangle.new(bulletRoot, { fill: am5.color(0xffffff), fillOpacity: 0.94, cornerRadiusTL: 5, cornerRadiusTR: 5, cornerRadiusBL: 5, cornerRadiusBR: 5 })
+            })
+          }));
+        }
+        route.data.setAll(points);
+      };
+      for (let row = 0; row < rowCount; row += 1) {
+        const rowStart = schoolYearStart.getTime() + (yearDuration * row) / rowCount;
+        const rowEnd = schoolYearStart.getTime() + (yearDuration * (row + 1)) / rowCount;
+        const monthMarks = [1 / 6, 1 / 2, 5 / 6].map((position) => ({
+          x: row % 2 === 0 ? position : 1 - position,
+          y: trackY(row),
+          label: new Date(rowStart + (rowEnd - rowStart) * position).toLocaleDateString('fr-FR', { month: 'short' })
+        }));
+        createRoute(monthMarks, true);
+        if (row < rowCount - 1) {
+          const edge = row % 2 === 0 ? 1 : 0;
+          createRoute([{ x: edge, y: trackY(row) }, { x: edge, y: trackY(row + 1) }]);
+        }
+      }
+      const data = datedEvents.flatMap((event) => {
+        const start = Date.parse(event.start);
+        const end = event.type !== 'evaluation' && event.end ? Date.parse(event.end) : start;
+        const firstRow = Math.min(rowCount - 1, Math.floor(((start - schoolYearStart.getTime()) / yearDuration) * rowCount));
+        const lastRow = end === start
+          ? firstRow
+          : Math.min(rowCount - 1, Math.floor(((end - schoolYearStart.getTime()) / yearDuration) * rowCount));
+        const categoryIndex = Math.max(0, categoryDefinitions.findIndex((category) => category.id === categoryForEvent(event)));
+        return Array.from({ length: lastRow - firstRow + 1 }, (_, rowOffset) => {
+          const row = firstRow + rowOffset;
+          const rowStart = schoolYearStart.getTime() + (yearDuration * row) / rowCount;
+          const rowEnd = schoolYearStart.getTime() + (yearDuration * (row + 1)) / rowCount;
+          const segmentStart = Math.max(start, rowStart);
+          const segmentEnd = Math.min(end, rowEnd);
+          const reverseRow = row % 2 === 1;
+          const positionX = Math.max(0, Math.min(1, (segmentStart - rowStart) / (rowEnd - rowStart)));
+          const positionX2 = Math.max(0, Math.min(1, (segmentEnd - rowStart) / (rowEnd - rowStart)));
+          const pointWidth = 0.018;
+          const eventStartX = end === start
+            ? Math.max(0, positionX - pointWidth / 2)
+            : reverseRow ? Math.max(0, 1 - positionX2) : positionX;
+          const eventEndX = end === start
+            ? Math.min(1, positionX + pointWidth / 2)
+            : reverseRow ? Math.min(1, 1 - positionX) : Math.max(positionX + 0.012, positionX2);
+          const valueY = row * rowHeight + categoryIndex + 1;
+          return {
+            ...event,
+            id: `${event.source}-${event.id}-${row}`,
+            sourceEventId: `${event.source}-${event.id}`,
+            valueX: eventStartX,
+            valueX2: eventEndX,
+            openValueY: valueY - 0.32,
+            valueY: valueY + 0.32,
+            eventColor: am5.color(parseInt((categories.find((category) => category.id === categoryForEvent(event))?.color || course.couleur || '#7fbc48').replace('#', ''), 16))
+          };
+        });
+      });
+      const series = chart.series.push(am5xy.ColumnSeries.new(root, {
+        xAxis,
+        yAxis,
+        openValueXField: 'valueX',
+        valueXField: 'valueX2',
+        openValueYField: 'openValueY',
+        valueYField: 'valueY',
+        clustered: false,
+        tooltip: am5.Tooltip.new(root, { labelText: '{displayTitle}' })
+      }));
+      series.columns.template.setAll({
+        height: am5.percent(65),
+        minWidth: 22,
+        strokeOpacity: 1,
+        strokeWidth: 2,
+        cornerRadiusTL: 12,
+        cornerRadiusTR: 12,
+        cornerRadiusBL: 12,
+        cornerRadiusBR: 12,
+        interactive: true,
+        tooltipY: am5.percent(50)
+      });
+
+      series.columns.template.adapters.add('fill', (fill, target) => target.dataItem?.dataContext?.eventColor || fill);
+      series.columns.template.adapters.add('stroke', (stroke, target) => target.dataItem?.dataContext?.eventColor || stroke);
+      series.data.setAll(data);
+      series.columns.template.events.on('click', (event) => {
+        const selectedEvent = event.target.dataItem?.dataContext;
+        if (!selectedEvent) return;
+        const sourceEvent = datedEvents.find((item) => `${item.source}-${item.id}` === selectedEvent.sourceEventId);
+        if (sourceEvent) showDetails(sourceEvent);
+      });
+      series.appear(600);
+      chart.appear(600, 100);
+
+      const zoomToWindow = (factor, centerPosition = null) => {
+        const start = xAxis.get('start') ?? 0;
+        const end = xAxis.get('end') ?? 1;
+        const center = centerPosition === null ? (start + end) / 2 : centerPosition;
+        const halfRange = (end - start) * factor / 2;
+        const nextStart = Math.max(0, Math.min(1 - halfRange * 2, center - halfRange));
+        const nextEnd = Math.min(1, nextStart + halfRange * 2);
+        if (nextEnd > nextStart) xAxis.zoom(nextStart, nextEnd);
+      };
+      zoomIn.addEventListener('click', () => zoomToWindow(0.7));
+      zoomOut.addEventListener('click', () => zoomToWindow(1.4));
+      today.addEventListener('click', () => {
+        const now = new Date();
+        if (now < schoolYearStart || now > schoolYearEnd) {
+          xAxis.zoom(0, 1);
+          return;
+        }
+        const todayTime = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+        const positionInYear = (todayTime - schoolYearStart.getTime()) / yearDuration;
+        const row = Math.min(rowCount - 1, Math.floor(positionInYear * rowCount));
+        const centerInRow = (positionInYear * rowCount) % 1;
+        const center = row % 2 === 0 ? centerInRow : 1 - centerInRow;
+        const halfRange = (1000 * 60 * 60 * 24 * 75) / (yearDuration / rowCount) / 2;
+        const start = Math.max(0, Math.min(1 - halfRange * 2, center - halfRange));
+        xAxis.zoom(start, start + halfRange * 2);
+      });
+    } catch {
+      host.replaceChildren();
+      message.append(status);
+      status.textContent = 'La frise chronologique n’a pas pu être affichée.';
+    }
   };
 
   const renderNetwork = async (course, courseId) => {

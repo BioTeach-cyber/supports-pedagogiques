@@ -108,24 +108,19 @@ button { font: inherit; }
 .course-network, .network-lotties { position: absolute; inset: 0; width: 100%; height: 100%; }
 .network-lotties { pointer-events: none; overflow: hidden; }
 .timeline-section { margin-top: 48px; padding-top: 28px; border-top: 10px solid var(--course-color); }
-.timeline-section { --timeline-vacances: color-mix(in srgb, var(--course-color) 58%, #4b91d1); --timeline-stages: color-mix(in srgb, var(--course-color) 52%, #6f8e31); --timeline-cours: color-mix(in srgb, var(--course-color) 82%, white); --timeline-evaluations: color-mix(in srgb, var(--course-color) 62%, #d14e4e); --timeline-examens: color-mix(in srgb, var(--course-color) 58%, #8053ad); }
+.timeline-section { --timeline-vacances: #4b91d1; --timeline-stages: #6f8e31; --timeline-cours: var(--course-color); --timeline-evaluations: #d14e4e; --timeline-examens: #8053ad; }
 .timeline-message { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
 .timeline-message .empty-state { margin: 0; }
 .timeline-controls { display: flex; justify-content: flex-end; gap: 8px; margin: 0 0 10px; }
 .timeline-controls .primary-button, .timeline-controls .secondary-button { min-height: 38px; padding: 7px 13px; }
-.course-timeline { min-height: 80px; border-radius: 8px; }
-.course-timeline .vis-timeline { border-color: var(--line); border-radius: 8px; font-family: inherit; }
-.course-timeline .vis-item { border-color: var(--item-color, var(--course-color)); background-color: var(--item-tint, color-mix(in srgb, var(--course-color) 18%, white)); color: var(--ink); }
-.course-timeline .timeline-item-vacances { --item-color: var(--timeline-vacances); --item-tint: color-mix(in srgb, var(--timeline-vacances) 18%, white); }
-.course-timeline .timeline-item-stages { --item-color: var(--timeline-stages); --item-tint: color-mix(in srgb, var(--timeline-stages) 18%, white); }
-.course-timeline .timeline-item-cours { --item-color: var(--timeline-cours); --item-tint: color-mix(in srgb, var(--timeline-cours) 18%, white); }
-.course-timeline .timeline-item-evaluations { --item-color: var(--timeline-evaluations); --item-tint: color-mix(in srgb, var(--timeline-evaluations) 18%, white); }
-.course-timeline .timeline-item-examens { --item-color: var(--timeline-examens); --item-tint: color-mix(in srgb, var(--timeline-examens) 18%, white); }
-.course-timeline .vis-labelset .timeline-group-vacances { border-left: 4px solid var(--timeline-vacances); }
-.course-timeline .vis-labelset .timeline-group-stages { border-left: 4px solid var(--timeline-stages); }
-.course-timeline .vis-labelset .timeline-group-cours { border-left: 4px solid var(--timeline-cours); }
-.course-timeline .vis-labelset .timeline-group-evaluations { border-left: 4px solid var(--timeline-evaluations); }
-.course-timeline .vis-labelset .timeline-group-examens { border-left: 4px solid var(--timeline-examens); }
+.course-timeline { min-height: 360px; border: 1px solid var(--line); border-radius: 10px; background: linear-gradient(180deg, #fbfdff, #fff); overflow: hidden; }
+.course-timeline canvas { display: block; }
+.timeline-controls .primary-button, .timeline-controls .secondary-button { min-height: 38px; padding: 7px 13px; }
+.timeline-legend { display: flex; flex-wrap: wrap; gap: 12px 22px; margin: 12px 0 18px; }
+.timeline-legend-item { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: .9rem; font-weight: 700; }
+.timeline-legend-month { justify-content: center; min-width: 54px; min-height: 25px; border-radius: 5px; background: #ffffffed; color: var(--muted); font-size: .7rem; font-weight: 600; white-space: nowrap; }
+.timeline-legend-marker { width: 13px; height: 13px; border-radius: 50%; background: var(--timeline-legend-color); box-shadow: 0 0 0 3px color-mix(in srgb, var(--timeline-legend-color) 20%, white); }
+.course-timeline [aria-label] { cursor: pointer; }
 .timeline-details { --timeline-category-color: var(--course-color); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px 20px; align-items: start; margin-top: 16px; padding: 18px 20px; border: 1px solid var(--line); border-left: 5px solid var(--timeline-category-color); border-radius: 8px; background: #fbfcfd; }
 .timeline-details h3, .timeline-detail-type, .timeline-detail-date, .timeline-detail-description { grid-column: 1; margin: 0; }
 .timeline-details h3 { font-size: 1.15rem; }
@@ -162,9 +157,10 @@ button { font: inherit; }
 .evaluation-note { margin: 18px 0 0; font-size: .92rem; }
 
 .back-link { display: inline-block; margin-bottom: 24px; color: var(--ink); font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: 3px; }
-.chapter-description { max-width: 85ch; font-size: 1.08rem; line-height: 1.75; white-space: pre-line; }
+.chapter-description { width: 100%; font-size: 1.08rem; line-height: 1.75; text-align: justify; white-space: pre-line; }
 .detail-section { margin-top: 38px; }
-.objective-list { display: grid; gap: 12px; max-width: 85ch; padding-left: 24px; line-height: 1.6; }
+.objective-list { display: grid; gap: 12px; width: 100%; padding-left: 24px; line-height: 1.6; }
+.objective-list li { text-align: justify; }
 .objective-list li::marker { color: var(--course-color); }
 .activity-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 18px; }
 .activity-card { display: flex; min-height: 200px; flex-direction: column; align-items: center; justify-content: space-between; gap: 12px; padding: 14px; border: 1px solid var(--line); border-radius: 8px; text-align: center; text-decoration: none; box-shadow: 0 3px 12px #18253210; }

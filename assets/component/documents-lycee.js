@@ -304,6 +304,36 @@
     return frame;
   };
 
+  const lotties = {
+    video: 'assets/lotties/video-player.json',
+    'image matricielle': 'assets/lotties/site-web.json',
+    'image vectorielle': 'assets/lotties/3d-cube.json',
+    '3d': 'assets/lotties/3d-cube.json',
+    'modèle 3d': 'assets/lotties/3d-cube.json',
+    'modele 3d': 'assets/lotties/3d-cube.json',
+    'modèle-3d': 'assets/lotties/3d-cube.json',
+    'modele-3d': 'assets/lotties/3d-cube.json',
+    'ia externe': 'assets/lotties/chat-bot.json',
+    'ia-externe': 'assets/lotties/chat-bot.json',
+    ia: 'assets/lotties/chat-bot.json',
+    podcast: 'assets/lotties/headphone-podcast.json',
+    audio: 'assets/lotties/headphone-podcast.json',
+    jeu: 'assets/lotties/game-manette.json',
+    application: 'assets/lotties/computer-learning.json',
+    app: 'assets/lotties/computer-learning.json',
+    lien: 'assets/lotties/site-web.json',
+    site: 'assets/lotties/site-web.json'
+  };
+
+  const renderDocumentIcon = (type, title, icon) => {
+    if (lotties[type]) {
+      icon.dataset.lottieSrc = lotties[type];
+      return;
+    }
+    const symbols = { texte: 'Aa', tableau: '▦', table: '▦', svg: '◇', image: '▧' };
+    icon.textContent = symbols[type] || title;
+  };
+
   const makeMedia = (documentNode, type) => {
     const src = resolveUrl(documentNode.dataset.src || documentNode.dataset.url);
     if (!src) return createElement('p', 'activity-document-empty', 'La ressource média n’a pas encore été renseignée.');
@@ -331,11 +361,21 @@
       return renderImageViewer(src, documentNode);
     }
     if (['application', 'app'].includes(type)) {
+      const url = new URL(src);
+      if (url.origin !== location.origin) {
+        const link = createElement('a', 'activity-document-link', documentNode.dataset.label || 'Ouvrir l’application dans un nouvel onglet');
+        link.href = src;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        return link;
+      }
       const frame = createElement('iframe', 'activity-document-application');
       frame.src = src;
       frame.title = documentNode.dataset.title || 'Application pédagogique';
       frame.loading = 'lazy';
       frame.setAttribute('sandbox', 'allow-scripts allow-forms');
+      frame.setAttribute('data-auto-height', '');
+      frame.setAttribute('scrolling', 'no');
       return frame;
     }
     const link = createElement('a', 'activity-document-link', documentNode.dataset.label || 'Ouvrir le document');
@@ -345,11 +385,11 @@
     return link;
   };
 
-  const renderDocument = (documentNode, index, panel) => {
+  const renderDocument = (documentNode, index, panel, tabId) => {
     panel.replaceChildren();
-    panel.setAttribute('aria-labelledby', `activity-document-tab-${index + 1}`);
-    const title = documentNode.dataset.title || `Document ${String(index + 1).padStart(2, '0')}`;
-    panel.append(createElement('h3', 'activity-document-title', title));
+    panel.setAttribute('aria-labelledby', tabId);
+    const title = documentNode.dataset.title?.trim() || `Document ${String(index + 1).padStart(2, '0')}`;
+    panel.append(createElement('h3', 'activity-document-title', `Document ${String(index + 1).padStart(2, '0')} : ${title}`));
     const description = documentNode.dataset.description;
     if (description) panel.append(createElement('p', 'activity-document-description', description));
     const type = (documentNode.dataset.type || 'texte').toLowerCase();
@@ -382,35 +422,44 @@
     if (!documents.length) {
       section.append(createElement('p', 'activity-document-empty', 'Aucun document n’a été ajouté.'));
     } else {
-      const tabs = createElement('div', 'activity-document-tabs');
+      const tabs = createElement('div', 'activity-document-tabs activity-document-tabs-college');
       tabs.setAttribute('role', 'tablist');
       tabs.setAttribute('aria-label', 'Documents de l’activité');
       const panel = createElement('div', 'activity-document-panel');
-      panel.id = 'activity-document-active-panel';
+      panel.id = `activity-document-panel-${Math.random().toString(36).slice(2)}`;
       panel.setAttribute('role', 'tabpanel');
       documents.forEach((documentNode, index) => {
         const title = documentNode.dataset.title || `Document ${String(index + 1).padStart(2, '0')}`;
-        const tab = createElement('button', 'activity-document-tab', String(index + 1).padStart(2, '0'));
-        tab.type = 'button';
-        tab.id = `activity-document-tab-${index + 1}`;
+        const type = (documentNode.dataset.type || 'texte').trim().toLowerCase();
+        const tab = createElement('div', 'activity-document-tab activity-document-tab-college');
+        tab.id = `${panel.id}-tab-${index + 1}`;
         tab.setAttribute('role', 'tab');
         tab.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
         tab.setAttribute('aria-controls', panel.id);
-        tab.setAttribute('aria-label', title);
+        tab.setAttribute('aria-label', `Document ${String(index + 1).padStart(2, '0')} : ${title}`);
         tab.tabIndex = index === 0 ? 0 : -1;
-        tab.addEventListener('click', () => {
+        const icon = createElement('span', 'activity-document-tab-lottie');
+        icon.setAttribute('aria-hidden', 'true');
+        renderDocumentIcon(type, title, icon);
+        tab.append(icon, createElement('span', 'activity-document-tab-label', `Document ${String(index + 1).padStart(2, '0')} : ${title}`));
+        const activate = () => {
           tabs.querySelectorAll('[role="tab"]').forEach((otherTab) => {
             otherTab.setAttribute('aria-selected', 'false');
             otherTab.tabIndex = -1;
           });
           tab.setAttribute('aria-selected', 'true');
           tab.tabIndex = 0;
-          renderDocument(documentNode, index, panel);
-        });
+          renderDocument(documentNode, index, panel, tab.id);
+        };
+        tab.addEventListener('click', activate);
         tab.addEventListener('keydown', (event) => {
-          if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+          if (!['ArrowLeft', 'ArrowRight', 'Home', 'End', 'Enter', ' '].includes(event.key)) return;
           event.preventDefault();
           const allTabs = [...tabs.querySelectorAll('[role="tab"]')];
+          if (event.key === 'Enter' || event.key === ' ') {
+            activate();
+            return;
+          }
           const targetIndex = event.key === 'Home' ? 0
             : event.key === 'End' ? allTabs.length - 1
               : (index + (event.key === 'ArrowRight' ? 1 : -1) + allTabs.length) % allTabs.length;
@@ -419,7 +468,7 @@
         });
         tabs.append(tab);
       });
-      renderDocument(documents[0], 0, panel);
+      renderDocument(documents[0], 0, panel, `${panel.id}-tab-1`);
       section.append(tabs, panel);
     }
     component.replaceWith(section);

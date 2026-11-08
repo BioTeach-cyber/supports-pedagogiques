@@ -1,8 +1,10 @@
 (() => {
   const scriptUrl = document.currentScript.src;
   const ROOT = new URL('../../', scriptUrl);
-  const courseId = document.body.dataset.course;
-  const chapterId = decodeURIComponent(location.pathname.split('/').filter(Boolean).slice(-2, -1)[0] || '');
+  const pathSegments = decodeURIComponent(location.pathname).split('/').filter(Boolean);
+  const courseId = document.body.dataset.course || pathSegments[pathSegments.indexOf('cours') + 1] || '';
+  const courseFolderIndex = pathSegments.indexOf(courseId);
+  const chapterId = pathSegments[courseFolderIndex + 1] || pathSegments.slice(-3, -2)[0] || '';
 
   const createElement = (tag, className, text) => {
     const node = document.createElement(tag);
@@ -79,9 +81,14 @@
     const chapter = (course.chapitres || []).find((item) => item.id === chapterId);
     if (!chapter) throw new Error(`Aucun chapitre ne correspond au dossier « ${chapterId} ».`);
 
-    const evaluation = (chapter.evaluationsSecondaires || []).find((item) =>
-      item.statut === 'actif' && item.type?.toLowerCase() === 'projet' && item.page
+    const isExpose = chapter.type?.toLowerCase() === 'exposes';
+    const secondaryEvaluations = (chapter.evaluationsSecondaires || []).filter((item) =>
+      item.statut === 'actif' && item.page
     );
+    const evaluation = isExpose
+      ? secondaryEvaluations.find((item) => item.type?.toLowerCase() === 'oral')
+      : secondaryEvaluations.find((item) => ['projet', 'oral'].includes(item.type?.toLowerCase()))
+        || (chapter.evaluationFinale?.statut === 'actif' && chapter.evaluationFinale.page ? chapter.evaluationFinale : null);
     const color = chapter.couleur || course.couleur || '#7fbc48';
     const section = createElement('section', 'evaluation-project-section');
 
@@ -95,7 +102,7 @@
     const content = createElement('div', 'evaluation-project-content');
     const visual = createElement('div', 'evaluation-project-visual');
     const heading = createElement('h2', 'evaluation-project-heading', component.dataset.title || 'Grille d’évaluation');
-    const link = createElement('a', 'evaluation-project-button', component.dataset.buttonLabel || 'Ouvrir la grille');
+    const link = createElement('a', 'evaluation-project-button', component.dataset.buttonLabel || 'Ouvrir la grille d’évaluation');
     link.href = new URL(evaluation.page, new URL(`cours/${encodeURIComponent(courseId)}/`, ROOT)).href;
     link.setAttribute('aria-label', 'Ouvrir la grille d’évaluation');
     const animation = createElement('span', 'evaluation-project-lottie');

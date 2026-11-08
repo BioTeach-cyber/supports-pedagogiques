@@ -279,13 +279,24 @@
         panel.append(link);
       }
     } else if (['3d', 'modèle 3d', 'modele 3d', 'modèle-3d', 'modele-3d', 'ia', 'ia externe', 'ia-externe', 'jeu', 'application', 'app'].includes(type) && src) {
-      const frame = createElement('iframe', 'activity-document-application');
-      frame.src = src;
-      frame.title = title;
-      frame.loading = 'lazy';
-      frame.setAttribute('sandbox', 'allow-scripts allow-forms');
-      frame.allowFullscreen = true;
-      panel.append(frame);
+      const url = new URL(src);
+      if (url.origin !== location.origin) {
+        const link = createElement('a', 'activity-document-link', documentNode.dataset.label || 'Ouvrir l’application dans un nouvel onglet');
+        link.href = src;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        panel.append(link);
+      } else {
+        const frame = createElement('iframe', 'activity-document-application');
+        frame.src = src;
+        frame.title = title;
+        frame.loading = 'lazy';
+        frame.setAttribute('sandbox', 'allow-scripts allow-forms');
+        frame.setAttribute('data-auto-height', '');
+        frame.setAttribute('scrolling', 'no');
+        frame.allowFullscreen = true;
+        panel.append(frame);
+      }
     } else if (src) {
       const link = createElement('a', 'activity-document-link', documentNode.dataset.label || 'Ouvrir la ressource');
       link.href = src;

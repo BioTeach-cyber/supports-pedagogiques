@@ -75,8 +75,8 @@
           "lottie": "assets/lotties/Numbers/03.json",
           "page": "Chapitre 01/cours/Activité_03.html",
           "objectifs pédagogiques": [
-            { "id": "obj05", "libelle": "Utiliser une clé de détermination dichotomique pour identifier un végétal ou un animal." },
-            { "id": "obj06", "libelle": "Construire une clé de détermination simple à partir d'un petit nombre d'espèces." }
+            { "id": "obj05", "libelle": "" },
+            { "id": "obj06", "libelle": "" }
           ]
         },
         {
@@ -103,18 +103,91 @@
         }
       ]
     },
-    {
-      "statut": "inactif",
+        {
+      "statut": "actif",
       "id": "Chapitre 02",
       "page": "Chapitre 02/Chapitre.html",
-      "type": "chapitre",
-      "Periode": "",
+      "type": "exposes",
+      "Periode": "02",
       "start": "",
       "end": "",
-      "titre": "",
-      "description": "",
+      "titre": "L'appareil digestif",
+      "description": "Par groupe, présentez à la classe un organe ou une étape de la digestion.",
       "couleur": null,
-      "lottie": "assets/lotties/.json",
+      "lottie": "assets/lotties/appareil-digestif.json",
+
+      "exposes": {
+        "duree": "",
+        "date": "",
+        "consignesGenerales": [
+          {
+            "titre": "Durée",
+            "texte": "L’exposé doit durer au moins 10 minutes. Chaque minute en dessous de 10 minutes entraîne une pénalité de 2 points."
+          },
+          {
+            "titre": "Notes",
+            "texte": "Vous n’avez pas le droit à des notes."
+          },
+          {
+            "titre": "Projection",
+            "texte": "Vous pouvez projeter uniquement des images au tableau. Aucun texte, même une légende, n’est accepté."
+          },
+          {
+            "titre": "Sources",
+            "texte": "Vous devez fournir un document contenant les sources de votre présentation ainsi que les éléments associés à chaque source."
+          },
+          {
+            "titre": "Questions",
+            "texte": "Vous préparerez 10 questions sur votre présentation."
+          }
+        ],
+        "consignesSpecifiques": [
+          {
+            "titre": "Présenter l’organe",
+            "consigne": [
+              {
+                "titre": "Anatomie",
+                "texte": "Décrivez où se situe l’organe dans le corps humain, sa forme et ses relations avec les autres organes du système digestif. Utilisez un schéma si possible."
+              },
+              {
+                "titre": "Fonction",
+                "texte": "Expliquez le rôle de cet organe dans la digestion (par exemple : production de sucs digestifs, absorption de nutriments, etc.)."
+              }
+            ]
+          },
+          {
+            "titre": "Présenter la pathologie",
+            "consigne": [
+              {
+                "titre": "Nom de la pathologie",
+                "texte": "Donnez le nom de la pathologie choisie (ex. : RGO, ulcère, pancréatite, etc.)."
+              },
+              {
+                "titre": "Description",
+                "texte": "Présentez les causes principales, les symptômes et les complications éventuelles de cette pathologie."
+              },
+              {
+                "titre": "Traitement et prévention",
+                "texte": "Décrivez brièvement les options de traitement (médicales, diététiques, etc.) et les conseils de prévention qui peuvent s’appliquer."
+              }
+            ]
+          },
+          {
+            "titre": "Répondre au contexte donné",
+            "consigne": [
+              {
+                "titre": "Conseils pratiques",
+                "texte": "En fonction des symptômes, donnez des conseils adaptés pour le quotidien de cette personne (alimentation, posture, hygiène, etc.)."
+              },
+              {
+                "titre": "Rôle du professionnel",
+                "texte": "Expliquez comment le professionnel peut adapter son comportement et ses soins pour aider la personne, en tenant compte de ses besoins spécifiques."
+              }
+            ]
+          }
+        ],
+        "objectifs": []
+      },
 
       "evaluationFinale": {
           "statut": "inactif",
@@ -128,22 +201,28 @@
 
       "evaluationsSecondaires": [
         {
-          "statut": "inactif",
-          "type": "Activités",
+          "statut": "actif",
+          "type": "oral",
           "start": "",
           "end": "",
-          "lottie": "assets/lotties/activity.json",
+          "lottie": "assets/lotties/oral.json",
           "component": "",
-          "page": "Chapitre 02/evaluation/evaluation_activite.html"
+          "page": "Chapitre 02/evaluation/evaluation_oral.html"
         }
       ],
 
       "activité": [
         {
-          "statut": "inactif",
+          "statut": "actif",
           "id": "activité 01",
-          "titre": "",
-          "lottie": "assets/lotties/Numbers/01.json",
+          "titre": "Xérostomie",
+          "groupe": ["Groupe 1"],
+          "contexte": "Vous êtes aide à domicile chez Madame Lefèvre, 84 ans, qui vit seule dans un village. Elle prend plusieurs médicaments chaque jour, notamment pour sa tension et pour dormir. Depuis quelques mois, elle se plaint d'avoir toujours la bouche sèche. Elle a du mal à manger le pain et la viande, tousse parfois pendant les repas et dit que les aliments « n'ont plus de goût ». Vous remarquez qu'elle boit très peu dans la journée et que son dentier la blesse. Sa fille vous demande comment aider sa mère à mieux manger.",
+          "image": "assets/images/Cours/EP1-Biologie_humaine/xerostomie.jpg",
+          "image-alt": "Photo illustrant le sujet de la xérostomie",
+          "description": "",
+          "ressources": [],
+          "lottie": "assets/lotties/bouche.json",
           "page": "Chapitre 02/cours/Activité_01.html",
           "objectifs pédagogiques": [
             { "id": "obj01", "libelle": "" },
@@ -151,10 +230,16 @@
           ]
         },
         {
-          "statut": "inactif",
+          "statut": "actif",
           "id": "activité 02",
-          "titre": "",
-          "lottie": "assets/lotties/Numbers/02.json",
+          "titre": "RGO (reflux gastro-œsophagien)",
+          "groupe": ["Groupe 2"],
+          "contexte": "Vous êtes aide à domicile chez Monsieur Moreau, 53 ans, chauffeur routier en arrêt de travail depuis une opération du genou. Il est en surpoids, il fume et il mange souvent tard le soir, des plats gras et épicés, avant d'aller directement se coucher. Il boit aussi plusieurs cafés par jour. Depuis quelques mois, il ressent des brûlures qui remontent derrière le sternum, surtout après les repas et la nuit quand il est allongé. Il a parfois un goût acide dans la bouche et il tousse la nuit. Il prend des comprimés achetés en pharmacie sans en parler à son médecin. Vous l'aidez pour les courses, la préparation des repas et l'entretien de son logement.",
+          "image": "assets/images/Cours/EP1-Biologie_humaine/RGO.jpg",
+          "image-alt": "Photo illustrant le sujet de la xérostomie",
+          "description": "",
+          "ressources": [],
+          "lottie": "assets/lotties/oesophage.json",
           "page": "Chapitre 02/cours/Activité_02.html",
           "objectifs pédagogiques": [
             { "id": "obj03", "libelle": "" },
@@ -162,21 +247,33 @@
           ]
         },
         {
-          "statut": "inactif",
+          "statut": "actif",
           "id": "activité 03",
-          "titre": "",
-          "lottie": "assets/lotties/Numbers/03.json",
+          "titre": "Dysphagie",
+          "groupe": ["Groupe 3"],
+          "contexte": "Vous êtes accompagnant(e) dans un EHPAD. Monsieur Rousseau, 78 ans, a fait un AVC il y a six mois. Depuis, il tousse souvent quand il boit de l'eau. Il garde parfois les aliments dans la bouche longtemps et il a déjà fait deux fausses routes, dont une a été grave. Il est triste car on lui sert maintenant des repas mixés et il trouve cela « humiliant ». Vous êtes chargé(e) de l'aider pendant ses repas.",
+          "image": "assets/images/Cours/EP1-Biologie_humaine/dysphagie.jpg",
+          "image-alt": "Photo illustrant le sujet de la xérostomie",
+          "description": "",
+          "ressources": [],
+          "lottie": "assets/lotties/oesophage.json",
           "page": "Chapitre 02/cours/Activité_03.html",
           "objectifs pédagogiques": [
-            { "id": "obj05", "libelle": "Utiliser une clé de détermination dichotomique pour identifier un végétal ou un animal." },
-            { "id": "obj06", "libelle": "Construire une clé de détermination simple à partir d'un petit nombre d'espèces." }
+            { "id": "obj05", "libelle": "" },
+            { "id": "obj06", "libelle": "" }
           ]
         },
         {
-          "statut": "inactif",
+          "statut": "actif",
           "id": "activité 04",
-          "titre": "",
-          "lottie": "assets/lotties/Numbers/04.json",
+          "titre": "Gastrite",
+          "groupe": ["Groupe 4"],
+          "contexte": "Vous êtes aide à domicile chez Madame Moreau, 62 ans. Elle souffre de douleurs au dos et prend souvent de l'ibuprofène sans demander l'avis du médecin. Elle boit beaucoup de café et se sent très stressée depuis que son mari est malade. Elle se plaint de brûlures dans le haut du ventre et de nausées, surtout le matin, et elle n'a plus d'appétit. Elle vous demande des conseils pour se sentir mieux.",
+          "image": "assets/images/Cours/EP1-Biologie_humaine/gastrite.jpg",
+          "image-alt": "Photo illustrant le sujet de la xérostomie",
+          "description": "",
+          "ressources": [],
+          "lottie": "assets/lotties/estomac.json",
           "page": "Chapitre 02/cours/Activité_04.html",
           "objectifs pédagogiques": [
             { "id": "obj07", "libelle": "" },
@@ -184,14 +281,122 @@
           ]
         },
         {
-          "statut": "inactif",
+          "statut": "actif",
           "id": "activité 05",
-          "titre": "",
-          "lottie": "assets/lotties/Numbers/05.json",
+          "titre": "Douve du foie (fasciolose)",
+          "groupe": ["Groupe 5"],
+          "contexte": "Vous travaillez dans une maison familiale rurale comme agent d'animation. Monsieur Poirier, 52 ans, est éleveur de moutons. Il est revenu de l'hôpital où l'on a découvert qu'il avait une « douve du foie ». Il a eu de la fièvre, des douleurs à droite sous les côtes et une grande fatigue. Il raconte qu'il mange souvent du cresson sauvage et des pissenlits qu'il cueille au bord du ruisseau, près de ses prés. Il veut comprendre comment il a attrapé ce parasite et ce qu'il doit changer. Vous êtes chargé(e) d'organiser une animation de prévention pour les habitants du village.",
+          "image": "assets/images/Cours/EP1-Biologie_humaine/fasciolose.jpg",
+          "image-alt": "Photo illustrant le sujet de la xérostomie",
+          "description": "",
+          "ressources": [],
+          "lottie": "assets/lotties/foie.json",
           "page": "Chapitre 02/cours/Activité_05.html",
           "objectifs pédagogiques": [
             { "id": "obj09", "libelle": "" },
             { "id": "obj10", "libelle": "" }
+          ]
+        },
+        {
+          "statut": "actif",
+          "id": "activité 06",
+          "titre": "Calculs biliaires (lithiase biliaire)",
+          "groupe": ["Groupe 6"],
+          "contexte": "Vous êtes aide à domicile chez Madame Durand, 50 ans. Elle vous raconte qu'elle a eu plusieurs crises de douleur très forte à droite, sous les côtes, souvent après des repas riches (raclette, fritures, charcuterie). La douleur va parfois jusque dans l'épaule droite. Son médecin a découvert des calculs dans sa vésicule biliaire. Une opération est prévue dans deux mois. En attendant, elle vous demande comment préparer ses repas.",
+          "image": "assets/images/Cours/EP1-Biologie_humaine/calculs_biliaires.jpg",
+          "image-alt": "Photo illustrant le sujet de la xérostomie",
+          "description": "",
+          "ressources": [],
+          "lottie": "assets/lotties/vesicule-biliaire.json",
+          "page": "Chapitre 02/cours/Activité_06.html",
+          "objectifs pédagogiques": [
+            { "id": "obj11", "libelle": "" },
+            { "id": "obj12", "libelle": "" }
+          ]
+        },
+        {
+          "statut": "actif",
+          "id": "activité 07",
+          "titre": "Pancréatite aiguë",
+          "groupe": ["Groupe 7"],
+          "contexte": "Vous êtes accompagnant(e) dans un service de soins à domicile. Monsieur Petit, 47 ans, rentre chez lui après dix jours d'hôpital pour une pancréatite aiguë. Il a eu une douleur très violente dans le ventre qui allait jusque dans le dos, ainsi que des vomissements. Les médecins pensent que la cause est sa consommation régulière d'alcool. Il est encore fatigué, il doit suivre un régime très strict et il a peur de faire une rechute. Vous intervenez chez lui trois fois par semaine.",
+          "image": "assets/images/Cours/EP1-Biologie_humaine/pancreatite_aigue.jpg",
+          "image-alt": "Photo illustrant le sujet de la xérostomie",
+          "description": "",
+          "ressources": [],
+          "lottie": "assets/lotties/pancreas.json",
+          "page": "Chapitre 02/cours/Activité_07.html",
+          "objectifs pédagogiques": [
+            { "id": "obj13", "libelle": "" },
+            { "id": "obj14", "libelle": "" }
+          ]
+        },
+        {
+          "statut": "actif",
+          "id": "activité 08",
+          "titre": "Maladie de Crohn",
+          "groupe": ["Groupe 8"],
+          "contexte": "Vous êtes animateur ou animatrice dans un centre de loisirs. Théo, 15 ans, participe à un séjour d'une semaine que vous encadrez. Ses parents vous expliquent qu'il a la maladie de Crohn. Il peut avoir des diarrhées soudaines, des douleurs au ventre et une grande fatigue, surtout pendant les « poussées ». Il prend un traitement et il doit éviter certains aliments. Théo est gêné par sa maladie et ne veut pas que les autres jeunes soient au courant.",
+          "image": "assets/images/Cours/EP1-Biologie_humaine/crohn.jpg",
+          "image-alt": "Photo illustrant le sujet de la xérostomie",
+          "description": "",
+          "ressources": [],
+          "lottie": "assets/lotties/intestin.json",
+          "page": "Chapitre 02/cours/Activité_08.html",
+          "objectifs pédagogiques": [
+            { "id": "obj15", "libelle": "" },
+            { "id": "obj16", "libelle": "" }
+          ]
+        },
+        {
+          "statut": "actif",
+          "id": "activité 09",
+          "titre": "Coliques du nourrisson",
+          "groupe": ["Groupe 9"],
+          "contexte": "Vous êtes assistant(e) maternel(le) et vous gardez Nathan, 6 semaines. Chaque fin d'après-midi, il pleure fort pendant plusieurs heures, devient tout rouge, replie ses jambes sur son ventre et semble avoir mal. Il prend pourtant bien du poids. Sa mère est épuisée et se sent coupable. Elle vous demande si c'est grave et comment calmer son bébé.",
+          "image": "assets/images/Cours/EP1-Biologie_humaine/colliques.jpg",
+          "image-alt": "Photo illustrant le sujet de la xérostomie",
+          "description": "",
+          "ressources": [],
+          "lottie": "assets/lotties/colon.json",
+          "page": "Chapitre 02/cours/Activité_09.html",
+          "objectifs pédagogiques": [
+            { "id": "obj17", "libelle": "" },
+            { "id": "obj18", "libelle": "" }
+          ]
+        },
+        {
+          "statut": "actif",
+          "id": "activité 10",
+          "titre": "Constipation chronique",
+          "groupe": ["Groupe 10"],
+          "contexte": "Vous êtes accompagnant(e) dans un EHPAD. Madame Bernard, 88 ans, se déplace en fauteuil roulant. Elle boit peu car elle a peur de devoir aller souvent aux toilettes. Elle mange peu de fruits et de légumes car elle a du mal à mâcher. Elle va à la selle seulement deux fois par semaine, elle a mal au ventre et elle est souvent de mauvaise humeur. L'infirmière vous demande de l'aider au quotidien.",
+          "image": "assets/images/Cours/EP1-Biologie_humaine/constipation.jpg",
+          "image-alt": "Photo illustrant le sujet de la xérostomie",
+          "description": "",
+          "ressources": [],
+          "lottie": "assets/lotties/colon.json",
+          "page": "Chapitre 02/cours/Activité_10.html",
+          "objectifs pédagogiques": [
+            { "id": "obj19", "libelle": "" },
+            { "id": "obj20", "libelle": "" }
+          ]
+        },
+        {
+          "statut": "actif",
+          "id": "activité 11",
+          "titre": "Hémorroïdes",
+          "groupe": ["Groupe 11"],
+          "contexte": "Vous êtes animatrice dans un foyer d'accueil pour adolescents. Léa, 15 ans, mange surtout des plats rapides et des biscuits, boit des sodas et presque pas d'eau. Elle ne fait pas de sport et passe de longs moments aux toilettes avec son téléphone. Elle refuse d'aller aux toilettes du lycée, qu'elle trouve sales, et se retient toute la journée. Elle est souvent constipée. Un soir, elle vous confie, très gênée, qu'elle a mal à l'anus, que ça la démange et qu'elle voit parfois du sang sur le papier toilette. Elle vous supplie de ne rien dire et refuse de voir l'infirmière ou le médecin.",
+          "image": "assets/images/Cours/EP1-Biologie_humaine/hemorroides.jpg",
+          "image-alt": "Photo illustrant le sujet de la xérostomie",
+          "description": "",
+          "ressources": [],
+          "lottie": "assets/lotties/caca.json",
+          "page": "Chapitre 02/cours/Activité_11.html",
+          "objectifs pédagogiques": [
+            { "id": "obj21", "libelle": "" },
+            { "id": "obj22", "libelle": "" }
           ]
         }
       ]

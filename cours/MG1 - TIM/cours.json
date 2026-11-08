@@ -65,15 +65,15 @@
       "page": "Chapitre 02/Chapitre.html",
       "type": "chapitre",
       "Periode": "",
-      "start": "",
-      "end": "",
-      "titre": "Alzheimer dans le Finistère, zoom sur la Côte des Légendes",
+      "start": "2026-11-9",
+      "end": "2026-11-27",
+      "titre": "Plan canicule à l'EHPAD : un menu qui hydrate",
       "description": "",
       "couleur": null,
-      "lottie": "assets/lotties/medicine.json",
+      "lottie": "assets/lotties/salade.json",
 
       "evaluationFinale": {
-          "statut": "actif",
+          "statut": "inactif",
           "type": "Fin de séquence",
           "start": "",
           "end": "",
@@ -86,11 +86,11 @@
         {
           "statut": "actif",
           "type": "Projet",
-          "start": "",
+          "start": "2026-11-27",
           "end": "",
           "lottie": "assets/lotties/project.json",
           "component": "",
-          "page": "Chapitre 02/evaluation/evaluation_activite.html"
+          "page": "Chapitre 02/evaluation/evaluation_projet.html"
         }
       ],
 

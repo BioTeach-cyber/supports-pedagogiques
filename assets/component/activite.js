@@ -88,19 +88,34 @@
   };
 
   const mountAutoHeightFrames = (container) => {
-    const frames = [...container.querySelectorAll('iframe[data-auto-height]')];
-    if (!frames.length) return;
+    const frames = new Set();
+    const requestHeight = (frame) => {
+      if (frame.isConnected) frame.contentWindow?.postMessage({ type: 'application-height-request' }, '*');
+    };
+    const registerFrames = (node) => {
+      if (!(node instanceof Element)) return;
+      const candidates = [
+        ...(node.matches('iframe[data-auto-height]') ? [node] : []),
+        ...node.querySelectorAll('iframe[data-auto-height]')
+      ];
+      candidates.forEach((frame) => {
+        if (frames.has(frame)) return;
+        frames.add(frame);
+        frame.setAttribute('scrolling', 'no');
+        frame.addEventListener('load', () => requestHeight(frame));
+        if (frame.contentDocument?.readyState === 'complete') requestHeight(frame);
+      });
+    };
     window.addEventListener('message', (event) => {
-      const frame = frames.find((candidate) => candidate.contentWindow === event.source);
+      const frame = [...frames].find((candidate) => candidate.contentWindow === event.source);
       const height = event.data?.type === 'application-height' ? Number(event.data.height) : 0;
-      if (!frame || !Number.isFinite(height) || height <= 0) return;
+      if (!frame || !Number.isFinite(height) || height < 1 || height > 50000) return;
       frame.style.height = `${Math.ceil(height)}px`;
     });
-    frames.forEach((frame) => {
-      frame.addEventListener('load', () => {
-        frame.contentWindow?.postMessage({ type: 'application-height-request' }, '*');
-      }, { once: true });
-    });
+    registerFrames(container);
+    new MutationObserver((records) => {
+      records.forEach((record) => record.addedNodes.forEach(registerFrames));
+    }).observe(container, { childList: true, subtree: true });
   };
 
   const mountQrCode = () => {

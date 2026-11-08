@@ -1,0 +1,51 @@
+{
+  "entete": {
+    "examen": "Devoir Bac Pro SAPAT",
+    "titre": "",
+    "epreuve": "",
+    "session": "2026-2027",
+    "etablissement": "AgroTech Le Cleusmeur",
+    "coefficient": 0.5
+  },
+  "niveaux": ["- -", "-", "+", "+ +"],
+  "capacites": [
+    {
+      "code": "C1.2",
+      "intitule": "Étudier un phénomène social ou professionnel à l’aide de données notamment en nombre.",
+      "criteres": [
+        {
+          "intitule": "Analyse du contexte et de la problématique",
+          "indicateurs": [
+            "Reformuler la problématique par écrit dans le rapport, en une phrase compréhensible sans explication complémentaire.",
+            "Identifier le destinataire du travail et le besoin auquel il répond.",
+            "Lister les variables (colonnes) nécessaires pour répondre à la problématique.",
+            "Identifier la grandeur étudiée et son unité.",
+            "Délimiter le périmètre de l'étude (catégories retenues) et le faire apparaître dans le rapport. (adapté : pas de territoire ni de période ici)"
+          ]
+        },
+        {
+          "intitule": "Traitement des données adapté au contexte et à la problématique étudiés",
+          "indicateurs": [
+            "Supprimer les colonnes et les lignes inutiles au regard de la problématique.",
+            "Traiter les valeurs manquantes ou erronées (suppression, remplacement, conservation assumée).",
+            "Relever les cinq indicateurs de la boîte (minimum, Q1, médiane, Q3, maximum).",
+            "Contrôler la cohérence des valeurs relevées avec les données de départ (ordre de grandeur, unité).",
+            "Calculer un indicateur de synthèse pertinent (minimum, maximum, médiane…) (adapté : à l'aide d'une formule du tableur)."
+          ]
+        },
+        {
+          "intitule": "Exposition des données adaptée au contexte et représentative de la problématique étudiée",
+          "indicateurs": [
+            "Régler la fenêtre graphique pour que la boîte soit entièrement visible.",
+            "Graduer et nommer l'axe des abscisses en indiquant la grandeur et son unité.",
+            "Rédiger une phrase de lecture appuyée sur des valeurs chiffrées (médiane, étendue, écart interquartile).",
+            "Formuler par écrit une réponse explicite à la problématique posée.",
+            "Appuyer la conclusion écrite sur au moins deux données chiffrées issues du rapport.",
+            "Exprimer par écrit une limite ou une réserve sur les résultats produits.",
+            "Mentionner dans le rapport la source, la date des données et l'auteur."
+          ]
+        }
+      ]
+    }
+  ]
+}
