@@ -56,7 +56,7 @@
           ]
         },
         {
-          "statut": "inactif",
+          "statut": "actif",
           "id": "activité 02",
           "titre": "",
           "lottie": "assets/lotties/Numbers/02.json",
@@ -68,7 +68,7 @@
           ]
         },
         {
-          "statut": "inactif",
+          "statut": "actif",
           "id": "activité 03",
           "titre": "",
           "lottie": "assets/lotties/Numbers/03.json",
@@ -115,7 +115,7 @@
       ],
       "activité": [
         {
-          "statut": "inactif",
+          "statut": "actif",
           "id": "activité 01",
           "titre": "À la découverte du diabète",
           "lottie": "assets/lotties/Numbers/01.json",
@@ -127,7 +127,7 @@
           ]
         },
         {
-          "statut": "inactif",
+          "statut": "actif",
           "id": "activité 02",
           "titre": "Glycémie sous contrôle",
           "lottie": "assets/lotties/Numbers/02.json",
@@ -139,7 +139,7 @@
           ]
         },
         {
-          "statut": "inactif",
+          "statut": "actif",
           "id": "activité 03",
           "titre": "Au cœur de l’éducation thérapeutique",
           "lottie": "assets/lotties/Numbers/03.json",
@@ -186,7 +186,7 @@
       ],
       "activité": [
         {
-          "statut": "inactif",
+          "statut": "actif",
           "id": "activité 01",
           "titre": "Alerte rouge : diagnostiquer l’érythème fessier",
           "lottie": "assets/lotties/Numbers/01.json",
@@ -198,7 +198,7 @@
           ]
         },
         {
-          "statut": "inactif",
+          "statut": "actif",
           "id": "activité 02",
           "titre": "Bouclier doux : prévenir l’érythème fessier",
           "lottie": "assets/lotties/Numbers/02.json",
@@ -210,7 +210,7 @@
           ]
         },
         {
-          "statut": "inactif",
+          "statut": "actif",
           "id": "activité 03",
           "titre": "Sérénité retrouvée : soulager et accompagner",
           "lottie": "assets/lotties/Numbers/03.json",
@@ -257,7 +257,7 @@
       ],
       "activité": [
         {
-          "statut": "inactif",
+          "statut": "actif",
           "id": "activité 01",
           "titre": "À l’affût des escarres : détection et risques",
           "lottie": "assets/lotties/Numbers/01.json",
@@ -269,7 +269,7 @@
           ]
         },
         {
-          "statut": "inactif",
+          "statut": "actif",
           "id": "activité 02",
           "titre": "Mission prévention : adopter les bons réflexes",
           "lottie": "assets/lotties/Numbers/02.json",
@@ -281,7 +281,7 @@
           ]
         },
         {
-          "statut": "inactif",
+          "statut": "actif",
           "id": "activité 03",
           "titre": "Sous la peau : physiopathologie des escarres",
           "lottie": "assets/lotties/Numbers/03.json",
