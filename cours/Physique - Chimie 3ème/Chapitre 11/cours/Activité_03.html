@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#b7b7b7">
+  <title>Activité — Mes ressources pédagogiques</title>
+  <link rel="stylesheet" href="../../../../assets/css/cours.css">
+  <link rel="stylesheet" href="../../../../assets/component/activite.css">
+  <script src="../../../../assets/js/lib/lottie.min.js" defer></script>
+  <script src="../../../../assets/js/lib/qrcode.min.js" defer></script>
+  <script src="../../../../assets/component/contexte-professionnel.js" defer></script>
+  <script src="../../../../assets/component/problematique.js" defer></script>
+  <script src="../../../../assets/component/questionnements-intermediaires.js" defer></script>
+  <script src="../../../../assets/component/documents-college.js" defer></script>
+  <script src="../../../../assets/component/bibliotheque-exercice.js" defer></script>
+  <script src="../../../../assets/component/activite.js" defer></script>
+</head>
+  <body data-course="Physique - Chimie 3ème">
+  <div class="site-shell">
+    <header class="page-header" id="page-header">
+      <a class="brand-mark" id="course-link" href="../../../../cours/?cours=Physique%20-%20Chimie%203ème" aria-label="Retour au réseau du cours">
+        <span class="brand-animation" id="course-lottie" aria-hidden="true"></span>
+      </a>
+      <h1 id="activity-title">Chargement de l’activité…</h1>
+      <button class="qr-wrap" id="qr-open" type="button" aria-label="Agrandir le QR code de cette page" aria-haspopup="dialog">
+        <span id="page-qr" class="page-qr" aria-hidden="true"></span>
+      </button>
+      <dialog class="qr-dialog" id="qr-dialog" aria-label="QR code de cette page">
+        <button class="qr-dialog-close" id="qr-close" type="button" aria-label="Fermer le QR code">×</button>
+        <div id="page-qr-large" class="page-qr-large" aria-label="QR code agrandi"></div>
+        <p>Scannez pour ouvrir cette page</p>
+      </dialog>
+    </header>
+    <main id="activity-content" class="page-content activity-page-content">
+      <div data-component="contexte-professionnel" data-title="Contexte">
+        <script type="text/markdown">
+Pour compléter leur rapport, les gendarmes ont récupéré les données GPS du scooter, qui enregistrait sa position toutes les 2 secondes. Un technicien les a transformées en graphique distance-temps. On y voit clairement que le scooter n'a pas roulé de la même façon tout au long de son trajet. Comment ce graphique va permettre aux gendarmes de reconstituer précisément les dernières secondes avant l'incident. ?
+        </script>
+      </div>
+
+      <section class="activity-section" data-activity-position>
+        <h2 class="activity-section-title">Application</h2>
+        <iframe class="activity-document-application" data-auto-height src="../../../../applications/physique%20-%20chimie/mouvement_accelere_constant_ralenti.html" title="Application interactive sur les mouvements accélérés, constants et ralentis" loading="lazy" sandbox="allow-scripts allow-forms"></iframe>
+      </section>
+
+      <div data-component="problematique" data-title="Ce que je dois retenir">
+        <script type="text/markdown">
+         
+## 1. Les trois types de mouvement
+
+Pour décrire un mouvement, on regarde **comment la vitesse change** pendant le déplacement.
+
+| Type de mouvement | La vitesse... | Exemple |
+|---|---|---|
+| **Uniforme** | reste la **même** | Un tapis roulant à vitesse constante |
+| **Accéléré** | **augmente** (l'objet va de plus en plus vite) | Une voiture qui démarre |
+| **Ralenti** | **diminue** (l'objet va de moins en moins vite) | Un vélo qui freine |
+
+> 💡 **Astuce :** accéléré = "de plus en plus vite" ; ralenti = "de moins en moins vite".
+
+
+## 2. La chronophotographie (graphique distance-temps)
+
+Une **chronophotographie** est aussi appelée **graphique distance-temps**. Elle montre la **position d'un objet** à **intervalles de temps réguliers**.
+
+- Le **temps** entre deux positions est **toujours le même**.
+- Ce qui change, c'est la **distance** entre deux positions qui se suivent.
+
+> ⏱️ Comme le temps entre deux marques est toujours le même, la distance entre deux marques nous informe sur la **vitesse**.
+
+
+## 3. Comment lire une chronophotographie
+
+On compare les **écarts** entre les positions qui se suivent.
+
+| Ce que je vois | Ce que ça veut dire | Mouvement |
+|---|---|---|
+| Les positions sont **toujours à la même distance** les unes des autres | L'objet parcourt la même distance dans le même temps | **Uniforme** |
+| Les positions sont de **plus en plus éloignées** | L'objet parcourt de plus en plus de distance dans le même temps | **Accéléré** |
+| Les positions sont de **plus en plus proches** | L'objet parcourt de moins en moins de distance dans le même temps | **Ralenti** |
+
+> 💡 **Astuce :** des positions **serrées** = l'objet va **lentement** ; des positions **espacées** = l'objet va **vite**.
+
+
+## 4. Ma méthode pour répondre
+
+1. Je regarde les positions de l'objet **de gauche à droite** (dans le sens du mouvement).
+2. Je compare l'**écart** entre les premières positions et l'**écart** entre les dernières.
+3. Je conclus :
+   - écarts **identiques** → mouvement **uniforme** ;
+   - écarts qui **augmentent** → mouvement **accéléré** ;
+   - écarts qui **diminuent** → mouvement **ralenti**.
+        </script>
+      </div>
+      <div data-component="bibliotheque-exercice" data-title="Bibliothèque d'exercices"></div>
+      <div data-component="documents-college" data-title="Ressources complémentaires">
+        <div data-document data-type="video" data-title="Vidéo — Décrire un mouvement" data-src="https://youtu.be/Zzt6HpCXvnM"></div>
+        <div data-document data-type="audio" data-title="Bande son — Les mouvements uniformes, accélérés et ralentis" data-src="../../../../assets/sound/physique-chimie/Mouvement_uniforme_accelere.mp3">
+          <div data-transcription data-title="Transcription" data-open>
+            Bonjour à toutes et à tous, et bienvenue dans ce petit podcast de sciences. Aujourd'hui, on parle de mouvement.
+
+Dans ce chapitre, on va apprendre deux choses. D'abord, reconnaître un mouvement uniforme, accéléré ou ralenti. Ensuite, lire une chronophotographie, aussi appelée graphique distance-temps.
+
+Commençons par les mouvements.
+
+Pour décrire un mouvement, on se pose une seule question : est-ce que la vitesse change pendant le déplacement ?
+
+Premier cas. La vitesse reste la même. L'objet va toujours à la même vitesse. On dit alors que le mouvement est uniforme. Imaginez un tapis roulant à l'aéroport, qui avance à vitesse constante. C'est un mouvement uniforme.
+
+Deuxième cas. La vitesse augmente. L'objet va de plus en plus vite. On dit alors que le mouvement est accéléré. Pensez à une voiture qui démarre au feu vert. Au début, elle va doucement, puis elle prend de la vitesse. C'est un mouvement accéléré.
+
+Troisième cas. La vitesse diminue. L'objet va de moins en moins vite. On dit alors que le mouvement est ralenti. Pensez à un vélo qui freine avant un stop. C'est un mouvement ralenti.
+
+Pour retenir, voici une astuce. Accéléré, c'est de plus en plus vite. Ralenti, c'est de moins en moins vite. Et uniforme, c'est toujours pareil.
+
+Passons maintenant à la chronophotographie, que l'on appelle aussi graphique distance-temps.
+
+Une chronophotographie, c'est une image qui montre où se trouve un objet à plusieurs moments. Ces moments sont toujours séparés par le même temps. Par exemple, une position toutes les secondes. Le temps entre deux positions ne change jamais.
+
+Alors, qu'est-ce qui change ? Ce qui change, c'est la distance entre deux positions qui se suivent. Et c'est cette distance qui nous renseigne sur la vitesse.
+
+Pourquoi ? Parce que le temps est toujours le même entre deux positions. Si l'objet parcourt une grande distance pendant ce temps, il va vite. S'il parcourt une petite distance pendant ce même temps, il va lentement.
+
+Donc, pour lire une chronophotographie, on compare les écarts entre les positions.
+
+Premier cas. Les positions sont toujours à la même distance les unes des autres. L'objet parcourt toujours la même distance dans le même temps. Sa vitesse ne change pas. Le mouvement est uniforme.
+
+Deuxième cas. Les positions sont de plus en plus éloignées. L'objet parcourt de plus en plus de distance dans le même temps. Il va de plus en plus vite. Le mouvement est accéléré.
+
+Troisième cas. Les positions sont de plus en plus proches. L'objet parcourt de moins en moins de distance dans le même temps. Il va de moins en moins vite. Le mouvement est ralenti.
+
+Une astuce à retenir : des positions serrées, c'est un objet lent. Des positions espacées, c'est un objet rapide.
+
+Maintenant, voici la méthode à suivre quand vous utilisez le simulateur.
+
+Étape une. Regardez les positions de l'objet de gauche à droite, dans le sens du mouvement.
+
+Étape deux. Comparez l'écart entre les premières positions et l'écart entre les dernières positions.
+
+Étape trois. Concluez. Si les écarts sont identiques, le mouvement est uniforme. Si les écarts augmentent, le mouvement est accéléré. Si les écarts diminuent, le mouvement est ralenti.
+
+Voilà, c'est la fin de ce podcast. Retenez bien les trois mouvements : uniforme, accéléré et ralenti. Et retenez la règle de la chronophotographie : des écarts identiques pour un mouvement uniforme, des écarts qui augmentent pour un mouvement accéléré, des écarts qui diminuent pour un mouvement ralenti.
+
+Merci de m'avoir écouté, et à bientôt pour un nouvel épisode !
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="site-footer"><a id="footer-link" href="../Chapitre.html">Retour au chapitre</a><span>Ressources pédagogiques</span></footer>
+  </div>
+</body>
+</html>

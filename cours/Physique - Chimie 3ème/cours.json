@@ -115,14 +115,14 @@
           ]
         },
         {
-          "statut": "inactif",
+          "statut": "actif",
           "id": "activité 03",
-          "titre": "",
+          "titre": "Accélérer, freiner, rouler régulièrement",
           "lottie": "assets/lotties/Numbers/03.json",
           "page": "Chapitre 11/cours/Activité_03.html",
           "objectifs pédagogiques": [
-            { "id": "obj05", "libelle": "" },
-            { "id": "obj06", "libelle": "" }
+            { "id": "obj05", "libelle": "Distinguer un mouvement uniforme, accéléré ou ralenti" },
+            { "id": "obj06", "libelle": "Interpréter un graphique distance-temps" }
           ]
         }
       ]

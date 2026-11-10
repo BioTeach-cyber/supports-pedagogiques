@@ -1,0 +1,261 @@
+Formation : Accompagner les élèves à l’ère de l’intelligence artificielle
+
+MATINÉE : Comprendre et accompagner les usages des élèves (3h30) 
+
+09h30 – 10h05 | Accueil et lancement (35 min) 
+
+1. Le mur des post-it (15 min) 
+
+À leur arrivée, les participants disposent de post-it de trois couleurs : 
+
+🟩 une expérience positive vécue avec l'IA et les élèves ; 
+
+🟥 une expérience négative ou problématique ; 
+
+🟨 un projet envisagé. 
+
+Consigne : une idée par post-it, autant de post-it que souhaité. 
+
+Les post-it sont collés sur un mur ou un tableau, sans prise de parole individuelle obligatoire. 
+
+2. Regroupement collectif (10 min) 
+
+Les formateurs, aidé de volontaires, regroupe les post-it par thèmes. Exemples : triche et devoirs, recherche d'information, aide aux élèves en difficulté, données personnelles, gain de temps pour l'enseignant… 
+
+ 
+
+3. Présentation des objectifs et du fil rouge (10 min) 
+
+Objectifs et programme de la journée. 
+
+Présentation de la charte existante. Il peut s'agir d'une charte d'établissement ou d'un exemple publié, à choisir et à vérifier en amont. 
+
+Première confrontation : « Les situations notées sur vos post-it sont-elles prises en compte par cette charte ? » Les premières annotations sont posées sur la charte. 
+
+10h05 – 10h50 | Atelier : Les usages actuels de l'IA chez les élèves (45 min) 
+
+Atelier en petits groupes 
+
+Étape 1. « Dans la peau d'un élève » (20 min) 
+
+Chaque groupe reçoit une tâche scolaire réelle : une dissertation, un exercice de mathématiques, un exposé ou une traduction. 
+
+Le groupe la réalise avec l'IA comme le ferait un élève pressé, puis comme le ferait un élève qui cherche vraiment à apprendre. 
+
+Il compare ensuite les deux démarches : qu'apprend réellement l'élève dans chaque cas ? 
+
+Étape 2. Cartographie des usages (15 min) 
+
+Les usages identifiés, en s'appuyant aussi sur les post-it, sont placés sur une matrice à deux axes : 
+
+fréquence chez les élèves ; 
+
+bénéfice pour l'apprentissage. 
+
+On distingue ainsi les usages-leviers (aide réelle à l'apprentissage “orthèse”) des usages-béquilles (délégation de la réflexion “prothèse”). 
+
+Étape 3. Mise en perspective (10 min) 
+
+Courte synthèse du formateur : 
+
+les outils réellement utilisés par les élèves ; 
+
+les grandes tendances observées par les études récentes, en citant des sources à jour ; 
+
+un rappel bref du fonctionnement de l'IA générative : modèle probabiliste, hallucinations, biais. 
+
+Point charte : la charte distingue-t-elle les bons et les mauvais usages ? 
+
+ 
+
+10h50 – 11h00 | Pause 
+
+11h00 – 11h45 | Enjeux éthiques, réglementaires et pédagogiques (45 min) (idée de trame pour Sarah, modifiable à volonté, voir intégralement) 
+
+Apport théorique et études de cas 
+
+Cadre réglementaire 
+
+RGPD et données personnelles des élèves. 
+
+Conditions d'âge fixées par les outils. 
+
+AI Act européen. 
+
+Cadre d'usage de l'IA en éducation publié par le ministère, et règles propres à l'établissement. 
+
+Ces textes évoluent : vérifiez les versions en vigueur avant la session. 
+
+Enjeux éthiques 
+
+Biais des réponses générées. 
+
+Équité d'accès entre les élèves. 
+
+Impact environnemental. 
+
+Propriété intellectuelle. 
+
+Risque de dépendance cognitive. 
+
+Enjeux pédagogiques 
+
+Sens des apprentissages. 
+
+Intégrité du travail des élèves. 
+
+Place et rôle de l'enseignant. 
+
+Études de cas en groupes 
+
+Exemples de situations : « Un parent refuse que son enfant utilise l'IA » ; « Un élève saisit des informations personnelles sur un camarade ». 
+
+Si possible, s'appuyer sur des situations issues des post-it. 
+
+Point charte : la charte respecte-t-elle le cadre légal ? Aborde-t-elle les données personnelles, l'âge et la question de l'équité ? 
+
+11h45 – 13h00 | Atelier 1 : Développer l'esprit critique, et accompagner les élèves pour apprendre, rechercher et produire (1h15) 
+
+Partie A. Esprit critique (40 min, en binômes) 
+
+Chaque binôme soumet à l'IA des questions choisies pour la mettre en difficulté : sujets pointus, actualité récente, calculs, demande de références bibliographiques, sujets sensibles. 
+
+Les réponses sont analysées avec une grille « Vérifier, croiser, questionner » : 
+
+les sources sont-elles vérifiables ? 
+
+l'information est-elle exacte ? 
+
+y a-t-il des biais ou des omissions ? 
+
+le ton est-il faussement assuré ? 
+
+Les réponses sont ensuite croisées avec des sources fiables. 
+
+Production : une grille de vérification adaptée aux élèves. 
+
+Partie B. Accompagner les élèves (30 min, démonstrations et essais) 
+
+Apprendre : utiliser l'IA comme tuteur socratique (« guide-moi sans me donner la réponse »), générer des quiz d'auto-entraînement. 
+
+Rechercher : comprendre les limites de l'IA par rapport à un moteur de recherche, découvrir les outils qui citent leurs sources. 
+
+Produire : brainstorming, construction d'un plan, relecture, avec une exigence de transparence sur l'usage de l'IA. 
+
+Formuler une requête : préciser le rôle, le contexte, la consigne et le format attendu. 
+
+Présentation d'une échelle des niveaux d'usage autorisés, allant de « aucune IA » à « IA intégrée ». 
+
+Point charte (5 min) : la charte encourage-t-elle la vérification de l'information ? Précise-t-elle comment déclarer l'usage de l'IA ? 
+
+Si l'atelier 01 met moins de temps, faire un point plus long sur la charte à partir de ce qui a été vu dans la matinée, ou prendre un temps de question réponse, ou revoir certains post-it de début de journée pour voir si certains éléments apportés jusqu'ici éclairent sur certaines situations. 
+
+13h00 – 14h00 | Pause déjeuner 
+
+APRÈS-MIDI : Évaluer, concevoir, encadrer (3h) 
+
+14h00 – 15h05 | Comment évaluer à l'ère de l'IA ? (55 min) 
+
+1. Repenser ce qu'on évalue (25 min, apports et échanges) 
+
+Quelles évaluations sont « vulnérables » à l'IA, et lesquelles le sont moins ? 
+
+Pistes pour adapter l'évaluation : 
+
+évaluer le processus plutôt que le seul produit final : brouillons, traces, journal de bord ; 
+
+recourir à l'oral et aux productions réalisées en classe ; 
+
+demander une justification des choix de l'élève ; 
+
+exiger une déclaration d'usage de l'IA ; 
+
+évaluer la capacité à critiquer une production générée par l'IA. 
+
+Les détecteurs d'IA ne sont pas fiables : ils ne peuvent pas servir de preuve. Quelle posture adopter face à une suspicion de fraude ? 
+
+Point charte : la charte précise-t-elle comment les travaux seront évalués et ce qui est attendu des élèves ? 
+
+15h05 – 15h55 | Atelier 2 : Concevoir une activité pédagogique intégrant l'IA (50 min) 
+
+En groupes, par discipline ou par niveau 
+
+Chaque groupe complète une fiche-scénario comprenant : 
+
+les objectifs et le niveau ; 
+
+la place de l'IA dans l'activité ; 
+
+le niveau d'usage autorisé ; 
+
+les consignes données aux élèves ; 
+
+le rôle de l'enseignant ; 
+
+les modalités d'évaluation, en lien avec la séquence précédente ; 
+
+les points de vigilance. 
+
+Les projets notés sur les post-it 🟨 peuvent servir de point de départ. 
+
+Exemples d'activités possibles : 
+
+corriger une production générée par l'IA ; 
+
+comparer les réponses de plusieurs IA ; 
+
+mener une interview simulée puis la vérifier ; 
+
+débattre contre une IA. 
+
+Chaque groupe présente son activité en 2 minutes, puis reçoit les retours des pairs. 
+
+Production : une activité ou un scénario pédagogique, qui sert à l'évaluation de la formation. 
+
+15h55 – 16h35 | Atelier 3 : Retour sur la charte d'usage de l'IA pour les élèves (40 min) 
+
+Aboutissement du fil rouge 
+
+1. Synthèse des annotations (10 min) 
+
+Lecture collective de la charte annotée tout au long de la journée. 
+
+Repérage des modifications prioritaires. 
+
+2. Réécriture en groupes (20 min) 
+
+Chaque groupe produit une version améliorée et adaptée à son contexte (niveau, discipline), en travaillant sur les rubriques suivantes : 
+
+ce qui est autorisé, encadré ou interdit ; 
+
+comment déclarer son usage de l'IA ; 
+
+comment vérifier l'information ; 
+
+comment protéger ses données ; 
+
+comment respecter l'intégrité de son travail ; 
+
+les modalités d'évaluation ; 
+
+les conséquences en cas de non-respect. 
+
+La charte est déclinée en consignes concrètes à faire figurer sur les sujets, par exemple sous forme de pictogrammes indiquant le niveau d'IA autorisé. 
+
+3. Transfert en classe (10 min) 
+
+Comment co-construire la charte avec les élèves ? 
+
+Retour final au mur des post-it : la nouvelle charte répond-elle aux situations notées le matin ? 
+
+Production : une charte ou des consignes d'usage, qui servent à l'évaluation de la formation. 
+
+16h35 – 17h00 | Bilan et clôture (15 min) 
+
+Mutualisation des productions sur un espace partagé : chartes, scénarios, grilles et ressources créées. 
+
+Autoévaluation finale, comparée au positionnement du matin. 
+
+Questionnaire de satisfaction. 
+
+Chaque participant prend un engagement : « Ce que je mettrai en place dans les 15 prochains jours ». 

@@ -8,31 +8,29 @@
   "lottie": "assets/lotties/medicine.json",
   "description": "",
   "statut": "actif",
-
   "chapitres": [
     {
-      "statut": "inactif",
+      "statut": "actif",
       "id": "Chapitre 01",
       "page": "Chapitre 01/Chapitre.html",
       "type": "chapitre",
-      "Periode": "",
+      "Periode": "02",
       "start": "",
       "end": "",
-      "titre": "",
-      "description": "",
+      "titre": "Après l’AVC : comment retrouver des gestes essentiels ?",
+      "description": "Un accident vasculaire cérébral, c’est parfois quelques secondes qui changent toute une vie. Perte de motricité, troubles de la parole, difficulté à réaliser les gestes du quotidien… Après l’urgence, commence le long chemin de la rééducation et de l’accompagnement.\nDans ce chapitre, tu apprendras à repérer les signes d’alerte d’un AVC, à comprendre ce qui se passe dans le cerveau, et à réagir efficacement en situation d’urgence. Mais surtout, tu découvriras comment aider une personne à retrouver, pas à pas, son autonomie : adapter son environnement, soutenir ses gestes, prévenir les complications… et redonner du sens à chaque progrès, aussi petit soit-il.\nCar après l’AVC, chaque geste compte pour retrouver la dignité et la vie.",
       "couleur": null,
-      "lottie": "assets/lotties/.json",
+      "lottie": "assets/lotties/medicine.json",
 
       "evaluationFinale": {
-          "statut": "inactif",
-          "type": "Fin de séquence",
-          "start": "",
-          "end": "",
-          "lottie": "assets/lotties/fin_sequence.json",
-          "component": "",
-          "page": "Chapitre 01/evaluation/fin_de_sequence.html"
+        "statut": "inactif",
+        "type": "Fin de séquence",
+        "start": "",
+        "end": "",
+        "lottie": "assets/lotties/fin_sequence.json",
+        "component": "",
+        "page": "Chapitre 01/evaluation/fin_de_sequence.html"
       },
-
       "evaluationsSecondaires": [
         {
           "statut": "inactif",
@@ -44,17 +42,17 @@
           "page": "Chapitre 01/evaluation/evaluation_activite.html"
         }
       ],
-
       "activité": [
         {
-          "statut": "inactif",
+          "statut": "actif",
           "id": "activité 01",
-          "titre": "",
+          "titre": "À l’affût du signe F.A.S.T.",
           "lottie": "assets/lotties/Numbers/01.json",
           "page": "Chapitre 01/cours/Activité_01.html",
           "objectifs pédagogiques": [
-            { "id": "obj01", "libelle": "" },
-            { "id": "obj02", "libelle": "" }
+            { "id": "obj01", "libelle": "Identifier les symptômes cliniques évocateurs d’un AVC." },
+            { "id": "obj02", "libelle": "Expliquer les mécanismes physiopathologiques sous-jacents à l’AVC." },
+            { "id": "obj03", "libelle": "Classifier les différents types d’AVC (ischémique, hémorragique)." }
           ]
         },
         {
@@ -64,8 +62,9 @@
           "lottie": "assets/lotties/Numbers/02.json",
           "page": "Chapitre 01/cours/Activité_02.html",
           "objectifs pédagogiques": [
-            { "id": "obj03", "libelle": "" },
-            { "id": "obj04", "libelle": "" }
+            { "id": "obj04", "libelle": "Appliquer la procédure d’alerte médicale en cas de suspicion d’AVC." },
+            { "id": "obj05", "libelle": "Démontrer les gestes de positionnement et de maintien des fonctions vitales." },
+            { "id": "obj06", "libelle": "Évaluer l’état neurologique et hémodynamique de la personne à l’aide de repères simples." }
           ]
         },
         {
@@ -75,57 +74,34 @@
           "lottie": "assets/lotties/Numbers/03.json",
           "page": "Chapitre 01/cours/Activité_03.html",
           "objectifs pédagogiques": [
-            { "id": "obj05", "libelle": "Utiliser une clé de détermination dichotomique pour identifier un végétal ou un animal." },
-            { "id": "obj06", "libelle": "Construire une clé de détermination simple à partir d'un petit nombre d'espèces." }
-          ]
-        },
-        {
-          "statut": "inactif",
-          "id": "activité 04",
-          "titre": "",
-          "lottie": "assets/lotties/Numbers/04.json",
-          "page": "Chapitre 01/cours/Activité_04.html",
-          "objectifs pédagogiques": [
-            { "id": "obj07", "libelle": "" },
-            { "id": "obj08", "libelle": "" }
-          ]
-        },
-        {
-          "statut": "inactif",
-          "id": "activité 05",
-          "titre": "",
-          "lottie": "assets/lotties/Numbers/05.json",
-          "page": "Chapitre 01/cours/Activité_05.html",
-          "objectifs pédagogiques": [
-            { "id": "obj09", "libelle": "" },
-            { "id": "obj10", "libelle": "" }
+            { "id": "obj07", "libelle": "Élaborer un plan d’accompagnement personnalisé post-AVC." },
+            { "id": "obj08", "libelle": "Adapter l’environnement et les aides techniques pour favoriser l’autonomie." },
+            { "id": "obj09", "libelle": "Mettre en place des stratégies de prévention des complications secondaires (escarres, chutes)." }
           ]
         }
       ]
     },
     {
-      "statut": "inactif",
+      "statut": "actif",
       "id": "Chapitre 02",
       "page": "Chapitre 02/Chapitre.html",
       "type": "chapitre",
-      "Periode": "",
+      "Periode": "02",
       "start": "",
       "end": "",
-      "titre": "",
-      "description": "",
+      "titre": "Diabète : une maladie invisible mais bien présente ?",
+      "description": "Pas de fièvre, pas de douleur, pas toujours de symptômes visibles… et pourtant, le diabète est bien là. Il touche de plus en plus de personnes, parfois dès l’enfance, parfois sans qu’on s’en rende compte. Réguler le sucre dans le sang n’est pas si simple : c’est une bataille quotidienne entre biologie, alimentation, activité physique… et accompagnement.\nDans ce chapitre, tu vas découvrir les mécanismes qui régulent la glycémie, les différences entre diabète de type 1 et 2, et surtout comment accompagner une personne au quotidien. Prendre la glycémie, adapter les repas, conseiller une activité physique, repérer les déséquilibres… autant de gestes qui font la différence, même si la maladie ne se voit pas.\nCar derrière l’invisible, il y a des choix concrets à faire pour mieux vivre avec.",
       "couleur": null,
-      "lottie": "assets/lotties/.json",
-
+      "lottie": "assets/lotties/medicine.json",
       "evaluationFinale": {
-          "statut": "inactif",
-          "type": "Fin de séquence",
-          "start": "",
-          "end": "",
-          "lottie": "assets/lotties/fin_sequence.json",
-          "component": "",
-          "page": "Chapitre 02/evaluation/fin_de_sequence.html"
+        "statut": "inactif",
+        "type": "Fin de séquence",
+        "start": "",
+        "end": "",
+        "lottie": "assets/lotties/fin_sequence.json",
+        "component": "",
+        "page": "Chapitre 02/evaluation/fin_de_sequence.html"
       },
-
       "evaluationsSecondaires": [
         {
           "statut": "inactif",
@@ -137,61 +113,183 @@
           "page": "Chapitre 02/evaluation/evaluation_activite.html"
         }
       ],
-
       "activité": [
         {
           "statut": "inactif",
           "id": "activité 01",
-          "titre": "",
+          "titre": "À la découverte du diabète",
           "lottie": "assets/lotties/Numbers/01.json",
           "page": "Chapitre 02/cours/Activité_01.html",
           "objectifs pédagogiques": [
-            { "id": "obj01", "libelle": "" },
-            { "id": "obj02", "libelle": "" }
+            { "id": "obj01", "libelle": "Définir les différents types de diabète." },
+            { "id": "obj02", "libelle": "Analyser les mécanismes physiopathologiques de la régulation glycémique." },
+            { "id": "obj03", "libelle": "Comparer les caractéristiques cliniques et biologiques des diabètes de type 1 et 2." }
           ]
         },
         {
           "statut": "inactif",
           "id": "activité 02",
-          "titre": "",
+          "titre": "Glycémie sous contrôle",
           "lottie": "assets/lotties/Numbers/02.json",
           "page": "Chapitre 02/cours/Activité_02.html",
           "objectifs pédagogiques": [
-            { "id": "obj03", "libelle": "" },
-            { "id": "obj04", "libelle": "" }
+            { "id": "obj04", "libelle": "Mettre en œuvre le protocole de mesure de la glycémie capillaire." },
+            { "id": "obj05", "libelle": "Interpréter les résultats glycémiques dans un contexte de suivi." },
+            { "id": "obj06", "libelle": "Justifier les adaptations thérapeutiques à partir des données de glycémie." }
           ]
         },
         {
           "statut": "inactif",
           "id": "activité 03",
-          "titre": "",
+          "titre": "Au cœur de l’éducation thérapeutique",
           "lottie": "assets/lotties/Numbers/03.json",
           "page": "Chapitre 02/cours/Activité_03.html",
           "objectifs pédagogiques": [
-            { "id": "obj05", "libelle": "Utiliser une clé de détermination dichotomique pour identifier un végétal ou un animal." },
-            { "id": "obj06", "libelle": "Construire une clé de détermination simple à partir d'un petit nombre d'espèces." }
+            { "id": "obj07", "libelle": "Concevoir un plan alimentaire adapté à un patient diabétique." },
+            { "id": "obj08", "libelle": "Expliquer l’impact des conseils hygiéno-diététiques sur l’équilibre glycémique." },
+            { "id": "obj09", "libelle": "Élaborer des recommandations personnalisées pour l’activité physique quotidienne." }
+          ]
+        }
+      ]
+    },
+    {
+      "statut": "actif",
+      "id": "Chapitre 03",
+      "page": "Chapitre 03/Chapitre.html",
+      "type": "chapitre",
+      "Periode": "03",
+      "start": "",
+      "end": "",
+      "titre": "Rougeurs, pleurs, inconfort : comment réagir face à un érythème",
+      "description": "Un bébé qui pleure au moment du change, des rougeurs qui s’étendent, une peau fragilisée… L’érythème fessier est un signal d’alerte à ne jamais banaliser. Fréquent, mais pas anodin, il peut vite s’aggraver s’il n’est pas pris en charge avec rigueur et douceur.\nDans ce chapitre, tu apprendras à reconnaître les signes d’un érythème, à comprendre ce qui provoque ces inflammations cutanées et à évaluer les risques selon les pratiques d’hygiène, les produits utilisés ou le rythme des changes. Tu seras capable de proposer des soins adaptés, d’élaborer un protocole préventif efficace, et de collaborer avec l’équipe et les familles pour garantir le confort du tout-petit.\nCar dans les services à la personne, prévenir la douleur commence souvent… par un simple coup d’œil attentif à une peau rougie.",
+      "couleur": null,
+      "lottie": "assets/lotties/medicine.json",
+      "evaluationFinale": {
+        "statut": "inactif",
+        "type": "Fin de séquence",
+        "start": "",
+        "end": "",
+        "lottie": "assets/lotties/fin_sequence.json",
+        "component": "",
+        "page": "Chapitre 03/evaluation/fin_de_sequence.html"
+      },
+      "evaluationsSecondaires": [
+        {
+          "statut": "inactif",
+          "type": "Activités",
+          "start": "",
+          "end": "",
+          "lottie": "assets/lotties/activity.json",
+          "component": "",
+          "page": "Chapitre 03/evaluation/evaluation_activite.html"
+        }
+      ],
+      "activité": [
+        {
+          "statut": "inactif",
+          "id": "activité 01",
+          "titre": "Alerte rouge : diagnostiquer l’érythème fessier",
+          "lottie": "assets/lotties/Numbers/01.json",
+          "page": "Chapitre 03/cours/Activité_01.html",
+          "objectifs pédagogiques": [
+            { "id": "obj01", "libelle": "Identifier les signes cliniques et les stades de l’érythème fessier." },
+            { "id": "obj02", "libelle": "Expliquer les mécanismes physiopathologiques en cause." },
+            { "id": "obj03", "libelle": "Classer les facteurs de risque selon leur degré d’influence." }
           ]
         },
         {
           "statut": "inactif",
-          "id": "activité 04",
-          "titre": "",
-          "lottie": "assets/lotties/Numbers/04.json",
-          "page": "Chapitre 02/cours/Activité_04.html",
+          "id": "activité 02",
+          "titre": "Bouclier doux : prévenir l’érythème fessier",
+          "lottie": "assets/lotties/Numbers/02.json",
+          "page": "Chapitre 03/cours/Activité_02.html",
           "objectifs pédagogiques": [
-            { "id": "obj07", "libelle": "" },
-            { "id": "obj08", "libelle": "" }
+            { "id": "obj04", "libelle": "Sélectionner des produits et des matériaux adaptés à la prévention." },
+            { "id": "obj05", "libelle": "Mettre en œuvre une routine d’hygiène et de change sécurisée." },
+            { "id": "obj06", "libelle": "Élaborer un protocole de surveillance des rougeurs." }
           ]
         },
         {
           "statut": "inactif",
-          "id": "activité 05",
-          "titre": "",
-          "lottie": "assets/lotties/Numbers/05.json",
-          "page": "Chapitre 02/cours/Activité_05.html",
+          "id": "activité 03",
+          "titre": "Sérénité retrouvée : soulager et accompagner",
+          "lottie": "assets/lotties/Numbers/03.json",
+          "page": "Chapitre 03/cours/Activité_03.html",
           "objectifs pédagogiques": [
-            { "id": "obj09", "libelle": "" },
-            { "id": "obj10", "libelle": "" }
+            { "id": "obj07", "libelle": "Concevoir un plan de soins individualisé pour apaiser les rougeurs." },
+            { "id": "obj08", "libelle": "Évaluer l’efficacité des interventions et ajuster les pratiques." },
+            { "id": "obj09", "libelle": "Communiquer clairement les recommandations aux parents et à l’équipe." }
+          ]
+        }
+      ]
+    },
+    {
+      "statut": "actif",
+      "id": "Chapitre 04",
+      "page": "Chapitre 04/Chapitre.html",
+      "type": "chapitre",
+      "Periode": "04",
+      "start": "",
+      "end": "",
+      "titre": "Escarre : peut-on vraiment éviter les plaies de l’immobilité ?",
+      "description": "Rester allongé trop longtemps, ne plus pouvoir bouger seul… et la peau, silencieusement, commence à souffrir. Une rougeur, un affaissement, une plaie qui s’aggrave : l’escarre s’installe, souvent là où on l’attend le moins. Invisible au départ, elle peut devenir une urgence médicale.\nDans ce chapitre, tu vas découvrir comment la pression prolongée coupe la circulation, comment les tissus se dégradent, et pourquoi certaines zones du corps sont si vulnérables. Tu apprendras à détecter les signes d’alerte, à classer les lésions selon leur gravité, mais surtout à agir : mobiliser, repositionner, observer, prévenir. Car oui, les escarres ne sont pas une fatalité.\nSavoir les éviter, c’est offrir à la personne immobile une vraie protection… et un meilleur confort de vie.",
+      "couleur": null,
+      "lottie": "assets/lotties/medicine.json",
+      "evaluationFinale": {
+        "statut": "inactif",
+        "type": "Fin de séquence",
+        "start": "",
+        "end": "",
+        "lottie": "assets/lotties/fin_sequence.json",
+        "component": "",
+        "page": "Chapitre 04/evaluation/fin_de_sequence.html"
+      },
+      "evaluationsSecondaires": [
+        {
+          "statut": "inactif",
+          "type": "Activités",
+          "start": "",
+          "end": "",
+          "lottie": "assets/lotties/activity.json",
+          "component": "",
+          "page": "Chapitre 04/evaluation/evaluation_activite.html"
+        }
+      ],
+      "activité": [
+        {
+          "statut": "inactif",
+          "id": "activité 01",
+          "titre": "À l’affût des escarres : détection et risques",
+          "lottie": "assets/lotties/Numbers/01.json",
+          "page": "Chapitre 04/cours/Activité_01.html",
+          "objectifs pédagogiques": [
+            { "id": "obj01", "libelle": "Expliquer les mécanismes physiopathologiques conduisant à la formation d’une escarre." },
+            { "id": "obj02", "libelle": "Décrire les altérations tissulaires selon les différents stades lésionnels." },
+            { "id": "obj03", "libelle": "Relier les processus inflammatoires et circulatoires à l’évolution des lésions cutanées." }
+          ]
+        },
+        {
+          "statut": "inactif",
+          "id": "activité 02",
+          "titre": "Mission prévention : adopter les bons réflexes",
+          "lottie": "assets/lotties/Numbers/02.json",
+          "page": "Chapitre 04/cours/Activité_02.html",
+          "objectifs pédagogiques": [
+            { "id": "obj04", "libelle": "Identifier les facteurs de risque d’apparition d’une escarre." },
+            { "id": "obj05", "libelle": "Classifier les stades d’évolution des lésions cutanées." },
+            { "id": "obj06", "libelle": "Évaluer l’impact des conditions de vie sur la survenue d’une escarre." }
+          ]
+        },
+        {
+          "statut": "inactif",
+          "id": "activité 03",
+          "titre": "Sous la peau : physiopathologie des escarres",
+          "lottie": "assets/lotties/Numbers/03.json",
+          "page": "Chapitre 04/cours/Activité_03.html",
+          "objectifs pédagogiques": [
+            { "id": "obj07", "libelle": "Appliquer les techniques de mobilisation et de repositionnement adaptées." },
+            { "id": "obj08", "libelle": "Mettre en œuvre un protocole de prévention des escarres." },
+            { "id": "obj09", "libelle": "Contrôler régulièrement l’état cutané et détecter les premiers signes." }
           ]
         }
       ]

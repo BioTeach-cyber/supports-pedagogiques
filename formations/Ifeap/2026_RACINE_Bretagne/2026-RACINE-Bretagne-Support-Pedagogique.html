@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4980f2">
+  <meta name="description" content="Espace de travail de la formation RACINE Bretagne : accompagner les élèves à l'ère de l'intelligence artificielle.">
+  <title>Accompagner les élèves à l’ère de l’IA · RACINE Bretagne</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --blue: #4980f2;
+      --blue-dark: #2858c7;
+      --blue-deep: #183975;
+      --blue-soft: #edf3ff;
+      --blue-pale: #f6f8ff;
+      --ink: #17233b;
+      --muted: #62708a;
+      --line: #e2e8f2;
+      --paper: #fff;
+      --canvas: #f3f6fc;
+      --green: #16835f;
+      --amber: #b87912;
+      --red: #bd4a56;
+      --radius: 14px;
+      --shadow: 0 8px 28px rgba(25, 49, 94, .07);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; height: 100vh; display: flex; overflow: hidden; background: var(--canvas); color: var(--ink); font: 15px/1.55 "Segoe UI", Inter, system-ui, -apple-system, sans-serif; }
+    button, textarea, input { font: inherit; }
+    button { color: inherit; }
+    .sidebar { width: 284px; flex: 0 0 284px; display: flex; flex-direction: column; background: #14274c; color: #f7f9ff; overflow-y: auto; }
+    .brand { padding: 22px 20px 18px; border-bottom: 1px solid rgba(255,255,255,.12); }
+    .brand img { display: block; width: 112px; height: 55px; object-fit: contain; object-position: left center; padding: 4px 7px; border-radius: 8px; background: #fff; }
+    .brand-kicker { margin-top: 15px; color: #a9c2ff; font-size: 10px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .brand h1 { margin: 3px 0 3px; font-size: 17px; line-height: 1.25; }
+    .brand p { margin: 0; color: #b8c4dd; font-size: 12px; }
+    .nav { padding: 14px 10px 20px; }
+    .nav-label { padding: 12px 10px 6px; color: #8ea2c8; font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .nav button { width: 100%; display: flex; align-items: center; gap: 10px; margin: 2px 0; padding: 9px 10px; border: 0; border-radius: 9px; background: transparent; color: #d9e2f5; text-align: left; font-size: 12.5px; cursor: pointer; transition: background .15s, color .15s; }
+    .nav button:hover, .nav button.active { background: rgba(255,255,255,.12); color: #fff; }
+    .nav button.active { box-shadow: inset 3px 0 var(--blue); }
+    .nav-num { width: 22px; height: 22px; flex: 0 0 22px; display: grid; place-items: center; border-radius: 7px; background: rgba(255,255,255,.1); color: #b9ceff; font-size: 10px; font-weight: 800; }
+    .nav button.active .nav-num { background: var(--blue); color: #fff; }
+    .nav-time { margin-left: auto; color: #97a9ca; font-size: 10px; white-space: nowrap; }
+    .sidebar-bottom { margin-top: auto; padding: 14px 16px 17px; border-top: 1px solid rgba(255,255,255,.12); }
+    .timer-label { color: #9db0d2; font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .timer-display { margin: 3px 0 9px; font-size: 30px; font-variant-numeric: tabular-nums; font-weight: 750; letter-spacing: .03em; }
+    .timer-display.warning { color: #ffd27c; }
+    .timer-controls { display: flex; gap: 7px; }
+    .timer-controls button { flex: 1; padding: 6px 8px; border: 1px solid rgba(255,255,255,.2); border-radius: 7px; background: rgba(255,255,255,.08); color: #fff; font-size: 11px; cursor: pointer; }
+    .timer-controls button:hover { background: rgba(255,255,255,.17); }
+    .timer-hint { margin-top: 7px; color: #9db0d2; font-size: 10px; }
+    .main { flex: 1; overflow-y: auto; min-width: 0; }
+    .mobile-bar { display: none; }
+    .page { display: none; max-width: 1160px; margin: 0 auto; padding: 30px 40px 56px; animation: appear .18s ease-out; }
+    .page.active { display: block; }
+    @keyframes appear { from { opacity: .55; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+    .hero { position: relative; overflow: hidden; padding: 34px 36px; border-radius: 20px; background: linear-gradient(122deg, #244caa 0%, #4980f2 57%, #84aaff 100%); color: #fff; box-shadow: var(--shadow); }
+    .hero::after { content: ""; position: absolute; width: 340px; height: 184px; right: -26px; bottom: -64px; background: url("../../assets/Ifeap/Ifeap_decoration.svg") center / contain no-repeat; opacity: .22; transform: rotate(-5deg); pointer-events: none; }
+    .hero-content { position: relative; z-index: 1; max-width: 760px; }
+    .eyebrow { margin-bottom: 8px; color: #dce7ff; font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .hero h2 { max-width: 700px; margin: 0 0 10px; font-size: clamp(28px, 4vw, 42px); line-height: 1.12; letter-spacing: -.035em; }
+    .hero p { max-width: 650px; margin: 0; color: #e7edff; font-size: 15px; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 21px; }
+    .hero-meta span { padding: 5px 10px; border: 1px solid rgba(255,255,255,.27); border-radius: 99px; background: rgba(255,255,255,.1); font-size: 11px; font-weight: 650; }
+    .hero-logo { position: absolute; z-index: 1; top: 26px; right: 30px; width: 106px; padding: 8px; border-radius: 10px; background: #fff; }
+    .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 18px; margin: 30px 0 14px; }
+    .section-head h3 { margin: 0; font-size: 20px; letter-spacing: -.02em; }
+    .section-head p { margin: 3px 0 0; color: var(--muted); font-size: 12.5px; }
+    .eyebrow-blue { margin-bottom: 5px; color: var(--blue-dark); font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .grid { display: grid; gap: 14px; }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .card { min-width: 0; padding: 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); box-shadow: 0 2px 8px rgba(25,49,94,.025); }
+    .card h3, .card h4 { margin: 0 0 7px; line-height: 1.3; }
+    .card h3 { font-size: 16px; }
+    .card h4 { font-size: 14px; }
+    .card p { margin: 6px 0; color: var(--muted); font-size: 13px; }
+    .card ul, .card ol { margin: 8px 0 0; padding-left: 19px; color: var(--muted); font-size: 12.5px; }
+    .card li + li { margin-top: 4px; }
+    .soft-card { background: var(--blue-pale); border-color: #dce6ff; }
+    .callout { display: flex; gap: 12px; padding: 15px 17px; border: 1px solid #d9e4ff; border-left: 4px solid var(--blue); border-radius: 11px; background: var(--blue-soft); color: #263c69; font-size: 13px; }
+    .callout strong { color: var(--blue-deep); }
+    .callout p { margin: 2px 0 0; }
+    .outcome { display: flex; align-items: flex-start; gap: 10px; }
+    .outcome-mark { width: 25px; height: 25px; flex: 0 0 25px; display: grid; place-items: center; border-radius: 8px; background: var(--blue-soft); color: var(--blue-dark); font-size: 12px; font-weight: 800; }
+    .outcome strong { display: block; font-size: 13px; }
+    .outcome span { color: var(--muted); font-size: 12px; }
+    .timeline { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #fff; }
+    .timeline-row { display: grid; grid-template-columns: 116px minmax(0, 1fr) 78px; gap: 14px; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+    .timeline-row:last-child { border-bottom: 0; }
+    .timeline-row:nth-child(even) { background: #fafbfe; }
+    .timeline-time { color: var(--blue-dark); font-size: 12px; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .timeline-title { font-size: 13px; font-weight: 700; }
+    .timeline-detail { color: var(--muted); font-size: 11.5px; }
+    .duration { justify-self: end; padding: 3px 8px; border-radius: 99px; background: var(--blue-soft); color: var(--blue-dark); font-size: 10px; font-weight: 750; white-space: nowrap; }
+    .page-header { position: relative; overflow: hidden; padding: 26px 30px; border-radius: 18px; background: linear-gradient(115deg, #244caa, #4980f2); color: white; }
+    .page-header::after { content: ""; position: absolute; width: 210px; height: 115px; right: -20px; top: -24px; background: url("../../assets/Ifeap/Ifeap_decoration.svg") center / contain no-repeat; opacity: .18; }
+    .page-header h2 { position: relative; z-index: 1; margin: 0 0 5px; font-size: 26px; line-height: 1.2; }
+    .page-header p { position: relative; z-index: 1; margin: 0; max-width: 720px; color: #e3ebff; font-size: 13px; }
+    .page-header .eyebrow { position: relative; z-index: 1; margin-bottom: 5px; }
+    .work-label { margin: 0 0 7px; color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+    .work-area { width: 100%; min-height: 100px; resize: vertical; padding: 11px 12px; border: 1px solid var(--line); border-radius: 9px; outline: none; background: #fff; color: var(--ink); font-size: 12.5px; line-height: 1.55; transition: border .15s, box-shadow .15s; }
+    .work-area:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(73,128,242,.12); }
+    .work-area::placeholder { color: #9aa6bb; }
+    .field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .field-grid .full { grid-column: 1 / -1; }
+    .checklist { display: grid; gap: 8px; }
+    .checkline { display: flex; align-items: flex-start; gap: 9px; padding: 9px 10px; border: 1px solid var(--line); border-radius: 9px; background: #fff; cursor: pointer; font-size: 12.5px; }
+    .checkline input { margin: 3px 0 0; accent-color: var(--blue); }
+    .checkline:has(input:checked) { border-color: #bfd0ff; background: #f7f9ff; color: #65718a; }
+    .steps { display: grid; gap: 10px; counter-reset: step; }
+    .step-card { position: relative; padding: 15px 15px 15px 52px; border: 1px solid var(--line); border-radius: 11px; background: white; counter-increment: step; }
+    .step-card::before { content: counter(step); position: absolute; left: 15px; top: 15px; width: 25px; height: 25px; display: grid; place-items: center; border-radius: 8px; background: var(--blue-soft); color: var(--blue-dark); font-size: 11px; font-weight: 850; }
+    .step-card h4 { margin: 0 0 4px; font-size: 13px; }
+    .step-card p { margin: 0; color: var(--muted); font-size: 12px; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .tag { padding: 3px 8px; border: 1px solid #dce5fb; border-radius: 99px; background: #f7f9ff; color: #455b85; font-size: 10px; font-weight: 650; }
+    .prompt { overflow: hidden; border: 1px solid var(--line); border-radius: 11px; background: #fff; }
+    .prompt-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 12px; border-bottom: 1px solid var(--line); background: #f8faff; }
+    .prompt-top strong { font-size: 11px; }
+    .copy-btn, .action-btn { padding: 6px 10px; border: 1px solid #cad8fa; border-radius: 7px; background: #fff; color: var(--blue-dark); font-size: 10.5px; font-weight: 750; cursor: pointer; }
+    .copy-btn:hover, .action-btn:hover { background: var(--blue-soft); }
+    .prompt-text { padding: 12px; color: #3e4c66; font: 12px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; white-space: pre-wrap; }
+    .matrix { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .matrix-cell { min-height: 120px; padding: 13px; border: 1px dashed #c8d5f1; border-radius: 10px; background: #fbfcff; }
+    .matrix-cell h4 { margin: 0 0 4px; color: var(--blue-deep); font-size: 12px; }
+    .matrix-cell p { margin: 0; color: var(--muted); font-size: 10.5px; }
+    .pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 9px; border-radius: 99px; background: #eaf7f1; color: #166c51; font-size: 10px; font-weight: 750; }
+    .pill.warn { background: #fff5df; color: #8b6014; }
+    .pill.risk { background: #fff0f1; color: #9f3541; }
+    .notice { padding: 12px 14px; border: 1px solid #f2dba8; border-radius: 10px; background: #fff9eb; color: #765719; font-size: 12px; }
+    .notice strong { color: #6a4d10; }
+    .footer-note { margin-top: 20px; color: #8792a6; font-size: 10px; text-align: center; }
+    .page-download { display: flex; justify-content: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--line); }
+    .download-btn { display: inline-flex; align-items: center; gap: 9px; padding: 11px 17px; border: 0; border-radius: 9px; background: var(--blue-dark); color: white; font-size: 12px; font-weight: 750; cursor: pointer; box-shadow: 0 3px 9px rgba(40,88,199,.2); }
+    .download-btn:hover { background: var(--blue-deep); }
+    .print-footer { display: none; }
+    .print-note-content { display: none; }
+    .toast { position: fixed; right: 20px; bottom: 18px; z-index: 10; padding: 9px 13px; border-radius: 8px; background: #183975; color: white; font-size: 12px; opacity: 0; transform: translateY(6px); pointer-events: none; transition: .2s; }
+    .toast.show { opacity: 1; transform: none; }
+    :focus-visible { outline: 3px solid #91b1ff; outline-offset: 2px; }
+    @media (max-width: 900px) {
+      body { display: block; height: 100dvh; }
+      .sidebar { position: fixed; z-index: 5; inset: 0 auto 0 0; width: 288px; transform: translateX(-100%); transition: transform .2s ease; box-shadow: 8px 0 30px rgba(10,25,55,.2); }
+      .sidebar.open { transform: translateX(0); }
+      .mobile-bar { position: sticky; z-index: 4; top: 0; display: flex; align-items: center; gap: 12px; padding: 10px 15px; border-bottom: 1px solid var(--line); background: rgba(255,255,255,.96); backdrop-filter: blur(10px); }
+      .mobile-bar button { width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--blue-dark); font-size: 18px; cursor: pointer; }
+      .mobile-bar strong { font-size: 12px; }
+      .main { height: 100dvh; }
+      .page { padding: 18px 16px 40px; }
+      .hero { padding: 28px 23px; }
+      .hero-logo { width: 82px; top: 18px; right: 17px; }
+    }
+    @media (max-width: 650px) {
+      .grid.two, .grid.three, .grid.four, .field-grid { grid-template-columns: 1fr; }
+      .field-grid .full { grid-column: auto; }
+      .section-head { align-items: flex-start; flex-direction: column; gap: 8px; }
+      .hero { padding: 25px 20px; }
+      .hero h2 { max-width: 75%; font-size: 29px; }
+      .hero p { font-size: 13px; }
+      .hero-logo { top: 16px; right: 14px; width: 70px; }
+      .timeline-row { grid-template-columns: 78px minmax(0, 1fr); gap: 8px; padding: 10px 11px; }
+      .timeline-row .duration { grid-column: 2; justify-self: start; }
+      .matrix { grid-template-columns: 1fr; }
+      .page-header { padding: 22px 19px; }
+      .page-header h2 { font-size: 23px; max-width: 85%; }
+    }
+    @media print {
+      @page { size: A4; margin: 15mm 14mm; }
+      body { display: block; height: auto; overflow: visible; background: #fff; color: #17233b; font-size: 11pt; }
+      .sidebar, .mobile-bar, .toast, .copy-btn, .page-download, .action-btn { display: none !important; }
+      .main { overflow: visible; }
+      .page { display: none !important; max-width: none; padding: 0; animation: none; }
+      .page.print-active { display: block !important; }
+      .page-header, .hero { margin-bottom: 16px; break-inside: avoid; }
+      .hero, .page-header { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .grid, .grid.two, .grid.three, .grid.four, .field-grid, .matrix { grid-template-columns: minmax(0, 1fr) !important; }
+      .timeline-row { grid-template-columns: minmax(0, 1fr); gap: 3px; break-inside: avoid; }
+      .timeline-row .duration { justify-self: start; }
+      .timeline { overflow: visible; }
+      .card, .timeline, .timeline-row, .prompt, .step-card, .matrix-cell, .notice, .callout, .field-grid > label { break-inside: avoid; page-break-inside: avoid; }
+      .work-area { display: none !important; }
+      .print-note-content { display: block; min-height: 62px; padding: 10px 12px; border: 1px solid #cbd3e1; border-radius: 8px; background: #fff !important; color: #17233b; font-size: 10pt; line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere; word-break: break-word; break-inside: avoid; page-break-inside: avoid; }
+      .checkline { break-inside: avoid; }
+      .print-footer { display: flex; justify-content: space-between; gap: 15px; margin-top: 20px; padding-top: 8px; border-top: 1px solid #dce2ec; color: #66728a; font-size: 8pt; }
+      .print-footer img { width: 65px; height: auto; object-fit: contain; }
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <img src="../../assets/Ifeap/Ifeap_logo.svg" alt="Logo IFEAP">
+      <div class="brand-kicker">Espace de formation · 2026</div>
+      <h1>Accompagner les élèves à l’ère de l’IA</h1>
+      <p>RACINE Bretagne · journée de formation</p>
+    </div>
+    <nav class="nav" aria-label="Navigation de la formation">
+      <div class="nav-label">Parcours de la journée</div>
+      <button class="active" data-page="accueil"><span class="nav-num">⌂</span><span>Accueil &amp; programme</span></button>
+      <button data-page="lancement"><span class="nav-num">01</span><span>Accueil &amp; mur des post-it</span><span class="nav-time">35 min</span></button>
+      <button data-page="usages"><span class="nav-num">02</span><span>Usages des élèves</span><span class="nav-time">45 min</span></button>
+      <button data-page="cadres"><span class="nav-num">03</span><span>Enjeux &amp; cadre d’usage</span><span class="nav-time">45 min</span></button>
+      <button data-page="accompagner"><span class="nav-num">04</span><span>Apprendre, chercher, produire</span><span class="nav-time">1 h 15</span></button>
+      <button data-page="evaluer"><span class="nav-num">05</span><span>Évaluer à l’ère de l’IA</span><span class="nav-time">55 min</span></button>
+      <button data-page="scenario"><span class="nav-num">06</span><span>Concevoir une activité</span><span class="nav-time">50 min</span></button>
+      <button data-page="charte"><span class="nav-num">07</span><span>Faire évoluer la charte</span><span class="nav-time">40 min</span></button>
+      <button data-page="bilan"><span class="nav-num">08</span><span>Bilan &amp; transfert</span><span class="nav-time">15 min</span></button>
+      <div class="nav-label">Vos outils</div>
+      <button data-page="notes"><span class="nav-num">✎</span><span>Notes &amp; ressources à vérifier</span></button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="timer-label">Chronomètre de l’atelier</div>
+      <div class="timer-display" id="timerDisplay" aria-live="off">00:00</div>
+      <div class="timer-controls">
+        <button type="button" id="timerToggle">Démarrer</button>
+        <button type="button" id="timerReset">Réinitialiser</button>
+      </div>
+      <div class="timer-hint">Choisissez une durée dans l’atelier.</div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="mobile-bar"><button type="button" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button><strong>RACINE Bretagne · Formation IA</strong></div>
+    <section class="page active" id="page-accueil">
+      <header class="hero">
+        <img class="hero-logo" src="../../assets/Ifeap/Ifeap_logo.svg" alt="IFEAP">
+        <div class="hero-content">
+          <div class="eyebrow">RACINE Bretagne · formation adultes · 2026</div>
+          <h2>Accompagner les élèves à l’ère de l’intelligence artificielle</h2>
+          <p>Comprendre les usages, développer le discernement et construire des repères pédagogiques concrets avec les élèves.</p>
+          <div class="hero-meta"><span>09 h 30 — 17 h 00</span><span>6 h 30 de formation</span><span>Un fil rouge : la charte d’usage</span></div>
+        </div>
+      </header>
+      <div class="section-head"><div><div class="eyebrow-blue">Cap sur la journée</div><h3>À la fin de la formation, vous aurez…</h3></div></div>
+      <div class="grid three">
+        <article class="card outcome"><span class="outcome-mark">01</span><div><strong>Mis les usages en perspective</strong><span>Différencier les usages qui soutiennent l’apprentissage de ceux qui délèguent la réflexion.</span></div></article>
+        <article class="card outcome"><span class="outcome-mark">02</span><div><strong>Outillé votre accompagnement</strong><span>Faire vérifier, questionner et utiliser l’IA de façon transparente et adaptée.</span></div></article>
+        <article class="card outcome"><span class="outcome-mark">03</span><div><strong>Produit des repères transférables</strong><span>Un scénario pédagogique et des règles de charte contextualisées.</span></div></article>
+      </div>
+      <div class="section-head"><div><div class="eyebrow-blue">Déroulé</div><h3>Le parcours de la journée</h3></div><span class="pill">Fil rouge · la charte d’usage des élèves</span></div>
+      <div class="timeline">
+        <div class="timeline-row"><div class="timeline-time">09:30–10:05</div><div><div class="timeline-title">Accueil, représentations et lancement</div><div class="timeline-detail">Mur des post-it · objectifs · première lecture de la charte</div></div><span class="duration">35 min</span></div>
+        <div class="timeline-row"><div class="timeline-time">10:05–10:50</div><div><div class="timeline-title">Les usages actuels de l’IA chez les élèves</div><div class="timeline-detail">Expérimenter, comparer et cartographier les usages</div></div><span class="duration">45 min</span></div>
+        <div class="timeline-row"><div class="timeline-time">10:50–11:00</div><div><div class="timeline-title">Pause</div></div><span class="duration">10 min</span></div>
+        <div class="timeline-row"><div class="timeline-time">11:00–11:45</div><div><div class="timeline-title">Enjeux éthiques, réglementaires et pédagogiques</div><div class="timeline-detail">Études de cas · repères à vérifier avant la session</div></div><span class="duration">45 min</span></div>
+        <div class="timeline-row"><div class="timeline-time">11:45–13:00</div><div><div class="timeline-title">Esprit critique et accompagnement des élèves</div><div class="timeline-detail">Vérifier les réponses · apprendre, rechercher, produire</div></div><span class="duration">1 h 15</span></div>
+        <div class="timeline-row"><div class="timeline-time">13:00–14:00</div><div><div class="timeline-title">Pause déjeuner</div></div><span class="duration">1 h</span></div>
+        <div class="timeline-row"><div class="timeline-time">14:00–14:55</div><div><div class="timeline-title">Comment évaluer à l’ère de l’IA ?</div><div class="timeline-detail">Traces, processus, oral, justification et posture face au doute</div></div><span class="duration">55 min</span></div>
+        <div class="timeline-row"><div class="timeline-time">15:05–15:55</div><div><div class="timeline-title">Concevoir une activité pédagogique intégrant l’IA</div><div class="timeline-detail">Fiche-scénario · retours des pairs</div></div><span class="duration">50 min</span></div>
+        <div class="timeline-row"><div class="timeline-time">15:55–16:35</div><div><div class="timeline-title">Faire évoluer la charte d’usage</div><div class="timeline-detail">Prioriser, réécrire, préparer le transfert en classe</div></div><span class="duration">40 min</span></div>
+        <div class="timeline-row"><div class="timeline-time">16:35–17:00</div><div><div class="timeline-title">Bilan, mutualisation et engagement</div><div class="timeline-detail">Autoévaluation · satisfaction · action à 15 jours</div></div><span class="duration">25 min*</span></div>
+      </div>
+      <div class="notice" style="margin-top:14px"><strong>Repère de programme :</strong> le créneau 16 h 35–17 h 00 représente 25 min, même si le programme indique 15 min. L’horaire de l’atelier d’évaluation (14 h 00–15 h 05) représente 1 h 05, alors que le titre indique 55 min ; à confirmer avec l’équipe.</div>
+      <div class="section-head"><div><div class="eyebrow-blue">Mode d’emploi</div><h3>Un espace de travail partagé</h3></div></div>
+      <div class="grid two">
+        <article class="card"><h4>Dans les ateliers</h4><p>Suivez les étapes, utilisez les questions-guides et renseignez les zones de travail. Les notes restent enregistrées dans ce navigateur.</p></article>
+        <article class="card"><h4>Pour le formateur</h4><p>Le chronomètre se règle depuis chaque atelier. Les ressources réglementaires et les exemples de charte sont à sélectionner et à vérifier avant la session.</p></article>
+      </div>
+    </section>
+
+    <section class="page" id="page-lancement">
+      <header class="page-header"><div class="eyebrow">09 h 30 — 10 h 05 · 35 min</div><h2>Accueil &amp; mur des post-it</h2><p>Faire émerger les expériences et projets du groupe sans imposer de prise de parole individuelle.</p></header>
+      <div class="section-head"><div><div class="eyebrow-blue">Déroulé de l’activité</div><h3>Du vécu au fil rouge de la journée</h3></div><button class="action-btn set-timer" data-minutes="15">Régler le chrono · 15 min</button></div>
+      <div class="grid two">
+        <div class="steps">
+          <article class="step-card"><h4>Écriture individuelle · 15 min</h4><p>Une idée par post-it, autant que souhaité. Pas de prise de parole obligatoire.</p><div class="tag-row"><span class="pill">Expérience positive</span><span class="pill risk">Expérience problématique</span><span class="pill warn">Projet envisagé</span></div></article>
+          <article class="step-card"><h4>Regroupement collectif · 10 min</h4><p>Avec des volontaires, regrouper les contributions : devoirs, recherche, aide, données, temps enseignant…</p></article>
+          <article class="step-card"><h4>Objectifs et charte · 10 min</h4><p>Présenter le programme et la charte retenue. Première question : les situations du mur sont-elles prises en compte ?</p></article>
+        </div>
+        <article class="card"><h3>Mur des post-it · trace du groupe</h3><p>Notez ici les thèmes qui émergent pour les garder visibles pendant la formation.</p><div class="field-grid">
+          <label><div class="work-label">Usages qui aident</div><textarea class="work-area" data-save="mur-positif" placeholder="Ex. reformulation, entraînement, idées de départ…"></textarea></label>
+          <label><div class="work-label">Difficultés et inquiétudes</div><textarea class="work-area" data-save="mur-difficulte" placeholder="Ex. devoirs, fiabilité, données personnelles…"></textarea></label>
+          <label class="full"><div class="work-label">Projets envisagés et questions à reprendre</div><textarea class="work-area" data-save="mur-projets" placeholder="Qu’aimeriez-vous tester ou éclaircir aujourd’hui ?"></textarea></label>
+        </div></article>
+      </div>
+      <div class="section-head"><div><div class="eyebrow-blue">Positionnement de départ</div><h3>Avant la journée, où en suis-je ?</h3></div></div>
+      <div class="grid two"><article class="card"><h4>Je me sens capable de…</h4><div class="checklist"><label class="checkline"><input type="checkbox" data-save="pos-depart-1"> Discuter avec les élèves de leurs usages de l’IA.</label><label class="checkline"><input type="checkbox" data-save="pos-depart-2"> Aider un élève à vérifier une réponse générée.</label><label class="checkline"><input type="checkbox" data-save="pos-depart-3"> Donner un cadre clair à l’usage de l’IA dans une activité.</label></div></article><article class="card soft-card"><h4>Question d’ouverture</h4><p>Quelle situation réelle aimerais-je être mieux équipé·e pour accompagner ?</p><textarea class="work-area" data-save="question-ouverture" placeholder="Décrire une situation, sans donnée personnelle identifiable…"></textarea></article></div>
+    </section>
+
+    <section class="page" id="page-usages">
+      <header class="page-header"><div class="eyebrow">10 h 05 — 10 h 50 · 45 min</div><h2>Les usages actuels de l’IA chez les élèves</h2><p>Comparer un usage de délégation et un usage qui soutient réellement l’apprentissage.</p></header>
+      <div class="section-head"><div><div class="eyebrow-blue">Atelier en petits groupes</div><h3>Dans la peau d’un élève</h3></div><button class="action-btn set-timer" data-minutes="20">Régler le chrono · 20 min</button></div>
+      <div class="grid two">
+        <article class="card"><h3>Choisissez une tâche réelle</h3><p>Dissertation · exercice de mathématiques · exposé · traduction. Faites-la deux fois, en explicitant les choix.</p><div class="steps" style="margin-top:14px"><div class="step-card"><h4>Élève pressé</h4><p>Demande une production finale, la reprend sans la questionner. Où se situe la réflexion ?</p></div><div class="step-card"><h4>Élève qui cherche à apprendre</h4><p>Demande des explications, des pistes et un retour ; garde la main sur les décisions.</p></div></div></article>
+        <article class="card"><h3>Comparez les démarches</h3><div class="field-grid">
+          <label><div class="work-label">Tâche choisie</div><textarea class="work-area" data-save="usage-tache" placeholder="Discipline, niveau, consigne…"></textarea></label>
+          <label><div class="work-label">Ce que l’IA a fait</div><textarea class="work-area" data-save="usage-ia" placeholder="Réponse obtenue, aide ou délégation…"></textarea></label>
+          <label><div class="work-label">Ce que l’élève a appris</div><textarea class="work-area" data-save="usage-appris" placeholder="Quelles connaissances ou stratégies ?"></textarea></label>
+          <label><div class="work-label">Ce qui reste à vérifier</div><textarea class="work-area" data-save="usage-verifier" placeholder="Exactitude, compréhension, sources…"></textarea></label>
+        </div></article>
+      </div>
+      <div class="section-head"><div><div class="eyebrow-blue">Cartographie</div><h3>Fréquence des usages × bénéfice pour l’apprentissage</h3></div><button class="action-btn set-timer" data-minutes="15">Régler le chrono · 15 min</button></div>
+      <div class="matrix">
+        <div class="matrix-cell"><h4>Fréquent · bénéfice élevé</h4><p>Leviers à consolider : expliquer, s’entraîner, demander un indice.</p><textarea class="work-area" data-save="matrice-levier" placeholder="Exemples du groupe…" style="margin-top:10px;min-height:64px"></textarea></div>
+        <div class="matrix-cell"><h4>Fréquent · bénéfice faible</h4><p>Usages à questionner : produire à la place de l’élève, copier sans comprendre.</p><textarea class="work-area" data-save="matrice-bequille" placeholder="Exemples du groupe…" style="margin-top:10px;min-height:64px"></textarea></div>
+        <div class="matrix-cell"><h4>Peu fréquent · bénéfice élevé</h4><p>Pistes à expérimenter et à rendre accessibles.</p><textarea class="work-area" data-save="matrice-piste" placeholder="Exemples du groupe…" style="margin-top:10px;min-height:64px"></textarea></div>
+        <div class="matrix-cell"><h4>Peu fréquent · bénéfice faible</h4><p>Usages à surveiller ou à éviter selon l’objectif pédagogique.</p><textarea class="work-area" data-save="matrice-risque" placeholder="Exemples du groupe…" style="margin-top:10px;min-height:64px"></textarea></div>
+      </div>
+      <div class="section-head"><div><div class="eyebrow-blue">Mise en perspective</div><h3>Trois repères à faire expliciter</h3></div></div>
+      <div class="grid three"><article class="card"><h4>Probabiliste</h4><p>Une IA générative produit une suite plausible ; elle ne garantit pas la vérité des réponses.</p></article><article class="card"><h4>Hallucinations</h4><p>Elle peut inventer des faits, des citations et des sources avec une formulation assurée.</p></article><article class="card"><h4>Biais</h4><p>Ses productions peuvent refléter des biais, des angles morts ou des représentations dominantes.</p></article></div>
+      <div class="callout" style="margin-top:14px"><div><strong>Retour à la charte</strong><p>La charte distingue-t-elle l’aide qui fait apprendre de la délégation de la réflexion ? Notez une question à y intégrer.</p><textarea class="work-area" data-save="usage-charte" placeholder="Question ou annotation à reporter sur la charte…" style="margin-top:8px;background:#fff"></textarea></div></div>
+    </section>
+
+    <section class="page" id="page-cadres">
+      <header class="page-header"><div class="eyebrow">11 h 00 — 11 h 45 · 45 min</div><h2>Enjeux éthiques, réglementaires et pédagogiques</h2><p>Analyser une situation et repérer ce qui doit être protégé, vérifié ou clarifié dans le cadre de l’établissement.</p></header>
+      <div class="section-head"><div><div class="eyebrow-blue">Repères à préparer en amont</div><h3>Un cadre évolutif : vérifier les versions en vigueur</h3></div><button class="action-btn set-timer" data-minutes="20">Régler le chrono · 20 min</button></div>
+      <div class="grid two">
+        <article class="card"><h3>Cadre réglementaire et institutionnel</h3><div class="checklist"><label class="checkline"><input type="checkbox" data-save="cadre-rgpd"> RGPD et protection des données personnelles des élèves.</label><label class="checkline"><input type="checkbox" data-save="cadre-age"> Conditions d’âge applicables aux outils utilisés.</label><label class="checkline"><input type="checkbox" data-save="cadre-act"> AI Act européen : points pertinents pour la situation éducative.</label><label class="checkline"><input type="checkbox" data-save="cadre-ministere"> Cadre d’usage de l’IA en éducation publié par le ministère.</label><label class="checkline"><input type="checkbox" data-save="cadre-local"> Règles et ressources de l’établissement.</label></div><p>À compléter par des références vérifiées et datées, adaptées au contexte de la formation.</p></article>
+        <article class="card"><h3>Enjeux à mettre en débat</h3><div class="tag-row"><span class="tag">Biais</span><span class="tag">Équité d’accès</span><span class="tag">Impact environnemental</span><span class="tag">Propriété intellectuelle</span><span class="tag">Dépendance cognitive</span><span class="tag">Intégrité du travail</span><span class="tag">Rôle de l’enseignant</span></div><p style="margin-top:13px">Pour chaque enjeu : qui est concerné ? Quel dommage est possible ? Quel choix pédagogique permet de le prévenir ?</p><textarea class="work-area" data-save="enjeux-debat" placeholder="Enjeux prioritaires pour notre contexte…"></textarea></article>
+      </div>
+      <div class="section-head"><div><div class="eyebrow-blue">Études de cas · 25 min</div><h3>Partir d’une situation, décider ensemble</h3></div><button class="action-btn set-timer" data-minutes="25">Régler le chrono · 25 min</button></div>
+      <div class="grid two">
+        <article class="card"><span class="pill warn">Cas 1 · dialogue avec une famille</span><h4 style="margin-top:10px">« Un parent refuse que son enfant utilise l’IA. »</h4><p>Clarifier le contexte, l’objectif d’apprentissage et les marges de choix. Comment informer et préserver l’équité ?</p><textarea class="work-area" data-save="cas-parent" placeholder="Questions à poser · options possibles · points de vigilance…"></textarea></article>
+        <article class="card"><span class="pill risk">Cas 2 · données personnelles</span><h4 style="margin-top:10px">« Un élève saisit des informations personnelles sur un camarade. »</h4><p>Que faut-il faire immédiatement ? Qui prévenir selon les procédures locales ? Comment accompagner sans exposer davantage l’élève concerné ?</p><textarea class="work-area" data-save="cas-donnees" placeholder="Mesures immédiates · relais à mobiliser · apprentissages à construire…"></textarea></article>
+      </div>
+      <div class="callout" style="margin-top:14px"><div><strong>Point charte</strong><p>Les règles abordent-elles les données personnelles, l’âge, l’équité et les interlocuteurs en cas de difficulté ?</p><textarea class="work-area" data-save="cadre-charte" placeholder="Annotations à reporter…" style="margin-top:8px;background:#fff"></textarea></div></div>
+    </section>
+
+    <section class="page" id="page-accompagner">
+      <header class="page-header"><div class="eyebrow">11 h 45 — 13 h 00 · 1 h 15</div><h2>Développer l’esprit critique et accompagner les élèves</h2><p>Expérimenter une méthode de vérification et des usages de l’IA au service d’un apprentissage explicite.</p></header>
+      <div class="section-head"><div><div class="eyebrow-blue">Partie A · en binômes · 40 min</div><h3>Mettre l’IA à l’épreuve, puis vérifier</h3></div><button class="action-btn set-timer" data-minutes="40">Régler le chrono · 40 min</button></div>
+      <div class="grid two">
+        <article class="card"><h3>Choisissez une question qui résiste</h3><p>Sujet pointu · actualité récente · calcul · références bibliographiques · sujet sensible. Croisez ensuite la réponse avec des sources fiables.</p><div class="prompt" style="margin-top:13px"><div class="prompt-top"><strong>Grille · Vérifier, croiser, questionner</strong></div><div class="prompt-text">VÉRIFIER — La réponse répond-elle à la question ? Les faits, calculs et références existent-ils ?
+CROISER — Que disent d’autres sources fiables et indépendantes ? La date et le contexte sont-ils pertinents ?
+QUESTIONNER — Quels biais, omissions ou présupposés repérer ? Le ton paraît-il plus assuré que les preuves ?
+DÉCIDER — Qu’est-ce que je peux retenir, reformuler ou écarter ?</div></div></article>
+        <article class="card"><h3>Trace à construire pour les élèves</h3><p>Transformer la démarche en consigne ou en grille utilisable en classe.</p><div class="field-grid">
+          <label><div class="work-label">Notre question-test</div><textarea class="work-area" data-save="critique-question" placeholder="Question soumise à l’IA…"></textarea></label>
+          <label><div class="work-label">Sources croisées</div><textarea class="work-area" data-save="critique-sources" placeholder="Sources consultées et pourquoi elles sont fiables…"></textarea></label>
+          <label class="full"><div class="work-label">Grille adaptée aux élèves</div><textarea class="work-area" data-save="critique-grille" placeholder="3 à 5 questions courtes à se poser avant de réutiliser une réponse…"></textarea></label>
+        </div></article>
+      </div>
+      <div class="section-head"><div><div class="eyebrow-blue">Partie B · démonstrations et essais · 30 min</div><h3>Apprendre, rechercher, produire</h3></div><button class="action-btn set-timer" data-minutes="30">Régler le chrono · 30 min</button></div>
+      <div class="grid three">
+        <article class="card"><span class="pill">Apprendre</span><h3 style="margin-top:10px">Guider sans faire à la place</h3><p>Tuteur socratique, explication pas à pas, quiz d’auto-entraînement. Garder l’élève en activité cognitive.</p><div class="prompt"><div class="prompt-top"><strong>Consigne à tester</strong><button class="copy-btn" type="button">Copier</button></div><div class="prompt-text">Agis comme un tuteur patient. Aide-moi à comprendre [notion] au niveau [classe]. Pose une question à la fois, donne un indice si je bloque, et ne révèle pas la réponse finale. Termine par une question pour vérifier ma compréhension.</div></div></article>
+        <article class="card"><span class="pill warn">Rechercher</span><h3 style="margin-top:10px">Distinguer réponse et source</h3><p>Comprendre les limites d’une IA par rapport à un moteur de recherche ; vérifier les sources citées et leur contenu réel.</p><div class="callout" style="margin-top:12px"><div><strong>À vérifier</strong><p>Une référence fournie par l’IA existe-t-elle ? La source soutient-elle réellement l’affirmation ?</p></div></div></article>
+        <article class="card"><span class="pill">Produire</span><h3 style="margin-top:10px">Rendre l’usage transparent</h3><p>Brainstorming, plan, relecture : nommer ce qui a été délégué, ce qui a été vérifié et ce qui relève de l’élève.</p><div class="prompt"><div class="prompt-top"><strong>Demande structurée</strong><button class="copy-btn" type="button">Copier</button></div><div class="prompt-text">Rôle : [rôle utile]
+Contexte : [niveau, discipline, objectif]
+Consigne : [tâche précise et limites]
+Format attendu : [forme, longueur, critères]
+Ne fais pas à ma place : [étape que l’élève doit réaliser].</div></div></article>
+      </div>
+      <div class="section-head"><div><div class="eyebrow-blue">Échelle d’usage</div><h3>Rendre explicite la place de l’IA dans une tâche</h3></div></div>
+      <div class="grid four"><article class="card"><span class="tag">Niveau 0</span><h4 style="margin-top:8px">Sans IA</h4><p>Travail réalisé sans outil d’IA.</p></article><article class="card"><span class="tag">Niveau 1</span><h4 style="margin-top:8px">IA en appui</h4><p>Aide limitée ; l’élève garde la conduite du travail.</p></article><article class="card"><span class="tag">Niveau 2</span><h4 style="margin-top:8px">IA autorisée et déclarée</h4><p>Usages cadrés, vérifiés et explicités.</p></article><article class="card"><span class="tag">Niveau 3</span><h4 style="margin-top:8px">IA intégrée à la tâche</h4><p>Étude critique ou production avec l’IA au cœur de l’activité.</p></article></div>
+      <div class="callout" style="margin-top:14px"><div><strong>Point charte</strong><p>La charte encourage-t-elle la vérification ? Précise-t-elle comment déclarer l’usage de l’IA ?</p><textarea class="work-area" data-save="accompagner-charte" placeholder="Proposition de formulation…" style="margin-top:8px;background:#fff"></textarea></div></div>
+    </section>
+
+    <section class="page" id="page-evaluer">
+      <header class="page-header"><div class="eyebrow">14 h 00 — 14 h 55 · durée à confirmer</div><h2>Comment évaluer à l’ère de l’IA ?</h2><p>Déplacer le regard du seul produit final vers les démarches, les choix et les apprentissages observables.</p></header>
+      <div class="section-head"><div><div class="eyebrow-blue">Apports et échanges</div><h3>Rendre l’apprentissage visible</h3></div><button class="action-btn set-timer" data-minutes="25">Régler le chrono · 25 min</button></div>
+      <div class="grid two">
+        <article class="card"><h3>Questions pour analyser une évaluation</h3><div class="checklist"><label class="checkline"><input type="checkbox" data-save="eval-q1"> La tâche permet-elle d’observer le raisonnement et les choix de l’élève ?</label><label class="checkline"><input type="checkbox" data-save="eval-q2"> Une partie du travail peut-elle se faire en classe ou à l’oral ?</label><label class="checkline"><input type="checkbox" data-save="eval-q3"> Les critères et les usages autorisés sont-ils explicites ?</label><label class="checkline"><input type="checkbox" data-save="eval-q4"> L’élève doit-il justifier, vérifier ou critiquer une production ?</label></div></article>
+        <article class="card"><h3>Pistes d’adaptation</h3><ul><li>Évaluer le processus : brouillons, traces et journal de bord.</li><li>Intégrer une production en classe ou un échange oral.</li><li>Demander une justification des choix effectués.</li><li>Prévoir une déclaration de l’usage de l’IA.</li><li>Évaluer la capacité à analyser une production générée.</li></ul></article>
+      </div>
+      <div class="notice" style="margin-top:14px"><strong>Vigilance :</strong> les détecteurs d’IA ne sont pas fiables et ne constituent pas une preuve de fraude. En cas de doute, privilégier un échange éducatif, l’examen des traces disponibles et les procédures de l’établissement.</div>
+      <div class="section-head"><div><div class="eyebrow-blue">Transfert dans sa pratique</div><h3>Repenser une évaluation existante</h3></div><button class="action-btn set-timer" data-minutes="30">Régler le chrono · 30 min</button></div>
+      <article class="card"><div class="field-grid">
+        <label><div class="work-label">Tâche ou évaluation choisie</div><textarea class="work-area" data-save="eval-tache" placeholder="Contexte, discipline, niveau, compétence visée…"></textarea></label>
+        <label><div class="work-label">Ce que l’IA rend vulnérable</div><textarea class="work-area" data-save="eval-vulnerable" placeholder="Quelle partie peut être déléguée ? Qu’est-ce qui ne devient plus observable ?"></textarea></label>
+        <label><div class="work-label">Traces ou moments à ajouter</div><textarea class="work-area" data-save="eval-traces" placeholder="Brouillon, oral, justification, étapes en classe…"></textarea></label>
+        <label><div class="work-label">Ce que l’élève devra déclarer</div><textarea class="work-area" data-save="eval-declaration" placeholder="Outil, étapes, apports, vérifications…"></textarea></label>
+        <label class="full"><div class="work-label">Posture face à une suspicion</div><textarea class="work-area" data-save="eval-posture" placeholder="Comment garder le dialogue, s’appuyer sur des éléments vérifiables et appliquer le cadre local ?"></textarea></label>
+      </div></article>
+      <div class="callout" style="margin-top:14px"><div><strong>Point charte</strong><p>Les élèves savent-ils ce qui sera évalué, ce qui est autorisé et comment déclarer leur usage ?</p><textarea class="work-area" data-save="eval-charte" placeholder="Annotation pour la charte…" style="margin-top:8px;background:#fff"></textarea></div></div>
+    </section>
+
+    <section class="page" id="page-scenario">
+      <header class="page-header"><div class="eyebrow">15 h 05 — 15 h 55 · 50 min</div><h2>Concevoir une activité pédagogique intégrant l’IA</h2><p>Produire un scénario utilisable en classe, avec des règles, un rôle enseignant et une évaluation cohérents.</p></header>
+      <div class="section-head"><div><div class="eyebrow-blue">Production de groupe</div><h3>Fiche-scénario à compléter</h3></div><button class="action-btn set-timer" data-minutes="35">Régler le chrono · 35 min</button></div>
+      <article class="card"><div class="field-grid">
+        <label><div class="work-label">Titre · discipline · niveau</div><textarea class="work-area" data-save="sc-titre" placeholder="Titre de l’activité, discipline, niveau ou classe…"></textarea></label>
+        <label><div class="work-label">Objectifs d’apprentissage</div><textarea class="work-area" data-save="sc-objectifs" placeholder="Ce que l’élève devra savoir ou savoir faire…"></textarea></label>
+        <label><div class="work-label">Tâche et consigne élève</div><textarea class="work-area" data-save="sc-consigne" placeholder="Décrire la tâche et les étapes attendues…"></textarea></label>
+        <label><div class="work-label">Place de l’IA · niveau autorisé</div><textarea class="work-area" data-save="sc-niveau" placeholder="Sans IA, en appui, déclarée ou intégrée ? À quelles étapes ?"></textarea></label>
+        <label><div class="work-label">Rôle de l’enseignant</div><textarea class="work-area" data-save="sc-enseignant" placeholder="Étayer, questionner, observer, valider…"></textarea></label>
+        <label><div class="work-label">Évaluation et traces</div><textarea class="work-area" data-save="sc-evaluation" placeholder="Critères, processus, oral, vérification, déclaration…"></textarea></label>
+        <label class="full"><div class="work-label">Points de vigilance et adaptations</div><textarea class="work-area" data-save="sc-vigilance" placeholder="Données, accès, biais, niveau, accessibilité, alternative sans IA…"></textarea></label>
+      </div></article>
+      <div class="section-head"><div><div class="eyebrow-blue">Pistes d’activité</div><h3>Des formats à adapter à votre contexte</h3></div><button class="action-btn set-timer" data-minutes="15">Régler le chrono · 15 min</button></div>
+      <div class="grid two"><article class="card"><h4>Analyser et confronter</h4><ul><li>Corriger une production générée par l’IA.</li><li>Comparer plusieurs réponses et repérer leurs limites.</li><li>Vérifier une interview simulée à partir de sources.</li><li>Construire un débat argumenté face à une réponse d’IA.</li></ul></article><article class="card"><h4>Présenter et améliorer</h4><p>Chaque groupe présente son activité en deux minutes, puis reçoit un retour des pairs.</p><div class="work-label" style="margin-top:12px">Retour des pairs · une force, une question, une piste</div><textarea class="work-area" data-save="sc-retours" placeholder="Notes des retours…"></textarea></article></div>
+      <div class="callout" style="margin-top:14px"><div><strong>Critère de réussite</strong><p>Le scénario précise ce que l’élève apprend, ce que l’IA fait (ou ne fait pas) et comment l’apprentissage sera observé.</p></div></div>
+    </section>
+
+    <section class="page" id="page-charte">
+      <header class="page-header"><div class="eyebrow">15 h 55 — 16 h 35 · 40 min</div><h2>Faire évoluer la charte d’usage de l’IA</h2><p>Aboutir à des règles lisibles et contextualisées, puis préparer leur appropriation avec les élèves.</p></header>
+      <div class="section-head"><div><div class="eyebrow-blue">Aboutissement du fil rouge</div><h3>Relire, prioriser, réécrire</h3></div><button class="action-btn set-timer" data-minutes="10">Régler le chrono · 10 min</button></div>
+      <div class="steps">
+        <article class="step-card"><h4>Synthèse des annotations · 10 min</h4><p>Relire les situations du mur et les annotations de la journée. Identifier les modifications prioritaires.</p></article>
+        <article class="step-card"><h4>Réécriture en groupes · 20 min</h4><p>Adapter les règles au niveau, à la discipline et au contexte de l’établissement.</p></article>
+        <article class="step-card"><h4>Transfert en classe · 10 min</h4><p>Préparer comment co-construire la charte avec les élèves et comment vérifier qu’elle répond aux situations initiales.</p></article>
+      </div>
+      <div class="section-head"><div><div class="eyebrow-blue">Brouillon de charte</div><h3>Des principes aux consignes concrètes</h3></div><button class="action-btn set-timer" data-minutes="20">Régler le chrono · 20 min</button></div>
+      <article class="card"><div class="field-grid">
+        <label><div class="work-label">Autorisé · encadré · interdit</div><textarea class="work-area" data-save="ch-autorise" placeholder="Quels usages sont possibles et à quelles conditions ?"></textarea></label>
+        <label><div class="work-label">Déclaration de l’usage</div><textarea class="work-area" data-save="ch-declaration" placeholder="Que doit indiquer l’élève : outil, usage, étapes, vérifications ?"></textarea></label>
+        <label><div class="work-label">Vérification de l’information</div><textarea class="work-area" data-save="ch-verification" placeholder="Sources, recoupement, exactitude, biais…"></textarea></label>
+        <label><div class="work-label">Données et vie privée</div><textarea class="work-area" data-save="ch-donnees" placeholder="Quelles données ne jamais saisir ? Quelle conduite en cas d’incident ?"></textarea></label>
+        <label><div class="work-label">Intégrité et évaluation</div><textarea class="work-area" data-save="ch-integrite" placeholder="Ce qui est attendu, évalué et attribuable à l’élève…"></textarea></label>
+        <label><div class="work-label">Conséquences et accompagnement</div><textarea class="work-area" data-save="ch-consequences" placeholder="Réponse éducative et règles de l’établissement…"></textarea></label>
+        <label class="full"><div class="work-label">Consigne ou pictogramme pour un sujet d’évaluation</div><textarea class="work-area" data-save="ch-picto" placeholder="Ex. Niveau 1 — IA autorisée pour reformuler la consigne, pas pour rédiger la réponse. Déclarer l’usage en fin de copie."></textarea></label>
+      </div></article>
+      <div class="section-head"><div><div class="eyebrow-blue">Test de cohérence</div><h3>La charte répond-elle aux besoins repérés ?</h3></div></div>
+      <div class="grid two"><article class="card"><h4>Checklist de relecture</h4><div class="checklist"><label class="checkline"><input type="checkbox" data-save="ch-test-usages"> Les usages d’aide et de délégation sont distingués.</label><label class="checkline"><input type="checkbox" data-save="ch-test-niveaux"> Les consignes sont compréhensibles et adaptées au niveau.</label><label class="checkline"><input type="checkbox" data-save="ch-test-donnees"> Les données personnelles et conditions d’accès sont abordées.</label><label class="checkline"><input type="checkbox" data-save="ch-test-transparence"> Les attentes de transparence et d’évaluation sont explicites.</label><label class="checkline"><input type="checkbox" data-save="ch-test-co-construire"> Une démarche de co-construction avec les élèves est prévue.</label></div></article><article class="card soft-card"><h4>Retour au mur des post-it</h4><p>Quelle situation du matin est désormais mieux prise en compte ? Qu’est-ce qui reste à discuter dans l’établissement ?</p><textarea class="work-area" data-save="ch-retour-mur" placeholder="Situation · réponse apportée · point restant à traiter…"></textarea></article></div>
+    </section>
+
+    <section class="page" id="page-bilan">
+      <header class="page-header"><div class="eyebrow">16 h 35 — 17 h 00 · durée à confirmer</div><h2>Bilan, mutualisation et engagement</h2><p>Relier les productions de la journée à une première action réalisable dans les 15 prochains jours.</p></header>
+      <div class="section-head"><div><div class="eyebrow-blue">Clôture</div><h3>Ce que j’emporte et ce que je vais essayer</h3></div></div>
+      <div class="grid two">
+        <article class="card"><h3>Autoévaluation finale</h3><p>Comparez avec votre positionnement de départ : qu’est-ce qui a évolué ?</p><div class="checklist"><label class="checkline"><input type="checkbox" data-save="fin-1"> Je peux dialoguer avec les élèves sur leurs usages et leurs objectifs.</label><label class="checkline"><input type="checkbox" data-save="fin-2"> Je peux guider une vérification critique des réponses de l’IA.</label><label class="checkline"><input type="checkbox" data-save="fin-3"> Je peux définir des usages autorisés et les rendre explicites.</label><label class="checkline"><input type="checkbox" data-save="fin-4"> Je peux adapter une évaluation pour rendre le processus visible.</label></div></article>
+        <article class="card"><h3>Mon engagement à 15 jours</h3><p>Choisir une action modeste, observable et datée.</p><div class="field-grid"><label class="full"><div class="work-label">Ce que je mettrai en place</div><textarea class="work-area" data-save="engagement-action" placeholder="Action concrète…"></textarea></label><label><div class="work-label">Avec qui / pour qui ?</div><textarea class="work-area" data-save="engagement-public" placeholder="Classe, collègues, équipe…"></textarea></label><label><div class="work-label">Quand ?</div><textarea class="work-area" data-save="engagement-date" placeholder="Date ou échéance…"></textarea></label><label class="full"><div class="work-label">Comment saurai-je que cela a été utile ?</div><textarea class="work-area" data-save="engagement-indicateur" placeholder="Indice observable, retour des élèves…"></textarea></label></div></article>
+      </div>
+      <div class="section-head"><div><div class="eyebrow-blue">Mutualisation</div><h3>Productions à partager</h3></div></div>
+      <div class="grid three"><article class="card"><h4>Grille de vérification</h4><p>Questions et critères adaptés aux élèves.</p></article><article class="card"><h4>Scénario pédagogique</h4><p>Activité, place de l’IA, rôle enseignant, évaluation.</p></article><article class="card"><h4>Charte ou consignes</h4><p>Règles contextualisées et pictogrammes d’usage.</p></article></div>
+      <div class="notice" style="margin-top:14px"><strong>À organiser :</strong> choisir un espace partagé conforme aux règles de l’établissement, définir les droits d’accès et éviter d’y déposer des données personnelles d’élèves.</div>
+      <div class="footer-note">IFEAP · RACINE Bretagne · Espace de travail pédagogique</div>
+    </section>
+
+    <section class="page" id="page-notes">
+      <header class="page-header"><div class="eyebrow">Espace personnel · sauvegarde locale</div><h2>Notes &amp; ressources à vérifier</h2><p>Centraliser les idées à reprendre et les références que l’équipe souhaite sélectionner avant la formation.</p></header>
+      <div class="section-head"><div><div class="eyebrow-blue">Prise de notes</div><h3>Mes notes de formation</h3></div></div>
+      <article class="card"><textarea class="work-area" data-save="notes-globales" placeholder="Questions, idées, exemples à reprendre…" style="min-height:240px"></textarea><p>Les champs de cet espace sont enregistrés dans le stockage local du navigateur utilisé. Ils ne sont pas partagés entre participants.</p></article>
+      <div class="section-head"><div><div class="eyebrow-blue">Préparation formateur</div><h3>Ressources à sélectionner et actualiser</h3></div></div>
+      <div class="grid two"><article class="card"><h4>Avant la session</h4><div class="checklist"><label class="checkline"><input type="checkbox" data-save="prep-charte"> Choisir une charte d’établissement ou un exemple publié et vérifier sa version.</label><label class="checkline"><input type="checkbox" data-save="prep-textes"> Vérifier les textes réglementaires et institutionnels en vigueur.</label><label class="checkline"><input type="checkbox" data-save="prep-etudes"> Sélectionner des études récentes sur les usages des élèves et citer les sources.</label><label class="checkline"><input type="checkbox" data-save="prep-outils"> Vérifier les conditions d’âge, de compte et de données des outils de démonstration.</label><label class="checkline"><input type="checkbox" data-save="prep-partage"> Définir un espace de mutualisation adapté et ses règles d’accès.</label></div></article><article class="card"><h4>Références et liens retenus</h4><p>Ajouter ici les ressources réellement vérifiées par l’équipe avant de les présenter.</p><textarea class="work-area" data-save="ressources-liens" placeholder="Titre · organisme / auteur · date de vérification · lien…" style="min-height:170px"></textarea></article></div>
+      <div class="footer-note">Les versions des textes et les conditions des outils évoluent : vérifier avant chaque session.</div>
+    </section>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    const navButtons = Array.from(document.querySelectorAll('.nav button[data-page]'));
+    const pages = Array.from(document.querySelectorAll('.page'));
+    const sidebar = document.getElementById('sidebar');
+    const menuToggle = document.getElementById('menuToggle');
+    const toast = document.getElementById('toast');
+    let toastTimer;
+    let originalTitle = document.title;
+    document.querySelectorAll('.page').forEach(page => {
+      const download = document.createElement('div');
+      download.className = 'page-download';
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'download-btn';
+      button.textContent = 'Télécharger mes notes';
+      button.title = 'Imprimer cette page ou l’enregistrer au format PDF';
+      button.addEventListener('click', () => {
+        const heading = page.querySelector('.page-header h2, .hero h2');
+        originalTitle = document.title;
+        if (heading) document.title = `Notes - ${heading.textContent.trim()}`;
+        preparePrintContent(page);
+        page.classList.add('print-active');
+        window.print();
+      });
+      download.append(button);
+      page.append(download);
+      const footer = document.createElement('div');
+      footer.className = 'print-footer';
+      footer.innerHTML = '<span>IFEAP · RACINE Bretagne · Espace de travail pédagogique</span><img src="../../assets/Ifeap/Ifeap_logo.svg" alt="IFEAP">';
+      page.append(footer);
+    });
+    function preparePrintContent(page) {
+      page.querySelectorAll('.work-area').forEach(field => {
+        let output = field.nextElementSibling;
+        if (!output || !output.classList.contains('print-note-content')) {
+          output = document.createElement('div');
+          output.className = 'print-note-content';
+          field.insertAdjacentElement('afterend', output);
+        }
+        output.textContent = field.value.trim() || ' ';
+      });
+    }
+    window.addEventListener('afterprint', () => {
+      document.querySelectorAll('.page.print-active').forEach(page => page.classList.remove('print-active'));
+      document.querySelectorAll('.print-note-content').forEach(output => output.remove());
+      document.title = originalTitle;
+    });
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.clearTimeout(toastTimer);
+      toastTimer = window.setTimeout(() => toast.classList.remove('show'), 1800);
+    }
+    function showPage(name) {
+      pages.forEach(page => page.classList.toggle('active', page.id === `page-${name}`));
+      navButtons.forEach(button => {
+        const active = button.dataset.page === name;
+        button.classList.toggle('active', active);
+        if (active) button.setAttribute('aria-current', 'page');
+        else button.removeAttribute('aria-current');
+      });
+      sidebar.classList.remove('open');
+      if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+      document.querySelector('.main').scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    navButtons.forEach(button => button.addEventListener('click', () => showPage(button.dataset.page)));
+    if (menuToggle) menuToggle.addEventListener('click', () => {
+      const open = sidebar.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(open));
+    });
+    document.querySelectorAll('[data-save]').forEach(field => {
+      const key = `racine-bretagne:${field.dataset.save}`;
+      try {
+        const saved = localStorage.getItem(key);
+        if (saved !== null) {
+          if (field.type === 'checkbox') field.checked = saved === 'true';
+          else field.value = saved;
+        }
+      } catch (error) {}
+      field.addEventListener(field.type === 'checkbox' ? 'change' : 'input', () => {
+        try { localStorage.setItem(key, field.type === 'checkbox' ? String(field.checked) : field.value); } catch (error) {}
+      });
+    });
+    document.querySelectorAll('.copy-btn').forEach(button => button.addEventListener('click', async () => {
+      const text = button.closest('.prompt').querySelector('.prompt-text').textContent.trim();
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast('Texte copié');
+      } catch (error) {
+        showToast('Copie indisponible dans ce navigateur');
+      }
+    }));
+    let remaining = 0;
+    let interval = null;
+    const timerDisplay = document.getElementById('timerDisplay');
+    const timerToggle = document.getElementById('timerToggle');
+    function renderTimer() {
+      const minutes = Math.floor(remaining / 60);
+      const seconds = remaining % 60;
+      timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+      timerDisplay.classList.toggle('warning', remaining > 0 && remaining <= 60);
+      if (remaining === 0 && interval) {
+        window.clearInterval(interval);
+        interval = null;
+        timerToggle.textContent = 'Démarrer';
+        showToast('Temps écoulé');
+      }
+    }
+    document.querySelectorAll('.set-timer').forEach(button => button.addEventListener('click', () => {
+      if (interval) window.clearInterval(interval);
+      interval = null;
+      remaining = Number(button.dataset.minutes) * 60;
+      timerToggle.textContent = 'Démarrer';
+      renderTimer();
+      showToast(`Chrono réglé · ${button.dataset.minutes} min`);
+    }));
+    timerToggle.addEventListener('click', () => {
+      if (interval) {
+        window.clearInterval(interval);
+        interval = null;
+        timerToggle.textContent = 'Reprendre';
+      } else if (remaining > 0) {
+        interval = window.setInterval(() => { remaining -= 1; renderTimer(); }, 1000);
+        timerToggle.textContent = 'Pause';
+      }
+    });
+    document.getElementById('timerReset').addEventListener('click', () => {
+      if (interval) window.clearInterval(interval);
+      interval = null;
+      remaining = 0;
+      timerToggle.textContent = 'Démarrer';
+      renderTimer();
+    });
+  </script>
+</body>
+</html>

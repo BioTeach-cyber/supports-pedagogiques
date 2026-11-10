@@ -3,12 +3,132 @@
   "activiteId": "activite3",
   "exercices": [
     {
-      "themeId": "",
-      "titre": "",
-      "objectifId": "",
-      "enonce": "",
-      "question": "",
-      "reponse": ""
+      "themeId": "Roller",
+      "titre": "Balade régulière en Roller",
+      "objectifId": "obj1",
+      "enonce": "Emma fait du roller sur une piste plate. Son ami note la distance parcourue par Emma chaque seconde. Seconde 1 : 3 m. Seconde 2 : 3 m. Seconde 3 : 3 m. Seconde 4 : 3 m.",
+      "question": "1. Compare les distances parcourues chaque seconde.\n2. Déduis le type de mouvement d'Emma : uniforme, accéléré ou ralenti.",
+      "reponse": "1. Emma parcourt toujours 3 m chaque seconde. Les distances sont identiques.\n2. La distance parcourue chaque seconde ne change pas. Donc la vitesse reste la même. Le mouvement d'Emma est uniforme (vitesse constante)."
+    },
+    {
+      "themeId": "Vélo",
+      "titre": "Descente rapide à Vélo",
+      "objectifId": "obj1",
+      "enonce": "Voici une règle : si la distance parcourue chaque seconde augmente, le mouvement est accéléré. Léo descend une côte à vélo sans pédaler. Il parcourt 2 m la première seconde, puis 4 m, puis 6 m, puis 8 m.",
+      "question": "Déduis le type de mouvement de Léo. Justifie avec la règle.",
+      "reponse": "La distance parcourue chaque seconde augmente : 2 m, puis 4 m, puis 6 m, puis 8 m. Selon la règle, le mouvement est accéléré. La vitesse de Léo augmente dans la descente."
+    },
+    {
+      "themeId": "Karting",
+      "titre": "Virage serré en Karting",
+      "objectifId": "obj1",
+      "enonce": "Yanis pilote un kart. Il arrive devant un virage serré. On mesure la distance parcourue par son kart chaque seconde : 10 m, puis 8 m, puis 5 m, puis 2 m.",
+      "question": "1. Identifie le type de mouvement du kart.\n2. Propose une explication à ce mouvement.",
+      "reponse": "1. La distance parcourue chaque seconde diminue : 10 m, 8 m, 5 m, 2 m. La vitesse diminue. Le mouvement est ralenti.\n2. Yanis arrive devant un virage serré. L'explication la plus probable : il freine pour ne pas sortir de la piste."
+    },
+    {
+      "themeId": "Athlétisme",
+      "titre": "Les phases du 100 m en Athlétisme",
+      "objectifId": "obj1",
+      "enonce": "Sofia court un 100 m. De 0 à 30 m, sa vitesse augmente. De 30 m à 100 m, sa vitesse reste constante. Après la ligne d'arrivée, sa vitesse diminue jusqu'à l'arrêt.",
+      "question": "Classe chaque phase de la course : mouvement uniforme, accéléré ou ralenti.",
+      "reponse": "De 0 à 30 m : la vitesse augmente, donc le mouvement est accéléré.\nDe 30 m à 100 m : la vitesse est constante, donc le mouvement est uniforme.\nAprès l'arrivée : la vitesse diminue, donc le mouvement est ralenti.\nUne même course peut contenir les trois types de mouvement."
+    },
+    {
+      "themeId": "Mario Kart",
+      "titre": "Le champignon de Mario Kart",
+      "objectifId": "obj1",
+      "enonce": "Dans Mario Kart, le champignon donne un coup de boost au kart. Le kart va alors de plus en plus vite. Dans la vraie vie, Hugo appuie fort sur la pédale d'accélérateur de son scooter.",
+      "question": "1. Nomme le type de mouvement du kart pendant le boost.\n2. Déduis le type de mouvement du scooter d'Hugo. Explique le lien entre les deux.",
+      "reponse": "1. Pendant le boost, le kart va de plus en plus vite. Sa vitesse augmente : le mouvement est accéléré.\n2. Quand Hugo accélère, son scooter va aussi de plus en plus vite. Son mouvement est accéléré. Dans les deux cas, la vitesse augmente : c'est le même type de mouvement."
+    },
+    {
+      "themeId": "Subway Surfers",
+      "titre": "Course sans fin Subway Surfers",
+      "objectifId": "obj1",
+      "enonce": "Dans Subway Surfers, le personnage court sur les rails. Au début, il parcourt 5 m par seconde. Après une minute, il parcourt 8 m par seconde. Après deux minutes, il parcourt 11 m par seconde.",
+      "question": "Identifie le type de mouvement du personnage. Justifie ta réponse avec les nombres.",
+      "reponse": "La distance parcourue chaque seconde augmente : 5 m, puis 8 m, puis 11 m. La vitesse du personnage augmente avec le temps. Son mouvement est donc accéléré. C'est pour cela que le jeu devient plus difficile."
+    },
+    {
+      "themeId": "Flight Simulator",
+      "titre": "Décollage dans Flight Simulator",
+      "objectifId": "obj1",
+      "enonce": "Voici une règle : si la vitesse augmente, le mouvement est accéléré. Si la vitesse diminue, il est ralenti. Dans Flight Simulator, Malik fait décoller un avion. Sa vitesse passe de 0 km/h à 250 km/h sur la piste.",
+      "question": "1. Déduis le type de mouvement de l'avion pendant le décollage.\n2. Déduis le type de mouvement de l'avion pendant l'atterrissage, quand il freine sur la piste.",
+      "reponse": "1. Au décollage, la vitesse passe de 0 km/h à 250 km/h. Elle augmente. D'après la règle, le mouvement est accéléré.\n2. À l'atterrissage, l'avion freine. Sa vitesse diminue. D'après la règle, le mouvement est ralenti."
+    },
+    {
+      "themeId": "Camion",
+      "titre": "Camion sur l'autoroute",
+      "objectifId": "obj1",
+      "enonce": "Karim conduit un camion sur une autoroute droite. Il met le régulateur de vitesse (appareil qui garde la même vitesse). Pendant 1 heure, le compteur affiche toujours 90 km/h.",
+      "question": "Déduis le type de mouvement du camion pendant cette heure. Justifie.",
+      "reponse": "Le compteur affiche toujours 90 km/h. La vitesse ne change pas. Le mouvement du camion est donc uniforme. Le régulateur sert justement à garder une vitesse constante."
+    },
+    {
+      "themeId": "BMX",
+      "titre": "Départ en rampe de BMX",
+      "objectifId": "obj1",
+      "enonce": "En BMX, la course commence en haut d'une rampe en pente. Chloé ne pédale pas au départ. Pourtant, sa vitesse augmente pendant toute la descente de la rampe.",
+      "question": "1. Nomme le type de mouvement de Chloé dans la rampe.\n2. Propose une explication à ce mouvement.",
+      "reponse": "1. La vitesse de Chloé augmente : le mouvement est accéléré.\n2. Chloé ne pédale pas. C'est donc la pente qui la fait accélérer. Son poids l'entraîne vers le bas de la rampe."
+    },
+    {
+      "themeId": "Natation",
+      "titre": "Longueurs régulières en Natation",
+      "objectifId": "obj2",
+      "enonce": "Lina nage le crawl. Le prof trace son graphique distance-temps. C'est une droite qui part de 0. Elle passe par 20 m à 10 s, 40 m à 20 s et 60 m à 30 s.",
+      "question": "1. Identifie le type de mouvement de Lina grâce à la forme du graphique.\n2. Calcule la distance parcourue par Lina en 1 seconde.",
+      "reponse": "1. Le graphique est une droite. Lina parcourt toujours 20 m en 10 s. Son mouvement est uniforme.\n2. Lina parcourt 20 m en 10 s. 20 ÷ 10 = 2. Elle parcourt 2 m en 1 seconde. Sa vitesse est de 2 m/s."
+    },
+    {
+      "themeId": "Course à pied",
+      "titre": "Pause pendant la Course à pied",
+      "objectifId": "obj2",
+      "enonce": "Nathan fait un footing. Son graphique distance-temps donne : 0 m à 0 min, 500 m à 3 min, 1 000 m à 6 min. Ensuite, on lit 1 000 m à 8 min. Puis 1 500 m à 11 min.",
+      "question": "1. Compare la distance de Nathan entre 6 min et 8 min.\n2. Déduis ce que fait Nathan pendant ce temps.",
+      "reponse": "1. Entre 6 min et 8 min, la distance reste à 1 000 m. Elle n'augmente pas. Sur le graphique, la courbe est horizontale (plate).\n2. Nathan n'avance pas pendant 2 minutes. Il fait donc une pause : il est à l'arrêt. Une portion horizontale signifie un arrêt."
+    },
+    {
+      "themeId": "MotoCross",
+      "titre": "La côte en MotoCross",
+      "objectifId": "obj2",
+      "enonce": "Thomas fait du motocross. Son graphique distance-temps monte vite au début. Ensuite, la courbe monte de moins en moins vite. Elle devient de plus en plus plate. À ce moment, la piste grimpe une colline très raide.",
+      "question": "1. Identifie le type de mouvement de Thomas quand la courbe devient plus plate.\n2. Propose une explication à ce changement.",
+      "reponse": "1. La courbe monte de moins en moins vite. Thomas parcourt de moins en moins de distance chaque seconde. Son mouvement est ralenti.\n2. La piste grimpe une colline très raide. La montée freine la moto. C'est l'explication la plus probable du ralentissement."
+    },
+    {
+      "themeId": "Voiture",
+      "titre": "Duel de Voiture sur circuit",
+      "objectifId": "obj2",
+      "enonce": "Voici une règle : sur un graphique distance-temps, plus la droite est pentue (penchée vers le haut), plus l'objet va vite. On trace deux droites. La voiture A parcourt 300 m en 10 s. La voiture B parcourt 200 m en 10 s.",
+      "question": "1. Déduis quelle voiture a la droite la plus pentue.\n2. Déduis quelle voiture va le plus vite.",
+      "reponse": "1. En 10 s, la voiture A parcourt 300 m et la voiture B parcourt 200 m. La droite de A monte plus haut dans le même temps. La droite de A est la plus pentue.\n2. D'après la règle, la droite la plus pentue correspond à l'objet le plus rapide. La voiture A va le plus vite."
+    },
+    {
+      "themeId": "Forza Horizon 6",
+      "titre": "Accélération dans Forza Horizon 6",
+      "objectifId": "obj2",
+      "enonce": "Dans Forza Horizon 6, Jade lance sa voiture sur une ligne droite. Le jeu affiche son graphique distance-temps. Ce n'est pas une droite. C'est une courbe qui monte de plus en plus vite.",
+      "question": "1. Explique ce que montre une courbe qui monte de plus en plus vite.\n2. Nomme le type de mouvement de la voiture.",
+      "reponse": "1. La courbe monte de plus en plus vite. Chaque seconde, la voiture parcourt plus de distance que la seconde d'avant.\n2. La vitesse de la voiture augmente. Le mouvement est accéléré."
+    },
+    {
+      "themeId": "Équitation",
+      "titre": "Pas, trot et galop en Équitation",
+      "objectifId": "obj2",
+      "enonce": "Inès fait une balade à cheval. Son graphique distance-temps a trois parties droites. Partie 1 : 100 m en 1 min. Partie 2 : 250 m en 1 min. Partie 3 : 500 m en 1 min.",
+      "question": "1. Compare la pente des trois parties.\n2. Relie chaque partie à une allure : pas, trot ou galop. Le pas est l'allure la plus lente et le galop la plus rapide.",
+      "reponse": "1. En 1 min, le cheval parcourt 100 m, puis 250 m, puis 500 m. La partie 3 est la plus pentue. La partie 1 est la moins pentue.\n2. Partie 1 (la plus lente) : le pas. Partie 2 : le trot. Partie 3 (la plus rapide) : le galop. Plus la pente est forte, plus le cheval va vite."
+    },
+    {
+      "themeId": "Voile",
+      "titre": "Le vent tombe en Voile",
+      "objectifId": "obj2",
+      "enonce": "Paul navigue sur un voilier. Pendant 20 min, son graphique distance-temps est une droite bien pentue. Ensuite, la droite devient beaucoup moins pentue. Le moteur du bateau est éteint pendant toute la sortie.",
+      "question": "1. Identifie ce qui change pour la vitesse du voilier après 20 min.\n2. Propose une explication à ce changement.",
+      "reponse": "1. La droite devient moins pentue. Le voilier parcourt moins de distance chaque minute. Il va moins vite.\n2. Le moteur est éteint. Le voilier avance seulement grâce au vent. L'explication la plus probable : le vent a faibli."
     }
   ]
 }

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#b7b7b7">
+  <title>Activité — Mes ressources pédagogiques</title>
+  <link rel="stylesheet" href="../../../../assets/css/cours.css">
+  <link rel="stylesheet" href="../../../../assets/component/activite.css">
+  <script src="../../../../assets/js/lib/lottie.min.js" defer></script>
+  <script src="../../../../assets/js/lib/qrcode.min.js" defer></script>
+  <script src="../../../../assets/component/contexte-professionnel.js" defer></script>
+  <script src="../../../../assets/component/problematique.js" defer></script>
+  <script src="../../../../assets/component/questionnements-intermediaires.js" defer></script>
+  <script src="../../../../assets/component/documents-lycee.js" defer></script>
+  <script src="../../../../assets/component/activite.js" defer></script>
+</head>
+<body data-course="MP7 - Biologie Humaine">
+  <div class="site-shell">
+    <header class="page-header" id="page-header">
+      <a class="brand-mark" id="course-link" href="../../../../cours/?cours=MP7%20-%20Biologie%20Humaine" aria-label="Retour au réseau du cours">
+        <span class="brand-animation" id="course-lottie" aria-hidden="true"></span>
+      </a>
+      <h1 id="activity-title">Chargement de l’activité…</h1>
+      <button class="qr-wrap" id="qr-open" type="button" aria-label="Agrandir le QR code de cette page" aria-haspopup="dialog">
+        <span id="page-qr" class="page-qr" aria-hidden="true"></span>
+      </button>
+      <dialog class="qr-dialog" id="qr-dialog" aria-label="QR code de cette page">
+        <button class="qr-dialog-close" id="qr-close" type="button" aria-label="Fermer le QR code">×</button>
+        <div id="page-qr-large" class="page-qr-large" aria-label="QR code agrandi"></div>
+        <p>Scannez pour ouvrir cette page</p>
+      </dialog>
+    </header>
+    <main id="activity-content" class="page-content activity-page-content">
+      <div data-component="contexte-professionnel" data-title="Contexte professionnel">
+        <script type="text/markdown">
+Vous êtes accompagnant en EHPAD lors de votre service de nuit. Vers 3h du matin, M. Herviou, 78 ans, sonne dans sa chambre. En arrivant, vous constatez qu'il est conscient mais présente une paralysie du côté gauche, des difficultés à parler et sa bouche semble déviée. Il vous regarde avec inquiétude et essaie de vous expliquer qu'il ne sent plus son bras gauche. Vous êtes seul(e) avec l'infirmière de garde qui se trouve à l'autre bout de l'établissement. Cette situation d'urgence nécessite une intervention rapide et coordonnée pour assurer la sécurité de M. Herviou.
+        </script>
+      </div>
+      <div data-component="problematique" data-title="Problématique">
+        <script type="text/markdown">
+Comment organiser efficacement l'alerte médicale et maintenir la sécurité d'une personne présentant des signes d'AVC en attendant les secours ?
+        </script>
+      </div>
+      <div data-component="questionnements-intermediaires" data-title="Questionnements intermédiaires">
+        <script type="application/json">
+[
+  { "question": "Lister les informations prioritaires que vous devez transmettre lors de votre appel d'urgence." },
+  { "question": "Identifier les signes vitaux que vous pouvez surveiller chez M. Herviou avec les moyens disponibles." },
+  { "question": "Déterminer la position la plus adaptée pour installer M. Herviou en toute sécurité." },
+  { "question": "Repérer les gestes à éviter absolument lors de la prise en charge d'une personne suspectée d'AVC." },
+  { "question": "Organiser chronologiquement les actions à mener depuis la découverte des symptômes jusqu'à l'arrivée des secours." },
+  { "question": "Évaluer l'évolution de l'état de M. Herviou en utilisant des critères d'observation simples et objectifs." }
+]
+        </script>
+      </div>
+      <div data-component="documents-lycee" data-title="Documents ressources">
+        <div data-document data-type="lien" data-title="Document 01 : Protocole d'appel d'urgence — AVC : que faire ?"
+             data-src="https://www.ameli.fr/assure/sante/urgence/pathologies/avc"
+             data-label="Consulter la ressource de l’Assurance Maladie sur la conduite à tenir en cas d’AVC">
+        </div>
+
+        <div data-document data-type="texte" data-title="Document 02 : Échelle d'évaluation neurologique simplifiée">
+          <div data-document-content>
+## Présentation générale
+
+L'échelle **FAST** est un outil simple et rapide permettant de **reconnaître les signes d'alerte d'un accident vasculaire cérébral**. Elle a été conçue pour être utilisée par tous les professionnels de santé, y compris les aides-soignants et accompagnants en EHPAD, sans nécessiter de formation médicale approfondie.
+
+Le mot **FAST** est un acronyme anglais qui signifie :
+- **F** = Face (Visage)
+- **A** = Arm (Bras)
+- **S** = Speech (Parole)
+- **T** = Time (Temps)
+
+Chaque lettre correspond à un test simple à réaliser auprès de la personne. **Si au moins un signe est positif, il faut immédiatement appeler le 15.**
+
+## Les quatre tests FAST
+
+### Test F – Face (Visage)
+
+Consigne à donner à la personne : « Souriez-moi, s'il vous plaît. »
+
+Ce que vous observez :
+
+| Résultat | Interprétation |
+| --- | --- |
+| Sourire symétrique | Les deux côtés du visage se soulèvent de manière égale. C'est normal. |
+| Sourire asymétrique | Un côté du visage s'affaisse ou ne bouge pas. La bouche est déviée d'un côté. C'est un signe d'alerte. |
+
+Explication simple : Lors d'un AVC, les muscles d'un côté du visage peuvent être paralysés. Le sourire devient alors « de travers ».
+
+### Test A – Arm (Bras)
+
+Consigne à donner à la personne : « Levez les deux bras devant vous, paumes vers le haut, et gardez-les levés pendant 10 secondes. »
+
+Ce que vous observez :
+
+| Résultat | Interprétation |
+| --- | --- |
+| Les deux bras restent levés à la même hauteur | C'est normal. |
+| Un bras s'abaisse ou dérive vers le bas | La personne ne peut pas maintenir le bras levé du même côté. C'est un signe d'alerte. |
+| La personne ne peut pas lever un bras | C'est un signe d'alerte. |
+
+Explication simple : Un AVC peut affaiblir ou paralyser un bras. La personne ne peut alors pas le maintenir à la même hauteur que l'autre.
+
+### Test S – Speech (Parole)
+
+Consigne à donner à la personne : « Répétez cette phrase : “Le soleil brille aujourd'hui.” »
+
+Ce que vous observez :
+
+| Résultat | Interprétation |
+| --- | --- |
+| La phrase est répétée clairement et correctement | C'est normal. |
+| La parole est difficile à comprendre, confuse ou ralentie | La personne a du mal à articuler ou à trouver ses mots. C'est un signe d'alerte. |
+| La personne ne peut pas parler ou ne comprend pas la consigne | C'est un signe d'alerte. |
+
+Explication simple : Un AVC peut affecter les zones du cerveau responsables du langage. La personne peut alors avoir du mal à parler ou à comprendre.
+
+### Test T – Time (Temps)
+
+Action à réaliser : Notez l'heure exacte à laquelle vous avez remarqué les premiers signes ou l'heure à laquelle la personne a été vue normale pour la dernière fois.
+
+Pourquoi c'est important : Le temps est crucial dans le traitement d'un AVC. Les médecins ont besoin de savoir depuis combien de temps les symptômes ont commencé pour décider du meilleur traitement. Plus l'intervention est rapide, meilleures sont les chances de récupération.
+
+## Interprétation des résultats
+
+### Résultat FAST positif
+
+Si au moins **UN** des trois premiers tests (F, A ou S) est positif, cela signifie qu'il y a une suspicion d'AVC.
+
+Action immédiate : Appelez le 15 (SAMU-Centre 15) sans attendre. Transmettez l'heure exacte du début des symptômes.
+
+### Résultat FAST négatif
+
+Si tous les tests sont négatifs, il n'y a pas de signe d'AVC apparent. Cependant, certains symptômes peuvent être transitoires (ils disparaissent rapidement). En cas de doute, il est préférable d'appeler le 15.
+
+## Cas particuliers et limitations
+
+Attention : L'échelle FAST ne détecte pas tous les types d'AVC. Certains signes peuvent être présents sans que les tests FAST soient positifs :
+- Troubles visuels (perte de vision d'un œil, vision double)
+- Vertiges ou perte d'équilibre
+- Maux de tête soudains et intenses
+- Confusion ou désorientation
+- Engourdissement ou faiblesse d'une jambe
+
+Si vous observez l'un de ces signes, appelez également le 15.
+
+## Application au cas de M. Martin
+
+Dans la situation décrite, M. Martin présente :
+- Paralysie du côté gauche → Test A positif
+- Difficultés à parler → Test S positif
+- Bouche déviée → Test F positif
+- Heure : 3h du matin → Notez cette heure
+
+Résultat : FAST POSITIF sur les trois critères. Appel immédiat du 15 obligatoire.
+
+## Fiche de synthèse à afficher en EHPAD
+
+| Signe | Test | Observation | Alerte ? |
+| --- | --- | --- | --- |
+| Visage | Faire sourire | Sourire asymétrique ou dévié | OUI |
+| Bras | Lever les deux bras | Un bras s'abaisse ou ne monte pas | OUI |
+| Parole | Répéter une phrase | Parole confuse ou incompréhensible | OUI |
+| Temps | Noter l'heure | Heure du début des symptômes | CRUCIAL |
+
+Si au moins un signe est positif → Appeler le 15 immédiatement.
+
+### Sources
+
+- [Haute Autorité de Santé – Accident vasculaire cérébral : prise en charge précoce](https://www.has-sante.fr/jcms/c_830203/fr/accident-vasculaire-cerebral-prise-en-charge-precoce-alerte-phase-prehospitaliere-phase-hospitaliere-initiale-indications-de-la-thrombolyse-intraveineuse-et-de-la-thrombectomie-mecanique)
+- [MedComiP – Protocoles urgences EHPAD](http://www.medcomip.fr/region/region-outils/outils-urgence/protocoles-urgences-ehpad.pdf)
+          </div>
+        </div>
+
+        <div data-document data-type="lien" data-title="Document 03 : Positions de sécurité et surveillance — AVC : que faire ?"
+             data-src="https://www.ameli.fr/assure/sante/urgence/pathologies/avc"
+             data-label="Consulter la ressource de l’Assurance Maladie sur la conduite à tenir en cas d’AVC">
+        </div>
+
+        <div data-document data-type="tableau" data-title="Document 04 : Fiche de surveillance des constantes vitales">
+          <div data-document-content>
+| Constante / Observation | Fréquence de mesure | Valeur/Observation | Heure | Évolution (stable, amélioration, aggravation) |
+| --- | --- | --- | --- | --- |
+| Conscience (répond, somnolent, inconscient) | Toutes les 10 min | | | |
+| Parole (claire, confuse, absente) | Toutes les 10 min | | | |
+| Mobilité (bras/jambe gauche, droite) | Toutes les 10 min | | | |
+| Visage (symétrique, dévié) | Toutes les 10 min | | | |
+| Pouls (battements/min) | Toutes les 15 min | | | |
+| Tension artérielle (mmHg) | Toutes les 15 min | | | |
+| Fréquence respiratoire (resp./min) | Toutes les 15 min | | | |
+| Saturation en O₂ (%) | Toutes les 15 min | | | |
+| Température (°C) | Toutes les 30 min | | | |
+| Autres signes (vomissements, convulsions, agitation, etc.) | Dès apparition | | | |
+
+## Explications simplifiées des critères
+
+- **Conscience :** Répond = la personne parle ou réagit à la voix. Somnolent = la personne ouvre difficilement les yeux, répond lentement. Inconscient = aucune réaction, même à la stimulation.
+- **Parole :** Claire = la personne s’exprime normalement. Confuse = la personne cherche ses mots, parle difficilement. Absente = la personne ne parle plus.
+- **Mobilité :** Normale = bouge les deux bras/jambes. Déficit = ne bouge pas ou faiblement un côté.
+- **Visage :** Symétrique = les deux côtés bougent pareil. Dévié = bouche de travers, un côté ne bouge pas.
+- **Pouls :** Nombre de battements du cœur par minute (normal adulte : 60–100/min).
+- **Tension artérielle :** Pression du sang dans les artères (normal adulte : autour de 120/80 mmHg).
+- **Fréquence respiratoire :** Nombre de respirations par minute (normal adulte : 12–20/min).
+- **Saturation en O₂ :** Pourcentage d’oxygène dans le sang (normal adulte : > 94%).
+- **Température :** Température corporelle (normal adulte : 36–37,5°C).
+- **Autres signes :** Noter tout événement inhabituel (vomissements, convulsions, agitation…).
+
+## Consignes de surveillance
+
+- Noter l’heure de chaque observation.
+- Comparer à la mesure précédente : indiquer si l’état est stable, s’améliore ou s’aggrave.
+- Prévenir immédiatement l’infirmière ou le médecin en cas d’aggravation (perte de conscience, arrêt de la parole, aggravation du déficit moteur, chute de la saturation, etc.).
+- Ne jamais laisser la personne seule.
+
+## Indicateurs de réussite
+
+- Identifier rapidement toute modification de l’état neurologique ou vital.
+- Transmettre des informations précises et objectives aux secours.
+- Expliquer l’évolution de l’état de la personne à l’équipe médicale.
+
+## Sources
+
+- [Haute Autorité de Santé – Accident vasculaire cérébral : prise en charge précoce (2016)](https://www.has-sante.fr/jcms/c_830203/fr/accident-vasculaire-cerebral-prise-en-charge-precoce-alerte-phase-prehospitaliere-phase-hospitaliere-initiale-indications-de-la-thrombolyse-intraveineuse-et-de-la-thrombectomie-mecanique)
+- [RESUVal – Référentiels de prise en charge des résidents en EHPAD (2019)](https://resuval.com/wp-content/uploads/2019/05/Referentiel-EHPAD.pdf)
+- [SFMU – Accident vasculaire cérébral : prise en charge précoce (2009)](https://www.sfmu.org/upload/consensus/avc_prise_en_charge_precoce_-_recommandations.pdf)
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="site-footer"><a id="footer-link" href="../Chapitre.html">Retour au chapitre</a><span>Ressources pédagogiques</span></footer>
+  </div>
+</body>
+</html>
