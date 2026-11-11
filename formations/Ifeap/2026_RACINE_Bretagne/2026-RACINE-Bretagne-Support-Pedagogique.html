@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#4980f2">
   <meta name="description" content="Espace de travail de la formation RACINE Bretagne : accompagner les élèves à l'ère de l'intelligence artificielle.">
+
   <title>Accompagner les élèves à l’ère de l’IA · RACINE Bretagne</title>
   <style>
     :root {
@@ -124,6 +125,14 @@
     .work-area::placeholder { color: #9aa6bb; }
     .field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
     .field-grid .full { grid-column: 1 / -1; }
+    .compare-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .compare-group { min-width: 0; padding: 14px; border: 1px solid var(--line); border-radius: 11px; background: #fbfcff; }
+    .compare-group h4 { margin: 0 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--line); color: var(--blue-deep); font-size: 14px; }
+    .compare-group .field-grid { grid-template-columns: 1fr; gap: 10px; }
+    .task-picker { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
+    .task-picker label { min-width: 0; }
+    .task-select { width: 100%; min-height: 42px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--ink); font-size: 12px; }
+    .task-picker-help { margin: 9px 0 0; color: var(--muted); font-size: 11px; }
     .checklist { display: grid; gap: 8px; }
     .checkline { display: flex; align-items: flex-start; gap: 9px; padding: 9px 10px; border: 1px solid var(--line); border-radius: 9px; background: #fff; cursor: pointer; font-size: 12.5px; }
     .checkline input { margin: 3px 0 0; accent-color: var(--blue); }
@@ -145,6 +154,8 @@
     .matrix-cell { min-height: 120px; padding: 13px; border: 1px dashed #c8d5f1; border-radius: 10px; background: #fbfcff; }
     .matrix-cell h4 { margin: 0 0 4px; color: var(--blue-deep); font-size: 12px; }
     .matrix-cell p { margin: 0; color: var(--muted); font-size: 10.5px; }
+    .usage-presentation { display: block; width: 100%; height: min(78vh, 820px); min-height: 540px; margin: 20px 0 30px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; box-shadow: var(--shadow); }
+    .accompagner-presentation, .evaluer-presentation { display: block; width: 100%; height: min(78vh, 820px); min-height: 540px; margin: 20px 0 30px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; box-shadow: var(--shadow); }
     .pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 9px; border-radius: 99px; background: #eaf7f1; color: #166c51; font-size: 10px; font-weight: 750; }
     .pill.warn { background: #fff5df; color: #8b6014; }
     .pill.risk { background: #fff0f1; color: #9f3541; }
@@ -172,7 +183,7 @@
       .hero-logo { width: 82px; top: 18px; right: 17px; }
     }
     @media (max-width: 650px) {
-      .grid.two, .grid.three, .grid.four, .field-grid { grid-template-columns: 1fr; }
+      .grid.two, .grid.three, .grid.four, .field-grid, .compare-columns, .task-picker { grid-template-columns: 1fr; }
       .field-grid .full { grid-column: auto; }
       .section-head { align-items: flex-start; flex-direction: column; gap: 8px; }
       .hero { padding: 25px 20px; }
@@ -194,7 +205,8 @@
       .page.print-active { display: block !important; }
       .page-header, .hero { margin-bottom: 16px; break-inside: avoid; }
       .hero, .page-header { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-      .grid, .grid.two, .grid.three, .grid.four, .field-grid, .matrix { grid-template-columns: minmax(0, 1fr) !important; }
+      .grid, .grid.two, .grid.three, .grid.four, .field-grid, .matrix, .compare-columns, .task-picker { grid-template-columns: minmax(0, 1fr) !important; }
+      .task-picker { display: none !important; }
       .timeline-row { grid-template-columns: minmax(0, 1fr); gap: 3px; break-inside: avoid; }
       .timeline-row .duration { justify-self: start; }
       .timeline { overflow: visible; }
@@ -316,12 +328,22 @@
       <header class="page-header"><div class="eyebrow">10 h 05 — 10 h 50 · 45 min</div><h2>Les usages actuels de l’IA chez les élèves</h2><p>Comparer un usage de délégation et un usage qui soutient réellement l’apprentissage.</p></header>
       <div class="section-head"><div><div class="eyebrow-blue">Atelier en petits groupes</div><h3>Dans la peau d’un élève</h3></div><button class="action-btn set-timer" data-minutes="20">Régler le chrono · 20 min</button></div>
       <div class="grid two">
-        <article class="card"><h3>Choisissez une tâche réelle</h3><p>Dissertation · exercice de mathématiques · exposé · traduction. Faites-la deux fois, en explicitant les choix.</p><div class="steps" style="margin-top:14px"><div class="step-card"><h4>Élève pressé</h4><p>Demande une production finale, la reprend sans la questionner. Où se situe la réflexion ?</p></div><div class="step-card"><h4>Élève qui cherche à apprendre</h4><p>Demande des explications, des pistes et un retour ; garde la main sur les décisions.</p></div></div></article>
-        <article class="card"><h3>Comparez les démarches</h3><div class="field-grid">
-          <label><div class="work-label">Tâche choisie</div><textarea class="work-area" data-save="usage-tache" placeholder="Discipline, niveau, consigne…"></textarea></label>
-          <label><div class="work-label">Ce que l’IA a fait</div><textarea class="work-area" data-save="usage-ia" placeholder="Réponse obtenue, aide ou délégation…"></textarea></label>
-          <label><div class="work-label">Ce que l’élève a appris</div><textarea class="work-area" data-save="usage-appris" placeholder="Quelles connaissances ou stratégies ?"></textarea></label>
-          <label><div class="work-label">Ce qui reste à vérifier</div><textarea class="work-area" data-save="usage-verifier" placeholder="Exactitude, compréhension, sources…"></textarea></label>
+        <article class="card"><h3>Choisissez une tâche réelle</h3><p>Choisissez une catégorie, une discipline et une proposition. Vous pouvez aussi partir d’une tâche de votre cours.</p><div class="task-picker">
+          <label><div class="work-label">Catégorie</div><select class="task-select" id="taskCategory"><option value="">Sélectionner</option></select></label>
+          <label><div class="work-label">Discipline</div><select class="task-select" id="taskDiscipline" disabled><option value="">Choisir une catégorie d’abord</option></select></label>
+          <label><div class="work-label">Sujet</div><select class="task-select" id="taskSubject" disabled><option value="">Choisir une discipline d’abord</option></select></label>
+        </div><p class="task-picker-help">Le sujet choisi sera repris dans le champ commun. Vous pourrez encore l’adapter.</p><div class="steps" style="margin-top:14px"><div class="step-card"><h4>Élève pressé</h4><p>Demande une production finale, la reprend sans la questionner. Où se situe la réflexion ?</p></div><div class="step-card"><h4>Élève qui cherche à apprendre</h4><p>Demande des explications, des pistes et un retour ; garde la main sur les décisions.</p></div></div></article>
+        <article class="card"><h3>Comparez les démarches</h3><label style="display:block;margin:12px 0 16px"><div class="work-label">Tâche choisie · commune aux deux démarches</div><textarea class="work-area" data-save="usage-tache-commune" placeholder="Discipline, niveau, consigne…"></textarea></label><div class="compare-columns">
+          <section class="compare-group"><h4>Élève pressé</h4><div class="field-grid">
+            <label><div class="work-label">Ce que l’IA a fait</div><textarea class="work-area" data-save="usage-rapide-ia" placeholder="Réponse obtenue, aide ou délégation…"></textarea></label>
+            <label><div class="work-label">Ce que l’élève a appris</div><textarea class="work-area" data-save="usage-rapide-appris" placeholder="Quelles connaissances ou stratégies ?"></textarea></label>
+            <label><div class="work-label">Ce qui reste à vérifier</div><textarea class="work-area" data-save="usage-rapide-verifier" placeholder="Exactitude, compréhension, sources…"></textarea></label>
+          </div></section>
+          <section class="compare-group"><h4>Élève qui cherche à apprendre</h4><div class="field-grid">
+            <label><div class="work-label">Ce que l’IA a fait</div><textarea class="work-area" data-save="usage-apprentissage-ia" placeholder="Réponse obtenue, aide ou délégation…"></textarea></label>
+            <label><div class="work-label">Ce que l’élève a appris</div><textarea class="work-area" data-save="usage-apprentissage-appris" placeholder="Quelles connaissances ou stratégies ?"></textarea></label>
+            <label><div class="work-label">Ce qui reste à vérifier</div><textarea class="work-area" data-save="usage-apprentissage-verifier" placeholder="Exactitude, compréhension, sources…"></textarea></label>
+          </div></section>
         </div></article>
       </div>
       <div class="section-head"><div><div class="eyebrow-blue">Cartographie</div><h3>Fréquence des usages × bénéfice pour l’apprentissage</h3></div><button class="action-btn set-timer" data-minutes="15">Régler le chrono · 15 min</button></div>
@@ -331,6 +353,7 @@
         <div class="matrix-cell"><h4>Peu fréquent · bénéfice élevé</h4><p>Pistes à expérimenter et à rendre accessibles.</p><textarea class="work-area" data-save="matrice-piste" placeholder="Exemples du groupe…" style="margin-top:10px;min-height:64px"></textarea></div>
         <div class="matrix-cell"><h4>Peu fréquent · bénéfice faible</h4><p>Usages à surveiller ou à éviter selon l’objectif pédagogique.</p><textarea class="work-area" data-save="matrice-risque" placeholder="Exemples du groupe…" style="margin-top:10px;min-height:64px"></textarea></div>
       </div>
+      <iframe class="usage-presentation" src="usages_IA_eleves.html" title="Présentation : les usages de l’IA par les élèves" loading="lazy"></iframe>
       <div class="section-head"><div><div class="eyebrow-blue">Mise en perspective</div><h3>Trois repères à faire expliciter</h3></div></div>
       <div class="grid three"><article class="card"><h4>Probabiliste</h4><p>Une IA générative produit une suite plausible ; elle ne garantit pas la vérité des réponses.</p></article><article class="card"><h4>Hallucinations</h4><p>Elle peut inventer des faits, des citations et des sources avec une formulation assurée.</p></article><article class="card"><h4>Biais</h4><p>Ses productions peuvent refléter des biais, des angles morts ou des représentations dominantes.</p></article></div>
       <div class="callout" style="margin-top:14px"><div><strong>Retour à la charte</strong><p>La charte distingue-t-elle l’aide qui fait apprendre de la délégation de la réflexion ? Notez une question à y intégrer.</p><textarea class="work-area" data-save="usage-charte" placeholder="Question ou annotation à reporter sur la charte…" style="margin-top:8px;background:#fff"></textarea></div></div>
@@ -366,6 +389,7 @@ DÉCIDER — Qu’est-ce que je peux retenir, reformuler ou écarter ?</div></di
         </div></article>
       </div>
       <div class="section-head"><div><div class="eyebrow-blue">Partie B · démonstrations et essais · 30 min</div><h3>Apprendre, rechercher, produire</h3></div><button class="action-btn set-timer" data-minutes="30">Régler le chrono · 30 min</button></div>
+      <iframe class="accompagner-presentation" src="accompagner_eleves_IA.html" title="Présentation : accompagner les élèves avec l’IA" loading="lazy"></iframe>
       <div class="grid three">
         <article class="card"><span class="pill">Apprendre</span><h3 style="margin-top:10px">Guider sans faire à la place</h3><p>Tuteur socratique, explication pas à pas, quiz d’auto-entraînement. Garder l’élève en activité cognitive.</p><div class="prompt"><div class="prompt-top"><strong>Consigne à tester</strong><button class="copy-btn" type="button">Copier</button></div><div class="prompt-text">Agis comme un tuteur patient. Aide-moi à comprendre [notion] au niveau [classe]. Pose une question à la fois, donne un indice si je bloque, et ne révèle pas la réponse finale. Termine par une question pour vérifier ma compréhension.</div></div></article>
         <article class="card"><span class="pill warn">Rechercher</span><h3 style="margin-top:10px">Distinguer réponse et source</h3><p>Comprendre les limites d’une IA par rapport à un moteur de recherche ; vérifier les sources citées et leur contenu réel.</p><div class="callout" style="margin-top:12px"><div><strong>À vérifier</strong><p>Une référence fournie par l’IA existe-t-elle ? La source soutient-elle réellement l’affirmation ?</p></div></div></article>
@@ -383,6 +407,7 @@ Ne fais pas à ma place : [étape que l’élève doit réaliser].</div></div></
     <section class="page" id="page-evaluer">
       <header class="page-header"><div class="eyebrow">14 h 00 — 14 h 55 · durée à confirmer</div><h2>Comment évaluer à l’ère de l’IA ?</h2><p>Déplacer le regard du seul produit final vers les démarches, les choix et les apprentissages observables.</p></header>
       <div class="section-head"><div><div class="eyebrow-blue">Apports et échanges</div><h3>Rendre l’apprentissage visible</h3></div><button class="action-btn set-timer" data-minutes="25">Régler le chrono · 25 min</button></div>
+      <iframe class="evaluer-presentation" src="Evaluer_a_l_ere_de_l_ia.html" title="Présentation : évaluer à l’ère de l’IA" loading="lazy"></iframe>
       <div class="grid two">
         <article class="card"><h3>Questions pour analyser une évaluation</h3><div class="checklist"><label class="checkline"><input type="checkbox" data-save="eval-q1"> La tâche permet-elle d’observer le raisonnement et les choix de l’élève ?</label><label class="checkline"><input type="checkbox" data-save="eval-q2"> Une partie du travail peut-elle se faire en classe ou à l’oral ?</label><label class="checkline"><input type="checkbox" data-save="eval-q3"> Les critères et les usages autorisés sont-ils explicites ?</label><label class="checkline"><input type="checkbox" data-save="eval-q4"> L’élève doit-il justifier, vérifier ou critiquer une production ?</label></div></article>
         <article class="card"><h3>Pistes d’adaptation</h3><ul><li>Évaluer le processus : brouillons, traces et journal de bord.</li><li>Intégrer une production en classe ou un échange oral.</li><li>Demander une justification des choix effectués.</li><li>Prévoir une déclaration de l’usage de l’IA.</li><li>Évaluer la capacité à analyser une production générée.</li></ul></article>
@@ -501,7 +526,70 @@ Ne fais pas à ma place : [étape que l’élève doit réaliser].</div></div></
     document.addEventListener('keydown', event => {
       if (event.key === 'Escape' && qrModal.classList.contains('open')) closeQrModal();
     });
-    let toastTimer;
+    const taskCatalog = {
+      'Écrire': {
+        'Français': ['Rédiger l’introduction d’une dissertation sur « La fiction peut-elle dire vrai ? »', 'Écrire une lettre de motivation pour un stage', 'Rédiger un article de journal sur un fait divers inventé'],
+        'Histoire-géographie': ['Rédiger un paragraphe sur les causes de la Première Guerre mondiale', 'Rédiger un compte rendu de visite d’un lieu de mémoire', 'Écrire un paragraphe sur les conséquences du réchauffement climatique en France'],
+        'Sciences (SVT, physique-chimie)': ['Rédiger la conclusion d’un compte rendu de TP', 'Écrire un paragraphe expliquant pourquoi le ciel est bleu', 'Rédiger une synthèse sur le cycle de l’eau'],
+        'Langues (anglais)': ['Écrire un message de présentation (« Hi, I’m… »)', 'Rédiger un mail pour réserver une chambre d’hôtel', 'Écrire une carte postale de vacances'],
+        'Philosophie / ECJS': ['Répondre à : « Peut-on renoncer à sa liberté ? »', 'Rédiger un paragraphe argumenté : « Faut-il interdire les écrans à l’école ? »', 'Écrire un discours de 5 phrases pour candidat délégué de classe'],
+        'Mathématiques': ['Rédiger la démonstration d’une propriété simple (la somme de deux nombres pairs est paire)', 'Expliquer par écrit une méthode de calcul de pourcentage', 'Rédiger la réponse complète à un problème (phrase de conclusion incluse)'],
+        'Éducation socioculturelle': ['Rédiger le portrait d’un acteur de la vie culturelle locale à partir d’un entretien', 'Écrire un texte de présentation pour annoncer un événement culturel', 'Rédiger un court article sur une pratique culturelle de son territoire']
+      },
+      'Calculer ou résoudre': {
+        'Mathématiques': ['Une chaîne produit 120 pièces par heure. Combien en 7 h 30 ?', 'Un article coûte 80 € avec 15 % de réduction. Quel est le prix final ?', 'Résoudre : 3x + 7 = 25'],
+        'Physique-chimie': ['Calculer la masse molaire du glucose (C₆H₁₂O₆)', 'Calculer la vitesse d’une voiture qui parcourt 150 km en 2 h', 'Équilibrer une équation de combustion du méthane'],
+        'Informatique': ['Corriger un programme Python qui affiche une erreur', 'Écrire une boucle qui affiche les nombres de 1 à 10', 'Créer une formule de tableur pour calculer une moyenne'],
+        'SVT': ['Calculer le rythme cardiaque moyen à partir de relevés', 'Expliquer pourquoi le cœur bat plus vite à l’effort', 'Interpréter un graphique de croissance d’une plante'],
+        'Histoire-géographie': ['Calculer l’évolution de la population d’une ville entre deux dates', 'Lire et interpréter un graphique de températures', 'Placer sur une frise des événements donnés dans le désordre'],
+        'Éco-gestion / vente': ['Calculer un prix de vente à partir d’un prix d’achat et d’une marge', 'Calculer la TVA sur une facture', 'Rendre la monnaie sur un achat de 17,80 € payé avec un billet de 50 €'],
+        'Éducation socioculturelle': ['Établir un budget prévisionnel pour organiser une sortie culturelle', 'Comparer la fréquentation de deux événements à partir de données chiffrées', 'Répartir un budget donné entre plusieurs postes d’un projet collectif']
+      },
+      'Traduire ou reformuler': {
+        'Anglais': ['Traduire un court texte de 5 phrases de l’anglais vers le français', 'Traduire une recette de cuisine anglaise', 'Traduire les paroles d’une chanson connue'],
+        'Français': ['Reformuler un texte difficile avec ses propres mots', 'Transformer un texte familier en langage soutenu', 'Résumer un texte de 10 lignes en 3 phrases'],
+        'Histoire-géographie': ['Reformuler un extrait de discours historique', 'Expliquer une carte à quelqu’un qui ne la voit pas', 'Traduire un texte de loi en langage simple'],
+        'Sciences': ['Reformuler une définition scientifique pour un enfant de 8 ans', 'Expliquer un schéma (cycle, circuit électrique) avec des mots', 'Transformer un protocole de TP en consignes simples'],
+        'Santé / social': ['Expliquer une ordonnance à une personne âgée', 'Reformuler une notice de médicament en langage clair', 'Traduire un document administratif complexe en 5 phrases'],
+        'Informatique': ['Expliquer en français courant ce que fait un bout de code', 'Traduire une consigne technique en étapes simples', 'Reformuler un message d’erreur de façon compréhensible'],
+        'Éducation socioculturelle': ['Reformuler un témoignage d’enquête sans en déformer le sens', 'Adapter la présentation d’un projet culturel à des publics différents', 'Résumer un article sur une pratique artistique en distinguant faits et opinions']
+      },
+      'Présenter ou rechercher': {
+        'Toutes disciplines': ['Préparer un exposé de 2 minutes sur un métier', 'Préparer un exposé de 2 minutes sur un animal', 'Préparer un exposé de 2 minutes sur un événement historique'],
+        'Histoire-géographie': ['Présenter une personnalité historique en 5 phrases', 'Présenter un pays au choix (capitale, langue, économie)', 'Présenter les avantages et inconvénients de l’urbanisation'],
+        'Sciences': ['Présenter 3 arguments pour ou contre l’éolien', 'Présenter le fonctionnement d’un vaccin', 'Présenter un animal en voie de disparition et les causes de sa situation'],
+        'Éducation à l’environnement': ['Présenter 3 gestes pour réduire ses déchets', 'Présenter l’impact de l’élevage sur le climat', 'Présenter les différences entre agriculture biologique et conventionnelle'],
+        'Santé / social': ['Présenter les règles d’une bonne hygiène de vie', 'Présenter les étapes d’une prise de tension', 'Présenter les droits d’un résident en maison de retraite'],
+        'Informatique / numérique': ['Présenter 3 conseils pour créer un mot de passe sûr', 'Présenter les risques liés aux réseaux sociaux', 'Présenter le fonctionnement d’un moteur de recherche'],
+        'Éducation socioculturelle': ['Présenter les résultats d’une enquête sur les pratiques culturelles des jeunes', 'Rechercher et présenter trois ressources culturelles accessibles sur son territoire', 'Présenter un projet d’animation culturelle et les publics auxquels il s’adresse']
+      }
+    };
+    const taskCategory = document.getElementById('taskCategory');
+    const taskDiscipline = document.getElementById('taskDiscipline');
+    const taskSubject = document.getElementById('taskSubject');
+    const commonTaskField = document.querySelector('[data-save="usage-tache-commune"]');
+    function fillTaskOptions(select, placeholder, options) {
+      select.replaceChildren(new Option(placeholder, ''));
+      options.forEach(value => select.add(new Option(value, value)));
+    }
+    fillTaskOptions(taskCategory, 'Sélectionner', Object.keys(taskCatalog));
+    taskCategory.addEventListener('change', () => {
+      const category = taskCatalog[taskCategory.value];
+      fillTaskOptions(taskDiscipline, category ? 'Sélectionner une discipline' : 'Choisir une catégorie d’abord', category ? Object.keys(category) : []);
+      taskDiscipline.disabled = !category;
+      fillTaskOptions(taskSubject, 'Choisir une discipline d’abord', []);
+      taskSubject.disabled = true;
+    });
+    taskDiscipline.addEventListener('change', () => {
+      const subjects = taskCatalog[taskCategory.value]?.[taskDiscipline.value] || [];
+      fillTaskOptions(taskSubject, subjects.length ? 'Sélectionner une proposition' : 'Sélectionner une discipline', subjects);
+      taskSubject.disabled = subjects.length === 0;
+    });
+    taskSubject.addEventListener('change', () => {
+      if (!taskSubject.value || !commonTaskField) return;
+      commonTaskField.value = `${taskDiscipline.value} — ${taskSubject.value}`;
+      commonTaskField.dispatchEvent(new Event('input', { bubbles: true }));
+    });    let toastTimer;
     let originalTitle = document.title;
     document.querySelectorAll('.page').forEach(page => {
       const download = document.createElement('div');
