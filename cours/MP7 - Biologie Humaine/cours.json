@@ -20,7 +20,7 @@
       "titre": "Après l’AVC : comment retrouver des gestes essentiels ?",
       "description": "Un accident vasculaire cérébral, c’est parfois quelques secondes qui changent toute une vie. Perte de motricité, troubles de la parole, difficulté à réaliser les gestes du quotidien… Après l’urgence, commence le long chemin de la rééducation et de l’accompagnement.\nDans ce chapitre, tu apprendras à repérer les signes d’alerte d’un AVC, à comprendre ce qui se passe dans le cerveau, et à réagir efficacement en situation d’urgence. Mais surtout, tu découvriras comment aider une personne à retrouver, pas à pas, son autonomie : adapter son environnement, soutenir ses gestes, prévenir les complications… et redonner du sens à chaque progrès, aussi petit soit-il.\nCar après l’AVC, chaque geste compte pour retrouver la dignité et la vie.",
       "couleur": null,
-      "lottie": "assets/lotties/medicine.json",
+      "lottie": "assets/lotties/avc.json",
 
       "evaluationFinale": {
         "statut": "inactif",
@@ -92,7 +92,7 @@
       "titre": "Diabète : une maladie invisible mais bien présente ?",
       "description": "Pas de fièvre, pas de douleur, pas toujours de symptômes visibles… et pourtant, le diabète est bien là. Il touche de plus en plus de personnes, parfois dès l’enfance, parfois sans qu’on s’en rende compte. Réguler le sucre dans le sang n’est pas si simple : c’est une bataille quotidienne entre biologie, alimentation, activité physique… et accompagnement.\nDans ce chapitre, tu vas découvrir les mécanismes qui régulent la glycémie, les différences entre diabète de type 1 et 2, et surtout comment accompagner une personne au quotidien. Prendre la glycémie, adapter les repas, conseiller une activité physique, repérer les déséquilibres… autant de gestes qui font la différence, même si la maladie ne se voit pas.\nCar derrière l’invisible, il y a des choix concrets à faire pour mieux vivre avec.",
       "couleur": null,
-      "lottie": "assets/lotties/medicine.json",
+      "lottie": "assets/lotties/diabete.json",
       "evaluationFinale": {
         "statut": "inactif",
         "type": "Fin de séquence",
@@ -163,7 +163,7 @@
       "titre": "Rougeurs, pleurs, inconfort : comment réagir face à un érythème",
       "description": "Un bébé qui pleure au moment du change, des rougeurs qui s’étendent, une peau fragilisée… L’érythème fessier est un signal d’alerte à ne jamais banaliser. Fréquent, mais pas anodin, il peut vite s’aggraver s’il n’est pas pris en charge avec rigueur et douceur.\nDans ce chapitre, tu apprendras à reconnaître les signes d’un érythème, à comprendre ce qui provoque ces inflammations cutanées et à évaluer les risques selon les pratiques d’hygiène, les produits utilisés ou le rythme des changes. Tu seras capable de proposer des soins adaptés, d’élaborer un protocole préventif efficace, et de collaborer avec l’équipe et les familles pour garantir le confort du tout-petit.\nCar dans les services à la personne, prévenir la douleur commence souvent… par un simple coup d’œil attentif à une peau rougie.",
       "couleur": null,
-      "lottie": "assets/lotties/medicine.json",
+      "lottie": "assets/lotties/erytheme.json",
       "evaluationFinale": {
         "statut": "inactif",
         "type": "Fin de séquence",
@@ -234,7 +234,7 @@
       "titre": "Escarre : peut-on vraiment éviter les plaies de l’immobilité ?",
       "description": "Rester allongé trop longtemps, ne plus pouvoir bouger seul… et la peau, silencieusement, commence à souffrir. Une rougeur, un affaissement, une plaie qui s’aggrave : l’escarre s’installe, souvent là où on l’attend le moins. Invisible au départ, elle peut devenir une urgence médicale.\nDans ce chapitre, tu vas découvrir comment la pression prolongée coupe la circulation, comment les tissus se dégradent, et pourquoi certaines zones du corps sont si vulnérables. Tu apprendras à détecter les signes d’alerte, à classer les lésions selon leur gravité, mais surtout à agir : mobiliser, repositionner, observer, prévenir. Car oui, les escarres ne sont pas une fatalité.\nSavoir les éviter, c’est offrir à la personne immobile une vraie protection… et un meilleur confort de vie.",
       "couleur": null,
-      "lottie": "assets/lotties/medicine.json",
+      "lottie": "assets/lotties/escarre.json",
       "evaluationFinale": {
         "statut": "inactif",
         "type": "Fin de séquence",
