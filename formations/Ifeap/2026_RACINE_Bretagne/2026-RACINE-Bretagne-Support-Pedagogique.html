@@ -36,10 +36,22 @@
     .brand-kicker { margin-top: 15px; color: #a9c2ff; font-size: 10px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
     .brand h1 { margin: 3px 0 3px; font-size: 17px; line-height: 1.25; }
     .brand p { margin: 0; color: #b8c4dd; font-size: 12px; }
-    .brand-qr { display: flex; align-items: center; gap: 11px; margin-top: 15px; padding: 10px; border: 1px solid rgba(255,255,255,.14); border-radius: 10px; background: rgba(255,255,255,.06); }
+    .brand-qr { display: flex; align-items: center; gap: 11px; width: 100%; margin-top: 15px; padding: 10px; border: 1px solid rgba(255,255,255,.14); border-radius: 10px; background: rgba(255,255,255,.06); text-align: left; cursor: pointer; }
+    .brand-qr:hover { background: rgba(255,255,255,.12); }
     .brand-qr-code { display: grid; width: 92px; height: 92px; flex: 0 0 92px; place-items: center; padding: 5px; border-radius: 7px; background: #fff; }
     .brand-qr-code img, .brand-qr-code canvas { display: block; width: 82px !important; height: 82px !important; }
     .brand-qr-label { color: #dce7ff; font-size: 11px; font-weight: 650; line-height: 1.4; }
+    .qr-modal { position: fixed; inset: 0; z-index: 20; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(9,20,42,.78); }
+    .qr-modal.open { display: flex; }
+    .qr-modal-card { position: relative; width: min(100%, 500px); padding: 28px; border-radius: 18px; background: #fff; color: var(--ink); text-align: center; box-shadow: 0 24px 70px rgba(0,0,0,.28); }
+    .qr-modal-close { position: absolute; top: 10px; right: 12px; width: 36px; height: 36px; border: 0; border-radius: 8px; background: #f1f4fa; color: var(--ink); font-size: 22px; cursor: pointer; }
+    .qr-modal-card h2 { margin: 0 0 5px; font-size: 20px; }
+    .qr-modal-card p { margin: 0 0 18px; color: var(--muted); font-size: 13px; }
+    .qr-modal-large { display: grid; width: min(76vw, 360px); height: min(76vw, 360px); place-items: center; margin: 0 auto 16px; padding: 10px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+    .qr-modal-large img, .qr-modal-large canvas { display: block; width: 100% !important; height: 100% !important; }
+    .qr-modal-link { display: block; padding: 10px 12px; border-radius: 8px; background: var(--blue-pale); color: var(--blue-dark); font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; text-decoration: none; }
+    .qr-modal-link:hover { text-decoration: underline; }
+    .qr-modal-hint { display: block; margin-top: 9px; color: var(--muted); font-size: 11px; }
     .nav { padding: 14px 10px 20px; }
     .nav-label { padding: 12px 10px 6px; color: #8ea2c8; font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
     .nav button { width: 100%; display: flex; align-items: center; gap: 10px; margin: 2px 0; padding: 9px 10px; border: 0; border-radius: 9px; background: transparent; color: #d9e2f5; text-align: left; font-size: 12.5px; cursor: pointer; transition: background .15s, color .15s; }
@@ -176,7 +188,7 @@
     @media print {
       @page { size: A4; margin: 15mm 14mm; }
       body { display: block; height: auto; overflow: visible; background: #fff; color: #17233b; font-size: 11pt; }
-      .sidebar, .mobile-bar, .toast, .copy-btn, .page-download, .action-btn { display: none !important; }
+      .sidebar, .mobile-bar, .toast, .qr-modal, .copy-btn, .page-download, .action-btn { display: none !important; }
       .main { overflow: visible; }
       .page { display: none !important; max-width: none; padding: 0; animation: none; }
       .page.print-active { display: block !important; }
@@ -202,10 +214,10 @@
       <div class="brand-kicker">Espace de formation · 2026</div>
       <h1>Accompagner les élèves à l’ère de l’IA</h1>
       <p>RACINE Bretagne · journée de formation</p>
-      <div class="brand-qr">
-        <div class="brand-qr-code" id="brandQrCode" role="img" aria-label="QR code de l’adresse de cette formation"></div>
-        <div class="brand-qr-label">Scanner pour ouvrir<br>cette formation</div>
-      </div>
+      <button class="brand-qr" id="brandQrOpen" type="button" aria-label="Afficher le QR code de la formation en grand écran">
+        <span class="brand-qr-code" id="brandQrCode" aria-hidden="true"></span>
+        <span class="brand-qr-label">Scanner pour ouvrir<br>cette formation<br><small>Agrandir le QR code</small></span>
+      </button>
     </div>
     <nav class="nav" aria-label="Navigation de la formation">
       <div class="nav-label">Parcours de la journée</div>
@@ -231,6 +243,17 @@
       <div class="timer-hint">Choisissez une durée dans l’atelier.</div>
     </div>
   </aside>
+  <div class="qr-modal" id="qrModal" aria-hidden="true">
+    <div class="qr-modal-card" role="dialog" aria-modal="true" aria-labelledby="qrModalTitle">
+      <button class="qr-modal-close" id="qrModalClose" type="button" aria-label="Fermer">×</button>
+      <h2 id="qrModalTitle">Ouvrir la formation</h2>
+      <p>Scannez ce QR code avec votre téléphone.</p>
+      <div class="qr-modal-large" id="largeQrCode" role="img" aria-label="QR code vers la formation"></div>
+      <a class="qr-modal-link" id="qrModalLink" href="https://bioteach-cyber.github.io/supports-pedagogiques/formations/Ifeap/2026_RACINE_Bretagne/2026-RACINE-Bretagne-Support-Pedagogique.html">https://bioteach-cyber.github.io/supports-pedagogiques/formations/Ifeap/2026_RACINE_Bretagne/2026-RACINE-Bretagne-Support-Pedagogique.html</a>
+      <span class="qr-modal-hint">Lien court à noter</span>
+      <a class="qr-modal-link" href="https://urls.fr/Rkxj8A" target="_blank" rel="noopener noreferrer">https://urls.fr/Rkxj8A</a>
+    </div>
+  </div>
 
   <main class="main">
     <div class="mobile-bar"><button type="button" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button><strong>RACINE Bretagne · Formation IA</strong></div>
@@ -445,16 +468,39 @@ Ne fais pas à ma place : [étape que l’élève doit réaliser].</div></div></
     const sidebar = document.getElementById('sidebar');
     const menuToggle = document.getElementById('menuToggle');
     const toast = document.getElementById('toast');
+    const formationUrl = 'https://bioteach-cyber.github.io/supports-pedagogiques/formations/Ifeap/2026_RACINE_Bretagne/2026-RACINE-Bretagne-Support-Pedagogique.html';
     const brandQrCode = document.getElementById('brandQrCode');
+    const largeQrCode = document.getElementById('largeQrCode');
+    const qrModal = document.getElementById('qrModal');
+    const qrModalLink = document.getElementById('qrModalLink');
+    if (qrModalLink) qrModalLink.href = formationUrl;
     if (brandQrCode && window.QRCode) {
       try {
-        new window.QRCode(brandQrCode, { text: window.location.href, width: 82, height: 82, correctLevel: window.QRCode.CorrectLevel.M });
+        new window.QRCode(brandQrCode, { text: formationUrl, width: 82, height: 82, correctLevel: window.QRCode.CorrectLevel.M });
+        new window.QRCode(largeQrCode, { text: formationUrl, width: 340, height: 340, correctLevel: window.QRCode.CorrectLevel.M });
       } catch (error) {
         brandQrCode.textContent = 'QR indisponible';
       }
     } else if (brandQrCode) {
       brandQrCode.textContent = 'QR indisponible';
     }
+    document.getElementById('brandQrOpen').addEventListener('click', () => {
+      qrModal.classList.add('open');
+      qrModal.setAttribute('aria-hidden', 'false');
+      document.getElementById('qrModalClose').focus();
+    });
+    function closeQrModal() {
+      qrModal.classList.remove('open');
+      qrModal.setAttribute('aria-hidden', 'true');
+      document.getElementById('brandQrOpen').focus();
+    }
+    document.getElementById('qrModalClose').addEventListener('click', closeQrModal);
+    qrModal.addEventListener('click', event => {
+      if (event.target === qrModal) closeQrModal();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && qrModal.classList.contains('open')) closeQrModal();
+    });
     let toastTimer;
     let originalTitle = document.title;
     document.querySelectorAll('.page').forEach(page => {
