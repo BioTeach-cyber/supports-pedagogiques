@@ -1,0 +1,16 @@
+{
+  "formations": [
+    {
+      "id": "ifeap-2026-racine-bretagne",
+      "titre": "Accompagner les élèves à l’ère de l’intelligence artificielle",
+      "commanditaire": "IFEAP",
+      "date": "2026-11-13",
+      "type": "Formation d’enseignants",
+      "description": "RACINE Bretagne · accompagner les usages de l’IA, développer l’esprit critique et construire des repères pédagogiques.",
+      "lien": "formations/Ifeap/2026_RACINE_Bretagne/2026-RACINE-Bretagne-Support-Pedagogique.html",
+      "image": "formations/assets/Ifeap/Ifeap_logo.svg",
+      "couleur": "#4980f2",
+      "statut": "actif"
+    }
+  ]
+}

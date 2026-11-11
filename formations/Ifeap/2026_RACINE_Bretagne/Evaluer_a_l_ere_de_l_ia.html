@@ -1,11 +1,1212 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Comment évaluer à l’ère de l’IA ? — Enseignement agricole</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css"><script type="text/javascript" src="https://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=N-RXw3WF2dWByDkM7j0Mh0K0iNku_IbL8x5kYS3wXlokO2E-3o4DHREiJxRsLwJsVXLGc6_DZJjuYtz1-XFty_XR-EqugFPif6zn2AXCY5o1Dut1A8I5fes3XdH2hBo-" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://ff.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9tYW1tb3V0aC5haS9hcGkvYXR0YWNobWVudHMvYzVlMzFmY2EtN2M4MC00OTNjLWJlMWMtYjc2NGZjMzkxODhlL2ZpbGU"/><style>
-:root{--forest:#173b78;--leaf:#4980f2;--lime:#b7ccff;--cream:#f2f6ff;--paper:#fbfcff;--soil:#d4e0f5;--ink:#17243a;--muted:#5e6d84;--line:#dbe4f2;--red:#b35e43;--blue:#3568c5}
-*{box-sizing:border-box}.reveal{font-family:Manrope,sans-serif;font-size:25px;color:var(--ink);background:var(--cream)}.reveal .slides{text-align:left}.reveal .slides section{height:100%;padding:38px 58px 44px;background:radial-gradient(ellipse at 92% 8%,rgba(73,128,242,.12),transparent 30%),var(--paper);border-top:7px solid var(--leaf);overflow:hidden}.reveal h1,.reveal h2,.reveal h3{font-family:'Playfair Display',serif;letter-spacing:-.035em;color:var(--forest);text-transform:none;margin:0 0 .34em}.reveal h1{font-size:2.05em;line-height:1.03}.reveal h2{font-size:1.42em;line-height:1.12}.reveal h3{font-size:.85em;margin-bottom:.25em}.reveal p{line-height:1.32;margin:.26em 0 .45em}.reveal ul{margin:.12em 0 0 .9em}.reveal li{padding:.09em 0;line-height:1.24}.reveal a{color:#3568c5;text-decoration-thickness:1px;text-underline-offset:3px}.reveal strong{color:var(--forest)}
-.eyebrow{font:500 .45em 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.15em;color:#3568c5;margin-bottom:.65em}.lede{font-size:.92em;max-width:29em;color:#465875}.small{font-size:.52em!important;color:var(--muted);line-height:1.3!important}.micro{font-size:.42em;color:var(--muted)}.source{font-size:.39em;color:#66758d;line-height:1.2;margin-top:8px}.reveal .slide-number{font:500 13px 'DM Mono',monospace;color:var(--forest);background:transparent;right:25px;bottom:13px}.reveal .progress{height:4px;color:var(--leaf)}.reveal .controls{color:var(--forest)}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card{background:#f1f5fc;border:1px solid var(--line);padding:14px 16px;border-radius:3px;min-height:90px}.card.dark{background:var(--forest);color:var(--cream);border:0}.card.dark h3,.card.dark strong{color:var(--lime)}.card p{font-size:.67em}.pill{display:inline-block;background:var(--forest);color:var(--cream);padding:4px 8px;font:500 .45em 'DM Mono',monospace;margin:2px 3px 2px 0;border-radius:2px}.tag{display:inline-block;font:500 .42em 'DM Mono',monospace;letter-spacing:.07em;text-transform:uppercase;color:#3568c5;border:1px solid #b7c9e8;padding:4px 7px;margin:2px 3px 2px 0}.callout{background:#e8efff;padding:11px 14px;border-left:4px solid var(--leaf);font-size:.65em;line-height:1.3}.quote{font:600 .95em 'Playfair Display',serif;line-height:1.2;color:var(--forest);border-left:4px solid var(--leaf);padding-left:16px}.cover{background:linear-gradient(115deg,#173b78 0%,#2455a8 62%,#3568c5 100%)!important;color:var(--cream)!important;border-top:7px solid var(--lime)!important}.cover h1,.cover .eyebrow{color:var(--cream)}.cover .eyebrow{color:var(--lime)}.cover .lede{color:#e7efff}.cover-mark{position:absolute;right:6%;bottom:10%;font:700 9em 'Playfair Display',serif;color:rgba(183,204,255,.17);transform:rotate(-9deg)}.coverline{border-top:1px solid rgba(255,255,255,.27);padding-top:12px;margin-top:24px;font-size:.52em;color:#d8e3fa}
-.prompt{position:relative;background:#132957;color:#f2f6ff;border:1px solid #4568a5;border-radius:4px;padding:15px 17px 14px;margin:10px 0;font: .53em/1.42 'DM Mono',monospace;white-space:pre-wrap}.prompt b{color:var(--lime);font-weight:500}.copy{position:absolute;right:8px;top:8px;border:1px solid #9ebaf5;background:#244477;color:#f2f6ff;padding:5px 8px;border-radius:2px;font:500 11px 'DM Mono',monospace;cursor:pointer}.copy:hover,.copy:focus{background:var(--lime);color:var(--forest)}.try{display:inline-flex;gap:8px;align-items:center;background:#e8efff;border:1px solid #b7c9e8;padding:6px 10px;color:#2858c7;font:500 .46em 'DM Mono',monospace}.timer{font-weight:700;color:var(--red)}
-table{width:100%;border-collapse:collapse;font-size:.58em;line-height:1.23;margin-top:9px}th{background:var(--forest);color:#f8f5e9;text-align:left;padding:8px 10px}td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}tr:nth-child(even) td{background:#f1f5fc}.levels{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:14px 0}.level{padding:10px 9px;border-radius:3px;min-height:171px;color:#1a2b22}.level .n{font:500 .65em 'DM Mono',monospace;opacity:.75}.level h3{font-size:.7em;margin:.35em 0}.level p{font-size:.48em;line-height:1.22}.l1{background:#edf3ff}.l2{background:#dce8ff}.l3{background:#c4d7ff}.l4{background:#9ebdff}.l5{background:#789fe8}.icon{font-size:1.15em}.source-list{columns:2;column-gap:23px}.source-list li{break-inside:avoid;font-size:.42em;line-height:1.22;margin:0 0 8px}.source-list a{overflow-wrap:anywhere}.focus-word{font-family:'Playfair Display',serif;color:var(--forest);font-size:1.05em}.sequence{display:flex;gap:10px;align-items:stretch}.sequence .card{flex:1}.perspective-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}.perspective-card{background:#f1f5fc;border:1px solid var(--line);border-left:3px solid var(--leaf);padding:8px 11px;min-height:125px}.perspective-card h3{font:700 .58em/1.14 Manrope,sans-serif;letter-spacing:-.015em;margin:0 0 5px;color:var(--forest)}.perspective-card p{font-size:.46em;line-height:1.2;margin:.14em 0}.perspective-card .example{color:#52627d}.perspective-source{font-size:.32em;color:#66758d;line-height:1.15;margin-top:4px}.perspective-source a{overflow-wrap:anywhere}.ucl-table{font-size:.66em;line-height:1.22;margin-top:8px}.ucl-table th{padding:8px 9px}.ucl-table td{padding:9px 10px}.approach-table td:first-child{width:19%;font-size:1.04em}.challenge-table{font-size:.56em;line-height:1.18}.challenge-table th{font-size:1.02em;padding:8px 7px}.challenge-table td{padding:7px 9px}.challenge-table ul{margin:0 0 0 .85em}.challenge-table li{padding:0 0 5px;line-height:1.19}.ucl-source{font-size:.38em;margin-top:7px}
-.footer-note{position:absolute;bottom:40px;left:58px;font-size:.4em;color:var(--muted)}
-@media(max-width:800px){.reveal .slides section{padding:28px 35px}.grid3,.grid2{gap:9px}.reveal{font-size:20px}.levels{gap:5px}.level{padding:8px 6px}.source-list{columns:1}}
-</style></head><body><div class="reveal"><div class="slides"><section class="cover"><div class="eyebrow">Formation d’enseignants · Enseignement agricole</div><h1>Comment évaluer<br>à l’ère de l’IA ?</h1><p class="lede">Garder des preuves d’apprentissage lisibles — sans renoncer aux devoirs, au jugement professionnel ni à l’équité.</p><div class="coverline">4e / 3e · CAPa SAPVER · Bac Pro SAPAT<br>Présentation 28 min · puis échanges · Novembre 2026</div><div class="cover-mark" aria-hidden="true">◎</div><aside class="notes">Durée : 0:30. Accueillir le groupe et situer l’objectif : concevoir des preuves de compétences observables, avec ou sans IA. La séquence dure 27 minutes; garder ensuite du temps dans l’atelier de 55 minutes pour les échanges et l’adaptation aux disciplines.</aside></section><section><div class="eyebrow">00 · Le cap</div><h2>Ne pas chercher à deviner<br>qui a écrit. Évaluer ce qui s’apprend.</h2><div class="grid2"><div class="card dark"><h3>La bascule</h3><p>Du produit seul vers une combinaison de produit, démarche, explication et transfert.</p></div><div class="card"><h3>Le compromis</h3><p>Des tâches maison utiles pour s’exercer; des moments sécurisés, choisis, pour attester des acquis.</p></div></div><div class="callout" style="margin-top:14px"><strong>Question fil rouge :</strong> quelle preuve vous permet réellement d’affirmer « cet élève sait faire » ?</div><aside class="notes">Durée : 1:00. Faire lire le contraste. Insister sur le fait que l’IA ne rend pas tous les devoirs inutiles; elle impose de mieux séparer entraînement, accompagnement et certification. Demander aux participants de garder en tête une évaluation actuelle.</aside></section><section><div class="eyebrow">01 · Ce que dit la recherche</div><h2>Trois tendances à tenir ensemble.</h2><div class="grid3"><div class="card"><span class="pill">DEVOIRS</span><h3>Un potentiel, pas une recette</h3><p>EEF : gain moyen estimé +5 mois au secondaire; effets variables, preuves limitées. Le lien au cours et le retour comptent.</p></div><div class="card"><span class="pill">IA</span><h3>Meilleur rendu ≠ acquis</h3><p>Une tâche réussie avec assistance peut masquer ce que l’élève sait faire seul.</p></div><div class="card"><span class="pill">CONCEPTION</span><h3>Rendre visible l’apprentissage</h3><p>Combiner entraînement guidé, traces de démarche et vérification en présence.</p></div></div><p class="source">EEF, Teaching and Learning Toolkit, « Homework » : estimation moyenne +5 mois au secondaire; niveau de preuve limité, hétérogénéité des tâches.</p><aside class="notes">Durée : 1:30. Nuancer le chiffre : ce sont des mois de progrès convertis à partir d’études agrégées, non la promesse qu’un devoir donné produit mécaniquement cinq mois. Distinguer devoirs de pratique alignés sur la séance et tâche certificative réalisée hors surveillance. Faire le lien avec les objectifs et le feedback.</aside></section><section><div class="eyebrow">02 · Prudence probatoire</div><h2>Un détecteur ne prouve pas<br>l’auteur d’un texte.</h2><div class="grid2"><div class="card"><h3>Fiabilité insuffisante</h3><p>Weber-Wulff et al. (2023) : 14 outils testés; performances jugées ni exactes ni fiables, dégradées par des modifications du texte.</p></div><div class="card"><h3>Biais d’équité</h3><p>Liang et al. (2023) : détecteurs étudiés classant à tort des textes d’auteurs non natifs anglophones comme générés par IA.</p></div></div><div class="callout" style="margin-top:12px"><strong>Donc :</strong> un score de détection ne constitue pas une preuve de fraude ni un motif suffisant de sanction.</div><p class="source">Études en anglais; elles ne quantifient pas directement les faux positifs sur productions françaises de lycéens.</p><aside class="notes">Durée : 1:30. Présenter les limites comme méthodologiques et d’équité; ne pas extrapoler la mesure anglaise aux textes français des élèves. Le cadre Éduscol 2025 recommande d’éviter les logiciels de détection, jugés peu fiables et susceptibles de pénaliser à tort. Distinguer indice, preuve et procédure contradictoire.</aside></section><section><div class="eyebrow">03 · Identifier les zones de risque</div><h2>Vulnérable vs moins vulnérable<br>à une production IA non déclarée.</h2><table><thead><tr><th>Plus vulnérable si isolée</th><th>Preuves complémentaires</th></tr></thead><tbody><tr><td>Dissertation générique à la maison</td><td>Plan annoté + brouillon + explication orale courte</td></tr><tr><td>Résumé / définition sans source imposée</td><td>Observation située, données de terrain, justification</td></tr><tr><td>Compte rendu formaté après coup</td><td>Notes prises en séance, relevés, étapes datées</td></tr><tr><td>QCM révisable hors classe</td><td>Rappel sans outil en classe, questions de transfert</td></tr></tbody></table><div class="callout" style="margin-top:10px">Aucune modalité n’est « anti-IA » par nature : on triangule les preuves et on aligne la tâche avec l’objectif.</div><aside class="notes">Durée : 1:30. Lire la première colonne comme une vulnérabilité de la tâche seule, pas comme une accusation. Un QCM peut vérifier des connaissances si les conditions sont adaptées; un oral peut être préparé avec l’IA. La question est la cohérence des preuves et de l’objectif, pas la chasse à l’outil.</aside></section><section><div class="eyebrow">04 · Les devoirs maison restent utiles</div><h2>Repenser la consigne,<br>pas bannir le travail chez soi.</h2><div class="sequence"><div class="card"><span class="tag">S’ENTRAÎNER</span><h3>Pratique</h3><p>Récupération, vocabulaire, geste expliqué, répétition brève.</p></div><div class="card"><span class="tag">APPRENDRE</span><h3>Processus</h3><p>Essais, retours, corrections, usage IA déclaré si prévu.</p></div><div class="card dark"><span class="tag" style="color:var(--lime);border-color:#7899d6">ATTESTER</span><h3>Certification</h3><p>Moment sécurisé et proportionné, seul ou avec oral/observation.</p></div></div><div class="callout" style="margin-top:12px"><strong>Principe :</strong> l’entraînement peut être ouvert; la note certificative ne repose pas uniquement sur un produit maison invérifiable.</div><p class="source">EEF : devoirs mieux reliés aux apprentissages de classe et assortis de retours; l’effet varie fortement selon la conception et le contexte domestique.</p><aside class="notes">Durée : 1:30. Faire préciser la distinction entre feedback formatif et note certificative. Pratique maison possible en biologie : trois questions sur la chaîne alimentaire suivies d’une correction. Une tâche d’attestation peut s’appuyer sur une explication individuelle en classe. Prévoir accès, temps, matériel et soutien réellement disponibles à domicile.</aside></section><section><div class="eyebrow">05 · Nommer le contrat</div><h2>AI Assessment Scale :<br>annoncer le niveau d’usage autorisé.</h2><div class="levels"><div class="level l1"><div class="n">1</div><h3>Sans IA</h3><p>Compétence individuelle attestée.</p></div><div class="level l2"><div class="n">2</div><h3>Planifier</h3><p>Pistes / plan; rédaction par l’élève.</p></div><div class="level l3"><div class="n">3</div><h3>Collaborer</h3><p>Aide ciblée, choix justifiés.</p></div><div class="level l4"><div class="n">4</div><h3>Intégrer</h3><p>IA fait partie de la tâche.</p></div><div class="level l5"><div class="n">5</div><h3>Explorer</h3><p>Co-création et usages ouverts.</p></div></div><div class="callout"><strong>Ce n’est pas une échelle de mérite :</strong> c’est un contrat explicite par tâche. Adaptation française synthétique de l’AIAS.</div><aside class="notes">Durée : 1:30. Expliquer que l’échelle originale a connu des évolutions; ici, on reprend la version originale à cinq niveaux pour donner un vocabulaire de classe. Le niveau 1 sert parfois à attester une compétence sans IA; les niveaux ouverts peuvent tester le jugement et la qualité de collaboration. La consigne doit dire clairement ce qui est permis.</aside></section><section><div class="eyebrow">06 · Organiser un programme d’évaluation</div><h2>Two-lane : une voie sécurisée,<br>une voie ouverte.</h2><div class="grid2"><div class="card dark"><span class="pill">VOIE 1 · SÉCURISÉE</span><h3>Attester certains acquis</h3><p>Surveillée, en présence; avec ou sans IA selon ce qu’on veut évaluer. À utiliser de façon stratégique.</p></div><div class="card"><span class="pill">VOIE 2 · OUVERTE</span><h3>Apprendre en situation réelle</h3><p>Tâche authentique, IA permise et encadrée; le processus et le jugement deviennent évaluables.</p></div></div><div class="callout" style="margin-top:12px">Éviter le contrat contradictoire : devoir non surveillé « sans IA », dont l’interdiction est impossible à vérifier.</div><p class="source">University of Sydney, cadre de conception « two-lane »; repère de contexte universitaire, transposable avec discernement.</p><aside class="notes">Durée : 1:30. Présenter le cadre comme une proposition de l’Université de Sydney dans l’enseignement supérieur, pas une prescription réglementaire pour les lycées français. Sa logique transférable : répartir les preuves au fil du parcours entre confirmation sécurisée et tâches ouvertes formatrices.</aside></section><section><div class="eyebrow">07 · Authentique et triangulé</div><h2>Évaluer le processus<br>autant que le produit.</h2><div class="grid3"><div class="card"><h3>Voir faire</h3><p>Observation / geste professionnel / choix sur un cas concret.</p></div><div class="card"><h3>Entendre expliquer</h3><p>Oral 2 min : « pourquoi ce choix ? qu’as-tu changé ? »</p></div><div class="card"><h3>Suivre les étapes</h3><p>Brouillon, journal bref, source consultée, version finale.</p></div></div><div class="callout" style="margin-top:13px"><strong>Autres formats :</strong> déclaration d’usage IA; critique d’une réponse IA; comparaison de deux propositions.</div><aside class="notes">Durée : 1:30. Donner un exemple concret : une élève remet une fiche sur une activité d’animation en SAPAT, conserve son premier plan, indique les suggestions IA écartées et explique oralement comment elle a adapté l’activité aux besoins du public. Évaluer la compétence visée, pas le volume de journaling.</aside></section><section><div class="eyebrow">08 · Accessibilité · CUA / UDL</div><h2>Plusieurs façons de montrer<br>un même apprentissage.</h2><div class="grid2"><div class="card"><h3>Réduire les barrières</h3><p>Consigne courte; vocabulaire expliqué; exemple modèle; étapes numérotées; texte aéré et lisible.</p></div><div class="card"><h3>Varier la preuve</h3><p>Écrit bref, schéma légendé, oral, démonstration ou support audio — si cela mesure le même objectif.</p></div></div><div class="callout" style="margin-top:12px"><strong>À ne pas confondre :</strong> rendre l’accès flexible ne signifie pas baisser l’exigence disciplinaire.</div><p class="source">CAST, UDL Guidelines 3.0 (2024) : options de représentation, d’action/expression et d’engagement; réduire les barrières systémiques.</p><aside class="notes">Durée : 1:30. Relier la conception universelle de l’apprentissage (CUA/UDL) à la classe professionnelle : un élève en difficulté de lecture peut expliquer oralement la démarche d’hygiène ou légender un schéma, si la lecture n’est pas la compétence évaluée. Proposer les choix en amont, éviter la stigmatisation. UDI est une tradition connexe de design universel de l’enseignement.</aside></section><section><div class="eyebrow">09 · Métacognition</div><h2>Faire expliquer comment<br>on s’y est pris.</h2><div class="sequence"><div class="card"><span class="tag">AVANT</span><h3>Planifier</h3><p>« Qu’est-ce que je dois faire ? »</p></div><div class="card"><span class="tag">PENDANT</span><h3>Surveiller</h3><p>« Qu’est-ce qui me bloque ? »</p></div><div class="card"><span class="tag">APRÈS</span><h3>Évaluer</h3><p>« Qu’est-ce qui m’a aidé ? »</p></div></div><div class="callout" style="margin-top:12px"><strong>Petit dispositif :</strong> auto-évaluation à trois cases + une phrase de justification, en lien avec la tâche disciplinaire.</div><p class="source">Flavell (1979) · Zimmerman (2002) · EEF : métacognition / autorégulation, potentiel moyen estimé +7 mois; efficacité si enseignées dans le contenu.</p><aside class="notes">Durée : 1:30. Le +7 mois est une estimation du Toolkit fondée sur un corpus de recherches, pas un effet garanti. Flavell conceptualise la surveillance cognitive; Zimmerman décrit l’autorégulation. Pour des lecteurs fragiles, utiliser une échelle visuelle « j’ai commencé / j’ai vérifié / je peux expliquer » et questions orales courtes.</aside></section><section><div class="eyebrow">10 · L’IA et l’effort cognitif</div><h2>Risque : un meilleur devoir,<br>mais moins d’apprentissage.</h2><div class="grid2"><div class="card"><h3>« Metacognitive laziness »</h3><p>Fan et al. : étude expérimentale auprès de 117 étudiants universitaires; amélioration du texte sans gain significatif de transfert/connaissances comparé.</p></div><div class="card"><h3>La béquille ou le tuteur ?</h3><p>Bastani et al. (PNAS, 2025) : en maths au lycée, outil sans garde-fous aidait à pratiquer, mais la performance sans IA baissait ensuite; tuteur à indices réduisait le risque.</p></div></div><div class="callout" style="margin-top:12px">Consigne utile : « demande un indice, explique ton essai, puis vérifie » plutôt que « donne la réponse ».</div><p class="source">Résultats situés (universitaires / lycée en Turquie), ne démontrent pas que toute IA ou tout usage nuit aux apprentissages.</p><aside class="notes">Durée : 1:30. Nuancer et comparer les contextes. Fan et al. travaillent avec des étudiants universitaires et une tâche d’écriture; Bastani et al. mènent une expérimentation en mathématiques auprès de lycéens turcs. Ce ne sont pas des preuves directes sur les filières agricoles françaises, mais des signaux pertinents pour concevoir des garde-fous et des tâches de transfert.</aside></section><section><div class="eyebrow">11 · UCLouvain · Intégrité académique</div><h2>L’IA impacte l’intégrité académique :<br>quelles approches pour évaluer ?</h2><table class="ucl-table approach-table"><thead><tr><th>Approche</th><th>Ce que cela veut dire</th></tr></thead><tbody><tr><td><strong>Éviter</strong></td><td>Quand on ne peut pas vérifier le travail, privilégier les examens en présence, sans ordinateur, surtout pour les examens certificatifs.</td></tr><tr><td><strong>Contourner</strong></td><td>Rendre les questions plus complexes et liées au cours, pour que l’IA ne puisse pas donner facilement une bonne réponse.</td></tr><tr><td><strong>Intégrer</strong></td><td>Adapter objectifs, activités et évaluations. Apprendre à utiliser l’IA de façon critique et responsable; par exemple, faire un écrit puis une défense orale.</td></tr></tbody></table><p class="source ucl-source">Source : <em>Intégrer l’IA générative dans les stratégies pédagogiques</em>, UCLouvain, Louvain Learning Lab, 2024. <a href="https://uclouvain.be/fr/lll/integrer-lia-generative-dans-les-strategies-pedagogiques-2024" target="_blank" rel="noopener">Page UCLouvain ↗</a></p><aside class="notes">Durée : 1:00. Présenter les trois approches décrites par le Louvain Learning Lab. Les formulations du tableau sont simplifiées pour faciliter la lecture, sans changer le sens : éviter quand la vérification n’est pas fiable; adapter les tâches; ou intégrer l’IA aux apprentissages et à l’évaluation. La source s’adresse à l’enseignement supérieur : à adapter au contexte des participants.</aside></section><section><div class="eyebrow">12 · UCLouvain · Adapter l’évaluation</div><h2>Les défis de l’évaluation<br>à l’ère de l’IA générative</h2><table class="ucl-table challenge-table"><thead><tr><th>Évaluer sans IA</th><th>Réduire l’influence de l’IA</th><th>Évaluer en tenant compte de l’IA</th></tr></thead><tbody><tr><td><ul><li>Examen en présence, avec temps limité</li><li>Écriture à la main</li><li>Questions courtes ou longues, QCM, vrai/faux, associations, textes à trous</li><li>Réalisation pratique</li></ul></td><td><ul><li>Relier les questions à des éléments précis vus en cours</li><li>Demander un avis personnel et des exemples vécus</li><li>Utiliser des cas qui demandent réflexion et solutions nuancées</li><li>Poser des questions liées à un contexte bien compris</li><li>Faire vérifier la qualité et la vérité des informations, avec des arguments</li></ul></td><td><ul><li>Situations concrètes : terrain, simulations</li><li>Évaluer une démarche : jeu de rôle, résolution de problème, forum</li><li>Suivre les progrès avec des retours, par exemple dans un projet d’équipe</li><li>Échanges réels : présentation ou entretien</li><li>Faire réfléchir sur son travail : portfolio, retour entre pairs, autoévaluation</li></ul></td></tr></tbody></table><p class="source ucl-source">Source : <em>Intégrer l’IA générative dans les stratégies pédagogiques</em>, UCLouvain, Louvain Learning Lab, 2024. <a href="https://uclouvain.be/fr/lll/integrer-lia-generative-dans-les-strategies-pedagogiques-2024" target="_blank" rel="noopener">Page UCLouvain ↗</a></p><aside class="notes">Durée : 1:00. Faire parcourir les trois colonnes comme des options à choisir selon l’objectif d’apprentissage. Le tableau résume fidèlement les exemples du document, en langage simple. Il propose à la fois des évaluations sans IA, des moyens de réduire son influence et des activités qui tiennent compte de son usage. La publication signale que les pratiques d’évaluation doivent rester alignées sur les objectifs du cours.</aside></section><section><div class="eyebrow">13 · Cadres de référence</div><h2>Une boussole, pas une recette unique.</h2><table><thead><tr><th>Ressource</th><th>Apport pour l’évaluation</th></tr></thead><tbody><tr><td>Éducation nationale · cadre d’usage IA, juin 2025</td><td>Usage pédagogique encadré; à partir de la 4e en classe; éviter les détecteurs; superviser le jugement humain.</td></tr><tr><td>UNESCO · guidance GenAI (2023)</td><td>Approche centrée sur l’humain, l’âge, la vie privée et la conception pédagogique.</td></tr><tr><td>UNESCO · cadres de compétences IA (2024)</td><td>Compétences élèves et enseignants : repères pour une littératie IA.</td></tr><tr><td>OCDE · Digital Education Outlook 2026</td><td>Performance avec IA ne signifie pas automatiquement apprentissage; guider par intention pédagogique.</td></tr><tr><td>Enseignement agricole · rapport IGESR (2025)</td><td>Souligne les questions d’évaluation, de posture et le besoin de formation.</td></tr></tbody></table><aside class="notes">Durée : 1:30. Préciser que le cadre d’usage 2025 est publié par le ministère de l’Éducation nationale; les établissements agricoles relèvent d’un autre ministère, et doivent s’appuyer sur les consignes applicables à leur réseau et à leur établissement. Le rapport Chlorofil est explicitement consacré à l’enseignement agricole. Le cadre UNESCO est international, non obligatoire.</aside></section><section><div class="eyebrow">14 · Consignes réutilisables</div><h2>Des devoirs maison qui donnent<br>à voir les choix.</h2><div class="grid2"><div class="card"><span class="pill">OPTION A · PROCESSUS</span><h3>« Trace trois étapes »</h3><p>Idée initiale → brouillon annoté → version finale. Ajoute une phrase sur un changement fait et pourquoi.</p></div><div class="card"><span class="pill">OPTION B · CRITIQUE IA</span><h3>« Corrige cette réponse »</h3><p>Relève deux erreurs dans une réponse IA fournie par l’enseignant; justifie avec le cours.</p></div></div><div class="callout" style="margin-top:12px"><strong>Déclaration simple :</strong> « J’ai utilisé [outil] pour [aide]. J’ai gardé / changé [élément]. » Puis mini-oral de justification (2 min).</div><aside class="notes">Durée : 1:30. Lire les consignes en langage accessible. On peut réduire la charge d’écriture avec cases, oral enregistré ou pictogrammes; conserver la même compétence cible. La réponse IA truffée d’erreurs est préparée et vérifiée par l’enseignant : ne pas demander aux élèves de juger une sortie non contrôlée.</aside></section><section><div class="eyebrow">15 · Exemples de filière</div><h2>Deux tâches situées.<br>Des preuves simples et concrètes.</h2><div class="grid2"><div class="card dark"><span class="tag" style="color:var(--lime);border-color:#7899d6">BAC PRO SAPAT</span><h3>Préparer une activité</h3><p>Proposer une animation courte pour un public donné. L’IA peut aider à trouver des idées; l’élève choisit, adapte au public et justifie deux choix à l’oral.</p><p class="small" style="color:#d8e3fa">Preuves : fiche accessible + brouillon + oral 2 min.</p></div><div class="card"><span class="tag">CAPa SAPVER · BIO / ÉCO</span><h3>Lire un milieu observé</h3><p>À partir de photos ou d’observations de parcelle, identifier êtres vivants et relations; corriger une explication IA qui confond chaîne et réseau alimentaire.</p><p class="small">Preuves : schéma légendé + correction justifiée + explication orale.</p></div></div><div class="callout" style="margin-top:12px">Pour la 4e/3e : réduire la longueur, donner un lexique illustré et faire l’oral en binôme avant l’individuel.</div><aside class="notes">Durée : 1:30. Décrire les exemples et vérifier l’alignement avec les référentiels et contextes réels des participants. CAPa SAPVER signifie Services aux personnes et vente en espace rural; le cas biologique est un exemple pédagogique, à adapter au programme et au territoire. Éviter d’utiliser des situations ou données nominatives de stage.</aside></section><section><div class="eyebrow">16 · Construire une grille courte</div><h2>Des critères observables,<br>formulés avec un verbe d’action.</h2><table><thead><tr><th>Critère (verbe à l’infinitif)</th><th>Indicateur de réussite</th></tr></thead><tbody><tr><td>Identifier les éléments du milieu</td><td>Nommer 3 êtres vivants observés et leur rôle.</td></tr><tr><td>Représenter les relations</td><td>Tracer des flèches correctes et légender le schéma.</td></tr><tr><td>Vérifier l’explication</td><td>Repérer une erreur de l’IA et l’appuyer sur le cours / observation.</td></tr><tr><td>Justifier les choix</td><td>Expliquer en deux phrases ce qui a été retenu ou modifié.</td></tr></tbody></table><div class="callout" style="margin-top:12px">Rendre lisible le niveau attendu : « acquis / en cours / à reprendre », avec un exemple modèle.</div><p class="source">Verbes d’action inspirés de la taxonomie révisée de Bloom (Anderson &amp; Krathwohl, 2001).</p><aside class="notes">Durée : 1:30. Faire remarquer que chaque critère commence par un infinitif et que l’indicateur est observable. Ajuster le nombre d’items et le poids : ne pas surpondérer la déclaration IA si l’apprentissage visé est écologique. L’échelle descriptive doit être expliquée avant le devoir.</aside></section><section><div class="eyebrow">17 · En cas de suspicion</div><h2>Rester juste : ouvrir le dialogue,<br>ne pas accuser à partir d’un score.</h2><div class="sequence"><div class="card"><span class="tag">1 · ÉCOUTER</span><p>Demander à l’élève de décrire sa démarche, sans jugement préalable.</p></div><div class="card"><span class="tag">2 · ÉTAYER</span><p>Comparer aux traces / travaux antérieurs avec prudence; inviter à expliquer un passage.</p></div><div class="card"><span class="tag">3 · SUIVRE</span><p>Appliquer les règles de l’établissement et laisser l’élève répondre.</p></div></div><div class="callout" style="margin-top:13px"><strong>Jamais :</strong> conclure à la fraude sur un détecteur. Un oral de clarification évalue une compétence; il ne devient pas une « preuve magique » de l’auteur.</div><aside class="notes">Durée : 1:30. Rappeler le cadre et les procédures locales. Garder une posture de dialogue, documenter les faits, permettre une réponse et distinguer aide non autorisée, compréhension insuffisante et difficulté à verbaliser. Éviter l’interrogatoire improvisé ou la sanction basée uniquement sur un outil automatisé.</aside></section><section><div class="eyebrow">18 · À retenir</div><h2>Trois décisions pour votre prochaine évaluation.</h2><div class="grid3"><div class="card"><span class="pill">1</span><h3>Dire le contrat</h3><p>Quelle utilisation IA est permise pour cette tâche ?</p></div><div class="card"><span class="pill">2</span><h3>Multiplier les preuves</h3><p>Quel indice de processus ou d’explication complète le produit ?</p></div><div class="card"><span class="pill">3</span><h3>Ouvrir l’accès</h3><p>Comment un élève en difficulté de lecture peut montrer le même acquis ?</p></div></div><p class="quote" style="margin-top:16px">Évaluer avec l’IA à l’horizon, c’est mieux décider quelle preuve mérite confiance.</p><aside class="notes">Durée : 1:00. Inviter chacun à noter une consigne ou une évaluation à retravailler. Cette courte présentation clôt le premier segment de la séquence de 55 minutes; utiliser le temps restant pour l’analyse en groupe et l’adaptation aux disciplines.</aside></section><section class="source-slide"><div class="eyebrow">19 · Références vérifiées en ligne · 11 novembre 2026</div><h2>Sources pour approfondir</h2><ol class="source-list"><li><strong>Weber-Wulff, D. et al. (2023). “Testing of detection tools for AI-generated text.” International Journal for Educational Integrity, 19, 26.</strong> <a href="https://doi.org/10.1007/s40979-023-00146-z" target="_blank" rel="noopener">Source ↗</a></li><li><strong>Liang, W. et al. (2023). “GPT detectors are biased against non-native English writers.” Patterns, 4(7), 100779.</strong> <a href="https://doi.org/10.1016/j.patter.2023.100779" target="_blank" rel="noopener">Source ↗</a></li><li><strong>Furze, L., Perkins, M., Roe, J. & MacVaugh, J. (2024). “The AI Assessment Scale (AIAS) in action.” AJET, 40(4), 38–55.</strong> <a href="https://doi.org/10.14742/ajet.9434" target="_blank" rel="noopener">Source ↗</a></li><li><strong>Lodge, J. et al. (2023). Assessment reform for the age of artificial intelligence. TEQSA.</strong> <a href="https://www.teqsa.gov.au/guides-resources/resources/corporate-publications/assessment-reform-age-artificial-intelligence" target="_blank" rel="noopener">Source ↗</a></li><li><strong>University of Sydney. “Embracing the future of assessment at the University of Sydney” (two-lane approach).</strong> <a href="https://educational-innovation.sydney.edu.au/teaching@sydney/embracing-the-future-of-assessment-at-the-university-of-sydney/" target="_blank" rel="noopener">Source ↗</a></li><li><strong>CAST (2024). Universal Design for Learning Guidelines, version 3.0.</strong> <a href="https://udlguidelines.cast.org/" target="_blank" rel="noopener">Source ↗</a></li><li><strong>McGuire, J. M., Scott, S. S. & Shaw, S. F. (2003). “Universal Design for Instruction.”</strong> <a href="https://eric.ed.gov/?id=EJ875999" target="_blank" rel="noopener">Source ↗</a></li><li><strong>Flavell, J. H. (1979). “Metacognition and cognitive monitoring.” American Psychologist, 34(10), 906–911.</strong> <a href="https://doi.org/10.1037/0003-066X.34.10.906" target="_blank" rel="noopener">Source ↗</a></li><li><strong>Zimmerman, B. J. (2002). “Becoming a Self-Regulated Learner: An Overview.” Theory Into Practice, 41(2).</strong> <a href="https://www.tandfonline.com/doi/abs/10.1207/s15430421tip4102_2" target="_blank" rel="noopener">Source ↗</a></li><li><strong>EEF. Metacognition and Self-Regulated Learning; Toolkit estimate +7 months.</strong> <a href="https://apiv3.educationendowmentfoundation.org.uk/education-evidence/guidance-reports/metacognition" target="_blank" rel="noopener">Source ↗</a></li><li><strong>Fan, Y. et al. (2025). “Beware of metacognitive laziness…” BJET, 56(2), 489–530.</strong> <a href="https://doi.org/10.1111/bjet.13544" target="_blank" rel="noopener">Source ↗</a></li><li><strong>Bastani, H. et al. (2025). “Generative AI without guardrails can harm learning.” PNAS, 122(26).</strong> <a href="https://doi.org/10.1073/pnas.2422633122" target="_blank" rel="noopener">Source ↗</a></li><li><strong>Vangrunderbeeck, P., Deville, Y., Guisset, M., Baur, M. & Biot, M. (2024). “Intégrer l’IA générative dans les stratégies pédagogiques.” UCLouvain, Louvain Learning Lab.</strong> <a href="https://uclouvain.be/fr/lll/integrer-lia-generative-dans-les-strategies-pedagogiques-2024" target="_blank" rel="noopener">Source ↗</a></li><li><strong>Ministère de l’Éducation nationale (2025). L’IA en éducation : cadre d’usage, juin 2025.</strong> <a href="https://www.education.gouv.fr/cadre-d-usage-de-l-ia-en-education-450647" target="_blank" rel="noopener">Source ↗</a></li><li><strong>UNESCO, Miao, F. & Holmes, W. (2023). Guidance for generative AI in education and research.</strong> <a href="https://unesdoc.unesco.org/ark:/48223/pf0000386693" target="_blank" rel="noopener">Source ↗</a></li><li><strong>UNESCO (2024). AI competency frameworks for students and teachers.</strong> <a href="https://www.unesco.org/en/digital-education/ai-future-learning" target="_blank" rel="noopener">Source ↗</a></li><li><strong>OECD (2026). OECD Digital Education Outlook 2026: Exploring Effective Uses of Generative AI in Education.</strong> <a href="https://doi.org/10.1787/062a7394-en" target="_blank" rel="noopener">Source ↗</a></li><li><strong>Ministère de l’Agriculture (2025). Tirer profit des opportunités offertes par le déploiement des intelligences artificielles… Rapport R25-002.</strong> <a href="https://chlorofil.fr/fileadmin/user_upload/01-systeme/structuration/iea/r25-002-intelligence-artificielle.pdf" target="_blank" rel="noopener">Source ↗</a></li><li><strong>EEF. Homework evidence summary.</strong> <a href="https://www.mindsetineducation.com/pluginfile.php/17174/mod_folder/content/0/EEF-homework-secondary.pdf?forcedownload=1" target="_blank" rel="noopener">Source ↗</a></li><li><strong>Anderson, L. W. & Krathwohl, D. R. (eds.) (2001). A Taxonomy for Learning, Teaching, and Assessing.</strong> <a href="https://www1.udel.edu/educ/gottfredson/451/revisedbloom.html" target="_blank" rel="noopener">Source ↗</a></li></ol><p class="small">Les résultats de recherche et cadres cités ont des contextes et limites distincts; voir les notes orateur des diapositives pour les nuances.</p><aside class="notes">Durée : 1:00. Les références sont cliquables. Signaler que les résultats de recherche concernent des contextes différents; notamment les études de détecteurs portent sur l’anglais, et les essais Bastani/Fan ne sont pas des essais dans les classes agricoles françaises. EEF : estimations moyennes, non garanties individuelles.</aside></section></div></div><script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script><script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script><script>(function(){if(!window.Reveal){console.error('Reveal.js CDN indisponible');return;}Reveal.initialize({hash:true,controls:true,progress:true,center:false,slideNumber:'c/t',transition:'fade',backgroundTransition:'fade',navigationMode:'linear',plugins:[RevealNotes]});})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"8607d2a720d14b038279025b2b5a82e5","spa":2}' crossorigin="anonymous"></script>
-</body></html>
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Comment évaluer à l’ère de l’IA ? — Enseignement agricole</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+    <script type="text/javascript"
+        src="https://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=N-RXw3WF2dWByDkM7j0Mh0K0iNku_IbL8x5kYS3wXlokO2E-3o4DHREiJxRsLwJsVXLGc6_DZJjuYtz1-XFty_XR-EqugFPif6zn2AXCY5o1Dut1A8I5fes3XdH2hBo-"
+        charset="UTF-8"></script>
+    <link rel="stylesheet" crossorigin="anonymous"
+        href="https://ff.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9tYW1tb3V0aC5haS9hcGkvYXR0YWNobWVudHMvYzVlMzFmY2EtN2M4MC00OTNjLWJlMWMtYjc2NGZjMzkxODhlL2ZpbGU" />
+    <style>
+        :root {
+            --forest: #123e31;
+            --leaf: #8bbf50;
+            --lime: #cde58b;
+            --cream: #f3f1e7;
+            --paper: #fbfaf4;
+            --soil: #d9b88d;
+            --ink: #18271f;
+            --muted: #66776c;
+            --line: #d8dfd2;
+            --red: #b35e43;
+            --blue: #527f79
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        .reveal {
+            font-family: Manrope, sans-serif;
+            font-size: 25px;
+            color: var(--ink);
+            background: var(--cream)
+        }
+
+        .reveal .slides {
+            text-align: left
+        }
+
+        .reveal .slides section {
+            height: 100%;
+            padding: 38px 58px 44px;
+            background: radial-gradient(ellipse at 92% 8%, rgba(205, 229, 139, .18), transparent 30%), var(--paper);
+            border-top: 7px solid var(--leaf);
+            overflow: hidden
+        }
+
+        .reveal h1,
+        .reveal h2,
+        .reveal h3 {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -.035em;
+            color: var(--forest);
+            text-transform: none;
+            margin: 0 0 .34em
+        }
+
+        .reveal h1 {
+            font-size: 2.05em;
+            line-height: 1.03
+        }
+
+        .reveal h2 {
+            font-size: 1.42em;
+            line-height: 1.12
+        }
+
+        .reveal h3 {
+            font-size: .85em;
+            margin-bottom: .25em
+        }
+
+        .reveal p {
+            line-height: 1.32;
+            margin: .26em 0 .45em
+        }
+
+        .reveal ul {
+            margin: .12em 0 0 .9em
+        }
+
+        .reveal li {
+            padding: .09em 0;
+            line-height: 1.24
+        }
+
+        .reveal a {
+            color: #2c7251;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px
+        }
+
+        .reveal strong {
+            color: var(--forest)
+        }
+
+        .eyebrow {
+            font: 500 .45em 'DM Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: .15em;
+            color: #5c8055;
+            margin-bottom: .65em
+        }
+
+        .lede {
+            font-size: .92em;
+            max-width: 29em;
+            color: #45564b
+        }
+
+        .small {
+            font-size: .52em !important;
+            color: var(--muted);
+            line-height: 1.3 !important
+        }
+
+        .micro {
+            font-size: .42em;
+            color: var(--muted)
+        }
+
+        .source {
+            font-size: .39em;
+            color: #657568;
+            line-height: 1.2;
+            margin-top: 8px
+        }
+
+        .reveal .slide-number {
+            font: 500 13px 'DM Mono', monospace;
+            color: var(--forest);
+            background: transparent;
+            right: 25px;
+            bottom: 13px
+        }
+
+        .reveal .progress {
+            height: 4px;
+            color: var(--leaf)
+        }
+
+        .reveal .controls {
+            color: var(--forest)
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            align-items: stretch
+        }
+
+        .grid3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px
+        }
+
+        .card {
+            background: #f0f3e9;
+            border: 1px solid var(--line);
+            padding: 14px 16px;
+            border-radius: 3px;
+            min-height: 90px
+        }
+
+        .card.dark {
+            background: var(--forest);
+            color: var(--cream);
+            border: 0
+        }
+
+        .card.dark h3,
+        .card.dark strong {
+            color: var(--lime)
+        }
+
+        .card p {
+            font-size: .67em
+        }
+
+        .pill {
+            display: inline-block;
+            background: var(--forest);
+            color: var(--cream);
+            padding: 4px 8px;
+            font: 500 .45em 'DM Mono', monospace;
+            margin: 2px 3px 2px 0;
+            border-radius: 2px
+        }
+
+        .tag {
+            display: inline-block;
+            font: 500 .42em 'DM Mono', monospace;
+            letter-spacing: .07em;
+            text-transform: uppercase;
+            color: #3d704e;
+            border: 1px solid #b8cdb2;
+            padding: 4px 7px;
+            margin: 2px 3px 2px 0
+        }
+
+        .callout {
+            background: #e8efdd;
+            padding: 11px 14px;
+            border-left: 4px solid var(--leaf);
+            font-size: .65em;
+            line-height: 1.3
+        }
+
+        .quote {
+            font: 600 .95em 'Playfair Display', serif;
+            line-height: 1.2;
+            color: var(--forest);
+            border-left: 4px solid var(--leaf);
+            padding-left: 16px
+        }
+
+        .cover {
+            background: linear-gradient(115deg, #123e31 0%, #174c39 62%, #295c3b 100%) !important;
+            color: var(--cream) !important;
+            border-top: 7px solid var(--lime) !important
+        }
+
+        .cover h1,
+        .cover .eyebrow {
+            color: var(--cream)
+        }
+
+        .cover .eyebrow {
+            color: var(--lime)
+        }
+
+        .cover .lede {
+            color: #e7ecdc
+        }
+
+        .cover-mark {
+            position: absolute;
+            right: 6%;
+            bottom: 10%;
+            font: 700 9em 'Playfair Display', serif;
+            color: rgba(205, 229, 139, .13);
+            transform: rotate(-9deg)
+        }
+
+        .coverline {
+            border-top: 1px solid rgba(255, 255, 255, .27);
+            padding-top: 12px;
+            margin-top: 24px;
+            font-size: .52em;
+            color: #d6e1ce
+        }
+
+        .prompt {
+            position: relative;
+            background: #172e26;
+            color: #edf0df;
+            border: 1px solid #42604c;
+            border-radius: 4px;
+            padding: 15px 17px 14px;
+            margin: 10px 0;
+            font: .53em/1.42 'DM Mono', monospace;
+            white-space: pre-wrap
+        }
+
+        .prompt b {
+            color: var(--lime);
+            font-weight: 500
+        }
+
+        .copy {
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            border: 1px solid #86a37b;
+            background: #294a39;
+            color: #f5f3e9;
+            padding: 5px 8px;
+            border-radius: 2px;
+            font: 500 11px 'DM Mono', monospace;
+            cursor: pointer
+        }
+
+        .copy:hover,
+        .copy:focus {
+            background: var(--lime);
+            color: var(--forest)
+        }
+
+        .try {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            background: #f3e9d8;
+            border: 1px solid #e2d2b8;
+            padding: 6px 10px;
+            color: #694930;
+            font: 500 .46em 'DM Mono', monospace
+        }
+
+        .timer {
+            font-weight: 700;
+            color: var(--red)
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .58em;
+            line-height: 1.23;
+            margin-top: 9px
+        }
+
+        th {
+            background: var(--forest);
+            color: #f8f5e9;
+            text-align: left;
+            padding: 8px 10px
+        }
+
+        td {
+            padding: 8px 10px;
+            border-bottom: 1px solid var(--line);
+            vertical-align: top
+        }
+
+        tr:nth-child(even) td {
+            background: #f0f3e9
+        }
+
+        .levels {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin: 14px 0
+        }
+
+        .level {
+            padding: 10px 9px;
+            border-radius: 3px;
+            min-height: 171px;
+            color: #1a2b22
+        }
+
+        .level .n {
+            font: 500 .65em 'DM Mono', monospace;
+            opacity: .75
+        }
+
+        .level h3 {
+            font-size: .7em;
+            margin: .35em 0
+        }
+
+        .level p {
+            font-size: .48em;
+            line-height: 1.22
+        }
+
+        .l1 {
+            background: #f0d8cd
+        }
+
+        .l2 {
+            background: #f2e5bb
+        }
+
+        .l3 {
+            background: #dce9c6
+        }
+
+        .l4 {
+            background: #b9d3a0
+        }
+
+        .l5 {
+            background: #9dc8b4
+        }
+
+        .icon {
+            font-size: 1.15em
+        }
+
+        .source-list {
+            columns: 2;
+            column-gap: 23px
+        }
+
+        .source-list li {
+            break-inside: avoid;
+            font-size: .42em;
+            line-height: 1.22;
+            margin: 0 0 8px
+        }
+
+        .source-list a {
+            overflow-wrap: anywhere
+        }
+
+        .focus-word {
+            font-family: 'Playfair Display', serif;
+            color: var(--forest);
+            font-size: 1.05em
+        }
+
+        .sequence {
+            display: flex;
+            gap: 10px;
+            align-items: stretch
+        }
+
+        .sequence .card {
+            flex: 1
+        }
+
+        .perspective-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin: 8px 0
+        }
+
+        .perspective-card {
+            background: #f0f3e9;
+            border: 1px solid var(--line);
+            border-left: 3px solid var(--leaf);
+            padding: 8px 11px;
+            min-height: 125px
+        }
+
+        .perspective-card h3 {
+            font: 700 .58em/1.14 Manrope, sans-serif;
+            letter-spacing: -.015em;
+            margin: 0 0 5px;
+            color: var(--forest)
+        }
+
+        .perspective-card p {
+            font-size: .46em;
+            line-height: 1.2;
+            margin: .14em 0
+        }
+
+        .perspective-card .example {
+            color: #53665a
+        }
+
+        .perspective-source {
+            font-size: .32em;
+            color: #657568;
+            line-height: 1.15;
+            margin-top: 4px
+        }
+
+        .perspective-source a {
+            overflow-wrap: anywhere
+        }
+
+        .ucl-table {
+            font-size: .66em;
+            line-height: 1.22;
+            margin-top: 8px
+        }
+
+        .ucl-table th {
+            padding: 8px 9px
+        }
+
+        .ucl-table td {
+            padding: 9px 10px
+        }
+
+        .approach-table td:first-child {
+            width: 19%;
+            font-size: 1.04em
+        }
+
+        .challenge-table {
+            font-size: .56em;
+            line-height: 1.18
+        }
+
+        .challenge-table th {
+            font-size: 1.02em;
+            padding: 8px 7px
+        }
+
+        .challenge-table td {
+            padding: 7px 9px
+        }
+
+        .challenge-table ul {
+            margin: 0 0 0 .85em
+        }
+
+        .challenge-table li {
+            padding: 0 0 5px;
+            line-height: 1.19
+        }
+
+        .ucl-source {
+            font-size: .38em;
+            margin-top: 7px
+        }
+
+        .footer-note {
+            position: absolute;
+            bottom: 40px;
+            left: 58px;
+            font-size: .4em;
+            color: var(--muted)
+        }
+
+        @media(max-width:800px) {
+            .reveal .slides section {
+                padding: 28px 35px
+            }
+
+            .grid3,
+            .grid2 {
+                gap: 9px
+            }
+
+            .reveal {
+                font-size: 20px
+            }
+
+            .levels {
+                gap: 5px
+            }
+
+            .level {
+                padding: 8px 6px
+            }
+
+            .source-list {
+                columns: 1
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section class="cover">
+                <div class="eyebrow">Formation d’enseignants · Enseignement agricole</div>
+                <h1>Comment évaluer<br>à l’ère de l’IA ?</h1>
+                <p class="lede">Garder des preuves d’apprentissage lisibles — sans renoncer aux devoirs, au jugement
+                    professionnel ni à l’équité.</p>
+                <div class="coverline">4e / 3e · CAPa SAPVER · Bac Pro SAPAT<br>Présentation 28 min · puis échanges ·
+                    Novembre 2026</div>
+                <div class="cover-mark" aria-hidden="true">◎</div>
+                <aside class="notes">Durée : 0:30. Accueillir le groupe et situer l’objectif : concevoir des preuves de
+                    compétences observables, avec ou sans IA. La séquence dure 27 minutes; garder ensuite du temps dans
+                    l’atelier de 55 minutes pour les échanges et l’adaptation aux disciplines.</aside>
+            </section>
+            <section>
+                <div class="eyebrow">00 · Le cap</div>
+                <h2>Ne pas chercher à deviner<br>qui a écrit. Évaluer ce qui s’apprend.</h2>
+                <div class="grid2">
+                    <div class="card dark">
+                        <h3>La bascule</h3>
+                        <p>Du produit seul vers une combinaison de produit, démarche, explication et transfert.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Le compromis</h3>
+                        <p>Des tâches maison utiles pour s’exercer; des moments sécurisés, choisis, pour attester des
+                            acquis.</p>
+                    </div>
+                </div>
+                <div class="callout" style="margin-top:14px"><strong>Question fil rouge :</strong> quelle preuve vous
+                    permet réellement d’affirmer « cet élève sait faire » ?</div>
+                <aside class="notes">Durée : 1:00. Faire lire le contraste. Insister sur le fait que l’IA ne rend pas
+                    tous les devoirs inutiles; elle impose de mieux séparer entraînement, accompagnement et
+                    certification. Demander aux participants de garder en tête une évaluation actuelle.</aside>
+            </section>
+            <section>
+                <div class="eyebrow">01 · Ce que dit la recherche</div>
+                <h2>Trois tendances à tenir ensemble.</h2>
+                <div class="grid3">
+                    <div class="card"><span class="pill">DEVOIRS</span>
+                        <h3>Un potentiel, pas une recette</h3>
+                        <p>EEF : gain moyen estimé +5 mois au secondaire; effets variables, preuves limitées. Le lien au
+                            cours et le retour comptent.</p>
+                    </div>
+                    <div class="card"><span class="pill">IA</span>
+                        <h3>Meilleur rendu ≠ acquis</h3>
+                        <p>Une tâche réussie avec assistance peut masquer ce que l’élève sait faire seul.</p>
+                    </div>
+                    <div class="card"><span class="pill">CONCEPTION</span>
+                        <h3>Rendre visible l’apprentissage</h3>
+                        <p>Combiner entraînement guidé, traces de démarche et vérification en présence.</p>
+                    </div>
+                </div>
+                <p class="source">EEF, Teaching and Learning Toolkit, « Homework » : estimation moyenne +5 mois au
+                    secondaire; niveau de preuve limité, hétérogénéité des tâches.</p>
+                <aside class="notes">Durée : 1:30. Nuancer le chiffre : ce sont des mois de progrès convertis à partir
+                    d’études agrégées, non la promesse qu’un devoir donné produit mécaniquement cinq mois. Distinguer
+                    devoirs de pratique alignés sur la séance et tâche certificative réalisée hors surveillance. Faire
+                    le lien avec les objectifs et le feedback.</aside>
+            </section>
+            <section>
+                <div class="eyebrow">02 · Prudence probatoire</div>
+                <h2>Un détecteur ne prouve pas<br>l’auteur d’un texte.</h2>
+                <div class="grid2">
+                    <div class="card">
+                        <h3>Fiabilité insuffisante</h3>
+                        <p>Weber-Wulff et al. (2023) : 14 outils testés; performances jugées ni exactes ni fiables,
+                            dégradées par des modifications du texte.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Biais d’équité</h3>
+                        <p>Liang et al. (2023) : détecteurs étudiés classant à tort des textes d’auteurs non natifs
+                            anglophones comme générés par IA.</p>
+                    </div>
+                </div>
+                <div class="callout" style="margin-top:12px"><strong>Donc :</strong> un score de détection ne constitue
+                    pas une preuve de fraude ni un motif suffisant de sanction.</div>
+                <p class="source">Études en anglais; elles ne quantifient pas directement les faux positifs sur
+                    productions françaises de lycéens.</p>
+                <aside class="notes">Durée : 1:30. Présenter les limites comme méthodologiques et d’équité; ne pas
+                    extrapoler la mesure anglaise aux textes français des élèves. Le cadre Éduscol 2025 recommande
+                    d’éviter les logiciels de détection, jugés peu fiables et susceptibles de pénaliser à tort.
+                    Distinguer indice, preuve et procédure contradictoire.</aside>
+            </section>
+            <section>
+                <div class="eyebrow">03 · Identifier les zones de risque</div>
+                <h2>Vulnérable vs moins vulnérable<br>à une production IA non déclarée.</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Plus vulnérable si isolée</th>
+                            <th>Preuves complémentaires</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Dissertation générique à la maison</td>
+                            <td>Plan annoté + brouillon + explication orale courte</td>
+                        </tr>
+                        <tr>
+                            <td>Résumé / définition sans source imposée</td>
+                            <td>Observation située, données de terrain, justification</td>
+                        </tr>
+                        <tr>
+                            <td>Compte rendu formaté après coup</td>
+                            <td>Notes prises en séance, relevés, étapes datées</td>
+                        </tr>
+                        <tr>
+                            <td>QCM révisable hors classe</td>
+                            <td>Rappel sans outil en classe, questions de transfert</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="callout" style="margin-top:10px">Aucune modalité n’est « anti-IA » par nature : on triangule
+                    les preuves et on aligne la tâche avec l’objectif.</div>
+                <aside class="notes">Durée : 1:30. Lire la première colonne comme une vulnérabilité de la tâche seule,
+                    pas comme une accusation. Un QCM peut vérifier des connaissances si les conditions sont adaptées; un
+                    oral peut être préparé avec l’IA. La question est la cohérence des preuves et de l’objectif, pas la
+                    chasse à l’outil.</aside>
+            </section>
+            <section>
+                <div class="eyebrow">04 · Les devoirs maison restent utiles</div>
+                <h2>Repenser la consigne,<br>pas bannir le travail chez soi.</h2>
+                <div class="sequence">
+                    <div class="card"><span class="tag">S’ENTRAÎNER</span>
+                        <h3>Pratique</h3>
+                        <p>Récupération, vocabulaire, geste expliqué, répétition brève.</p>
+                    </div>
+                    <div class="card"><span class="tag">APPRENDRE</span>
+                        <h3>Processus</h3>
+                        <p>Essais, retours, corrections, usage IA déclaré si prévu.</p>
+                    </div>
+                    <div class="card dark"><span class="tag"
+                            style="color:var(--lime);border-color:#648267">ATTESTER</span>
+                        <h3>Certification</h3>
+                        <p>Moment sécurisé et proportionné, seul ou avec oral/observation.</p>
+                    </div>
+                </div>
+                <div class="callout" style="margin-top:12px"><strong>Principe :</strong> l’entraînement peut être
+                    ouvert; la note certificative ne repose pas uniquement sur un produit maison invérifiable.</div>
+                <p class="source">EEF : devoirs mieux reliés aux apprentissages de classe et assortis de retours;
+                    l’effet varie fortement selon la conception et le contexte domestique.</p>
+                <aside class="notes">Durée : 1:30. Faire préciser la distinction entre feedback formatif et note
+                    certificative. Pratique maison possible en biologie : trois questions sur la chaîne alimentaire
+                    suivies d’une correction. Une tâche d’attestation peut s’appuyer sur une explication individuelle en
+                    classe. Prévoir accès, temps, matériel et soutien réellement disponibles à domicile.</aside>
+            </section>
+            <section>
+                <div class="eyebrow">05 · Nommer le contrat</div>
+                <h2>AI Assessment Scale :<br>annoncer le niveau d’usage autorisé.</h2>
+                <div class="levels">
+                    <div class="level l1">
+                        <div class="n">1</div>
+                        <h3>Sans IA</h3>
+                        <p>Compétence individuelle attestée.</p>
+                    </div>
+                    <div class="level l2">
+                        <div class="n">2</div>
+                        <h3>Planifier</h3>
+                        <p>Pistes / plan; rédaction par l’élève.</p>
+                    </div>
+                    <div class="level l3">
+                        <div class="n">3</div>
+                        <h3>Collaborer</h3>
+                        <p>Aide ciblée, choix justifiés.</p>
+                    </div>
+                    <div class="level l4">
+                        <div class="n">4</div>
+                        <h3>Intégrer</h3>
+                        <p>IA fait partie de la tâche.</p>
+                    </div>
+                    <div class="level l5">
+                        <div class="n">5</div>
+                        <h3>Explorer</h3>
+                        <p>Co-création et usages ouverts.</p>
+                    </div>
+                </div>
+                <div class="callout"><strong>Ce n’est pas une échelle de mérite :</strong> c’est un contrat explicite
+                    par tâche. Adaptation française synthétique de l’AIAS.</div>
+                <aside class="notes">Durée : 1:30. Expliquer que l’échelle originale a connu des évolutions; ici, on
+                    reprend la version originale à cinq niveaux pour donner un vocabulaire de classe. Le niveau 1 sert
+                    parfois à attester une compétence sans IA; les niveaux ouverts peuvent tester le jugement et la
+                    qualité de collaboration. La consigne doit dire clairement ce qui est permis.</aside>
+            </section>
+            <section>
+                <div class="eyebrow">06 · Organiser un programme d’évaluation</div>
+                <h2>Two-lane : une voie sécurisée,<br>une voie ouverte.</h2>
+                <div class="grid2">
+                    <div class="card dark"><span class="pill">VOIE 1 · SÉCURISÉE</span>
+                        <h3>Attester certains acquis</h3>
+                        <p>Surveillée, en présence; avec ou sans IA selon ce qu’on veut évaluer. À utiliser de façon
+                            stratégique.</p>
+                    </div>
+                    <div class="card"><span class="pill">VOIE 2 · OUVERTE</span>
+                        <h3>Apprendre en situation réelle</h3>
+                        <p>Tâche authentique, IA permise et encadrée; le processus et le jugement deviennent évaluables.
+                        </p>
+                    </div>
+                </div>
+                <div class="callout" style="margin-top:12px">Éviter le contrat contradictoire : devoir non surveillé «
+                    sans IA », dont l’interdiction est impossible à vérifier.</div>
+                <p class="source">University of Sydney, cadre de conception « two-lane »; repère de contexte
+                    universitaire, transposable avec discernement.</p>
+                <aside class="notes">Durée : 1:30. Présenter le cadre comme une proposition de l’Université de Sydney
+                    dans l’enseignement supérieur, pas une prescription réglementaire pour les lycées français. Sa
+                    logique transférable : répartir les preuves au fil du parcours entre confirmation sécurisée et
+                    tâches ouvertes formatrices.</aside>
+            </section>
+            <section>
+                <div class="eyebrow">07 · Authentique et triangulé</div>
+                <h2>Évaluer le processus<br>autant que le produit.</h2>
+                <div class="grid3">
+                    <div class="card">
+                        <h3>Voir faire</h3>
+                        <p>Observation / geste professionnel / choix sur un cas concret.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Entendre expliquer</h3>
+                        <p>Oral 2 min : « pourquoi ce choix ? qu’as-tu changé ? »</p>
+                    </div>
+                    <div class="card">
+                        <h3>Suivre les étapes</h3>
+                        <p>Brouillon, journal bref, source consultée, version finale.</p>
+                    </div>
+                </div>
+                <div class="callout" style="margin-top:13px"><strong>Autres formats :</strong> déclaration d’usage IA;
+                    critique d’une réponse IA; comparaison de deux propositions.</div>
+                <aside class="notes">Durée : 1:30. Donner un exemple concret : une élève remet une fiche sur une
+                    activité d’animation en SAPAT, conserve son premier plan, indique les suggestions IA écartées et
+                    explique oralement comment elle a adapté l’activité aux besoins du public. Évaluer la compétence
+                    visée, pas le volume de journaling.</aside>
+            </section>
+            <section>
+                <div class="eyebrow">08 · Accessibilité · CUA / UDL</div>
+                <h2>Plusieurs façons de montrer<br>un même apprentissage.</h2>
+                <div class="grid2">
+                    <div class="card">
+                        <h3>Réduire les barrières</h3>
+                        <p>Consigne courte; vocabulaire expliqué; exemple modèle; étapes numérotées; texte aéré et
+                            lisible.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Varier la preuve</h3>
+                        <p>Écrit bref, schéma légendé, oral, démonstration ou support audio — si cela mesure le même
+                            objectif.</p>
+                    </div>
+                </div>
+                <div class="callout" style="margin-top:12px"><strong>À ne pas confondre :</strong> rendre l’accès
+                    flexible ne signifie pas baisser l’exigence disciplinaire.</div>
+                <p class="source">CAST, UDL Guidelines 3.0 (2024) : options de représentation, d’action/expression et
+                    d’engagement; réduire les barrières systémiques.</p>
+                <aside class="notes">Durée : 1:30. Relier la conception universelle de l’apprentissage (CUA/UDL) à la
+                    classe professionnelle : un élève en difficulté de lecture peut expliquer oralement la démarche
+                    d’hygiène ou légender un schéma, si la lecture n’est pas la compétence évaluée. Proposer les choix
+                    en amont, éviter la stigmatisation. UDI est une tradition connexe de design universel de
+                    l’enseignement.</aside>
+            </section>
+            <section>
+                <div class="eyebrow">09 · Métacognition</div>
+                <h2>Faire expliquer comment<br>on s’y est pris.</h2>
+                <div class="sequence">
+                    <div class="card"><span class="tag">AVANT</span>
+                        <h3>Planifier</h3>
+                        <p>« Qu’est-ce que je dois faire ? »</p>
+                    </div>
+                    <div class="card"><span class="tag">PENDANT</span>
+                        <h3>Surveiller</h3>
+                        <p>« Qu’est-ce qui me bloque ? »</p>
+                    </div>
+                    <div class="card"><span class="tag">APRÈS</span>
+                        <h3>Évaluer</h3>
+                        <p>« Qu’est-ce qui m’a aidé ? »</p>
+                    </div>
+                </div>
+                <div class="callout" style="margin-top:12px"><strong>Petit dispositif :</strong> auto-évaluation à trois
+                    cases + une phrase de justification, en lien avec la tâche disciplinaire.</div>
+                <p class="source">Flavell (1979) · Zimmerman (2002) · EEF : métacognition / autorégulation, potentiel
+                    moyen estimé +7 mois; efficacité si enseignées dans le contenu.</p>
+                <aside class="notes">Durée : 1:30. Le +7 mois est une estimation du Toolkit fondée sur un corpus de
+                    recherches, pas un effet garanti. Flavell conceptualise la surveillance cognitive; Zimmerman décrit
+                    l’autorégulation. Pour des lecteurs fragiles, utiliser une échelle visuelle « j’ai commencé / j’ai
+                    vérifié / je peux expliquer » et questions orales courtes.</aside>
+            </section>
+            <section>
+                <div class="eyebrow">10 · L’IA et l’effort cognitif</div>
+                <h2>Risque : un meilleur devoir,<br>mais moins d’apprentissage.</h2>
+                <div class="grid2">
+                    <div class="card">
+                        <h3>« Metacognitive laziness »</h3>
+                        <p>Fan et al. : étude expérimentale auprès de 117 étudiants universitaires; amélioration du
+                            texte sans gain significatif de transfert/connaissances comparé.</p>
+                    </div>
+                    <div class="card">
+                        <h3>La béquille ou le tuteur ?</h3>
+                        <p>Bastani et al. (PNAS, 2025) : en maths au lycée, outil sans garde-fous aidait à pratiquer,
+                            mais la performance sans IA baissait ensuite; tuteur à indices réduisait le risque.</p>
+                    </div>
+                </div>
+                <div class="callout" style="margin-top:12px">Consigne utile : « demande un indice, explique ton essai,
+                    puis vérifie » plutôt que « donne la réponse ».</div>
+                <p class="source">Résultats situés (universitaires / lycée en Turquie), ne démontrent pas que toute IA
+                    ou tout usage nuit aux apprentissages.</p>
+                <aside class="notes">Durée : 1:30. Nuancer et comparer les contextes. Fan et al. travaillent avec des
+                    étudiants universitaires et une tâche d’écriture; Bastani et al. mènent une expérimentation en
+                    mathématiques auprès de lycéens turcs. Ce ne sont pas des preuves directes sur les filières
+                    agricoles françaises, mais des signaux pertinents pour concevoir des garde-fous et des tâches de
+                    transfert.</aside>
+            </section>
+            <section>
+                <div class="eyebrow">11 · UCLouvain · Intégrité académique</div>
+                <h2>L’IA impacte l’intégrité académique :<br>quelles approches pour évaluer ?</h2>
+                <table class="ucl-table approach-table">
+                    <thead>
+                        <tr>
+                            <th>Approche</th>
+                            <th>Ce que cela veut dire</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Éviter</strong></td>
+                            <td>Quand on ne peut pas vérifier le travail, privilégier les examens en présence, sans
+                                ordinateur, surtout pour les examens certificatifs.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Contourner</strong></td>
+                            <td>Rendre les questions plus complexes et liées au cours, pour que l’IA ne puisse pas
+                                donner facilement une bonne réponse.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Intégrer</strong></td>
+                            <td>Adapter objectifs, activités et évaluations. Apprendre à utiliser l’IA de façon critique
+                                et responsable; par exemple, faire un écrit puis une défense orale.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="source ucl-source">Source : <em>Intégrer l’IA générative dans les stratégies
+                        pédagogiques</em>, UCLouvain, Louvain Learning Lab, 2024. <a
+                        href="https://uclouvain.be/fr/lll/integrer-lia-generative-dans-les-strategies-pedagogiques-2024"
+                        target="_blank" rel="noopener">Page UCLouvain ↗</a></p>
+                <aside class="notes">Durée : 1:00. Présenter les trois approches décrites par le Louvain Learning Lab.
+                    Les formulations du tableau sont simplifiées pour faciliter la lecture, sans changer le sens :
+                    éviter quand la vérification n’est pas fiable; adapter les tâches; ou intégrer l’IA aux
+                    apprentissages et à l’évaluation. La source s’adresse à l’enseignement supérieur : à adapter au
+                    contexte des participants.</aside>
+            </section>
+            <section>
+                <div class="eyebrow">12 · UCLouvain · Adapter l’évaluation</div>
+                <h2>Les défis de l’évaluation<br>à l’ère de l’IA générative</h2>
+                <table class="ucl-table challenge-table">
+                    <thead>
+                        <tr>
+                            <th>Évaluer sans IA</th>
+                            <th>Réduire l’influence de l’IA</th>
+                            <th>Évaluer en tenant compte de l’IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li>Examen en présence, avec temps limité</li>
+                                    <li>Écriture à la main</li>
+                                    <li>Questions courtes ou longues, QCM, vrai/faux, associations, textes à trous</li>
+                                    <li>Réalisation pratique</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Relier les questions à des éléments précis vus en cours</li>
+                                    <li>Demander un avis personnel et des exemples vécus</li>
+                                    <li>Utiliser des cas qui demandent réflexion et solutions nuancées</li>
+                                    <li>Poser des questions liées à un contexte bien compris</li>
+                                    <li>Faire vérifier la qualité et la vérité des informations, avec des arguments</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Situations concrètes : terrain, simulations</li>
+                                    <li>Évaluer une démarche : jeu de rôle, résolution de problème, forum</li>
+                                    <li>Suivre les progrès avec des retours, par exemple dans un projet d’équipe</li>
+                                    <li>Échanges réels : présentation ou entretien</li>
+                                    <li>Faire réfléchir sur son travail : portfolio, retour entre pairs, autoévaluation
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="source ucl-source">Source : <em>Intégrer l’IA générative dans les stratégies
+                        pédagogiques</em>, UCLouvain, Louvain Learning Lab, 2024. <a
+                        href="https://uclouvain.be/fr/lll/integrer-lia-generative-dans-les-strategies-pedagogiques-2024"
+                        target="_blank" rel="noopener">Page UCLouvain ↗</a></p>
+                <aside class="notes">Durée : 1:00. Faire parcourir les trois colonnes comme des options à choisir selon
+                    l’objectif d’apprentissage. Le tableau résume fidèlement les exemples du document, en langage
+                    simple. Il propose à la fois des évaluations sans IA, des moyens de réduire son influence et des
+                    activités qui tiennent compte de son usage. La publication signale que les pratiques d’évaluation
+                    doivent rester alignées sur les objectifs du cours.</aside>
+            </section>
+            <section>
+                <div class="eyebrow">13 · Cadres de référence</div>
+                <h2>Une boussole, pas une recette unique.</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ressource</th>
+                            <th>Apport pour l’évaluation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Éducation nationale · cadre d’usage IA, juin 2025</td>
+                            <td>Usage pédagogique encadré; à partir de la 4e en classe; éviter les détecteurs;
+                                superviser le jugement humain.</td>
+                        </tr>
+                        <tr>
+                            <td>UNESCO · guidance GenAI (2023)</td>
+                            <td>Approche centrée sur l’humain, l’âge, la vie privée et la conception pédagogique.</td>
+                        </tr>
+                        <tr>
+                            <td>UNESCO · cadres de compétences IA (2024)</td>
+                            <td>Compétences élèves et enseignants : repères pour une littératie IA.</td>
+                        </tr>
+                        <tr>
+                            <td>OCDE · Digital Education Outlook 2026</td>
+                            <td>Performance avec IA ne signifie pas automatiquement apprentissage; guider par intention
+                                pédagogique.</td>
+                        </tr>
+                        <tr>
+                            <td>Enseignement agricole · rapport IGESR (2025)</td>
+                            <td>Souligne les questions d’évaluation, de posture et le besoin de formation.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <aside class="notes">Durée : 1:30. Préciser que le cadre d’usage 2025 est publié par le ministère de
+                    l’Éducation nationale; les établissements agricoles relèvent d’un autre ministère, et doivent
+                    s’appuyer sur les consignes applicables à leur réseau et à leur établissement. Le rapport Chlorofil
+                    est explicitement consacré à l’enseignement agricole. Le cadre UNESCO est international, non
+                    obligatoire.</aside>
+            </section>
+            <section>
+                <div class="eyebrow">14 · Consignes réutilisables</div>
+                <h2>Des devoirs maison qui donnent<br>à voir les choix.</h2>
+                <div class="grid2">
+                    <div class="card"><span class="pill">OPTION A · PROCESSUS</span>
+                        <h3>« Trace trois étapes »</h3>
+                        <p>Idée initiale → brouillon annoté → version finale. Ajoute une phrase sur un changement fait
+                            et pourquoi.</p>
+                    </div>
+                    <div class="card"><span class="pill">OPTION B · CRITIQUE IA</span>
+                        <h3>« Corrige cette réponse »</h3>
+                        <p>Relève deux erreurs dans une réponse IA fournie par l’enseignant; justifie avec le cours.</p>
+                    </div>
+                </div>
+                <div class="callout" style="margin-top:12px"><strong>Déclaration simple :</strong> « J’ai utilisé
+                    [outil] pour [aide]. J’ai gardé / changé [élément]. » Puis mini-oral de justification (2 min).</div>
+                <aside class="notes">Durée : 1:30. Lire les consignes en langage accessible. On peut réduire la charge
+                    d’écriture avec cases, oral enregistré ou pictogrammes; conserver la même compétence cible. La
+                    réponse IA truffée d’erreurs est préparée et vérifiée par l’enseignant : ne pas demander aux élèves
+                    de juger une sortie non contrôlée.</aside>
+            </section>
+            <section>
+                <div class="eyebrow">15 · Exemples de filière</div>
+                <h2>Deux tâches situées.<br>Des preuves simples et concrètes.</h2>
+                <div class="grid2">
+                    <div class="card dark"><span class="tag" style="color:var(--lime);border-color:#648267">BAC PRO
+                            SAPAT</span>
+                        <h3>Préparer une activité</h3>
+                        <p>Proposer une animation courte pour un public donné. L’IA peut aider à trouver des idées;
+                            l’élève choisit, adapte au public et justifie deux choix à l’oral.</p>
+                        <p class="small" style="color:#dce9d4">Preuves : fiche accessible + brouillon + oral 2 min.</p>
+                    </div>
+                    <div class="card"><span class="tag">CAPa SAPVER · BIO / ÉCO</span>
+                        <h3>Lire un milieu observé</h3>
+                        <p>À partir de photos ou d’observations de parcelle, identifier êtres vivants et relations;
+                            corriger une explication IA qui confond chaîne et réseau alimentaire.</p>
+                        <p class="small">Preuves : schéma légendé + correction justifiée + explication orale.</p>
+                    </div>
+                </div>
+                <div class="callout" style="margin-top:12px">Pour la 4e/3e : réduire la longueur, donner un lexique
+                    illustré et faire l’oral en binôme avant l’individuel.</div>
+                <aside class="notes">Durée : 1:30. Décrire les exemples et vérifier l’alignement avec les référentiels
+                    et contextes réels des participants. CAPa SAPVER signifie Services aux personnes et vente en espace
+                    rural; le cas biologique est un exemple pédagogique, à adapter au programme et au territoire. Éviter
+                    d’utiliser des situations ou données nominatives de stage.</aside>
+            </section>
+            <section>
+                <div class="eyebrow">16 · Construire une grille courte</div>
+                <h2>Des critères observables,<br>formulés avec un verbe d’action.</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Critère (verbe à l’infinitif)</th>
+                            <th>Indicateur de réussite</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Identifier les éléments du milieu</td>
+                            <td>Nommer 3 êtres vivants observés et leur rôle.</td>
+                        </tr>
+                        <tr>
+                            <td>Représenter les relations</td>
+                            <td>Tracer des flèches correctes et légender le schéma.</td>
+                        </tr>
+                        <tr>
+                            <td>Vérifier l’explication</td>
+                            <td>Repérer une erreur de l’IA et l’appuyer sur le cours / observation.</td>
+                        </tr>
+                        <tr>
+                            <td>Justifier les choix</td>
+                            <td>Expliquer en deux phrases ce qui a été retenu ou modifié.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="callout" style="margin-top:12px">Rendre lisible le niveau attendu : « acquis / en cours / à
+                    reprendre », avec un exemple modèle.</div>
+                <p class="source">Verbes d’action inspirés de la taxonomie révisée de Bloom (Anderson &amp; Krathwohl,
+                    2001).</p>
+                <aside class="notes">Durée : 1:30. Faire remarquer que chaque critère commence par un infinitif et que
+                    l’indicateur est observable. Ajuster le nombre d’items et le poids : ne pas surpondérer la
+                    déclaration IA si l’apprentissage visé est écologique. L’échelle descriptive doit être expliquée
+                    avant le devoir.</aside>
+            </section>
+            <section>
+                <div class="eyebrow">17 · En cas de suspicion</div>
+                <h2>Rester juste : ouvrir le dialogue,<br>ne pas accuser à partir d’un score.</h2>
+                <div class="sequence">
+                    <div class="card"><span class="tag">1 · ÉCOUTER</span>
+                        <p>Demander à l’élève de décrire sa démarche, sans jugement préalable.</p>
+                    </div>
+                    <div class="card"><span class="tag">2 · ÉTAYER</span>
+                        <p>Comparer aux traces / travaux antérieurs avec prudence; inviter à expliquer un passage.</p>
+                    </div>
+                    <div class="card"><span class="tag">3 · SUIVRE</span>
+                        <p>Appliquer les règles de l’établissement et laisser l’élève répondre.</p>
+                    </div>
+                </div>
+                <div class="callout" style="margin-top:13px"><strong>Jamais :</strong> conclure à la fraude sur un
+                    détecteur. Un oral de clarification évalue une compétence; il ne devient pas une « preuve magique »
+                    de l’auteur.</div>
+                <aside class="notes">Durée : 1:30. Rappeler le cadre et les procédures locales. Garder une posture de
+                    dialogue, documenter les faits, permettre une réponse et distinguer aide non autorisée,
+                    compréhension insuffisante et difficulté à verbaliser. Éviter l’interrogatoire improvisé ou la
+                    sanction basée uniquement sur un outil automatisé.</aside>
+            </section>
+            <section>
+                <div class="eyebrow">18 · À retenir</div>
+                <h2>Trois décisions pour votre prochaine évaluation.</h2>
+                <div class="grid3">
+                    <div class="card"><span class="pill">1</span>
+                        <h3>Dire le contrat</h3>
+                        <p>Quelle utilisation IA est permise pour cette tâche ?</p>
+                    </div>
+                    <div class="card"><span class="pill">2</span>
+                        <h3>Multiplier les preuves</h3>
+                        <p>Quel indice de processus ou d’explication complète le produit ?</p>
+                    </div>
+                    <div class="card"><span class="pill">3</span>
+                        <h3>Ouvrir l’accès</h3>
+                        <p>Comment un élève en difficulté de lecture peut montrer le même acquis ?</p>
+                    </div>
+                </div>
+                <p class="quote" style="margin-top:16px">Évaluer avec l’IA à l’horizon, c’est mieux décider quelle
+                    preuve mérite confiance.</p>
+                <aside class="notes">Durée : 1:00. Inviter chacun à noter une consigne ou une évaluation à retravailler.
+                    Cette courte présentation clôt le premier segment de la séquence de 55 minutes; utiliser le temps
+                    restant pour l’analyse en groupe et l’adaptation aux disciplines.</aside>
+            </section>
+            <section class="source-slide">
+                <div class="eyebrow">19 · Références vérifiées en ligne · 11 novembre 2026</div>
+                <h2>Sources pour approfondir</h2>
+                <ol class="source-list">
+                    <li><strong>Weber-Wulff, D. et al. (2023). “Testing of detection tools for AI-generated text.”
+                            International Journal for Educational Integrity, 19, 26.</strong> <a
+                            href="https://doi.org/10.1007/s40979-023-00146-z" target="_blank" rel="noopener">Source
+                            ↗</a></li>
+                    <li><strong>Liang, W. et al. (2023). “GPT detectors are biased against non-native English writers.”
+                            Patterns, 4(7), 100779.</strong> <a href="https://doi.org/10.1016/j.patter.2023.100779"
+                            target="_blank" rel="noopener">Source ↗</a></li>
+                    <li><strong>Furze, L., Perkins, M., Roe, J. & MacVaugh, J. (2024). “The AI Assessment Scale (AIAS)
+                            in action.” AJET, 40(4), 38–55.</strong> <a href="https://doi.org/10.14742/ajet.9434"
+                            target="_blank" rel="noopener">Source ↗</a></li>
+                    <li><strong>Lodge, J. et al. (2023). Assessment reform for the age of artificial intelligence.
+                            TEQSA.</strong> <a
+                            href="https://www.teqsa.gov.au/guides-resources/resources/corporate-publications/assessment-reform-age-artificial-intelligence"
+                            target="_blank" rel="noopener">Source ↗</a></li>
+                    <li><strong>University of Sydney. “Embracing the future of assessment at the University of Sydney”
+                            (two-lane approach).</strong> <a
+                            href="https://educational-innovation.sydney.edu.au/teaching@sydney/embracing-the-future-of-assessment-at-the-university-of-sydney/"
+                            target="_blank" rel="noopener">Source ↗</a></li>
+                    <li><strong>CAST (2024). Universal Design for Learning Guidelines, version 3.0.</strong> <a
+                            href="https://udlguidelines.cast.org/" target="_blank" rel="noopener">Source ↗</a></li>
+                    <li><strong>McGuire, J. M., Scott, S. S. & Shaw, S. F. (2003). “Universal Design for
+                            Instruction.”</strong> <a href="https://eric.ed.gov/?id=EJ875999" target="_blank"
+                            rel="noopener">Source ↗</a></li>
+                    <li><strong>Flavell, J. H. (1979). “Metacognition and cognitive monitoring.” American Psychologist,
+                            34(10), 906–911.</strong> <a href="https://doi.org/10.1037/0003-066X.34.10.906"
+                            target="_blank" rel="noopener">Source ↗</a></li>
+                    <li><strong>Zimmerman, B. J. (2002). “Becoming a Self-Regulated Learner: An Overview.” Theory Into
+                            Practice, 41(2).</strong> <a
+                            href="https://www.tandfonline.com/doi/abs/10.1207/s15430421tip4102_2" target="_blank"
+                            rel="noopener">Source ↗</a></li>
+                    <li><strong>EEF. Metacognition and Self-Regulated Learning; Toolkit estimate +7 months.</strong> <a
+                            href="https://apiv3.educationendowmentfoundation.org.uk/education-evidence/guidance-reports/metacognition"
+                            target="_blank" rel="noopener">Source ↗</a></li>
+                    <li><strong>Fan, Y. et al. (2025). “Beware of metacognitive laziness…” BJET, 56(2),
+                            489–530.</strong> <a href="https://doi.org/10.1111/bjet.13544" target="_blank"
+                            rel="noopener">Source ↗</a></li>
+                    <li><strong>Bastani, H. et al. (2025). “Generative AI without guardrails can harm learning.” PNAS,
+                            122(26).</strong> <a href="https://doi.org/10.1073/pnas.2422633122" target="_blank"
+                            rel="noopener">Source ↗</a></li>
+                    <li><strong>Vangrunderbeeck, P., Deville, Y., Guisset, M., Baur, M. & Biot, M. (2024). “Intégrer
+                            l’IA générative dans les stratégies pédagogiques.” UCLouvain, Louvain Learning Lab.</strong>
+                        <a href="https://uclouvain.be/fr/lll/integrer-lia-generative-dans-les-strategies-pedagogiques-2024"
+                            target="_blank" rel="noopener">Source ↗</a></li>
+                    <li><strong>Ministère de l’Éducation nationale (2025). L’IA en éducation : cadre d’usage, juin
+                            2025.</strong> <a
+                            href="https://www.education.gouv.fr/cadre-d-usage-de-l-ia-en-education-450647"
+                            target="_blank" rel="noopener">Source ↗</a></li>
+                    <li><strong>UNESCO, Miao, F. & Holmes, W. (2023). Guidance for generative AI in education and
+                            research.</strong> <a href="https://unesdoc.unesco.org/ark:/48223/pf0000386693"
+                            target="_blank" rel="noopener">Source ↗</a></li>
+                    <li><strong>UNESCO (2024). AI competency frameworks for students and teachers.</strong> <a
+                            href="https://www.unesco.org/en/digital-education/ai-future-learning" target="_blank"
+                            rel="noopener">Source ↗</a></li>
+                    <li><strong>OECD (2026). OECD Digital Education Outlook 2026: Exploring Effective Uses of Generative
+                            AI in Education.</strong> <a href="https://doi.org/10.1787/062a7394-en" target="_blank"
+                            rel="noopener">Source ↗</a></li>
+                    <li><strong>Ministère de l’Agriculture (2025). Tirer profit des opportunités offertes par le
+                            déploiement des intelligences artificielles… Rapport R25-002.</strong> <a
+                            href="https://chlorofil.fr/fileadmin/user_upload/01-systeme/structuration/iea/r25-002-intelligence-artificielle.pdf"
+                            target="_blank" rel="noopener">Source ↗</a></li>
+                    <li><strong>EEF. Homework evidence summary.</strong> <a
+                            href="https://www.mindsetineducation.com/pluginfile.php/17174/mod_folder/content/0/EEF-homework-secondary.pdf?forcedownload=1"
+                            target="_blank" rel="noopener">Source ↗</a></li>
+                    <li><strong>Anderson, L. W. & Krathwohl, D. R. (eds.) (2001). A Taxonomy for Learning, Teaching, and
+                            Assessing.</strong> <a href="https://www1.udel.edu/educ/gottfredson/451/revisedbloom.html"
+                            target="_blank" rel="noopener">Source ↗</a></li>
+                </ol>
+                <p class="small">Les résultats de recherche et cadres cités ont des contextes et limites distincts; voir
+                    les notes orateur des diapositives pour les nuances.</p>
+                <aside class="notes">Durée : 1:00. Les références sont cliquables. Signaler que les résultats de
+                    recherche concernent des contextes différents; notamment les études de détecteurs portent sur
+                    l’anglais, et les essais Bastani/Fan ne sont pas des essais dans les classes agricoles françaises.
+                    EEF : estimations moyennes, non garanties individuelles.</aside>
+            </section>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+    <script>(function () { if (!window.Reveal) { console.error('Reveal.js CDN indisponible'); return; } Reveal.initialize({ hash: true, controls: true, progress: true, center: false, slideNumber: 'c/t', transition: 'fade', backgroundTransition: 'fade', navigationMode: 'linear', plugins: [RevealNotes] }); })();</script>
+    <script type="module"
+        src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+        integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw=="
+        data-cf-beacon='{"version":"2024.11.0","token":"8607d2a720d14b038279025b2b5a82e5","spa":2}'
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
