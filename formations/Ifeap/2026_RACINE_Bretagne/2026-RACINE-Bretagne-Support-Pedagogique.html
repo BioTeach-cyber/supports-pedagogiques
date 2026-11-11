@@ -36,6 +36,10 @@
     .brand-kicker { margin-top: 15px; color: #a9c2ff; font-size: 10px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
     .brand h1 { margin: 3px 0 3px; font-size: 17px; line-height: 1.25; }
     .brand p { margin: 0; color: #b8c4dd; font-size: 12px; }
+    .brand-qr { display: flex; align-items: center; gap: 11px; margin-top: 15px; padding: 10px; border: 1px solid rgba(255,255,255,.14); border-radius: 10px; background: rgba(255,255,255,.06); }
+    .brand-qr-code { display: grid; width: 92px; height: 92px; flex: 0 0 92px; place-items: center; padding: 5px; border-radius: 7px; background: #fff; }
+    .brand-qr-code img, .brand-qr-code canvas { display: block; width: 82px !important; height: 82px !important; }
+    .brand-qr-label { color: #dce7ff; font-size: 11px; font-weight: 650; line-height: 1.4; }
     .nav { padding: 14px 10px 20px; }
     .nav-label { padding: 12px 10px 6px; color: #8ea2c8; font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
     .nav button { width: 100%; display: flex; align-items: center; gap: 10px; margin: 2px 0; padding: 9px 10px; border: 0; border-radius: 9px; background: transparent; color: #d9e2f5; text-align: left; font-size: 12.5px; cursor: pointer; transition: background .15s, color .15s; }
@@ -198,6 +202,10 @@
       <div class="brand-kicker">Espace de formation · 2026</div>
       <h1>Accompagner les élèves à l’ère de l’IA</h1>
       <p>RACINE Bretagne · journée de formation</p>
+      <div class="brand-qr">
+        <div class="brand-qr-code" id="brandQrCode" role="img" aria-label="QR code de l’adresse de cette formation"></div>
+        <div class="brand-qr-label">Scanner pour ouvrir<br>cette formation</div>
+      </div>
     </div>
     <nav class="nav" aria-label="Navigation de la formation">
       <div class="nav-label">Parcours de la journée</div>
@@ -255,10 +263,9 @@
         <div class="timeline-row"><div class="timeline-time">15:55–16:35</div><div><div class="timeline-title">Faire évoluer la charte d’usage</div><div class="timeline-detail">Prioriser, réécrire, préparer le transfert en classe</div></div><span class="duration">40 min</span></div>
         <div class="timeline-row"><div class="timeline-time">16:35–17:00</div><div><div class="timeline-title">Bilan, mutualisation et engagement</div><div class="timeline-detail">Autoévaluation · satisfaction · action à 15 jours</div></div><span class="duration">25 min*</span></div>
       </div>
-      <div class="notice" style="margin-top:14px"><strong>Repère de programme :</strong> le créneau 16 h 35–17 h 00 représente 25 min, même si le programme indique 15 min. L’horaire de l’atelier d’évaluation (14 h 00–15 h 05) représente 1 h 05, alors que le titre indique 55 min ; à confirmer avec l’équipe.</div>
       <div class="section-head"><div><div class="eyebrow-blue">Mode d’emploi</div><h3>Un espace de travail partagé</h3></div></div>
       <div class="grid two">
-        <article class="card"><h4>Dans les ateliers</h4><p>Suivez les étapes, utilisez les questions-guides et renseignez les zones de travail. Les notes restent enregistrées dans ce navigateur.</p></article>
+        <article class="card"><h4>Dans les ateliers</h4><p>Suivez les étapes, utilisez les questions-guides et renseignez les zones de travail. Les notes restent enregistrées dans ce navigateur tant qu'il n'est pas fermé.</p></article>
         <article class="card"><h4>Pour le formateur</h4><p>Le chronomètre se règle depuis chaque atelier. Les ressources réglementaires et les exemples de charte sont à sélectionner et à vérifier avant la session.</p></article>
       </div>
     </section>
@@ -431,12 +438,23 @@ Ne fais pas à ma place : [étape que l’élève doit réaliser].</div></div></
     </section>
   </main>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="../../../assets/js/lib/qrcode.min.js"></script>
   <script>
     const navButtons = Array.from(document.querySelectorAll('.nav button[data-page]'));
     const pages = Array.from(document.querySelectorAll('.page'));
     const sidebar = document.getElementById('sidebar');
     const menuToggle = document.getElementById('menuToggle');
     const toast = document.getElementById('toast');
+    const brandQrCode = document.getElementById('brandQrCode');
+    if (brandQrCode && window.QRCode) {
+      try {
+        new window.QRCode(brandQrCode, { text: window.location.href, width: 82, height: 82, correctLevel: window.QRCode.CorrectLevel.M });
+      } catch (error) {
+        brandQrCode.textContent = 'QR indisponible';
+      }
+    } else if (brandQrCode) {
+      brandQrCode.textContent = 'QR indisponible';
+    }
     let toastTimer;
     let originalTitle = document.title;
     document.querySelectorAll('.page').forEach(page => {
