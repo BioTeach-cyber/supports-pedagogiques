@@ -132,7 +132,7 @@
       "id": "Chapitre 03",
       "page": "Chapitre 03/Chapitre.html",
       "type": "chapitre",
-      "Periode": "01",
+      "Periode": "02",
       "start": "null",
       "end": "null",
       "titre": "Solide, liquide, gaz : la matière change de costume !",
@@ -163,7 +163,7 @@
           ]
         },
         {
-          "statut": "inactif",
+          "statut": "actif",
           "id": "activité 02",
           "titre": "La ronde des changements d'état",
           "lottie": "assets/lotties/Numbers/02.json",

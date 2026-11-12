@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#b7b7b7">
+  <title>Activité — Mes ressources pédagogiques</title>
+  <link rel="stylesheet" href="../../../../assets/css/cours.css">
+  <link rel="stylesheet" href="../../../../assets/component/activite.css">
+  <script src="../../../../assets/js/lib/lottie.min.js" defer></script>
+  <script src="../../../../assets/js/lib/qrcode.min.js" defer></script>
+  <script src="../../../../assets/component/contexte-professionnel.js" defer></script>
+  <script src="../../../../assets/component/problematique.js" defer></script>
+  <script src="../../../../assets/component/questionnements-intermediaires.js" defer></script>
+    <script src="../../../../assets/component/documents-college.js" defer></script>
+  <script src="../../../../assets/component/activite.js" defer></script>
+  <script src="../../../../assets/component/bibliotheque-exercice.js" defer></script>
+</head>
+<body data-course="Physique - Chimie 4ème">
+  <div class="site-shell">
+    <header class="page-header" id="page-header">
+      <a class="brand-mark" id="course-link" href="../../cours/?cours=Physique%20-%20Chimie%204ème" aria-label="Retour au réseau du cours">
+        <span class="brand-animation" id="course-lottie" aria-hidden="true"></span>
+      </a>
+      <h1 id="activity-title">Chargement de l’activité…</h1>
+      <button class="qr-wrap" id="qr-open" type="button" aria-label="Agrandir le QR code de cette page" aria-haspopup="dialog">
+        <span id="page-qr" class="page-qr" aria-hidden="true"></span>
+      </button>
+      <dialog class="qr-dialog" id="qr-dialog" aria-label="QR code de cette page">
+        <button class="qr-dialog-close" id="qr-close" type="button" aria-label="Fermer le QR code">×</button>
+        <div id="page-qr-large" class="page-qr-large" aria-label="QR code agrandi"></div>
+        <p>Scannez pour ouvrir cette page</p>
+      </dialog>
+    </header>
+    <main id="activity-content" class="page-content activity-page-content">
+      <div data-component="contexte-professionnel" data-title="Contexte professionnel">
+        <script type="text/markdown">
+La flaque a gelé, puis fondu, puis l'eau s'est évaporée, puis de la buée est apparue sur ta vitre… L'eau n'arrête pas de changer de costume ! Mais ces transformations ont-elles un nom ? Et à quelle température se produisent-elles exactement ?        </script>
+      </div>
+
+      <section class="activity-section" data-activity-position>
+        <h2 class="activity-section-title">Application</h2>
+        <iframe class="activity-document-application" data-auto-height src="../../../../applications/physique - chimie/changements-etat.html" title="Application interactive sur les changements d'états de la matière" loading="lazy" scrolling="no" sandbox="allow-scripts allow-forms"></iframe>
+      </section>
+
+      <div data-component="problematique" data-title="Ce que je dois retenir">
+        <script type="text/markdown">
+## 1. Les trois états de l'eau
+
+L'eau peut se trouver sous **trois états** :
+
+- **Solide** : la glace
+- **Liquide** : l'eau
+- **Gazeux** : la vapeur d'eau (invisible !)
+
+## 2. Les six changements d'état (tu peux faire ce tableau sous la forme d'un schéma si c'est plus facile pour toi, comme dans l'application)
+
+| Changement d'état | De… | Vers… | Exemple concret |
+|---|---|---|---|
+| **Fusion** | solide | liquide | La glace fond |
+| **Solidification** | liquide | solide | La flaque gèle |
+| **Vaporisation** | liquide | gaz | L'eau s'évapore, l'eau bout |
+| **Liquéfaction** | gaz | liquide | La buée sur la vitre, la rosée |
+| **Sublimation** | solide | gaz | La neige disparaît sans devenir de l'eau |
+| **Condensation solide** | gaz | solide | Le givre sur l'herbe |
+
+💡 **Astuce pour retenir** : quand on **chauffe**, on passe de solide à liquide à gaz (fusion, vaporisation). Quand on **refroidit**, on fait le chemin inverse (liquéfaction, solidification).
+
+## 3. Les températures importantes pour l'eau
+
+- **0 °C** : l'eau gèle (solidification) et la glace fond (fusion)
+- **100 °C** : l'eau bout (vaporisation)
+
+## 4. Lire un graphique de changement d'état
+
+Sur un graphique qui montre la température en fonction du temps :
+
+- Une **ligne qui monte ou descend** : la température change.
+- Un **palier** (ligne horizontale) : la température **ne change pas** pendant que l'état change.
+
+👉 **À retenir** : pendant un changement d'état, la température reste **constante** (c'est le palier).
+
+- Palier à **0 °C** → fusion ou solidification
+- Palier à **100 °C** → vaporisation ou liquéfaction
+
+## 5. En une phrase
+
+> **Un changement d'état est le passage d'un état à un autre (solide, liquide, gaz). Pour l'eau pure, il se produit à une température précise et la température reste constante pendant ce changement. Pour une autre matière, les températures de changements d'état peuvent être différente.**
+        </script>
+      </div>
+      <div data-component="bibliotheque-exercice" data-title="Bibliothèque d'exercices"></div>
+      <div data-component="documents-college" data-title="Ressources complémentaires">
+        <div data-document data-type="audio" data-title="Bande son — Les 3 états de la matière" data-src="../../../../assets/sound/physique-chimie/.mp3">
+          <div data-transcription data-title="Transcription" data-open>
+Bonjour et bienvenue dans ce podcast de sciences ! Aujourd'hui, on va parler d'un sujet que tu connais déjà sans le savoir : les changements d'état de l'eau.
+
+Commençons par une petite histoire.
+
+Imagine une flaque d'eau dehors, en hiver. La nuit, il fait très froid : la flaque devient de la glace. Le matin, le soleil se lève : la glace fond et redevient de l'eau. Plus tard, il fait plus chaud : l'eau disparaît, elle s'évapore. Et le soir, quand tu rentres chez toi, il y a de la buée sur la vitre de ta chambre.
+
+Tu te demandes peut-être : est-ce que c'est toujours de l'eau ? Eh bien oui ! C'est toujours de l'eau. Elle a juste changé de costume. Ces costumes, on les appelle des états.
+
+Première partie : les trois états de l'eau.
+
+L'eau peut avoir trois états.
+
+Premier état : le solide. Par exemple, la glace. On peut la tenir dans la main. Elle garde sa forme.
+
+Deuxième état : le liquide. C'est l'eau du robinet, l'eau du verre. Elle coule et prend la forme du verre.
+
+Troisième état : le gaz. C'est la vapeur d'eau. Et attention : elle est invisible !
+
+Tu vas peut-être me dire : mais quand l'eau bout dans la casserole, je vois de la fumée blanche ! C'est une très bonne remarque. Cette fumée blanche, ce n'est pas la vraie vapeur. Ce sont de toutes petites gouttelettes d'eau liquide. La vraie vapeur d'eau, elle, on ne la voit pas.
+
+Je répète : solide, liquide, gaz. Trois états.
+
+Deuxième partie : les six changements d'état.
+
+Quand l'eau passe d'un état à un autre, on dit qu'il y a un changement d'état. Il y en a six. Je te les donne un par un, avec un exemple.
+
+Numéro 1 : la fusion. L'eau passe de solide à liquide. Par exemple, un glaçon qui fond dans ton verre.
+
+Numéro 2 : la solidification. L'eau passe de liquide à solide. Par exemple, la flaque qui gèle pendant la nuit.
+
+Numéro 3 : la vaporisation. L'eau passe de liquide à gaz. Par exemple, le linge qui sèche, ou l'eau qui bout dans la casserole.
+
+Numéro 4 : la liquéfaction. L'eau passe de gaz à liquide. Par exemple, la buée sur la vitre, ou la rosée sur l'herbe le matin.
+
+Numéro 5 : la sublimation. L'eau passe directement de solide à gaz, sans devenir liquide. Par exemple, la neige qui disparaît par grand froid et grand vent.
+
+Numéro 6 : la condensation solide. L'eau passe directement de gaz à solide. Par exemple, le givre blanc sur l'herbe.
+
+Ça fait beaucoup de mots, je sais. Alors voici une astuce pour t'aider.
+
+Quand on chauffe, on avance : solide, liquide, gaz. Ça donne la fusion, puis la vaporisation.
+
+Quand on refroidit, on revient en arrière : gaz, liquide, solide. Ça donne la liquéfaction, puis la solidification.
+
+Et pour la sublimation et la condensation solide, on saute l'étape du liquide.
+
+Retiens bien : chaud, on avance. Froid, on recule.
+
+Si tu veux, mets le podcast en pause et essaie de répéter les six noms de mémoire. Fusion, solidification, vaporisation, liquéfaction, sublimation, condensation solide.
+
+Troisième partie : les températures importantes.
+
+Pour l'eau, il y a deux températures à connaître.
+
+La première : zéro degré Celsius. À zéro degré, l'eau gèle : c'est la solidification. Et la glace fond : c'est la fusion.
+
+La deuxième : cent degrés Celsius. À cent degrés, l'eau bout : c'est la vaporisation.
+
+Je répète : zéro degré pour geler et fondre. Cent degrés pour bouillir.
+
+Quatrième partie : lire un graphique.
+
+Dans ton cours, tu as un graphique avec une courbe. Sur l'axe vertical, il y a la température. Sur l'axe horizontal, il y a le temps.
+
+Regarde bien la courbe. Quand la ligne monte ou descend, la température change.
+
+Mais parfois, la ligne devient plate. Elle est horizontale. On appelle ça un palier.
+
+Et voici le point le plus important : pendant un palier, la température ne change pas, même si on continue de chauffer ou de refroidir. C'est justement à ce moment-là que l'eau change d'état.
+
+Donc, si tu vois un palier à zéro degré, c'est une fusion ou une solidification. Si tu vois un palier à cent degrés, c'est une vaporisation ou une liquéfaction.
+
+Pour résumer, retiens cette phrase :
+
+Un changement d'état est le passage d'un état à un autre : solide, liquide ou gaz. Pour l'eau pure, il se produit à une température précise, et la température reste constante pendant ce changement.
+
+Voici la nouvelle fin du podcast, à placer après la phrase de résumé et à la place de la conclusion précédente. Toujours en monovoix, sans balise.
+
+Avant de terminer, j'ai une dernière chose à te dire. Les températures que tu viens d'apprendre, zéro degré et cent degrés, ne sont vraies que pour l'eau. Chaque matière a ses propres températures de changement d'état. Et ça, c'est vraiment passionnant !
+
+Prenons un exemple : un métal, le fer. Le fer est solide autour de toi : les clous, les outils, les poutres. Mais si on le chauffe très, très fort, à environ quinze cents degrés, il fond et devient liquide ! C'est ce qu'on fait dans les usines, pour fabriquer de l'acier. Tu vois, la fusion existe aussi pour les métaux, mais à des températures bien plus élevées que pour la glace.
+
+Maintenant, un autre exemple : l'alcool. Celui qu'on trouve dans certains thermomètres, ou dans le désinfectant. L'alcool, lui, ne devient solide que vers moins cent dix degrés ! C'est beaucoup plus froid que l'eau. Même dans un congélateur ordinaire, qui descend à moins dix-huit degrés, l'alcool reste liquide. Au contraire de l'eau, qui, elle, gèle à zéro degré.
+
+Tu vois, l'eau n'est pas la seule matière à changer d'état. Mais chacune le fait à sa façon, à sa propre température.
+
+Alors, maintenant, quand tu regardes autour de toi, pose-toi la question : à quelle température cet objet fondrait-il ? À quelle température ce liquide gèlerait-il ? C'est comme ça que les scientifiques commencent toutes leurs recherches : en se posant des questions.
+
+Voilà, c'est la fin de ce podcast. Tu peux le réécouter si tu as besoin, puis refaire l'activité du cours.
+          </div>
+        </div>
+        <div data-document data-type="video" data-title="Vidéo 1 — Les changements d'états de la matière" data-src="https://youtu.be/qRgV7ag7lFM"></div>      </div>
+    </main>
+    <footer class="site-footer"><a id="footer-link" href="../../Chapitre.html">Retour au chapitre</a><span>Ressources pédagogiques</span></footer>
+  </div>
+</body>
+</html>

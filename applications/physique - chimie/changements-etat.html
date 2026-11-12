@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solide, liquide, gaz : la matière change de costume !</title>
+  <style>
+    /* ===== 1. VARIABLES DE COULEURS ===== */
+    :root {
+      --bleu: #53a4db; --vert: #7fbc48; --violet: #a6539b; --orange: #f3912b;
+      --gris: #b7b7b7; --rouge: #e62d32; --rose: #ee7bab; --rose-genially: #161213;
+      --jaune: #f4d32e; --marron: #a5706c; --noir: #494949; --fond: #ffffff;
+      --rayon: 14px;
+    }
+
+    /* ===== 2. BASE ===== */
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; width: 100%; min-height: 100%;
+      background: var(--fond); color: var(--noir);
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      font-size: clamp(15px, 0.9rem + 0.3vw, 18px); line-height: 1.5;
+    }
+    body.embedded { overflow: hidden; }
+    main { max-width: 60rem; margin: 0 auto; padding: 1rem clamp(0.8rem, 3vw, 2rem) 3rem; }
+    h2 { font-size: clamp(1.2rem, 1rem + 1.5vw, 1.7rem); margin: 0.5rem 0 1rem; padding-left: 0.7rem; border-left: 6px solid var(--bleu); }
+    h3 { font-size: 1.1rem; margin: 1.2rem 0 0.5rem; }
+    p { margin: 0.5rem 0; }
+
+    /* ===== 3. EN-TÊTE ET NAVIGATION ===== */
+    header { border-bottom: 5px solid var(--bleu); padding: 1rem clamp(0.8rem, 3vw, 2rem) 0.8rem; text-align: center; }
+    header h1 { margin: 0; font-size: clamp(1.3rem, 1rem + 2.5vw, 2.1rem); line-height: 1.2; }
+    .sous-titre { margin: 0.3rem 0 0.8rem; font-size: 0.95rem; }
+    .navigation-etapes { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem; list-style: none; padding: 0; margin: 0; }
+    .pastille { font: inherit; font-size: 0.9rem; font-weight: 600; border: 2px solid var(--bleu); background: var(--fond); color: var(--noir); border-radius: 999px; padding: 0.3rem 0.8rem; cursor: pointer; }
+    .pastille[aria-current="step"] { background: var(--bleu); }
+    .pastille:focus-visible { outline: 3px solid var(--noir); outline-offset: 3px; }
+
+    /* ===== 4. ÉTAPES ===== */
+    .etape { display: none; }
+    .etape.active { display: block; animation: apparition 0.35s ease; }
+    @keyframes apparition { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+    /* ===== 5. CARTES ===== */
+    .carte { border: 2px solid var(--gris); border-radius: var(--rayon); padding: 1rem; margin: 0.8rem 0; }
+    .carte-bleue { border-color: var(--bleu); }
+    .carte-orange { border-color: var(--orange); }
+    .carte-jaune { border-color: var(--jaune); border-width: 3px; }
+    .grille-histoire { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 0.8rem; margin: 1rem 0; }
+    .case-histoire { border: 2px solid var(--bleu); border-radius: var(--rayon); padding: 0.8rem; text-align: center; }
+    .emoji { font-size: 2.4rem; display: block; }
+    .remarque { border-left: 5px solid var(--violet); padding: 0.5rem 0.8rem; margin: 1rem 0; }
+    details { border: 2px dashed var(--violet); border-radius: var(--rayon); padding: 0.6rem 1rem; margin: 0.8rem 0; }
+    summary { cursor: pointer; font-weight: 700; }
+
+    /* ===== 6. BOUTONS ===== */
+    .bouton { font: inherit; font-weight: 700; border-radius: 999px; padding: 0.6rem 1.3rem; cursor: pointer; border: 3px solid var(--jaune); background: var(--jaune); color: var(--noir); min-height: 2.8rem; }
+    .bouton:hover, .bouton:focus-visible { outline: 3px solid var(--noir); outline-offset: 2px; }
+    .bouton-secondaire { background: var(--fond); border-color: var(--bleu); }
+    .zone-boutons { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; margin: 1rem 0; }
+    .navigation-bas { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; padding-top: 1rem; border-top: 2px solid var(--gris); }
+
+    /* ===== 7. QCM ===== */
+    .qcm { border-top: 2px dashed var(--gris); padding-top: 0.6rem; margin-top: 0.8rem; }
+    .qcm:first-child { border-top: none; margin-top: 0; }
+    .question { font-weight: 700; }
+    .liste-choix { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 0.5rem; margin: 0.6rem 0; }
+    .choix { font: inherit; font-weight: 600; background: var(--fond); color: var(--noir); border: 2px solid var(--bleu); border-radius: 10px; padding: 0.6rem; cursor: pointer; min-height: 2.8rem; }
+    .choix:hover:not(:disabled) { border-width: 3px; }
+    .choix:focus-visible { outline: 3px solid var(--noir); outline-offset: 2px; }
+    .choix:disabled { cursor: default; }
+    .choix.juste { background: var(--vert); border-color: var(--vert); }
+    .choix.faux { border-color: var(--rouge); border-style: dashed; text-decoration: line-through; }
+    .retour { min-height: 1.5rem; font-weight: 600; margin: 0.4rem 0; }
+    .retour.bien { border-left: 5px solid var(--vert); padding-left: 0.6rem; }
+    .retour.erreur { border-left: 5px solid var(--rouge); padding-left: 0.6rem; }
+
+    /* ===== 8. SCHÉMA SVG ===== */
+    .conteneur-schema { width: 100%; max-width: 38rem; margin: 0 auto; }
+    #schema { width: 100%; height: auto; display: block; }
+    .fleche { cursor: pointer; }
+    .fleche:focus { outline: none; }
+    .fleche:hover rect, .fleche:focus rect { stroke-width: 5; }
+    .legende { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; font-weight: 600; }
+    .legende span::before { content: ""; display: inline-block; width: 1.6rem; height: 0.4rem; border-radius: 4px; margin-right: 0.4rem; vertical-align: middle; }
+    .legende .chaud::before { background: var(--orange); }
+    .legende .froid::before { background: var(--bleu); }
+    #panneau-fleche { border: 3px solid var(--bleu); border-radius: var(--rayon); padding: 1rem; margin-top: 1rem; }
+
+    /* ===== 9. GRAPHIQUES ===== */
+    .conteneur-graphique { width: 100%; max-width: 44rem; margin: 0 auto; }
+    canvas { width: 100%; display: block; border: 2px solid var(--gris); border-radius: 10px; touch-action: manipulation; }
+    .tableau-de-bord { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 0.6rem; margin: 0.8rem 0; text-align: center; }
+    .indicateur { border: 2px solid var(--bleu); border-radius: 10px; padding: 0.5rem; }
+    .indicateur strong { display: block; font-size: 1.3rem; }
+    input[type="range"] { width: 100%; accent-color: var(--bleu); }
+    .lecture { text-align: center; font-weight: 700; min-height: 1.5rem; }
+
+    /* ===== 10. TABLEAUX ===== */
+    .tableau-scroll { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; margin: 0.6rem 0; }
+    th, td { border: 2px solid var(--gris); padding: 0.45rem; text-align: left; }
+    th { background: var(--bleu); }
+    .chaud-txt { border-left: 6px solid var(--orange); }
+    .froid-txt { border-left: 6px solid var(--bleu); }
+    .score-final { font-size: 1.4rem; font-weight: 800; text-align: center; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Solide, liquide, gaz : la matière change de costume !</h1>
+  <p class="sous-titre">Physique-chimie, 4e. Découvre à ton rythme.</p>
+  <nav aria-label="Étapes de l'activité">
+    <ul class="navigation-etapes" id="navigation-etapes"></ul>
+  </nav>
+</header>
+
+<main>
+  <!-- ÉTAPE 1 : L'HISTOIRE -->
+  <section class="etape" id="etape-1" data-titre="1. L'histoire">
+    <h2>1. L'eau n'arrête pas de changer de costume</h2>
+    <p>Regarde ce qui arrive à l'eau d'une flaque pendant quelques jours :</p>
+    <div class="grille-histoire">
+      <div class="case-histoire"><span class="emoji" aria-hidden="true">🧊</span>La nuit, la flaque <strong>gèle</strong>.</div>
+      <div class="case-histoire"><span class="emoji" aria-hidden="true">💧</span>Le matin, la glace <strong>fond</strong>.</div>
+      <div class="case-histoire"><span class="emoji" aria-hidden="true">☀️</span>L'après-midi, l'eau <strong>s'évapore</strong>.</div>
+      <div class="case-histoire"><span class="emoji" aria-hidden="true">🪟</span>Le soir, de la <strong>buée</strong> apparaît sur ta vitre.</div>
+    </div>
+    <div class="carte carte-jaune">
+      <p><strong>🔎 Ta mission :</strong></p>
+      <p>1. Trouver le <strong>nom scientifique</strong> de chaque transformation.</p>
+      <p>2. Découvrir <strong>à quelle température</strong> elles se produisent.</p>
+    </div>
+    <p>L'eau existe sous <strong>3 états</strong> :</p>
+    <div class="grille-histoire">
+      <div class="case-histoire"><span class="emoji" aria-hidden="true">🧊</span><strong>Solide</strong><br>glace, neige, givre</div>
+      <div class="case-histoire"><span class="emoji" aria-hidden="true">💧</span><strong>Liquide</strong><br>eau du robinet, pluie</div>
+      <div class="case-histoire"><span class="emoji" aria-hidden="true">💨</span><strong>Gaz</strong><br>vapeur d'eau (invisible !)</div>
+    </div>
+    <div class="remarque">⚠️ La vapeur d'eau est <strong>invisible</strong>. Le « nuage blanc » au-dessus d'une casserole, ce sont de minuscules gouttes d'eau <strong>liquide</strong> !</div>
+  </section>
+
+  <!-- ÉTAPE 2 : LE SCHÉMA -->
+  <section class="etape" id="etape-2" data-titre="2. Les 6 noms">
+    <h2>2. Les 6 changements d'état</h2>
+    <p>Il existe <strong>6 flèches</strong> pour passer d'un état à un autre. <strong>Clique sur chaque « ? »</strong> et trouve son nom.</p>
+    <div class="legende"><span class="chaud">On chauffe</span><span class="froid">On refroidit</span></div>
+    <div class="conteneur-schema">
+      <svg id="schema" viewBox="0 0 600 440" role="group" aria-label="Schéma des trois états et des six changements d'état"></svg>
+    </div>
+    <div id="panneau-fleche" class="cache" aria-live="polite"></div>
+    <p id="compteur-schema" class="lecture"></p>
+    <details>
+      <summary>💡 Des indices pour t'aider</summary>
+      <p><strong>Fusion</strong> : comme « fondre ». <strong>Solidification</strong> : devenir <em>solide</em>.</p>
+      <p><strong>Vaporisation</strong> : devenir <em>vapeur</em>. <strong>Liquéfaction</strong> : devenir <em>liquide</em>.</p>
+      <p><strong>Sublimation</strong> : passer directement de solide à gaz. <strong>Condensation</strong> : passer directement de gaz à solide.</p>
+    </details>
+    <div class="remarque">📌 Dans la vie courante, on dit souvent « condensation » pour la buée. En physique, on dit <strong>liquéfaction</strong>, car la vapeur devient <strong>liquide</strong>.</div>
+  </section>
+
+  <!-- ÉTAPE 3 : LES SITUATIONS -->
+  <section class="etape" id="etape-3" data-titre="3. Situations">
+    <h2>3. Dans la vraie vie</h2>
+    <p>Pour chaque situation, demande-toi : <strong>quel est l'état au départ ? Et à l'arrivée ?</strong> Ensuite, choisis le bon nom.</p>
+    <div id="zone-situations" class="carte carte-bleue"></div>
+  </section>
+
+  <!-- ÉTAPE 4 : L'EXPÉRIENCE -->
+  <section class="etape" id="etape-4" data-titre="4. Expérience">
+    <h2>4. Expérience : je chauffe de la glace</h2>
+    <p>On place de la glace à <strong>-20 °C</strong> sur une plaque chauffante, puis on mesure la température toutes les minutes. <strong>Fais avancer le temps</strong> et observe la courbe.</p>
+    <div class="conteneur-graphique"><canvas id="graphique-experience" aria-label="Graphique de la température en fonction du temps"></canvas></div>
+    <label for="curseur-temps"><strong>Temps :</strong></label>
+    <input type="range" id="curseur-temps" min="0" max="19" step="0.1" value="0">
+    <div class="zone-boutons">
+      <button class="bouton" id="bouton-lecture">▶ Lancer</button>
+      <button class="bouton bouton-secondaire" id="bouton-reinitialiser">↺ Recommencer</button>
+    </div>
+    <div class="tableau-de-bord">
+      <div class="indicateur">⏱️ Temps<strong id="affiche-temps">0 min</strong></div>
+      <div class="indicateur">🌡️ Température<strong id="affiche-temperature">-20 °C</strong></div>
+      <div class="indicateur">Ce que je vois<strong id="affiche-etat">🧊 Solide</strong></div>
+    </div>
+    <h3>🔎 Observe bien la courbe</h3>
+    <div id="zone-questions-experience" class="carte carte-orange"></div>
+  </section>
+
+  <!-- ÉTAPE 5 : L'ENQUÊTE -->
+  <section class="etape" id="etape-5" data-titre="5. Enquête">
+    <h2>5. Enquête : le liquide mystère</h2>
+    <p>Un technicien de laboratoire a trouvé un flacon sans étiquette. Il a mesuré la température du liquide pendant qu'il le mettait au frais. Voici sa courbe.</p>
+    <p><strong>👆 Touche ou clique sur la courbe</strong> pour lire la température à un instant précis.</p>
+    <div class="conteneur-graphique"><canvas id="graphique-enquete" aria-label="Courbe de température du liquide mystère"></canvas></div>
+    <p class="lecture" id="lecture-enquete" aria-live="polite"></p>
+    <div class="carte">
+      <p><strong>📋 Fiche du laboratoire : température de changement d'état</strong></p>
+      <div class="tableau-scroll">
+        <table>
+          <thead><tr><th>Substance</th><th>Fusion / solidification</th></tr></thead>
+          <tbody>
+            <tr><td>Eau</td><td>0 °C</td></tr>
+            <tr><td>Cyclohexane</td><td>6 °C</td></tr>
+            <tr><td>Acide stéarique</td><td>69 °C</td></tr>
+            <tr><td>Étain</td><td>232 °C</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div id="zone-questions-enquete" class="carte carte-bleue"></div>
+  </section>
+
+  <!-- ÉTAPE 6 : LE BILAN -->
+  <section class="etape" id="etape-6" data-titre="6. Bilan">
+    <h2>6. Ce que je retiens</h2>
+    <p class="score-final" id="score-final"></p>
+    <div class="tableau-scroll">
+      <table>
+        <thead><tr><th>Changement d'état</th><th>Départ → arrivée</th><th>Exemple</th></tr></thead>
+        <tbody>
+          <tr class="chaud-txt"><td><strong>Fusion</strong></td><td>solide → liquide</td><td>la glace fond</td></tr>
+          <tr class="froid-txt"><td><strong>Solidification</strong></td><td>liquide → solide</td><td>la flaque gèle</td></tr>
+          <tr class="chaud-txt"><td><strong>Vaporisation</strong></td><td>liquide → gaz</td><td>le linge sèche, l'eau bout</td></tr>
+          <tr class="froid-txt"><td><strong>Liquéfaction</strong></td><td>gaz → liquide</td><td>buée, rosée</td></tr>
+          <tr class="chaud-txt"><td><strong>Sublimation</strong></td><td>solide → gaz</td><td>la neige carbonique « fume »</td></tr>
+          <tr class="froid-txt"><td><strong>Condensation</strong></td><td>gaz → solide</td><td>le givre</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="carte carte-orange">
+      <p>📈 <strong>Pendant un changement d'état, la température d'un corps pur reste constante.</strong> Sur le graphique, cela forme un <strong>palier</strong>, c'est-à-dire un trait horizontal.</p>
+      <p>💧 Pour l'eau, on observe un palier à <strong>0 °C</strong> (fusion ou solidification) et un palier à <strong>100 °C</strong> (ébullition).</p>
+      <p>🔎 La température du palier permet de <strong>reconnaître une substance</strong>.</p>
+    </div>
+    <div class="zone-boutons"><button class="bouton" id="bouton-recommencer">↺ Tout recommencer</button></div>
+  </section>
+</main>
+
+<script>
+"use strict";
+
+const embedded = window.parent !== window;
+function signalerHauteurApplication() {
+  const height = Math.ceil(document.documentElement.scrollHeight);
+  if (embedded) window.parent.postMessage({ type: "application-height", height }, window.location.origin);
+}
+
+if (embedded) {
+  document.body.classList.add("embedded");
+  window.addEventListener("message", (event) => {
+    if (event.source !== window.parent || event.data?.type !== "application-height-request") return;
+    signalerHauteurApplication();
+  });
+  if ("ResizeObserver" in window) new ResizeObserver(signalerHauteurApplication).observe(document.body);
+  window.addEventListener("load", signalerHauteurApplication);
+  window.addEventListener("resize", signalerHauteurApplication);
+  signalerHauteurApplication();
+}
+
+/* ===== 1. OUTILS ===== */
+const lireCouleur = (nom) => getComputedStyle(document.documentElement).getPropertyValue(nom).trim();
+const COULEUR = { bleu: lireCouleur("--bleu"), orange: lireCouleur("--orange"), noir: lireCouleur("--noir"), gris: lireCouleur("--gris"), vert: lireCouleur("--vert"), rouge: lireCouleur("--rouge"), fond: "#ffffff" };
+const NOMS_CHANGEMENTS = ["Fusion", "Solidification", "Vaporisation", "Liquéfaction", "Sublimation", "Condensation"];
+
+/* Score : 1 point si l'élève répond juste du premier coup */
+const score = { obtenu: 0, total: 0 };
+
+/* ===== 2. NAVIGATION ===== */
+const sections = Array.from(document.querySelectorAll(".etape"));
+const listeNavigation = document.getElementById("navigation-etapes");
+let etapeActuelle = 0;
+
+sections.forEach((section, index) => {
+  // Pastille en haut de page
+  const element = document.createElement("li");
+  const pastille = document.createElement("button");
+  pastille.className = "pastille";
+  pastille.textContent = section.dataset.titre;
+  pastille.addEventListener("click", () => afficherEtape(index));
+  element.appendChild(pastille);
+  listeNavigation.appendChild(element);
+
+  // Boutons « Précédent / Suivant » en bas de section
+  const navigationBas = document.createElement("div");
+  navigationBas.className = "navigation-bas";
+  if (index > 0) navigationBas.appendChild(creerBoutonNavigation("← Précédent", index - 1, true));
+  else navigationBas.appendChild(document.createElement("span"));
+  if (index < sections.length - 1) navigationBas.appendChild(creerBoutonNavigation("Suivant →", index + 1, false));
+  section.appendChild(navigationBas);
+});
+
+function creerBoutonNavigation(texte, cible, secondaire) {
+  const bouton = document.createElement("button");
+  bouton.className = secondaire ? "bouton bouton-secondaire" : "bouton";
+  bouton.textContent = texte;
+  bouton.addEventListener("click", () => afficherEtape(cible));
+  return bouton;
+}
+
+function afficherEtape(index) {
+  etapeActuelle = index;
+  sections.forEach((section, i) => section.classList.toggle("active", i === index));
+  listeNavigation.querySelectorAll(".pastille").forEach((pastille, i) => {
+    if (i === index) pastille.setAttribute("aria-current", "step");
+    else pastille.removeAttribute("aria-current");
+  });
+  if (index === 3) dessinerExperience();
+  if (index === 4) dessinerEnquete();
+  if (index === 5) afficherScore();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  requestAnimationFrame(signalerHauteurApplication);
+}
+
+/* ===== 3. QCM GÉNÉRIQUE ===== */
+function creerQCM(conteneur, questions) {
+  questions.forEach((item) => {
+    score.total++;
+    let premierEssai = true;
+    const bloc = document.createElement("div");
+    bloc.className = "qcm";
+    bloc.innerHTML = `<p class="question">${item.question}</p>`;
+    const liste = document.createElement("div");
+    liste.className = "liste-choix";
+    const retour = document.createElement("p");
+    retour.className = "retour";
+    retour.setAttribute("aria-live", "polite");
+
+    item.choix.forEach((texteChoix) => {
+      const bouton = document.createElement("button");
+      bouton.className = "choix";
+      bouton.textContent = texteChoix;
+      bouton.addEventListener("click", () => {
+        if (texteChoix === item.bonne) {
+          bouton.classList.add("juste");
+          liste.querySelectorAll(".choix").forEach((b) => (b.disabled = true));
+          retour.className = "retour bien";
+          retour.textContent = "✅ Bravo ! " + item.explication;
+          if (premierEssai) score.obtenu++;
+        } else {
+          premierEssai = false;
+          bouton.classList.add("faux");
+          bouton.disabled = true;
+          retour.className = "retour erreur";
+          retour.textContent = "❌ Pas tout à fait. " + (item.indice || "Réessaie !");
+        }
+      });
+      liste.appendChild(bouton);
+    });
+    bloc.append(liste, retour);
+    conteneur.appendChild(bloc);
+  });
+}
+
+/* ===== 4. SCHÉMA DES ÉTATS ===== */
+const ETATS = {
+  solide:  { x: 100, y: 360, nom: "SOLIDE",  emoji: "🧊" },
+  liquide: { x: 300, y: 80,  nom: "LIQUIDE", emoji: "💧" },
+  gaz:     { x: 500, y: 360, nom: "GAZ",     emoji: "💨" }
+};
+const FLECHES = [
+  { de: "solide", vers: "liquide", nom: "Fusion",         chaud: true },
+  { de: "liquide", vers: "solide", nom: "Solidification", chaud: false },
+  { de: "liquide", vers: "gaz",    nom: "Vaporisation",   chaud: true },
+  { de: "gaz", vers: "liquide",    nom: "Liquéfaction",   chaud: false },
+  { de: "solide", vers: "gaz",     nom: "Sublimation",    chaud: true },
+  { de: "gaz", vers: "solide",     nom: "Condensation",   chaud: false }
+];
+const svg = document.getElementById("schema");
+const panneauFleche = document.getElementById("panneau-fleche");
+const NS = "http://www.w3.org/2000/svg";
+const flechesTrouvees = new Set();
+
+function elementSVG(type, attributs) {
+  const el = document.createElementNS(NS, type);
+  Object.entries(attributs).forEach(([cle, valeur]) => el.setAttribute(cle, valeur));
+  return el;
+}
+
+function construireSchema() {
+  // Pointes de flèches (une orange, une bleue)
+  const defs = elementSVG("defs", {});
+  [["pointe-chaud", COULEUR.orange], ["pointe-froid", COULEUR.bleu]].forEach(([id, couleur]) => {
+    const marqueur = elementSVG("marker", { id, viewBox: "0 0 10 10", refX: "8", refY: "5", markerWidth: "5", markerHeight: "5", orient: "auto" });
+    marqueur.appendChild(elementSVG("path", { d: "M0,0 L10,5 L0,10 z", fill: couleur }));
+    defs.appendChild(marqueur);
+  });
+  svg.appendChild(defs);
+
+  // Flèches et étiquettes
+  FLECHES.forEach((fleche, index) => {
+    const a = ETATS[fleche.de], b = ETATS[fleche.vers];
+    const dx = b.x - a.x, dy = b.y - a.y, longueur = Math.hypot(dx, dy);
+    const ux = dx / longueur, uy = dy / longueur;   // direction
+    const px = -uy, py = ux;                        // perpendiculaire
+    const decalage = 16, reduction = 66;
+    const couleur = fleche.chaud ? COULEUR.orange : COULEUR.bleu;
+
+    const groupe = elementSVG("g", { class: "fleche", tabindex: "0", role: "button", "aria-label": "Changement d'état : " + a.nom + " vers " + b.nom });
+    groupe.appendChild(elementSVG("line", {
+      x1: a.x + ux * reduction + px * decalage, y1: a.y + uy * reduction + py * decalage,
+      x2: b.x - ux * reduction + px * decalage, y2: b.y - uy * reduction + py * decalage,
+      stroke: couleur, "stroke-width": "7", "marker-end": `url(#${fleche.chaud ? "pointe-chaud" : "pointe-froid"})`
+    }));
+    const cx = (a.x + b.x) / 2 + px * 48, cy = (a.y + b.y) / 2 + py * 48;
+    groupe.appendChild(elementSVG("rect", { x: cx - 68, y: cy - 18, width: 136, height: 36, rx: 18, fill: COULEUR.fond, stroke: couleur, "stroke-width": "3" }));
+    const texte = elementSVG("text", { x: cx, y: cy + 6, "text-anchor": "middle", "font-size": "17", "font-weight": "700", fill: COULEUR.noir });
+    texte.textContent = "?";
+    texte.id = "etiquette-" + index;
+    groupe.appendChild(texte);
+
+    const ouvrir = () => ouvrirQuestionFleche(index);
+    groupe.addEventListener("click", ouvrir);
+    groupe.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); ouvrir(); } });
+    svg.appendChild(groupe);
+  });
+
+  // Les 3 états (dessinés au-dessus des flèches)
+  Object.values(ETATS).forEach((etat) => {
+    svg.appendChild(elementSVG("circle", { cx: etat.x, cy: etat.y, r: 58, fill: COULEUR.fond, stroke: COULEUR.noir, "stroke-width": "3" }));
+    const emoji = elementSVG("text", { x: etat.x, y: etat.y - 2, "text-anchor": "middle", "font-size": "34" });
+    emoji.textContent = etat.emoji;
+    const nom = elementSVG("text", { x: etat.x, y: etat.y + 30, "text-anchor": "middle", "font-size": "16", "font-weight": "800", fill: COULEUR.noir });
+    nom.textContent = etat.nom;
+    svg.append(emoji, nom);
+  });
+  majCompteurSchema();
+}
+
+function ouvrirQuestionFleche(index) {
+  const fleche = FLECHES[index];
+  const depart = ETATS[fleche.de].nom.toLowerCase(), arrivee = ETATS[fleche.vers].nom.toLowerCase();
+  panneauFleche.classList.remove("cache");
+  panneauFleche.style.borderColor = fleche.chaud ? COULEUR.orange : COULEUR.bleu;
+  panneauFleche.innerHTML = `<p class="question">${ETATS[fleche.de].emoji} ${depart} → ${ETATS[fleche.vers].emoji} ${arrivee} (${fleche.chaud ? "on chauffe 🔥" : "on refroidit ❄️"})</p>`;
+
+  if (flechesTrouvees.has(index)) {
+    panneauFleche.innerHTML += `<p class="retour bien">✅ C'est la <strong>${fleche.nom.toLowerCase()}</strong>.</p>`;
+    return;
+  }
+  const liste = document.createElement("div");
+  liste.className = "liste-choix";
+  const retour = document.createElement("p");
+  retour.className = "retour";
+  NOMS_CHANGEMENTS.forEach((nom) => {
+    const bouton = document.createElement("button");
+    bouton.className = "choix";
+    bouton.textContent = nom;
+    bouton.addEventListener("click", () => {
+      if (nom === fleche.nom) {
+        bouton.classList.add("juste");
+        liste.querySelectorAll(".choix").forEach((b) => (b.disabled = true));
+        retour.className = "retour bien";
+        retour.textContent = `✅ Oui ! Passer de l'état ${depart} à l'état ${arrivee}, c'est la ${nom.toLowerCase()}.`;
+        document.getElementById("etiquette-" + index).textContent = nom;
+        flechesTrouvees.add(index);
+        majCompteurSchema();
+      } else {
+        bouton.classList.add("faux");
+        bouton.disabled = true;
+        retour.className = "retour erreur";
+        retour.textContent = "❌ Non. Regarde l'état d'arrivée et ouvre les indices plus bas.";
+      }
+    });
+    liste.appendChild(bouton);
+  });
+  panneauFleche.append(liste, retour);
+  panneauFleche.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+function majCompteurSchema() {
+  const n = flechesTrouvees.size;
+  document.getElementById("compteur-schema").textContent = n === 6 ? "🏆 Bravo, tu as trouvé les 6 noms !" : `Flèches trouvées : ${n} / 6`;
+}
+
+/* ===== 5. SITUATIONS CONCRÈTES ===== */
+const SITUATIONS = [
+  { question: "🪟 De la buée apparaît sur la vitre froide de ta chambre.", bonne: "Liquéfaction", explication: "La vapeur d'eau de l'air (gaz) devient des gouttes (liquide).", indice: "La vapeur d'eau invisible devient… des gouttes !" },
+  { question: "🌿 Le matin, des gouttes de rosée couvrent l'herbe.", bonne: "Liquéfaction", explication: "La vapeur d'eau de l'air devient liquide au contact de l'herbe froide.", indice: "Les gouttes viennent de la vapeur d'eau de l'air." },
+  { question: "🧊 La glace de la flaque fond au soleil.", bonne: "Fusion", explication: "Solide → liquide : c'est la fusion.", indice: "Départ : solide. Arrivée : liquide." },
+  { question: "🥶 La nuit, l'eau de la flaque gèle.", bonne: "Solidification", explication: "Liquide → solide : c'est la solidification.", indice: "Départ : liquide. Arrivée : solide." },
+  { question: "👕 Le linge mouillé sèche sur le fil.", bonne: "Vaporisation", explication: "L'eau liquide du linge devient vapeur : c'est une vaporisation (une évaporation).", indice: "Où part l'eau du linge ? Dans l'air, sous forme de gaz." },
+  { question: "🍲 L'eau bout dans la casserole.", bonne: "Vaporisation", explication: "L'ébullition est une vaporisation : liquide → gaz.", indice: "Les bulles qui se forment contiennent de la vapeur." },
+  { question: "❄️ Un matin d'hiver, du givre blanc recouvre le pare-brise.", bonne: "Condensation", explication: "La vapeur d'eau devient directement de la glace : gaz → solide.", indice: "Le givre est solide, et il vient directement de la vapeur." },
+  { question: "🌫️ La « neige carbonique » disparaît en fumant, sans jamais devenir liquide.", bonne: "Sublimation", explication: "Solide → gaz directement : c'est la sublimation.", indice: "Elle passe de solide à gaz sans passer par l'état liquide." }
+];
+creerQCM(document.getElementById("zone-situations"),
+  SITUATIONS.map((s) => ({ question: s.question, choix: NOMS_CHANGEMENTS, bonne: s.bonne, explication: s.explication, indice: s.indice })));
+
+/* ===== 6. EXPÉRIENCE : COURBE DE CHAUFFAGE DE L'EAU ===== */
+/* Points (temps en min, température en °C) : glace -20 → 0 °C, palier de fusion,
+   eau 0 → 100 °C, palier d'ébullition */
+const POINTS_EXPERIENCE = [[0, -20], [3, 0], [8, 0], [14, 100], [19, 100]];
+const DUREE_MAX = 19;
+
+function temperatureExperience(t) {
+  for (let i = 0; i < POINTS_EXPERIENCE.length - 1; i++) {
+    const [t1, T1] = POINTS_EXPERIENCE[i], [t2, T2] = POINTS_EXPERIENCE[i + 1];
+    if (t >= t1 && t <= t2) return T1 + ((T2 - T1) * (t - t1)) / (t2 - t1);
+  }
+  return 100;
+}
+
+function etatExperience(t) {
+  if (t < 3) return "🧊 Solide (glace)";
+  if (t < 8) return "🧊💧 Solide + liquide (la glace fond)";
+  if (t < 14) return "💧 Liquide (eau)";
+  return "💧💨 Liquide + gaz (l'eau bout)";
+}
+
+/* Prépare un canvas net sur tous les écrans */
+function preparerCanvas(canvas, ratio) {
+  const largeur = canvas.clientWidth || 600;
+  const hauteur = Math.round(largeur * ratio);
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = largeur * dpr;
+  canvas.height = hauteur * dpr;
+  canvas.style.height = hauteur + "px";
+  const ctx = canvas.getContext("2d");
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return { ctx, largeur, hauteur };
+}
+
+/* Dessine les axes et la grille d'un graphique, et renvoie les fonctions de conversion */
+function dessinerRepere(ctx, largeur, hauteur, tMax, Tmin, Tmax, pasT, pasTemp) {
+  const marge = { g: 52, d: 14, h: 14, b: 40 };
+  const x = (t) => marge.g + (t / tMax) * (largeur - marge.g - marge.d);
+  const y = (T) => hauteur - marge.b - ((T - Tmin) / (Tmax - Tmin)) * (hauteur - marge.b - marge.h);
+  ctx.clearRect(0, 0, largeur, hauteur);
+  ctx.fillStyle = COULEUR.fond;
+  ctx.fillRect(0, 0, largeur, hauteur);
+  ctx.font = "12px Arial";
+  ctx.fillStyle = COULEUR.noir;
+  ctx.strokeStyle = COULEUR.gris;
+  ctx.lineWidth = 1;
+  ctx.textAlign = "right";
+  for (let T = Tmin; T <= Tmax; T += pasTemp) {
+    ctx.beginPath(); ctx.moveTo(x(0), y(T)); ctx.lineTo(x(tMax), y(T)); ctx.stroke();
+    ctx.fillText(T + "", marge.g - 6, y(T) + 4);
+  }
+  ctx.textAlign = "center";
+  for (let t = 0; t <= tMax; t += pasT) {
+    ctx.beginPath(); ctx.moveTo(x(t), y(Tmin)); ctx.lineTo(x(t), y(Tmax)); ctx.stroke();
+    ctx.fillText(t + "", x(t), hauteur - marge.b + 16);
+  }
+  // Axes principaux
+  ctx.strokeStyle = COULEUR.noir;
+  ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(x(0), y(Tmax)); ctx.lineTo(x(0), y(Tmin)); ctx.lineTo(x(tMax), y(Tmin)); ctx.stroke();
+  // Ligne des 0 °C si elle est visible
+  if (Tmin < 0 && Tmax > 0) {
+    ctx.beginPath(); ctx.moveTo(x(0), y(0)); ctx.lineTo(x(tMax), y(0)); ctx.stroke();
+  }
+  // Titres des axes
+  ctx.fillStyle = COULEUR.noir;
+  ctx.font = "bold 13px Arial";
+  ctx.textAlign = "center";
+  ctx.fillText("Temps (min)", (x(0) + x(tMax)) / 2, hauteur - 6);
+  ctx.save();
+  ctx.translate(13, (y(Tmin) + y(Tmax)) / 2);
+  ctx.rotate(-Math.PI / 2);
+  ctx.fillText("Température (°C)", 0, 0);
+  ctx.restore();
+  return { x, y, marge };
+}
+
+const canvasExperience = document.getElementById("graphique-experience");
+const curseurTemps = document.getElementById("curseur-temps");
+const boutonLecture = document.getElementById("bouton-lecture");
+let tempsActuel = 0;
+let minuteur = null;
+
+function dessinerExperience() {
+  const { ctx, largeur, hauteur } = preparerCanvas(canvasExperience, 0.6);
+  const repere = dessinerRepere(ctx, largeur, hauteur, DUREE_MAX, -20, 120, 2, 20);
+  // Courbe jusqu'au temps actuel
+  ctx.lineWidth = 4;
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
+  ctx.strokeStyle = COULEUR.bleu;
+  ctx.beginPath();
+  ctx.moveTo(repere.x(0), repere.y(-20));
+  for (let t = 0; t <= tempsActuel; t += 0.1) ctx.lineTo(repere.x(t), repere.y(temperatureExperience(t)));
+  ctx.lineTo(repere.x(tempsActuel), repere.y(temperatureExperience(tempsActuel)));
+  ctx.stroke();
+  // Point mobile
+  ctx.fillStyle = COULEUR.orange;
+  ctx.strokeStyle = COULEUR.noir;
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.arc(repere.x(tempsActuel), repere.y(temperatureExperience(tempsActuel)), 8, 0, Math.PI * 2);
+  ctx.fill(); ctx.stroke();
+  // Affichages
+  document.getElementById("affiche-temps").textContent = tempsActuel.toFixed(1).replace(".", ",") + " min";
+  document.getElementById("affiche-temperature").textContent = Math.round(temperatureExperience(tempsActuel)) + " °C";
+  document.getElementById("affiche-etat").textContent = etatExperience(tempsActuel);
+}
+
+function arreterLecture() {
+  clearInterval(minuteur);
+  minuteur = null;
+  boutonLecture.textContent = "▶ Lancer";
+}
+
+boutonLecture.addEventListener("click", () => {
+  if (minuteur) { arreterLecture(); return; }
+  if (tempsActuel >= DUREE_MAX) tempsActuel = 0;
+  boutonLecture.textContent = "⏸ Pause";
+  minuteur = setInterval(() => {
+    tempsActuel = Math.min(DUREE_MAX, tempsActuel + 0.1);
+    curseurTemps.value = tempsActuel;
+    dessinerExperience();
+    if (tempsActuel >= DUREE_MAX) arreterLecture();
+  }, 80);
+});
+
+document.getElementById("bouton-reinitialiser").addEventListener("click", () => {
+  arreterLecture();
+  tempsActuel = 0;
+  curseurTemps.value = 0;
+  dessinerExperience();
+});
+
+curseurTemps.addEventListener("input", () => {
+  arreterLecture();
+  tempsActuel = parseFloat(curseurTemps.value);
+  dessinerExperience();
+});
+
+creerQCM(document.getElementById("zone-questions-experience"), [
+  { question: "1. Pendant que la glace fond, que fait la température ?", choix: ["Elle augmente", "Elle reste constante (palier)", "Elle diminue"], bonne: "Elle reste constante (palier)", explication: "Pendant la fusion, la température reste à 0 °C. La chaleur sert à faire fondre la glace.", indice: "Regarde la courbe entre 3 et 8 minutes : est-elle montante ou horizontale ?" },
+  { question: "2. À quelle température la glace fond-elle ?", choix: ["-20 °C", "0 °C", "100 °C"], bonne: "0 °C", explication: "La fusion de l'eau se fait à 0 °C.", indice: "Regarde la hauteur du premier palier." },
+  { question: "3. À quelle température l'eau liquide se met-elle à bouillir ?", choix: ["0 °C", "50 °C", "100 °C"], bonne: "100 °C", explication: "L'ébullition de l'eau a lieu à 100 °C : c'est le deuxième palier.", indice: "Regarde la hauteur du deuxième palier." },
+  { question: "4. Entre 8 et 14 minutes, que se passe-t-il ?", choix: ["L'eau liquide se réchauffe", "La glace fond", "L'eau bout"], bonne: "L'eau liquide se réchauffe", explication: "Plus de glace, pas encore de bulles : l'eau liquide monte de 0 °C à 100 °C.", indice: "La courbe est montante : la température change, donc ce n'est pas un palier." }
+]);
+
+/* ===== 7. ENQUÊTE : LE LIQUIDE MYSTÈRE ===== */
+/* Refroidissement : 25 °C → 6 °C, palier de solidification à 6 °C, puis solide → -5 °C */
+const POINTS_ENQUETE = [[0, 25], [6, 6], [14, 6], [20, -5]];
+const DUREE_ENQUETE = 20;
+const canvasEnquete = document.getElementById("graphique-enquete");
+const lectureEnquete = document.getElementById("lecture-enquete");
+let marqueurEnquete = null;
+
+function temperatureEnquete(t) {
+  for (let i = 0; i < POINTS_ENQUETE.length - 1; i++) {
+    const [t1, T1] = POINTS_ENQUETE[i], [t2, T2] = POINTS_ENQUETE[i + 1];
+    if (t >= t1 && t <= t2) return T1 + ((T2 - T1) * (t - t1)) / (t2 - t1);
+  }
+  return -5;
+}
+
+function dessinerEnquete() {
+  const { ctx, largeur, hauteur } = preparerCanvas(canvasEnquete, 0.6);
+  const repere = dessinerRepere(ctx, largeur, hauteur, DUREE_ENQUETE, -10, 30, 2, 5);
+  ctx.lineWidth = 4;
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
+  ctx.strokeStyle = COULEUR.orange;
+  ctx.beginPath();
+  POINTS_ENQUETE.forEach(([t, T], i) => (i === 0 ? ctx.moveTo(repere.x(t), repere.y(T)) : ctx.lineTo(repere.x(t), repere.y(T))));
+  ctx.stroke();
+  if (marqueurEnquete !== null) {
+    const T = temperatureEnquete(marqueurEnquete);
+    ctx.setLineDash([5, 4]);
+    ctx.strokeStyle = COULEUR.noir;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(repere.x(marqueurEnquete), repere.y(-10));
+    ctx.lineTo(repere.x(marqueurEnquete), repere.y(T));
+    ctx.lineTo(repere.x(0), repere.y(T));
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = COULEUR.bleu;
+    ctx.beginPath();
+    ctx.arc(repere.x(marqueurEnquete), repere.y(T), 8, 0, Math.PI * 2);
+    ctx.fill(); ctx.stroke();
+    lectureEnquete.textContent = `À ${marqueurEnquete.toFixed(1).replace(".", ",")} min, la température est de ${Math.round(T)} °C.`;
+  } else {
+    lectureEnquete.textContent = "👆 Touche la courbe pour lire une valeur.";
+  }
+  canvasEnquete._repere = repere;
+}
+
+function lirePositionEnquete(evenement) {
+  const rect = canvasEnquete.getBoundingClientRect();
+  const clientX = evenement.touches ? evenement.touches[0].clientX : evenement.clientX;
+  const px = clientX - rect.left;
+  const repere = canvasEnquete._repere;
+  if (!repere) return;
+  const t = ((px - repere.marge.g) / (rect.width - repere.marge.g - repere.marge.d)) * DUREE_ENQUETE;
+  marqueurEnquete = Math.max(0, Math.min(DUREE_ENQUETE, t));
+  dessinerEnquete();
+}
+canvasEnquete.addEventListener("click", lirePositionEnquete);
+canvasEnquete.addEventListener("touchstart", lirePositionEnquete, { passive: true });
+canvasEnquete.addEventListener("touchmove", lirePositionEnquete, { passive: true });
+
+creerQCM(document.getElementById("zone-questions-enquete"), [
+  { question: "1. Quel changement d'état le liquide subit-il sur ce graphique ?", choix: ["Fusion", "Solidification", "Vaporisation"], bonne: "Solidification", explication: "On refroidit un liquide et il devient solide : c'est la solidification.", indice: "La température descend : on refroidit. Le liquide devient donc… ?" },
+  { question: "2. À quelle température se trouve le palier ?", choix: ["0 °C", "6 °C", "25 °C"], bonne: "6 °C", explication: "Le palier est horizontal à 6 °C : c'est la température de solidification.", indice: "Touche la courbe sur la partie horizontale et lis la température." },
+  { question: "3. Entre quelles minutes le liquide est-il en train de se solidifier ?", choix: ["De 0 à 6 min", "De 6 à 14 min", "De 14 à 20 min"], bonne: "De 6 à 14 min", explication: "Le palier horizontal va de 6 à 14 minutes.", indice: "Cherche la partie horizontale de la courbe." },
+  { question: "4. D'après la fiche du laboratoire, quel est ce liquide ?", choix: ["De l'eau", "Du cyclohexane", "De l'étain"], bonne: "Du cyclohexane", explication: "La solidification a lieu à 6 °C, comme pour le cyclohexane. Ce n'est pas de l'eau, qui se solidifie à 0 °C.", indice: "Cherche dans le tableau la substance qui change d'état à 6 °C." }
+]);
+
+/* ===== 8. BILAN ===== */
+function afficherScore() {
+  const emoji = score.obtenu / score.total >= 0.8 ? "🏆" : score.obtenu / score.total >= 0.5 ? "👍" : "💪";
+  document.getElementById("score-final").textContent = `${emoji} Réussi du premier coup : ${score.obtenu} / ${score.total}`;
+}
+
+document.getElementById("bouton-recommencer").addEventListener("click", () => window.location.reload());
+
+/* ===== 9. DÉMARRAGE ===== */
+construireSchema();
+afficherEtape(0);
+window.addEventListener("resize", () => {
+  if (etapeActuelle === 3) dessinerExperience();
+  if (etapeActuelle === 4) dessinerEnquete();
+});
+</script>
+</body>
+</html>
