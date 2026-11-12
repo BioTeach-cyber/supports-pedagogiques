@@ -3,12 +3,236 @@
   "activiteId": "activite2",
   "exercices": [
     {
-      "themeId": "",
-      "titre": "",
-      "objectifId": "",
-      "enonce": "",
-      "question": "",
-      "reponse": ""
+      "themeId": "Cuisine",
+      "titre": "Glace au soleil",
+      "objectifId": "obj1",
+      "enonce": "Nina sort une glace à l'eau du congélateur. La glace est solide. Elle la laisse 10 minutes au soleil. La glace devient liquide.",
+      "question": "Nomme le changement d'état qui s'est produit.",
+      "reponse": "C'est la fusion. La glace solide fond et devient de l'eau liquide. La fusion est le passage de l'état solide à l'état liquide."
+    },
+    {
+      "themeId": "Équitation",
+      "titre": "Buée du cheval",
+      "objectifId": "obj1",
+      "enonce": "En hiver, Léo voit de la buée sortir des naseaux du cheval. La buée est faite de gouttes d'eau liquide. Dans l'air expiré, l'eau était un gaz invisible.",
+      "question": "Nomme le changement d'état qui transforme le gaz en eau liquide.",
+      "reponse": "C'est la liquéfaction. L'eau passe de l'état gazeux à l'état liquide en formant des gouttelettes."
+    },
+    {
+      "themeId": "Piscine",
+      "titre": "Buée sur le miroir",
+      "objectifId": "obj1",
+      "enonce": "À la piscine, après la douche, le miroir est couvert de buée. Léa ne voit plus son reflet. La buée est liquide. Avant, l'eau était de la vapeur chaude.",
+      "question": "Propose l'explication la plus probable : quel changement d'état a formé la buée ?",
+      "reponse": "L'eau chaude de la douche s'est vaporisée. En touchant le miroir froid, la vapeur s'est transformée en liquide. C'est la liquéfaction. La liquéfaction est le passage de l'état gazeux à l'état liquide."
+    },
+    {
+      "themeId": "Pêche",
+      "titre": "Seau d'eau gelé",
+      "objectifId": "obj1",
+      "enonce": "Tom pêche sur un lac gelé. Il oublie un seau d'eau dehors la nuit. Le lendemain, l'eau est devenue de la glace solide.",
+      "question": "Nomme le changement d'état de l'eau liquide à la glace solide.",
+      "reponse": "C'est la solidification. L'eau liquide devient solide en gelant. La solidification est le passage de l'état liquide à l'état solide."
+    },
+    {
+      "themeId": "Cuisine",
+      "titre": "Glaçons et palier",
+      "objectifId": "obj2",
+      "enonce": "Lina fabrique des glaçons. Elle mesure la température toutes les 10 minutes. Voici ses relevés : à 0 min : 20°C ; à 10 min : 10°C ; à 20 min : 0°C ; à 30 min : 0°C ; à 40 min : 0°C ; à 50 min : -5°C.",
+      "question": "1. Identifie le moment où la température forme un palier.\n2. Nomme le changement d'état qui a lieu pendant ce palier.",
+      "reponse": "1. La température est constante de 20 min à 40 min. C'est un palier.\n2. Pendant ce palier, l'eau liquide se transforme en glace solide. C'est la solidification."
+    },
+    {
+      "themeId": "Piscine",
+      "titre": "Évaporation de la piscine",
+      "objectifId": "obj1",
+      "enonce": "En été, le niveau de l'eau de la piscine baisse sans fuite. L'eau disparaît dans l'air. C'est le même phénomène que l'eau qui s'évapore d'une casserole chaude.",
+      "question": "Nomme par analogie le changement d'état subi par l'eau de la piscine.",
+      "reponse": "C'est la vaporisation, comme pour la casserole. L'eau liquide devient de la vapeur d'eau (gaz). La vaporisation est le passage de l'état liquide à l'état gazeux."
+    },
+    {
+      "themeId": "Cuisine",
+      "titre": "Glaçon dans le verre",
+      "objectifId": "obj1",
+      "enonce": "Quand un solide devient liquide, on appelle cela une fusion. Lina met un glaçon dans son verre. Le glaçon est solide. Après 10 minutes, il devient liquide.",
+      "question": "Déduis le nom du changement d'état qui a eu lieu.",
+      "reponse": "C'est la fusion. La glace solide fond et devient liquide."
+    },
+    {
+      "themeId": "Équitation",
+      "titre": "Buée du cheval",
+      "objectifId": "obj1",
+      "enonce": "En hiver, Léo voit de la buée sortir des naseaux du cheval. La buée est composée de gouttelettes d'eau. L'air expiré est chaud et humide.",
+      "question": "Propose l'explication la plus probable : quel changement d'état a formé la buée ?",
+      "reponse": "La vapeur d'eau dans l'air expiré a rencontré l'air froid. Elle s'est transformée en gouttelettes liquides. C'est la liquéfaction."
+    },
+    {
+      "themeId": "Piscine",
+      "titre": "Niveau de la piscine",
+      "objectifId": "obj1",
+      "enonce": "En été, l'eau d'une piscine baisse lentement. C'est le même phénomène que l'eau qui bout dans une casserole.",
+      "question": "Par analogie avec l'eau bouillante, nomme le changement d'état subi par l'eau de la piscine.",
+      "reponse": "L'eau liquide devient vapeur d'eau. C'est la vaporisation, comme dans la casserole."
+    },
+    {
+      "themeId": "Pêche",
+      "titre": "Seau d'eau gelé",
+      "objectifId": "obj1",
+      "enonce": "Quand un liquide devient solide, on parle de solidification. Tom laisse un seau d'eau dehors par une nuit de gel. Le matin, l'eau est devenue de la glace.",
+      "question": "Déduis le nom du changement d'état de l'eau.",
+      "reponse": "L'eau liquide est devenue solide. C'est la solidification."
+    },
+    {
+      "themeId": "Cabane dans les bois",
+      "titre": "Neige disparue",
+      "objectifId": "obj1",
+      "enonce": "En mars, Léa voit la neige sur le toit de la cabane. Il fait 5°C. La neige disparaît sans fondre et sans laisser d'eau liquide.",
+      "question": "Propose le changement d'état qui explique cette disparition.",
+      "reponse": "La neige solide est passée directement à l'état gazeux. C'est la sublimation."
+    },
+    {
+      "themeId": "Voiture",
+      "titre": "Buée sur les vitres",
+      "objectifId": "obj1",
+      "enonce": "La buée se forme quand la vapeur d'eau se refroidit et devient liquide. Ce phénomène s'appelle la liquéfaction. En hiver, Ali monte dans la voiture. Il fait chaud à l'intérieur. Les vitres deviennent humides.",
+      "question": "Déduis le nom du changement d'état qui a produit l'humidité sur les vitres.",
+      "reponse": "La vapeur d'eau chaude de l'habitacle s'est refroidie au contact de la vitre froide. Elle est devenue liquide. C'est la liquéfaction."
+    },
+    {
+      "themeId": "Basket",
+      "titre": "Bouteille gelée",
+      "objectifId": "obj1",
+      "enonce": "Noa laisse sa bouteille d'eau dans le gymnase non chauffé. La nuit, la température descend à -3°C. Le matin, l'eau est devenue de la glace. La règle : quand un liquide devient solide, c'est une solidification.",
+      "question": "Déduis le changement d'état.",
+      "reponse": "C'est la solidification."
+    },
+    {
+      "themeId": "Foot",
+      "titre": "Rosée du matin",
+      "objectifId": "obj1",
+      "enonce": "Chaque matin d'automne, Sam voit des gouttes d'eau sur l'herbe du terrain de foot. Plus tard dans la journée, ces gouttes disparaissent. La veille au soir, il n'y avait pas de gouttes.",
+      "question": "Explique comment se forment ces gouttes. Nomme le changement d'état.",
+      "reponse": "La vapeur d'eau dans l'air s'est refroidie pendant la nuit. Elle s'est transformée en gouttes liquides. C'est la liquéfaction."
+    },
+    {
+      "themeId": "Patin",
+      "titre": "Glace qui fond",
+      "objectifId": "obj1",
+      "enonce": "Léna patine sur la glace. La lame du patin appuie fort sur la glace. Sous la lame, une fine pellicule d'eau liquide apparaît. Ce phénomène ressemble à un glaçon qui fond au soleil.",
+      "question": "Par analogie avec le glaçon au soleil, nomme le changement d'état de la glace sous le patin.",
+      "reponse": "La glace solide devient liquide. C'est la fusion."
+    },
+    {
+      "themeId": "Animaux",
+      "titre": "Mare gelée",
+      "objectifId": "obj1",
+      "enonce": "En hiver, la mare des canards est gelée. L'eau liquide est devenue solide. Ce changement s'appelle solidification.",
+      "question": "Nomme le changement d'état qui a eu lieu dans la mare.",
+      "reponse": "C'est la solidification."
+    },
+    {
+      "themeId": "Photographie",
+      "titre": "Buée sur l'objectif",
+      "objectifId": "obj1",
+      "enonce": "Yanis sort son appareil photo dehors par temps froid. L'objectif devient tout trouble avec de la buée. Pourtant, il n'a pas plu.",
+      "question": "Propose une explication pour la formation de cette buée.",
+      "reponse": "L'appareil était à l'intérieur à l'air chaud. La vapeur d'eau de l'air intérieur s'est condensée sur l'objectif froid. C'est la liquéfaction."
+    },
+    {
+      "themeId": "Dessin",
+      "titre": "Encre qui sèche",
+      "objectifId": "obj1",
+      "enonce": "Sara dessine à l'encre. Elle voit que l'encre sèche à l'air libre. C'est comme quand une flaque d'eau disparaît au soleil.",
+      "question": "Par analogie avec l'eau qui s'évapore, nomme le changement d'état du liquide de l'encre.",
+      "reponse": "Le liquide de l'encre passe de l'état liquide à l'état gazeux. C'est la vaporisation."
+    },
+    {
+      "themeId": "Moto",
+      "titre": "Buée dans le casque",
+      "objectifId": "obj1",
+      "enonce": "Quand on respire dans un casque froid, la buée apparaît. C'est de la liquéfaction. La vapeur d'eau de l'haleine devient liquide. Kévin roule en hiver. Sa visière est embuée.",
+      "question": "Déduis le changement d'état responsable de la buée.",
+      "reponse": "C'est la liquéfaction. L'haleine chaude et humide se refroidit sur la visière froide."
+    },
+    {
+      "themeId": "Minecraft",
+      "titre": "Eau dans Minecraft",
+      "objectifId": "obj1",
+      "enonce": "Dans Minecraft, si tu verses de l'eau dans un biome neige, elle se transforme en glace. C'est pareil qu'une flaque d'eau dehors en hiver.",
+      "question": "Par analogie avec la réalité, nomme le changement d'état de l'eau dans le jeu.",
+      "reponse": "L'eau liquide devient glace solide. C'est la solidification."
+    },
+    {
+      "themeId": "Farming Simulator",
+      "titre": "Rosée sur les champs",
+      "objectifId": "obj1",
+      "enonce": "Dans le jeu, chaque matin les feuilles des cultures sont mouillées de rosée. Pendant la nuit, le ciel est clair et la température baisse. Aucune pluie n'est tombée. La rosée disparaît en journée.",
+      "question": "Explique le phénomène et nomme le changement d'état.",
+      "reponse": "La vapeur d'eau de l'air s'est refroidie et transformée en gouttelettes liquides. C'est la liquéfaction."
+    },
+    {
+      "themeId": "Yoga",
+      "titre": "Transpiration qui sèche",
+      "objectifId": "obj1",
+      "enonce": "Après une séance, la sueur sur la peau de Myriam s'évapore. Cette transformation du liquide au gaz s'appelle la vaporisation.",
+      "question": "Nomme le changement d'état de la sueur.",
+      "reponse": "C'est la vaporisation."
+    },
+    {
+      "themeId": "Escalade",
+      "titre": "Givre du matin",
+      "objectifId": "obj1",
+      "enonce": "Au petit matin en montagne, Axelle voit des cristaux de glace sur la paroi. Il n'a pas neigé. L'air était humide et la température est descendue à -2°C.",
+      "question": "Propose le changement d'état qui a formé ces cristaux de glace directement à partir de l'air.",
+      "reponse": "La vapeur d'eau de l'air s'est transformée directement en glace solide. C'est la condensation solide, aussi appelée dépôt."
+    },
+    {
+      "themeId": "Voile",
+      "titre": "Combinaison qui sèche",
+      "objectifId": "obj1",
+      "enonce": "Après une sortie en mer, la combinaison de Nathan est trempée. Il la suspend au mât. Deux heures plus tard, la combinaison est sèche. Il n'a pas plu.",
+      "question": "Explique ce qui s'est passé. Nomme le changement d'état.",
+      "reponse": "L'eau liquide de la combinaison s'est transformée en vapeur d'eau. C'est la vaporisation."
+    },
+    {
+      "themeId": "Red Dead Redemption",
+      "titre": "Buée du cheval virtuel",
+      "objectifId": "obj1",
+      "enonce": "Dans Red Dead Redemption 2, quand il fait froid, de la vapeur blanche sort des naseaux du cheval. Cela ressemble à la buée d'un vrai cheval en hiver.",
+      "question": "Par analogie avec la réalité, nomme le changement d'état qui crée cette vapeur.",
+      "reponse": "La vapeur d'eau expirée se refroidit et forme des gouttelettes. C'est la liquéfaction."
+    },
+    {
+      "themeId": "Basket",
+      "titre": "Courbe de congélation",
+      "objectifId": "obj2",
+      "enonce": "Voici les températures d'une bouteille d'eau placée au congélateur. Temps (min) : 0, 10, 20, 30, 40, 50. Température (°C) : 20, 10, 0, 0, 0, -5. Quand un changement d'état se produit, la température reste constante : c'est un palier.",
+      "question": "1. Identifie la durée du palier sur ce relevé.\n2. Déduis le changement d'état correspondant.",
+      "reponse": "1. Le palier dure de 20 min à 40 min, soit 20 minutes.\n2. L'eau liquide se transforme en glace solide. C'est la solidification."
+    },
+    {
+      "themeId": "Cuisine",
+      "titre": "Fonte d'un glaçon",
+      "objectifId": "obj2",
+      "enonce": "On mesure la température d'un glaçon qui fond dans un verre. Temps (min) : 0, 5, 10, 15, 20, 25. Température (°C) : -10, 0, 0, 0, 5, 10.",
+      "question": "1. Observe les données. À quelle température se situe le palier ?\n2. Nomme le changement d'état qui se produit pendant ce palier.",
+      "reponse": "1. Le palier est à 0°C, de 5 min à 15 min.\n2. La glace solide fond en eau liquide. C'est la fusion."
+    },
+    {
+      "themeId": "Mécanique",
+      "titre": "Ébullition du liquide",
+      "objectifId": "obj2",
+      "enonce": "Un garagiste teste un liquide de refroidissement pur. Il chauffe le liquide. Temps (min) : 0, 5, 10, 15, 20, 25. Température (°C) : 20, 60, 100, 100, 100, 120.",
+      "question": "1. Identifie le palier de température.\n2. Nomme le changement d'état qui a lieu pendant ce palier.",
+      "reponse": "1. Le palier est à 100°C, de 10 min à 20 min.\n2. Le liquide passe à l'état gazeux. C'est la vaporisation (ébullition)."
+    },
+    {
+      "themeId": "Cabane dans les bois",
+      "titre": "Neige qui fond au soleil",
+      "objectifId": "obj2",
+      "enonce": "Lina mesure la température de la neige qui fond au soleil. Temps (min) : 0, 10, 20, 30, 40, 50. Température (°C) : -5, 0, 0, 0, 2, 5. La règle : la température ne varie pas pendant le changement d'état.",
+      "question": "1. Repère le palier sur le relevé.\n2. Déduis le changement d'état correspondant.",
+      "reponse": "1. Le palier est de 10 min à 30 min, à 0°C.\n2. La neige solide fond. C'est la fusion."
     }
   ]
 }
