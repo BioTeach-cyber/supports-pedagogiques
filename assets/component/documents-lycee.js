@@ -177,6 +177,117 @@
     }
   };
 
+  let mermaidLoader;
+  let mermaidRenderIndex = 0;
+
+  const loadMermaid = () => {
+    if (window.mermaid) return Promise.resolve(window.mermaid);
+    if (mermaidLoader) return mermaidLoader;
+    mermaidLoader = new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js';
+      script.onload = () => window.mermaid ? resolve(window.mermaid) : reject(new Error('Mermaid indisponible'));
+      script.onerror = () => reject(new Error('Le script Mermaid du CDN n’a pas pu être chargé.'));
+      document.head.append(script);
+    }).catch((error) => {
+
+      mermaidLoader = null;
+      throw error;
+    });
+    return mermaidLoader;
+  };
+
+  const renderMermaidViewer = (src, documentNode) => {
+    const viewer = createElement('figure', 'activity-image-viewer');
+    const toolbar = createElement('div', 'activity-image-toolbar');
+    const viewport = createElement('div', 'activity-image-viewport');
+    const diagram = createElement('div', 'activity-document-media activity-mermaid-diagram', 'Chargement du schéma…');
+    const alt = documentNode.dataset.alt || documentNode.dataset.title || 'Schéma Mermaid';
+    const dialog = createElement('dialog', 'activity-image-dialog');
+    dialog.setAttribute('aria-label', alt);
+    const dialogToolbar = createElement('div', 'activity-image-toolbar');
+    const dialogViewport = createElement('div', 'activity-image-viewport');
+    const fullDiagram = createElement('div', 'activity-document-media activity-mermaid-diagram');
+    diagram.style.width = '100%';
+    fullDiagram.style.width = '100%';
+    let zoom = 1;
+    const zoomLabels = [];
+    const setZoom = (nextZoom) => {
+      zoom = Math.max(0.5, Math.min(3, nextZoom));
+      [diagram, fullDiagram].forEach((target) => {
+        target.querySelector('svg')?.setAttribute('width', `${zoom * 100}%`);
+      });
+      zoomLabels.forEach((label) => { label.textContent = `${Math.round(zoom * 100)} %`; });
+    };
+    const addZoomControls = (targetToolbar) => {
+      const zoomOut = createElement('button', 'activity-image-control', '−');
+      zoomOut.type = 'button';
+      zoomOut.setAttribute('aria-label', 'Réduire le schéma');
+      zoomOut.addEventListener('click', () => setZoom(zoom - 0.25));
+      const zoomLabel = createElement('span', 'activity-image-zoom-label', '100 %');
+      zoomLabels.push(zoomLabel);
+      const zoomIn = createElement('button', 'activity-image-control', '+');
+      zoomIn.type = 'button';
+      zoomIn.setAttribute('aria-label', 'Agrandir le schéma');
+      zoomIn.addEventListener('click', () => setZoom(zoom + 0.25));
+      targetToolbar.append(zoomOut, zoomLabel, zoomIn);
+    };
+    addZoomControls(toolbar);
+    const fullscreen = createElement('button', 'activity-image-control activity-image-fullscreen', 'Plein écran');
+    fullscreen.type = 'button';
+    fullscreen.disabled = true;
+    fullscreen.addEventListener('click', () => {
+      const renderedDiagram = diagram.querySelector('svg');
+      if (renderedDiagram) fullDiagram.append(renderedDiagram);
+      dialog.showModal();
+    });
+    toolbar.append(fullscreen);
+    const close = createElement('button', 'activity-image-control activity-image-close', 'Fermer');
+    close.type = 'button';
+    close.setAttribute('aria-label', 'Fermer le plein écran');
+    close.addEventListener('click', () => dialog.close());
+    addZoomControls(dialogToolbar);
+    dialogToolbar.append(close);
+    dialogViewport.append(fullDiagram);
+    dialog.append(dialogToolbar, dialogViewport);
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+    dialog.addEventListener('close', () => {
+      const renderedDiagram = fullDiagram.querySelector('svg');
+      if (renderedDiagram) diagram.append(renderedDiagram);
+      if (zoomLabels[0]) zoomLabels[0].textContent = `${Math.round(zoom * 100)} %`;
+      if (zoomLabels[1]) zoomLabels[1].textContent = `${Math.round(zoom * 100)} %`;
+    });
+    viewport.append(diagram);
+    viewer.append(toolbar, viewport, dialog);
+    loadMermaid()
+      .then(async (mermaid) => {
+        const response = await fetch(src);
+        if (!response.ok) throw new Error(`Le fichier Mermaid est inaccessible (${response.status}).`);
+        const source = await response.text();
+        mermaid.initialize({ startOnLoad: false, securityLevel: 'strict', theme: 'default' });
+        const { svg } = await mermaid.render(`mermaid-diagram-${++mermaidRenderIndex}`, source);
+        const svgContainer = createElement('div');
+        svgContainer.innerHTML = svg;
+        const renderedSvg = svgContainer.querySelector('svg');
+        if (!renderedSvg) throw new Error('Mermaid n’a pas produit de SVG valide.');
+        renderedSvg.setAttribute('role', 'img');
+        renderedSvg.setAttribute('aria-label', alt);
+        renderedSvg.setAttribute('width', `${zoom * 100}%`);
+        renderedSvg.setAttribute('height', 'auto');
+        diagram.replaceChildren(renderedSvg);
+        fullscreen.disabled = false;
+      })
+      .catch((error) => {
+        console.error('Erreur de rendu Mermaid :', error);
+        diagram.textContent = location.protocol === 'file:'
+          ? 'Le fichier Mermaid ne peut pas être chargé depuis une page ouverte directement. Ouvrez le cours via un serveur web local ou en ligne.'
+          : `Impossible d’afficher ce schéma : ${error.message || 'erreur inconnue'}`;
+      });
+    return viewer;
+  };
+
   const renderImageViewer = (src, documentNode) => {
     const viewer = createElement('figure', 'activity-image-viewer');
     const toolbar = createElement('div', 'activity-image-toolbar');
@@ -335,8 +446,14 @@
   };
 
   const makeMedia = (documentNode, type) => {
-    const src = resolveUrl(documentNode.dataset.src || documentNode.dataset.url);
-    if (!src) return createElement('p', 'activity-document-empty', 'La ressource média n’a pas encore été renseignée.');
+    const rawSrc = documentNode.dataset.src || documentNode.dataset.url || '';
+    const src = resolveUrl(rawSrc);
+    if (!src) {
+      if (location.protocol === 'file:' && type === 'image vectorielle' && /\.(mermaid|mmd)(?:[?#]|$)/i.test(rawSrc)) {
+        return createElement('p', 'activity-document-empty', 'Pour afficher ce diagramme, ouvrez le cours via un serveur web (par exemple Live Server) plutôt qu’en ouvrant directement le fichier HTML.');
+      }
+      return createElement('p', 'activity-document-empty', 'La ressource média n’a pas encore été renseignée.');
+    }
     if (type === 'video') {
       const embedUrl = resolveUrl(documentNode.dataset.embedUrl) || externalVideoEmbedUrl(src);
       if (embedUrl) {
@@ -358,6 +475,9 @@
     }
     if (type === 'audio') return makeAudio(src, documentNode);
     if (['image', 'image matricielle', 'image vectorielle', 'svg'].includes(type)) {
+      if (type === 'image vectorielle' && /\.(mermaid|mmd)$/i.test(new URL(src).pathname)) {
+        return renderMermaidViewer(src, documentNode);
+      }
       return renderImageViewer(src, documentNode);
     }
     if (['application', 'app'].includes(type)) {

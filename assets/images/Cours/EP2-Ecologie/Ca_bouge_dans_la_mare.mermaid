@@ -1,0 +1,40 @@
+flowchart TB
+    DEF["🌍 ÉCOSYSTÈME = BIOTOPE + BIOCÉNOSE + INTERACTIONS<br/>Les interactions, ce sont les échanges entre le milieu et les êtres vivants."]
+
+    subgraph BIOTOPE["🏠 BIOTOPE : le milieu non vivant"]
+        SOLEIL["☀️ Lumière du soleil"]
+        EAU["💧 Eau de la mare<br/>avec du dioxygène dissous"]
+        VASE["🟫 Vase au fond de la mare"]
+    end
+
+    subgraph BIOCENOSE["🐸 BIOCÉNOSE : les êtres vivants"]
+        PLANTES["🌱 Plantes de la mare<br/>roseaux, nénuphars, algues"]
+        ARBRE["🌳 Arbre de la haie"]
+        INSECTES["🦟 Insectes<br/>libellules et larves"]
+        POISSONS["🐟 Poissons"]
+        GRENOUILLE["🐸 Grenouille"]
+        DECOMPOSEURS["🔬 Bactéries et champignons<br/>de la vase"]
+    end
+
+    FEUILLES["🍂 Feuilles mortes"]
+
+    SOLEIL -->|"donne de la lumière aux"| PLANTES
+    PLANTES -->|"rejettent du dioxygène dans"| EAU
+    EAU -->|"apporte le dioxygène pour respirer aux"| POISSONS
+    ARBRE -->|"perd ses feuilles à l'automne"| FEUILLES
+    FEUILLES -->|"tombent dans la mare et sont<br/>décomposées par les"| DECOMPOSEURS
+    DECOMPOSEURS -->|"transforment les feuilles en éléments<br/>minéraux qui enrichissent la"| VASE
+    VASE -->|"apporte des éléments minéraux aux"| PLANTES
+
+    INSECTES ==>|"sont mangés par"| GRENOUILLE
+    INSECTES ==>|"sont mangés par"| POISSONS
+
+    classDef biotope fill:#cfe8ff,stroke:#1e6bb8,color:#000
+    classDef biocenose fill:#d8f5d0,stroke:#2e7d32,color:#000
+    classDef mort fill:#f3e2c7,stroke:#8d6e63,color:#000
+    classDef titre fill:#fff7c2,stroke:#c9a400,color:#000,font-weight:bold
+
+    class SOLEIL,EAU,VASE biotope
+    class PLANTES,ARBRE,INSECTES,POISSONS,GRENOUILLE,DECOMPOSEURS biocenose
+    class FEUILLES mort
+    class DEF titre
