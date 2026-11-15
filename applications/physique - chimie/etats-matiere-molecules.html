@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solide, liquide, gaz : la matière change de costume !</title>
+  <style>
+/* =========================================================
+   1. VARIABLES DE COULEURS (palette autorisée)
+   ========================================================= */
+:root {
+  --bleu: #53a4db;
+  --vert: #7fbc48;
+  --violet: #a6539b;
+  --orange: #f3912b;
+  --gris: #b7b7b7;
+  --rouge: #e62d32;
+  --rose: #ee7bab;
+  --rose-genially: #161213;
+  --jaune: #f4d32e;
+  --marron: #a5706c;
+  --noir: #494949;
+  --fond: #ffffff;
+  --arrondi: 0.8rem;
+}
+
+/* =========================================================
+   2. BASE
+   ========================================================= */
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  background: var(--fond);
+  color: var(--noir);
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  font-size: clamp(0.95rem, 0.9rem + 0.3vw, 1.1rem);
+  line-height: 1.5;
+}
+
+.conteneur {
+  width: 100%;
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: clamp(0.6rem, 2vw, 1.5rem);
+  background: var(--fond);
+}
+
+button, select, input { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: default; }
+
+:focus-visible {
+  outline: 3px solid var(--violet);
+  outline-offset: 2px;
+}
+
+.bouton-action {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: var(--arrondi);
+  background: var(--violet);
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* =========================================================
+   3. EN-TÊTE
+   ========================================================= */
+header {
+  text-align: center;
+  border-bottom: 4px solid var(--bleu);
+  padding-bottom: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: clamp(1.3rem, 1rem + 2vw, 2.1rem);
+  color: var(--noir);
+}
+
+header h1 .surligne {
+  background: linear-gradient(transparent 60%, var(--jaune) 60%);
+}
+
+header p { margin: 0.3rem 0 0; }
+
+/* =========================================================
+   4. ONGLETS
+   ========================================================= */
+.onglets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.onglet {
+  flex: 1 1 10rem;
+  max-width: 16rem;
+  padding: 0.7rem 0.8rem;
+  border: 3px solid var(--bleu);
+  border-radius: var(--arrondi);
+  background: var(--fond);
+  color: var(--noir);
+  font-weight: bold;
+}
+
+.onglet[aria-selected="true"] {
+  background: var(--violet);
+  border-color: var(--violet);
+  color: #ffffff;
+}
+
+.etape[hidden] { display: none; }
+
+.consigne {
+  background: var(--fond);
+  border-left: 6px solid var(--bleu);
+  padding: 0.6rem 0.9rem;
+  margin: 0 0 1rem;
+  border-radius: 0 var(--arrondi) var(--arrondi) 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+/* =========================================================
+   5. ÉTAPE 1 : J'OBSERVE
+   ========================================================= */
+.choix-substance {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.bouton-substance {
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  border: 3px solid var(--gris);
+  background: var(--fond);
+  color: var(--noir);
+  font-weight: bold;
+}
+
+.bouton-substance[aria-pressed="true"] {
+  border-color: var(--violet);
+  box-shadow: 0 0 0 3px rgba(166, 83, 155, 0.25);
+}
+
+.labo {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 48rem) {
+  .labo { grid-template-columns: 2fr 1fr; }
+}
+
+.zone-simulation {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+canvas.simulation {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-height: 55vh;
+  object-fit: contain;
+  border: 4px solid var(--bleu);
+  border-radius: var(--arrondi);
+  background: var(--fond);
+}
+
+.commande-temperature {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.commande-temperature input[type="range"] {
+  flex: 1;
+  accent-color: var(--orange);
+  min-width: 0;
+  height: 2rem;
+}
+
+.bouton-froid, .bouton-chaud {
+  padding: 0.5rem 0.7rem;
+  border-radius: var(--arrondi);
+  background: var(--fond);
+  color: var(--noir);
+  font-weight: bold;
+  white-space: nowrap;
+}
+.bouton-froid { border: 3px solid var(--bleu); }
+.bouton-chaud { border: 3px solid var(--orange); }
+
+.reperes {
+  margin: 0;
+  text-align: center;
+  font-size: 0.95em;
+}
+
+.panneau {
+  border: 3px solid var(--bleu);
+  border-radius: var(--arrondi);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.bloc-thermo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.thermometre {
+  position: relative;
+  width: 1.5rem;
+  height: 11rem;
+  border: 3px solid var(--noir);
+  border-radius: 1rem;
+  background: var(--fond);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.thermometre-remplissage {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: var(--orange);
+  transition: height 0.2s;
+}
+
+.valeur-temperature {
+  font-size: clamp(1.6rem, 1.2rem + 2vw, 2.4rem);
+  font-weight: bold;
+}
+
+.badge-etat {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 0.4rem;
+  border: 4px solid var(--bleu);
+  border-radius: var(--arrondi);
+}
+
+.nom-matiere { text-align: center; margin: 0; }
+
+.indicateurs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.indicateurs li {
+  padding: 0.35rem 0.6rem;
+  border-left: 5px solid var(--bleu);
+  background: var(--fond);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.jauge-titre { margin: 0 0 0.2rem; font-weight: bold; }
+
+.jauge {
+  width: 100%;
+  height: 1.1rem;
+  border: 2px solid var(--noir);
+  border-radius: 1rem;
+  overflow: hidden;
+  background: var(--fond);
+}
+
+.jauge-remplissage {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--bleu), var(--jaune), var(--orange), var(--rouge));
+  transition: width 0.2s;
+}
+
+.analogie {
+  border: 3px dashed var(--violet);
+  border-radius: var(--arrondi);
+  padding: 0.5rem 0.7rem;
+}
+
+.message-transition {
+  border: 3px solid var(--orange);
+  border-radius: var(--arrondi);
+  padding: 0.6rem 0.8rem;
+  min-height: 3rem;
+}
+
+.message-transition.flash { animation: flash 0.8s ease; }
+
+@keyframes flash {
+  0%   { box-shadow: 0 0 0 0 rgba(243,145,43,0.8); }
+  100% { box-shadow: 0 0 0 14px rgba(243,145,43,0); }
+}
+
+/* =========================================================
+   6. ÉTAPE 2 : QUIZ
+   ========================================================= */
+.quiz {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 48rem) {
+  .quiz { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+
+.progression { margin: 0 0 0.5rem; font-weight: bold; }
+
+.question-texte {
+  font-size: 1.15em;
+  font-weight: bold;
+  margin: 0 0 0.8rem;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.option {
+  text-align: left;
+  padding: 0.7rem 0.9rem;
+  border: 3px solid var(--bleu);
+  border-radius: var(--arrondi);
+  background: var(--fond);
+  color: var(--noir);
+  font-weight: bold;
+}
+
+.option:hover:not(:disabled) { background: rgba(83,164,219,0.1); }
+.option.juste { border-color: var(--vert); background: rgba(127,188,72,0.2); }
+.option.faux  { border-color: var(--rouge); background: rgba(230,45,50,0.1); text-decoration: line-through; }
+
+.retour {
+  margin-top: 0.8rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--arrondi);
+  min-height: 1rem;
+}
+.retour:empty { display: none; }
+.retour.indice { border: 3px solid var(--jaune); }
+.retour.bravo  { border: 3px solid var(--vert); }
+
+.actions-quiz { margin-top: 0.8rem; display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+/* =========================================================
+   7. ÉTAPE 3 : J'EXPLIQUE
+   ========================================================= */
+.liste-phrases {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 48rem) {
+  .liste-phrases { grid-template-columns: 1fr 1fr; }
+}
+
+.carte-phrase {
+  border: 3px solid var(--bleu);
+  border-radius: var(--arrondi);
+  padding: 0.8rem 1rem;
+}
+
+.carte-phrase h3 { margin: 0 0 0.5rem; font-size: 1.1em; }
+
+.phrase { line-height: 2.4; }
+
+.phrase select {
+  padding: 0.15rem 0.3rem;
+  border: 3px solid var(--gris);
+  border-radius: 0.5rem;
+  background: var(--fond);
+  color: var(--noir);
+  max-width: 100%;
+}
+.phrase select.juste { border-color: var(--vert); background: rgba(127,188,72,0.15); }
+.phrase select.faux  { border-color: var(--rouge); background: rgba(230,45,50,0.08); }
+
+.retour-phrase { margin: 0.4rem 0 0; font-weight: bold; min-height: 1.5rem; }
+
+.actions-phrase { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+
+.bilan {
+  margin-top: 1.2rem;
+  border: 4px solid var(--violet);
+  border-radius: var(--arrondi);
+  padding: 0.8rem 1rem;
+}
+.bilan h2 { margin-top: 0; font-size: 1.2em; }
+
+.tableau-bilan {
+  width: 100%;
+  border-collapse: collapse;
+}
+.tableau-bilan th, .tableau-bilan td {
+  border: 2px solid var(--gris);
+  padding: 0.4rem;
+  text-align: center;
+}
+.tableau-bilan th { background: rgba(83,164,219,0.15); }
+
+.regle-or {
+  margin: 0.8rem 0 0;
+  padding: 0.6rem;
+  border-radius: var(--arrondi);
+  background: rgba(244,211,46,0.35);
+  font-weight: bold;
+  text-align: center;
+}
+
+footer { text-align: center; font-size: 0.85em; margin-top: 1.5rem; }
+
+@media (max-width: 30rem) {
+  .tableau-bilan { font-size: 0.85em; }
+}
+  </style>
+</head>
+<body>
+  <div class="conteneur">
+
+    <header>
+      <h1>🧊💧💨 Solide, liquide, gaz : <span class="surligne">la matière change de costume !</span></h1>
+      <p>Zoome à l'intérieur de la matière et observe les molécules.</p>
+    </header>
+
+    <nav class="onglets" role="tablist" aria-label="Étapes de l'activité">
+      <button class="onglet" role="tab" aria-selected="true"  aria-controls="etape-observer"  id="onglet-observer">🔬 1. J'observe</button>
+      <button class="onglet" role="tab" aria-selected="false" aria-controls="etape-entrainer" id="onglet-entrainer">🕵️ 2. Je m'entraîne</button>
+      <button class="onglet" role="tab" aria-selected="false" aria-controls="etape-expliquer" id="onglet-expliquer">✍️ 3. J'explique</button>
+    </nav>
+
+    <main>
+      <!-- ÉTAPE 1 : J'OBSERVE -->
+      <section class="etape" id="etape-observer" role="tabpanel" aria-labelledby="onglet-observer">
+        <p class="consigne">👉 Choisis une substance, puis <strong>chauffe 🔥</strong> ou <strong>refroidis ❄️</strong> avec le curseur. Observe bien : les molécules sont-elles <strong>rangées</strong> ? <strong>proches</strong> ? <strong>agitées</strong> ?</p>
+
+        <div class="choix-substance" id="choix-substance" aria-label="Choix de la substance"></div>
+
+        <div class="labo">
+          <div class="zone-simulation">
+            <canvas class="simulation" id="canvas-labo" width="800" height="600"
+                    role="img" aria-label="Boîte contenant des molécules qui bougent selon la température"></canvas>
+            <div class="commande-temperature">
+              <button class="bouton-froid" id="bouton-froid" aria-label="Refroidir">❄️ Refroidir</button>
+              <input type="range" id="curseur-temperature" aria-label="Température">
+              <button class="bouton-chaud" id="bouton-chaud" aria-label="Chauffer">🔥 Chauffer</button>
+            </div>
+            <p class="reperes" id="texte-reperes"></p>
+          </div>
+
+          <aside class="panneau" aria-label="Informations sur la matière">
+            <div class="bloc-thermo">
+              <div class="thermometre" aria-hidden="true">
+                <div class="thermometre-remplissage" id="thermometre-remplissage"></div>
+              </div>
+              <div class="valeur-temperature" id="valeur-temperature" aria-live="polite">20 °C</div>
+            </div>
+            <p class="nom-matiere" id="nom-matiere"></p>
+            <div class="badge-etat" id="badge-etat"></div>
+            <ul class="indicateurs">
+              <li id="info-rangement"></li>
+              <li id="info-distance"></li>
+              <li id="info-mouvement"></li>
+            </ul>
+            <div>
+              <p class="jauge-titre">⚡ Agitation des molécules</p>
+              <div class="jauge" aria-hidden="true"><div class="jauge-remplissage" id="jauge-agitation"></div></div>
+            </div>
+            <div class="analogie" id="analogie"></div>
+            <div class="message-transition" id="message-transition" aria-live="polite"></div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ÉTAPE 2 : JE M'ENTRAÎNE -->
+      <section class="etape" id="etape-entrainer" role="tabpanel" aria-labelledby="onglet-entrainer" hidden>
+        <p class="consigne">🕵️ <strong>Qui suis-je ?</strong> Observe les molécules et réponds. Si tu te trompes, lis l'indice et réessaie !</p>
+        <div class="quiz">
+          <canvas class="simulation" id="canvas-quiz" width="800" height="600"
+                  role="img" aria-label="Animation de molécules à identifier"></canvas>
+          <div>
+            <p class="progression" id="progression-quiz"></p>
+            <p class="question-texte" id="question-texte"></p>
+            <div class="options" id="options-quiz"></div>
+            <div class="retour" id="retour-quiz" aria-live="polite"></div>
+            <div class="actions-quiz">
+              <button class="bouton-action" id="bouton-suivant" hidden>Question suivante ➡️</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ÉTAPE 3 : J'EXPLIQUE -->
+      <section class="etape" id="etape-expliquer" role="tabpanel" aria-labelledby="onglet-expliquer" hidden>
+        <p class="consigne">✍️ Complète chaque explication avec les bons mots, puis clique sur <strong>Vérifier</strong>. Les mots en <strong>rouge</strong> sont à corriger.</p>
+        <div class="liste-phrases" id="liste-phrases"></div>
+        <section class="bilan" aria-labelledby="titre-bilan">
+          <h2 id="titre-bilan">📌 Je retiens</h2>
+          <table class="tableau-bilan">
+            <thead>
+              <tr>
+                <th>Changement d'état</th>
+                <th>Agitation</th>
+                <th>Distance entre molécules</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Fusion (solide → liquide)</td><td>Augmente</td><td>Augmente un peu</td></tr>
+              <tr><td>Vaporisation (liquide → gaz)</td><td>Augmente</td><td>Augmente beaucoup</td></tr>
+              <tr><td>Solidification (liquide → solide)</td><td>Diminue</td><td>Diminue</td></tr>
+              <tr><td>Liquéfaction (gaz → liquide)</td><td>Diminue</td><td>Diminue beaucoup</td></tr>
+            </tbody>
+          </table>
+          <p class="regle-or">🔑 Règle d'or : on chauffe = les molécules s'agitent et s'éloignent ; on refroidit = elles ralentissent et se rapprochent.</p>
+        </section>
+      </section>
+    </main>
+
+    <footer>Application pédagogique : physique-chimie, classe de 4e</footer>
+  </div>
+
+  <script>
+"use strict";
+
+/* =========================================================
+   A. DONNÉES : les substances et leurs températures
+   ========================================================= */
+const SUBSTANCES = {
+  eau: {
+    nom: "Eau",
+    couleur: "#53a4db",
+    fusion: 0,
+    ebullition: 100,
+    temperatureMin: -20,
+    temperatureMax: 120,
+    temperatureDepart: 20,
+    explication: "L'eau gèle à 0 °C et bout à 100 °C."
+  },
+  alcool: {
+    nom: "Alcool (éthanol)",
+    couleur: "#a6539b",
+    fusion: -114,
+    ebullition: 78,
+    temperatureMin: -130,
+    temperatureMax: 100,
+    temperatureDepart: 20,
+    explication: "L'alcool ne gèle qu'à −114 °C : il reste liquide bien en dessous de 0 °C."
+  },
+  glycerine: {
+    nom: "Glycérine",
+    couleur: "#7fbc48",
+    fusion: 18,
+    ebullition: 290,
+    temperatureMin: 0,
+    temperatureMax: 320,
+    temperatureDepart: 20,
+    explication: "La glycérine ne bout qu'à 290 °C : elle ne s'évapore qu'au-delà de 100 °C."
+  }
+};
+
+/* =========================================================
+   B. OUTILS
+   ========================================================= */
+function melanger(tableau) {
+  const copie = [...tableau];
+  for (let i = copie.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copie[i], copie[j]] = [copie[j], copie[i]];
+  }
+  return copie;
+}
+
+/* Renvoie l'état physique d'une substance à une température donnée */
+function etatA(substance, temperature) {
+  if (temperature < substance.fusion) return "solide";
+  if (temperature < substance.ebullition) return "liquide";
+  return "gaz";
+}
+
+/* Renvoie le nom du changement d'état entre deux états */
+function changementEntre(etatAvant, etatApres) {
+  if (etatAvant === "solide" && etatApres === "liquide") return "fusion";
+  if (etatAvant === "liquide" && etatApres === "solide") return "solidification";
+  if (etatAvant === "liquide" && etatApres === "gaz") return "vaporisation";
+  if (etatAvant === "gaz" && etatApres === "liquide") return "liquéfaction";
+  return null;
+}
+
+/* =========================================================
+   C. ÉTAT GLOBAL
+   ========================================================= */
+const etat = {
+  substanceCourante: "eau",
+  temperature: 20,
+  etatPrecedent: "liquide",
+  particules: [],
+  quiz: {
+    questions: [],
+    index: 0,
+    tentatives: 0
+  }
+};
+
+/* =========================================================
+   D. ÉTAPE 1 : SIMULATION DU LABO
+   ========================================================= */
+const canvasLabo = document.getElementById("canvas-labo");
+const contexteLabo = canvasLabo.getContext("2d");
+
+const elementsLabo = {
+  choix: document.getElementById("choix-substance"),
+  curseur: document.getElementById("curseur-temperature"),
+  boutonFroid: document.getElementById("bouton-froid"),
+  boutonChaud: document.getElementById("bouton-chaud"),
+  valeur: document.getElementById("valeur-temperature"),
+  nomMatiere: document.getElementById("nom-matiere"),
+  badge: document.getElementById("badge-etat"),
+  rangement: document.getElementById("info-rangement"),
+  distance: document.getElementById("info-distance"),
+  mouvement: document.getElementById("info-mouvement"),
+  jauge: document.getElementById("jauge-agitation"),
+  thermoRemplissage: document.getElementById("thermometre-remplissage"),
+  analogie: document.getElementById("analogie"),
+  reperes: document.getElementById("texte-reperes"),
+  message: document.getElementById("message-transition")
+};
+
+/* Crée les boutons de choix de substance */
+function creerBoutonsSubstances() {
+  elementsLabo.choix.innerHTML = "";
+  Object.keys(SUBSTANCES).forEach(cle => {
+    const bouton = document.createElement("button");
+    bouton.className = "bouton-substance";
+    bouton.textContent = SUBSTANCES[cle].nom;
+    bouton.setAttribute("aria-pressed", cle === etat.substanceCourante ? "true" : "false");
+    bouton.addEventListener("click", () => changerSubstance(cle));
+    elementsLabo.choix.appendChild(bouton);
+  });
+}
+
+/* Change de substance et remet la température de départ */
+function changerSubstance(cle) {
+  etat.substanceCourante = cle;
+  const sub = SUBSTANCES[cle];
+  etat.temperature = sub.temperatureDepart;
+  etat.etatPrecedent = etatA(sub, etat.temperature);
+  elementsLabo.curseur.min = sub.temperatureMin;
+  elementsLabo.curseur.max = sub.temperatureMax;
+  elementsLabo.curseur.value = sub.temperatureDepart;
+  mettreAJourBoutonsSubstances();
+  mettreAJourAffichage();
+}
+
+function mettreAJourBoutonsSubstances() {
+  [...elementsLabo.choix.children].forEach((bouton, i) => {
+    const cle = Object.keys(SUBSTANCES)[i];
+    bouton.setAttribute("aria-pressed", cle === etat.substanceCourante ? "true" : "false");
+  });
+}
+
+/* Crée les 36 molécules, réparties sur une grille 6 x 6 */
+function creerParticules() {
+  etat.particules = [];
+  for (let i = 0; i < 36; i++) {
+    etat.particules.push({
+      colonne: i % 6,
+      ligne: Math.floor(i / 6),
+      x: 0,
+      y: 0,
+      phase: Math.random() * Math.PI * 2
+    });
+  }
+}
+
+/* Renvoie l'état, l'agitation (0 à 1) et l'espacement selon la température */
+function parametresPhysiques() {
+  const sub = SUBSTANCES[etat.substanceCourante];
+  const t = etat.temperature;
+  const etatCourant = etatA(sub, t);
+  const plage = sub.temperatureMax - sub.temperatureMin;
+  const agitation = Math.min(1, Math.max(0, (t - sub.temperatureMin) / plage));
+  return { etatCourant, agitation };
+}
+
+/* Dessine la boîte et les molécules */
+function dessinerLabo() {
+  const largeur = canvasLabo.width;
+  const hauteur = canvasLabo.height;
+  const { etatCourant, agitation } = parametresPhysiques();
+  const couleur = SUBSTANCES[etat.substanceCourante].couleur;
+
+  contexteLabo.clearRect(0, 0, largeur, hauteur);
+  contexteLabo.fillStyle = "#ffffff";
+  contexteLabo.fillRect(0, 0, largeur, hauteur);
+
+  const colonnes = 6;
+  const lignes = 6;
+  const cellule = Math.min((largeur - 80) / colonnes, (hauteur - 80) / lignes);
+  const decalageX = (largeur - cellule * colonnes) / 2;
+  const decalageY = (hauteur - cellule * lignes) / 2;
+  const rayon = cellule * 0.28;
+
+  etat.particules.forEach(p => {
+    const centreX = decalageX + (p.colonne + 0.5) * cellule;
+    const centreY = decalageY + (p.ligne + 0.5) * cellule;
+
+    /* Amplitude de vibration proportionnelle à l'agitation */
+    const amplitude = cellule * (0.02 + agitation * 0.25);
+    p.phase += 0.1 + agitation * 0.5;
+
+    let dx, dy;
+    if (etatCourant === "solide") {
+      /* Solide : vibration sur place, molécules rangées */
+      dx = Math.sin(p.phase) * amplitude;
+      dy = Math.cos(p.phase * 1.3) * amplitude;
+      p.x = centreX + dx;
+      p.y = centreY + dy;
+    } else if (etatCourant === "liquide") {
+      /* Liquide : glissement, molécules proches mais désordonnées */
+      dx = Math.sin(p.phase) * amplitude * 2.2;
+      dy = Math.cos(p.phase * 0.8) * amplitude * 1.2;
+      p.x = centreX + dx;
+      p.y = centreY + dy;
+    } else {
+      /* Gaz : déplacements libres dans toute la boîte */
+      const libreX = (Math.sin(p.phase * 2.1 + p.colonne) + 1) / 2;
+      const libreY = (Math.cos(p.phase * 1.7 + p.ligne) + 1) / 2;
+      p.x = decalageX + rayon + libreX * (cellule * colonnes - 2 * rayon);
+      p.y = decalageY + rayon + libreY * (cellule * lignes - 2 * rayon);
+    }
+
+    contexteLabo.beginPath();
+    contexteLabo.arc(p.x, p.y, rayon, 0, Math.PI * 2);
+    contexteLabo.fillStyle = couleur;
+    contexteLabo.fill();
+    contexteLabo.strokeStyle = "#494949";
+    contexteLabo.lineWidth = 2;
+    contexteLabo.stroke();
+  });
+}
+
+/* Met à jour tous les textes et jauges selon la température */
+function mettreAJourAffichage() {
+  const sub = SUBSTANCES[etat.substanceCourante];
+  const { etatCourant, agitation } = parametresPhysiques();
+
+  elementsLabo.valeur.textContent = `${etat.temperature} °C`;
+  elementsLabo.nomMatiere.textContent = sub.nom;
+
+  const libelles = { solide: "🧊 SOLIDE", liquide: "💧 LIQUIDE", gaz: "💨 GAZ" };
+  elementsLabo.badge.textContent = libelles[etatCourant];
+
+  const couleursBadge = { solide: "#53a4db", liquide: "#7fbc48", gaz: "#f3912b" };
+  elementsLabo.badge.style.borderColor = couleursBadge[etatCourant];
+
+  const explications = {
+    solide: {
+      rangement: "Les molécules sont RANGÉES dans un ordre précis.",
+      distance: "Elles sont très PROCHES les unes des autres.",
+      mouvement: "Elles vibrent SUR PLACE, elles ne se déplacent pas."
+    },
+    liquide: {
+      rangement: "Les molécules sont en DÉSORDRE.",
+      distance: "Elles sont PROCHES les unes des autres.",
+      mouvement: "Elles GLISSENT les unes sur les autres."
+    },
+    gaz: {
+      rangement: "Les molécules sont totalement en DÉSORDRE.",
+      distance: "Elles sont très ÉLOIGNÉES les unes des autres.",
+      mouvement: "Elles se déplacent PARTOUT dans le récipient."
+    }
+  };
+
+  elementsLabo.rangement.textContent = "🧩 " + explications[etatCourant].rangement;
+  elementsLabo.distance.textContent = "📏 " + explications[etatCourant].distance;
+  elementsLabo.mouvement.textContent = "🏃 " + explications[etatCourant].mouvement;
+
+  const pourcentage = Math.round(agitation * 100);
+  elementsLabo.jauge.style.width = `${pourcentage}%`;
+  elementsLabo.thermoRemplissage.style.height = `${pourcentage}%`;
+
+  const analogies = {
+    solide: "🏫 Analogie : des élèves rangés en classe, assis à leur place.",
+    liquide: "🚶 Analogie : des élèves qui circulent dans un couloir, serrés mais mobiles.",
+    gaz: "🏃 Analogie : des élèves qui courent partout dans la cour pendant la récréation."
+  };
+  elementsLabo.analogie.textContent = analogies[etatCourant];
+
+  elementsLabo.reperes.textContent =
+    `Repères de ${sub.nom} : fusion à ${sub.fusion} °C, ébullition à ${sub.ebullition} °C.`;
+
+  verifierTransition();
+}
+
+/* Détecte un changement d'état et affiche un message */
+function verifierTransition() {
+  const sub = SUBSTANCES[etat.substanceCourante];
+  const etatMaintenant = etatA(sub, etat.temperature);
+
+  if (etatMaintenant !== etat.etatPrecedent) {
+    const nomChangement = changementEntre(etat.etatPrecedent, etatMaintenant);
+    if (nomChangement) {
+      elementsLabo.message.textContent = `⚠️ Changement d'état : ${nomChangement} ! ${sub.explication}`;
+      elementsLabo.message.classList.remove("flash");
+      void elementsLabo.message.offsetWidth;
+      elementsLabo.message.classList.add("flash");
+    }
+    etat.etatPrecedent = etatMaintenant;
+  }
+}
+
+elementsLabo.curseur.addEventListener("input", () => {
+  etat.temperature = Number(elementsLabo.curseur.value);
+  mettreAJourAffichage();
+});
+
+elementsLabo.boutonChaud.addEventListener("click", () => {
+  const sub = SUBSTANCES[etat.substanceCourante];
+  etat.temperature = Math.min(sub.temperatureMax, etat.temperature + 10);
+  elementsLabo.curseur.value = etat.temperature;
+  mettreAJourAffichage();
+});
+
+elementsLabo.boutonFroid.addEventListener("click", () => {
+  const sub = SUBSTANCES[etat.substanceCourante];
+  etat.temperature = Math.max(sub.temperatureMin, etat.temperature - 10);
+  elementsLabo.curseur.value = etat.temperature;
+  mettreAJourAffichage();
+});
+
+/* =========================================================
+   E. ÉTAPE 2 : QUIZ « QUI SUIS-JE ? »
+   ========================================================= */
+const canvasQuiz = document.getElementById("canvas-quiz");
+const contexteQuiz = canvasQuiz.getContext("2d");
+
+const elementsQuiz = {
+  progression: document.getElementById("progression-quiz"),
+  question: document.getElementById("question-texte"),
+  options: document.getElementById("options-quiz"),
+  retour: document.getElementById("retour-quiz"),
+  suivant: document.getElementById("bouton-suivant")
+};
+
+/* Liste des questions : chacune mise en scène par une substance et une température,
+   ou par un changement d'état */
+const BANQUE_QUESTIONS = [
+  {
+    substance: "eau", temperature: -10, type: "etat",
+    texte: "Quel est l'état de l'eau à −10 °C ?",
+    bonne: "Solide", mauvaises: ["Liquide", "Gaz"],
+    indice: "Il fait sous 0 °C : l'eau gèle.",
+    explication: "Sous 0 °C, les molécules sont rangées et vibrent sur place : c'est un solide."
+  },
+  {
+    substance: "alcool", temperature: -40, type: "etat",
+    texte: "Quel est l'état de l'alcool à −40 °C ?",
+    bonne: "Liquide", mauvaises: ["Solide", "Gaz"],
+    indice: "L'alcool ne gèle qu'à −114 °C.",
+    explication: "À −40 °C, l'alcool est encore liquide : ses molécules glissent les unes sur les autres."
+  },
+  {
+    substance: "eau", temperature: 130, type: "etat",
+    texte: "Quel est l'état de l'eau à 130 °C ?",
+    bonne: "Gaz", mauvaises: ["Liquide", "Solide"],
+    indice: "L'eau bout à 100 °C.",
+    explication: "Au-delà de 100 °C, l'eau est en vapeur : ses molécules sont très éloignées."
+  },
+  {
+    substance: "glycerine", temperature: 200, type: "etat",
+    texte: "Quel est l'état de la glycérine à 200 °C ?",
+    bonne: "Liquide", mauvaises: ["Gaz", "Solide"],
+    indice: "La glycérine ne bout qu'à 290 °C.",
+    explication: "À 200 °C, la glycérine reste liquide : elle ne s'évapore qu'à partir de 290 °C."
+  },
+  {
+    substance: "eau", etatDepart: "liquide", etatArrivee: "solide", type: "changement",
+    texte: "Quel changement d'état est représenté ? (l'eau se refroidit)",
+    bonne: "Solidification", mauvaises: ["Fusion", "Vaporisation"],
+    indice: "Liquide → solide : les molécules ralentissent et se rangent.",
+    explication: "Liquide → solide, c'est la solidification : les molécules ralentissent et se rapprochent."
+  },
+  {
+    substance: "eau", etatDepart: "solide", etatArrivee: "liquide", type: "changement",
+    texte: "Quel changement d'état est représenté ? (la glace fond)",
+    bonne: "Fusion", mauvaises: ["Solidification", "Liquéfaction"],
+    indice: "Solide → liquide : les molécules s'agitent et se désorganisent.",
+    explication: "Solide → liquide, c'est la fusion : les molécules s'agitent et glissent les unes sur les autres."
+  },
+  {
+    substance: "alcool", etatDepart: "liquide", etatArrivee: "gaz", type: "changement",
+    texte: "Quel changement d'état est représenté ? (l'alcool s'évapore)",
+    bonne: "Vaporisation", mauvaises: ["Liquéfaction", "Solidification"],
+    indice: "Liquide → gaz : les molécules s'éloignent beaucoup.",
+    explication: "Liquide → gaz, c'est la vaporisation : les molécules deviennent très agitées et s'éloignent."
+  },
+  {
+    substance: "glycerine", etatDepart: "gaz", etatArrivee: "liquide", type: "changement",
+    texte: "Quel changement d'état est représenté ? (la vapeur se condense)",
+    bonne: "Liquéfaction", mauvaises: ["Vaporisation", "Fusion"],
+    indice: "Gaz → liquide : les molécules se rapprochent.",
+    explication: "Gaz → liquide, c'est la liquéfaction : les molécules perdent de l'énergie et se rapprochent."
+  }
+];
+
+/* Mélange les questions et repart de la première */
+function demarrerQuiz() {
+  etat.quiz.questions = melanger(BANQUE_QUESTIONS);
+  etat.quiz.index = 0;
+  etat.quiz.tentatives = 0;
+  afficherQuestion();
+}
+
+/* Affiche la question courante et ses propositions */
+function afficherQuestion() {
+  const q = etat.quiz.questions[etat.quiz.index];
+  elementsQuiz.progression.textContent =
+    `Question ${etat.quiz.index + 1} / ${etat.quiz.questions.length}`;
+  elementsQuiz.question.textContent = q.texte;
+  elementsQuiz.retour.textContent = "";
+  elementsQuiz.retour.className = "retour";
+  elementsQuiz.suivant.hidden = true;
+  etat.quiz.tentatives = 0;
+
+  const propositions = melanger([q.bonne, ...q.mauvaises]);
+  elementsQuiz.options.innerHTML = "";
+  propositions.forEach(texte => {
+    const bouton = document.createElement("button");
+    bouton.className = "option";
+    bouton.textContent = texte;
+    bouton.addEventListener("click", () => verifierReponse(bouton, texte));
+    elementsQuiz.options.appendChild(bouton);
+  });
+}
+
+/* Vérifie la réponse choisie. Pas de score : on réessaie jusqu'à trouver */
+function verifierReponse(bouton, reponse) {
+  const q = etat.quiz.questions[etat.quiz.index];
+
+  if (reponse === q.bonne) {
+    bouton.classList.add("juste");
+    [...elementsQuiz.options.children].forEach(b => b.disabled = true);
+    elementsQuiz.retour.className = "retour bravo";
+    elementsQuiz.retour.textContent = `✅ Bravo ! ${q.explication}`;
+    const estDerniere = etat.quiz.index === etat.quiz.questions.length - 1;
+    elementsQuiz.suivant.textContent = estDerniere ? "Recommencer 🔁" : "Question suivante ➡️";
+    elementsQuiz.suivant.hidden = false;
+  } else {
+    bouton.classList.add("faux");
+    bouton.disabled = true;
+    etat.quiz.tentatives++;
+    elementsQuiz.retour.className = "retour indice";
+    elementsQuiz.retour.textContent =
+      etat.quiz.tentatives >= 2
+        ? `💡 Indice : ${q.indice} Réessaie !`
+        : "❌ Pas tout à fait. Réessaie !";
+  }
+}
+
+elementsQuiz.suivant.addEventListener("click", () => {
+  if (etat.quiz.index === etat.quiz.questions.length - 1) {
+    demarrerQuiz();
+  } else {
+    etat.quiz.index++;
+    afficherQuestion();
+  }
+});
+
+/* Dessine les molécules de la question en cours */
+function dessinerQuiz() {
+  if (!etat.quiz.questions.length) return;
+  const q = etat.quiz.questions[etat.quiz.index];
+  const largeur = canvasQuiz.width;
+  const hauteur = canvasQuiz.height;
+
+  contexteQuiz.clearRect(0, 0, largeur, hauteur);
+  contexteQuiz.fillStyle = "#ffffff";
+  contexteQuiz.fillRect(0, 0, largeur, hauteur);
+
+  const couleur = SUBSTANCES[q.substance].couleur;
+
+  let etatDessine;
+  if (q.type === "etat") {
+    etatDessine = etatA(SUBSTANCES[q.substance], q.temperature);
+  } else {
+    /* Pour un changement d'état, on alterne entre les deux états */
+    const oscillation = (Math.sin(Date.now() / 900) + 1) / 2;
+    etatDessine = oscillation < 0.5 ? q.etatDepart : q.etatArrivee;
+  }
+
+  const agitation = { solide: 0.1, liquide: 0.5, gaz: 0.95 }[etatDessine];
+  const temps = Date.now() / 1000;
+  const colonnes = 6;
+  const lignes = 6;
+  const cellule = Math.min((largeur - 80) / colonnes, (hauteur - 80) / lignes);
+  const decalageX = (largeur - cellule * colonnes) / 2;
+  const decalageY = (hauteur - cellule * lignes) / 2;
+  const rayon = cellule * 0.28;
+
+  for (let ligne = 0; ligne < lignes; ligne++) {
+    for (let colonne = 0; colonne < colonnes; colonne++) {
+      const indice = ligne * colonnes + colonne;
+      const phase = indice * 1.7 + temps * (1 + agitation * 4);
+      const amplitude = cellule * (0.02 + agitation * 0.25);
+
+      let x, y;
+      if (etatDessine === "gaz") {
+        const libreX = (Math.sin(phase * 2.1 + colonne) + 1) / 2;
+        const libreY = (Math.cos(phase * 1.7 + ligne) + 1) / 2;
+        x = decalageX + rayon + libreX * (cellule * colonnes - 2 * rayon);
+        y = decalageY + rayon + libreY * (cellule * lignes - 2 * rayon);
+      } else {
+        const centreX = decalageX + (colonne + 0.5) * cellule;
+        const centreY = decalageY + (ligne + 0.5) * cellule;
+        x = centreX + Math.sin(phase) * amplitude;
+        y = centreY + Math.cos(phase * 1.3) * amplitude;
+      }
+
+      contexteQuiz.beginPath();
+      contexteQuiz.arc(x, y, rayon, 0, Math.PI * 2);
+      contexteQuiz.fillStyle = couleur;
+      contexteQuiz.fill();
+      contexteQuiz.strokeStyle = "#494949";
+      contexteQuiz.lineWidth = 2;
+      contexteQuiz.stroke();
+    }
+  }
+}
+
+/* =========================================================
+   F. ÉTAPE 3 : PHRASES À COMPLÉTER
+   ========================================================= */
+const elementsExpliquer = {
+  liste: document.getElementById("liste-phrases")
+};
+
+/* Chaque phrase contient des "trous" (listes déroulantes).
+   Le tableau "bonnes" donne la bonne réponse pour chaque trou. */
+const PHRASES = [
+  {
+    titre: "La fusion",
+    avant: "Quand on chauffe de la glace, elle passe de l'état ",
+    trous: [
+      { options: ["solide", "liquide", "gaz"], bonne: "solide" },
+      { options: ["solide", "liquide", "gaz"], bonne: "liquide" }
+    ],
+    entre: " à l'état ",
+    apres: ". Ce changement s'appelle la ",
+    fin: { options: ["fusion", "vaporisation", "solidification"], bonne: "fusion" },
+    point: ".",
+    explication: "On chauffe : les molécules s'agitent et se désorganisent. Solide → liquide, c'est la fusion."
+  },
+  {
+    titre: "La vaporisation",
+    avant: "Quand l'eau bout à 100 °C, elle passe de l'état ",
+    trous: [
+      { options: ["liquide", "solide", "gaz"], bonne: "liquide" },
+      { options: ["liquide", "solide", "gaz"], bonne: "gaz" }
+    ],
+    entre: " à l'état ",
+    apres: ". Ce changement s'appelle la ",
+    fin: { options: ["vaporisation", "liquéfaction", "fusion"], bonne: "vaporisation" },
+    point: ".",
+    explication: "Liquide → gaz : les molécules deviennent très agitées et s'éloignent beaucoup."
+  },
+  {
+    titre: "La solidification",
+    avant: "Quand on refroidit de l'eau sous 0 °C, elle passe de l'état ",
+    trous: [
+      { options: ["gaz", "solide", "liquide"], bonne: "liquide" },
+      { options: ["gaz", "solide", "liquide"], bonne: "solide" }
+    ],
+    entre: " à l'état ",
+    apres: ". Ce changement s'appelle la ",
+    fin: { options: ["solidification", "fusion", "liquéfaction"], bonne: "solidification" },
+    point: ".",
+    explication: "On refroidit : les molécules ralentissent et se rangent. Liquide → solide, c'est la solidification."
+  },
+  {
+    titre: "La liquéfaction",
+    avant: "Quand la vapeur d'eau se refroidit, elle passe de l'état ",
+    trous: [
+      { options: ["gaz", "solide", "liquide"], bonne: "gaz" },
+      { options: ["gaz", "solide", "liquide"], bonne: "liquide" }
+    ],
+    entre: " à l'état ",
+    apres: ". Ce changement s'appelle la ",
+    fin: { options: ["liquéfaction", "vaporisation", "solidification"], bonne: "liquéfaction" },
+    point: ".",
+    explication: "Gaz → liquide : les molécules perdent de l'énergie et se rapprochent. C'est la liquéfaction."
+  }
+];
+
+/* Construit une phrase à trous à partir des données */
+function construirePhrase(donnee, indexPhrase) {
+  const carte = document.createElement("article");
+  carte.className = "carte-phrase";
+
+  const titre = document.createElement("h3");
+  titre.textContent = donnee.titre;
+  carte.appendChild(titre);
+
+  const paragraphe = document.createElement("p");
+  paragraphe.className = "phrase";
+  paragraphe.dataset.index = indexPhrase;
+
+  const selects = [];
+
+  /* Ajoute un texte simple */
+  const ajouterTexte = texte => paragraphe.appendChild(document.createTextNode(texte));
+
+  /* Ajoute une liste déroulante, mélangée pour ne pas donner la réponse */
+  const ajouterListe = trou => {
+    const liste = document.createElement("select");
+    liste.setAttribute("aria-label", "Choisir un mot");
+    const choixVide = document.createElement("option");
+    choixVide.value = "";
+    choixVide.textContent = "...";
+    liste.appendChild(choixVide);
+    melanger(trou.options).forEach(option => {
+      const choix = document.createElement("option");
+      choix.value = option;
+      choix.textContent = option;
+      liste.appendChild(choix);
+    });
+    paragraphe.appendChild(liste);
+    selects.push({ element: liste, bonne: trou.bonne });
+  };
+
+  ajouterTexte(donnee.avant);
+  ajouterListe(donnee.trous[0]);
+  ajouterTexte(donnee.entre);
+  ajouterListe(donnee.trous[1]);
+  ajouterTexte(donnee.apres);
+  ajouterListe(donnee.fin);
+  ajouterTexte(donnee.point);
+
+  carte.appendChild(paragraphe);
+
+  /* Zone de retour et boutons */
+  const retour = document.createElement("p");
+  retour.className = "retour-phrase";
+  retour.setAttribute("aria-live", "polite");
+  carte.appendChild(retour);
+
+  const actions = document.createElement("div");
+  actions.className = "actions-phrase";
+
+  const boutonVerifier = document.createElement("button");
+  boutonVerifier.className = "bouton-action";
+  boutonVerifier.textContent = "Vérifier ✔️";
+
+  const boutonEffacer = document.createElement("button");
+  boutonEffacer.className = "bouton-secondaire";
+  boutonEffacer.textContent = "Effacer 🧽";
+
+  actions.appendChild(boutonVerifier);
+  actions.appendChild(boutonEffacer);
+  carte.appendChild(actions);
+
+  /* Vérifie chaque liste déroulante : rouge si faux, vert si juste */
+  boutonVerifier.addEventListener("click", () => {
+    let toutJuste = true;
+    selects.forEach(s => {
+      s.element.classList.remove("juste", "faux");
+      if (s.element.value === s.bonne) {
+        s.element.classList.add("juste");
+      } else {
+        s.element.classList.add("faux");
+        toutJuste = false;
+      }
+    });
+
+    if (toutJuste) {
+      retour.textContent = `✅ Bravo ! ${donnee.explication}`;
+      retour.style.color = "var(--noir)";
+    } else {
+      retour.textContent = "❌ Certains mots ne sont pas bons. Corrige les mots en rouge !";
+      retour.style.color = "var(--noir)";
+    }
+  });
+
+  /* Remet la phrase à zéro */
+  boutonEffacer.addEventListener("click", () => {
+    selects.forEach(s => {
+      s.element.value = "";
+      s.element.classList.remove("juste", "faux");
+    });
+    retour.textContent = "";
+  });
+
+  return carte;
+}
+
+/* Affiche toutes les phrases dans la liste */
+function afficherPhrases() {
+  elementsExpliquer.liste.innerHTML = "";
+  PHRASES.forEach((donnee, index) => {
+    elementsExpliquer.liste.appendChild(construirePhrase(donnee, index));
+  });
+}
+
+/* =========================================================
+   G. NAVIGATION ENTRE LES ÉTAPES (onglets)
+   ========================================================= */
+const onglets = [...document.querySelectorAll(".onglet")];
+const etapes = [...document.querySelectorAll(".etape")];
+
+function afficherEtape(idEtape) {
+  etapes.forEach(section => {
+    section.hidden = section.id !== idEtape;
+  });
+  onglets.forEach(onglet => {
+    const estActif = onglet.getAttribute("aria-controls") === idEtape;
+    onglet.setAttribute("aria-selected", estActif ? "true" : "false");
+  });
+  signalerHauteurApplication();
+}
+
+function signalerHauteurApplication() {
+  const hauteur = Math.ceil(document.documentElement.scrollHeight);
+  if (window.parent !== window) {
+    window.parent.postMessage({ type: "application-height", height: hauteur }, "*");
+  }
+}
+
+window.addEventListener("message", event => {
+  if (event.source === window.parent && event.data?.type === "application-height-request") {
+    signalerHauteurApplication();
+  }
+});
+
+window.addEventListener("load", signalerHauteurApplication);
+window.addEventListener("resize", signalerHauteurApplication);
+if ("ResizeObserver" in window) {
+  new ResizeObserver(signalerHauteurApplication).observe(document.body);
+}
+
+onglets.forEach(onglet => {
+  onglet.addEventListener("click", () => {
+    afficherEtape(onglet.getAttribute("aria-controls"));
+  });
+});
+
+/* =========================================================
+   H. BOUCLE D'ANIMATION
+   ========================================================= */
+function boucleAnimation() {
+  dessinerLabo();
+  dessinerQuiz();
+  requestAnimationFrame(boucleAnimation);
+}
+
+/* =========================================================
+   I. DÉMARRAGE
+   ========================================================= */
+creerBoutonsSubstances();
+changerSubstance("eau");
+creerParticules();
+demarrerQuiz();
+afficherPhrases();
+boucleAnimation();
+  </script>
+</body>
+</html>

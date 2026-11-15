@@ -174,7 +174,7 @@
           ]
         },
         {
-          "statut": "inactif",
+          "statut": "actif",
           "id": "activité 03",
           "titre": "Construis ce que tu bois et respires !",
           "lottie": "assets/lotties/Numbers/03.json",

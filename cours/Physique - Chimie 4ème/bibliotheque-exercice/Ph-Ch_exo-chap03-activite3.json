@@ -3,12 +3,180 @@
   "activiteId": "activite3",
   "exercices": [
     {
-      "themeId": "",
-      "titre": "",
-      "objectifId": "",
-      "enonce": "",
-      "question": "",
-      "reponse": ""
+      "themeId": "Piscine",
+      "titre": "Le glaçon dans la piscine",
+      "objectifId": "obj1",
+      "enonce": "Léa nage dans la piscine. Elle regarde l'eau liquide. Sur le bord, un glaçon fond dans un seau. Un glaçon est de l'eau solide. L'eau liquide et l'eau solide sont faites des mêmes molécules (petits grains de matière).",
+      "question": "1. Compare l'organisation des molécules dans le glaçon et dans l'eau de la piscine.\n2. Dis dans quel état les molécules peuvent glisser les unes sur les autres.",
+      "reponse": "1. Dans le glaçon (solide), les molécules sont serrées, rangées et ordonnées. Elles ne bougent presque pas. Dans l'eau de la piscine (liquide), les molécules sont serrées mais désordonnées. Elles bougent.\n2. Les molécules glissent les unes sur les autres à l'état liquide."
+    },
+    {
+      "themeId": "Cuisine",
+      "titre": "Casserole d'eau qui bout",
+      "objectifId": "obj2",
+      "enonce": "Inès fait chauffer de l'eau dans une casserole pour des pâtes. L'eau bout et de la vapeur monte. La vapeur d'eau est de l'eau à l'état gazeux. Quand l'eau chauffe, ses molécules bougent de plus en plus vite.",
+      "question": "Explique ce qui arrive aux molécules d'eau quand l'eau devient de la vapeur.",
+      "reponse": "Quand on chauffe, les molécules d'eau s'agitent de plus en plus. Elles s'éloignent les unes des autres. Elles se déplacent librement dans tout l'espace. L'eau liquide devient alors un gaz : la vapeur d'eau."
+    },
+    {
+      "themeId": "Roblox",
+      "titre": "Roblox : trois mondes de matière",
+      "objectifId": "obj1",
+      "enonce": "Dans Roblox, Hugo construit trois mondes. Dans le monde A, les joueurs sont collés les uns aux autres, bien rangés, et ils ne bougent presque pas. Dans le monde B, les joueurs sont collés mais se déplacent en glissant. Dans le monde C, les joueurs sont très éloignés et courent dans tous les sens.",
+      "question": "Associe chaque monde (A, B, C) à un état de la matière : solide, liquide ou gaz. Justifie.",
+      "reponse": "Monde A = solide : les particules sont serrées, rangées et bougent très peu.\nMonde B = liquide : les particules sont serrées mais désordonnées et glissent.\nMonde C = gaz : les particules sont éloignées, désordonnées et très agitées."
+    },
+    {
+      "themeId": "Mécanique",
+      "titre": "Le garage et le gaz d'échappement",
+      "objectifId": "obj1",
+      "enonce": "Karim répare un scooter. Il sent l'essence dans un bidon : l'essence est liquide. Quand il ouvre le bidon, une odeur se répand dans tout le garage. L'odeur arrive car des particules d'essence passent à l'état gazeux et se déplacent dans l'air.",
+      "question": "Déduis pourquoi l'odeur se répand dans tout le garage, à partir de l'organisation des particules dans un gaz.",
+      "reponse": "Dans un gaz, les particules sont très éloignées les unes des autres et se déplacent dans tous les sens. Les particules d'essence gazeuses se dispersent donc dans tout l'espace du garage. C'est pour cela que l'odeur arrive jusqu'à Karim."
+    },
+    {
+      "themeId": "Musculation",
+      "titre": "Le beurre de la salle de sport",
+      "objectifId": "obj2",
+      "enonce": "Après sa séance de musculation, Tom prépare un shaker avec du beurre de cacahuète. Le beurre est solide au frigo. Il le sort et il devient mou, puis liquide à la chaleur. Quand la température monte, les particules bougent de plus en plus.",
+      "question": "Explique, avec le modèle des particules, pourquoi le beurre solide devient liquide quand il chauffe.",
+      "reponse": "Quand le beurre chauffe, ses particules s'agitent davantage. Elles ne restent plus rangées à leur place. Elles se désordonnent et glissent les unes sur les autres. Le beurre passe de l'état solide à l'état liquide : c'est la fusion."
+    },
+    {
+      "themeId": "Pêche",
+      "titre": "Vapeur sur l'étang glacé",
+      "objectifId": "obj2",
+      "enonce": "Sarah pêche sur un étang le matin. L'air est très froid. Sur sa gourde chaude, de la buée apparaît puis de petites gouttes d'eau coulent. La buée est de la vapeur d'eau qui touche une surface froide. Au froid, les particules bougent moins vite.",
+      "question": "Explique ce qui arrive aux particules d'eau quand la vapeur devient des gouttes liquides.",
+      "reponse": "Au contact du froid, les particules d'eau de la vapeur ralentissent. Elles se rapprochent les unes des autres. Elles deviennent serrées mais restent désordonnées. La vapeur (gaz) devient de l'eau liquide : c'est la liquéfaction (condensation)."
+    },
+    {
+      "themeId": "Minecraft",
+      "titre": "Minecraft : la lave qui refroidit",
+      "objectifId": "obj2",
+      "enonce": "Dans Minecraft, Noé regarde la lave. Elle est liquide et chaude. Quand elle touche de l'eau, elle devient de l'obsidienne (une pierre dure). On imagine que la lave se refroidit. Quand une matière se refroidit, ses particules bougent moins.",
+      "question": "Propose une explication, avec le modèle des particules, du passage de la lave liquide à la pierre solide.",
+      "reponse": "La lave se refroidit. Ses particules bougent de moins en moins. Elles se rangent et restent à leur place, très serrées. Le liquide devient un solide : c'est la solidification."
+    },
+    {
+      "themeId": "Farming Simulator",
+      "titre": "La rosée du champ",
+      "objectifId": "obj2",
+      "enonce": "Dans Farming Simulator, Maël commence sa journée au champ très tôt. Le matin, des gouttes d'eau couvrent l'herbe : c'est la rosée. Le soleil monte et les gouttes disparaissent. L'eau liquide est devenue de la vapeur d'eau invisible.",
+      "question": "Explique, avec le modèle des particules, pourquoi la rosée disparaît quand le soleil chauffe.",
+      "reponse": "Le soleil apporte de la chaleur. Les particules d'eau liquide s'agitent de plus en plus vite. Elles s'éloignent les unes des autres et quittent les gouttes. L'eau liquide devient de la vapeur d'eau (gaz) invisible : c'est la vaporisation (évaporation)."
+    },
+    {
+      "themeId": "Hockey sur glace",
+      "titre": "La glace de la patinoire",
+      "objectifId": "obj1",
+      "enonce": "Lola joue au hockey sur glace. La glace est dure et on peut la toucher sans qu'elle coule. Après un match, un peu d'eau liquide reste dans un coin. On peut verser cette eau d'un seau à l'autre. La glace et l'eau sont faites des mêmes particules.",
+      "question": "Explique pourquoi la glace garde sa forme alors que l'eau liquide peut couler. Appuie-toi sur l'organisation des particules.",
+      "reponse": "Dans la glace (solide), les particules sont serrées, rangées et liées entre elles. Elles ne glissent pas, donc la glace garde sa forme. Dans l'eau liquide, les particules sont désordonnées et glissent les unes sur les autres. L'eau peut donc couler."
+    },
+    {
+      "themeId": "Camion",
+      "titre": "Le camion-citerne de gaz",
+      "objectifId": "obj1",
+      "enonce": "Un camion-citerne transporte du gaz propane. Dans la citerne, le gaz est comprimé. On l'écrase pour que ses particules se rapprochent beaucoup. Cela permet de transporter plus de gaz dans un petit volume. Dans un gaz normal, les particules sont éloignées.",
+      "question": "Compare l'organisation des particules d'un gaz normal et d'un gaz comprimé dans la citerne.",
+      "reponse": "Dans un gaz normal, les particules sont très éloignées et bougent dans tous les sens. Dans le gaz comprimé, les particules sont beaucoup plus rapprochées. Il y a donc plus de particules dans le même volume. Cela permet de transporter plus de gaz dans la citerne."
+    },
+    {
+      "themeId": "Animaux",
+      "titre": "L'abreuvoir qui gèle",
+      "objectifId": "obj2",
+      "enonce": "Emma s'occupe des chèvres de la ferme. En hiver, l'eau de l'abreuvoir devient de la glace pendant la nuit. Le matin, il fait plus chaud et la glace redevient de l'eau. Quand la température change, l'agitation des particules change aussi.",
+      "question": "1. Explique ce qui arrive aux particules quand l'eau gèle la nuit.\n2. Explique ce qui arrive aux particules quand la glace fond le matin.",
+      "reponse": "1. La nuit, il fait froid. Les particules d'eau bougent moins. Elles se rangent et se figent : l'eau liquide devient de la glace solide.\n2. Le matin, il fait plus chaud. Les particules s'agitent de plus en plus. Elles quittent leur place rangée et glissent : la glace solide devient de l'eau liquide."
+    },
+    {
+      "themeId": "Dessin",
+      "titre": "Dessiner les trois états",
+      "objectifId": "obj1",
+      "enonce": "Camille dessine des petits ronds pour montrer des particules d'eau. Dans le dessin A, les ronds sont collés et bien rangés en lignes. Dans le dessin B, les ronds sont collés mais mélangés. Dans le dessin C, les ronds sont très éloignés les uns des autres.",
+      "question": "1. Associe chaque dessin (A, B, C) à un état : solide, liquide ou gaz.\n2. Justifie un de tes choix avec une phrase.",
+      "reponse": "1. Dessin A = solide. Dessin B = liquide. Dessin C = gaz.\n2. Exemple : le dessin A est un solide car les particules sont serrées et rangées. Dans le dessin B (liquide), elles sont serrées mais désordonnées. Dans le dessin C (gaz), elles sont éloignées."
+    },
+    {
+      "themeId": "Peinture",
+      "titre": "La peinture qui sèche",
+      "objectifId": "obj2",
+      "enonce": "Jade peint un mur avec de la peinture à l'eau. Au début, la peinture est liquide et brillante. Au bout d'une heure, elle est sèche. L'eau de la peinture est devenue de la vapeur d'eau et s'est mélangée à l'air de la pièce.",
+      "question": "Explique, avec le modèle des particules, ce qui arrive aux particules d'eau de la peinture qui sèche.",
+      "reponse": "Les particules d'eau de la peinture s'agitent et s'éloignent les unes des autres. Elles quittent le mur et partent dans l'air. L'eau liquide devient de la vapeur d'eau (gaz) : c'est la vaporisation (évaporation). Il ne reste que la peinture solide sur le mur."
+    },
+    {
+      "themeId": "Forza Horizon 6",
+      "titre": "Forza : l'asphalte qui fond",
+      "objectifId": "obj2",
+      "enonce": "Dans Forza Horizon 6, Yanis roule en plein été. Les développeurs montrent que l'asphalte (goudron) devient mou sous la chaleur du soleil. À froid, l'asphalte est dur. Quand il chauffe, ses particules bougent de plus en plus.",
+      "question": "Explique pourquoi l'asphalte devient mou quand il fait très chaud. Utilise le mot « particules ».",
+      "reponse": "Quand l'asphalte chauffe, ses particules s'agitent de plus en plus. Elles restent moins bien rangées et peuvent glisser un peu les unes sur les autres. L'asphalte devient mou et se rapproche de l'état liquide."
+    },
+    {
+      "themeId": "Danse",
+      "titre": "Une chorégraphie de particules",
+      "objectifId": "obj1",
+      "enonce": "Nina prépare une chorégraphie avec 12 danseurs pour imiter la matière. Pour le solide, les danseurs sont en rangs serrés et ne se déplacent presque pas. Pour le liquide, ils sont serrés mais se mélangent en glissant. Pour le gaz, ils s'écartent et courent partout.",
+      "question": "Compare ce que font les danseurs pour le solide et pour le gaz. Donne une différence sur la place et une différence sur le mouvement.",
+      "reponse": "Place : dans le solide, les danseurs (particules) sont serrés et rangés. Dans le gaz, ils sont très éloignés les uns des autres.\nMouvement : dans le solide, ils bougent très peu, juste sur place. Dans le gaz, ils se déplacent vite dans toutes les directions."
+    },
+    {
+      "themeId": "Travailler dehors",
+      "titre": "Le chantier et le givre",
+      "objectifId": "obj2",
+      "enonce": "Paul travaille dehors en hiver. Le matin, une couche de givre blanc couvre sa brouette. Le givre est de la glace. Vers midi, le soleil chauffe et le givre disparaît : il devient de l'eau liquide, puis l'eau sèche.",
+      "question": "1. Explique pourquoi le givre devient de l'eau liquide quand il chauffe.\n2. Explique pourquoi l'eau liquide finit par sécher.",
+      "reponse": "1. La chaleur du soleil agite les particules de glace. Elles quittent leur place rangée et glissent les unes sur les autres. Le solide devient liquide : c'est la fusion.\n2. Les particules d'eau s'agitent encore plus et s'éloignent. Elles partent dans l'air sous forme de vapeur d'eau. Le liquide devient gaz : c'est la vaporisation, donc l'eau sèche."
+    },
+    {
+      "themeId": "Voiture",
+      "titre": "La buée sur le pare-brise",
+      "objectifId": "obj2",
+      "enonce": "Sofia est dans la voiture un matin froid. Elle respire et de la buée apparaît sur le pare-brise. Sa respiration contient de la vapeur d'eau chaude. La vitre est très froide. La buée est faite de minuscules gouttes d'eau liquide.",
+      "question": "Explique, avec le modèle des particules, pourquoi la buée se forme sur la vitre froide.",
+      "reponse": "La vapeur d'eau de la respiration touche la vitre froide. Ses particules ralentissent et se rapprochent les unes des autres. Elles deviennent serrées mais désordonnées. La vapeur (gaz) se transforme en petites gouttes d'eau (liquide) : c'est la liquéfaction (condensation)."
+    },
+    {
+      "themeId": "Légo",
+      "titre": "Les briques Lego et les particules",
+      "objectifId": "obj1",
+      "enonce": "Théo construit un mur avec des briques Lego. Les briques sont assemblées, bien rangées, et elles ne bougent pas. Ensuite, il verse un sac de briques en vrac dans une boîte : elles sont serrées mais mélangées et elles bougent quand on secoue la boîte.",
+      "question": "Par analogie, associe le mur de briques et le sac de briques en vrac à deux états de la matière. Justifie.",
+      "reponse": "Le mur de briques correspond à l'état solide : les briques (particules) sont serrées, rangées et ne bougent pas. Le sac de briques en vrac correspond à l'état liquide : les briques sont serrées mais désordonnées et elles bougent les unes sur les autres."
+    },
+    {
+      "themeId": "Pêche",
+      "titre": "Le lac gelé de l'hiver",
+      "objectifId": "obj1",
+      "enonce": "Lucas veut pêcher sur un lac en hiver. Le dessus du lac est gelé. Il fait un trou dans la glace avec une perceuse. Sous la glace, l'eau est liquide. On peut marcher sur la glace mais pas sur l'eau liquide.",
+      "question": "Explique pourquoi on peut marcher sur la glace mais pas sur l'eau liquide. Appuie-toi sur l'organisation des particules.",
+      "reponse": "Dans la glace (solide), les particules sont serrées, rangées et liées entre elles. Elles ne glissent pas et forment une surface dure qui porte le poids. Dans l'eau liquide, les particules sont désordonnées et glissent les unes sur les autres. Elles ne portent pas le poids : on s'enfonce."
+    },
+    {
+      "themeId": "Dormir",
+      "titre": "Le cocon et la bouillotte",
+      "objectifId": "obj2",
+      "enonce": "Maya prépare une bouillotte pour dormir. Elle y verse de l'eau chauffée. L'eau bouillante produit de la vapeur au-dessus de la bouilloire. Le matin, l'eau de la bouillotte est refroidie. Plus l'eau est chaude, plus ses particules bougent vite.",
+      "question": "Explique pourquoi la vapeur sort de la bouilloire, en parlant du mouvement des particules d'eau.",
+      "reponse": "Dans la bouilloire, l'eau chauffe. Ses particules bougent de plus en plus vite. Elles s'éloignent les unes des autres et quittent le liquide. Elles forment de la vapeur d'eau (gaz) qui sort de la bouilloire."
+    },
+    {
+      "themeId": "Animal Crossing",
+      "titre": "Animal Crossing : le lac du matin",
+      "objectifId": "obj2",
+      "enonce": "Dans Animal Crossing, Chloé joue en hiver. Le lac de son île est gelé à l'aube. Quand le soleil monte, la glace fond et le lac redevient liquide. Quand la température monte, les particules s'agitent davantage.",
+      "question": "À partir de ces observations, déduis ce qui arrive aux particules d'une matière solide quand la température monte.",
+      "reponse": "Quand la température monte, les particules s'agitent de plus en plus. Elles quittent leur place rangée et se mettent à glisser les unes sur les autres. La matière solide devient liquide : c'est la fusion."
+    },
+    {
+      "themeId": "Moto",
+      "titre": "Le pot d'échappement qui chauffe",
+      "objectifId": "obj1",
+      "enonce": "Ibrahim répare une moto. Il touche un bidon d'essence fermé et sent le liquide peser. Il ouvre un ballon gonflé d'air : l'air s'échappe et occupe tout l'espace. L'essence est liquide et l'air est un gaz. L'essence reste au fond du bidon.",
+      "question": "Explique pourquoi l'essence reste au fond du bidon alors que l'air remplit tout l'espace. Compare l'organisation des particules.",
+      "reponse": "Dans l'essence (liquide), les particules sont serrées et glissent les unes sur les autres. Elles restent ensemble au fond du bidon. Dans l'air (gaz), les particules sont très éloignées et très agitées. Elles se dispersent et occupent tout l'espace disponible."
     }
   ]
 }
