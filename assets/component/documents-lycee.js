@@ -17,7 +17,7 @@
   };
 
   const renderInline = (text, parent) => {
-    const pattern = /(`[^`]+`|\*\*[^*]+\*\*|\*[^*]+\*|\[[^\]]+\]\([^)]+\))/g;
+    const pattern = /(`[^`]+`|\*\*[^*]+\*\*|\*[^*]+\*|!\[[^\]]*\]\([^)]+\)|\[[^\]]+\]\([^)]+\))/g;
     let cursor = 0;
     for (const match of text.matchAll(pattern)) {
       if (match.index > cursor) parent.append(document.createTextNode(text.slice(cursor, match.index)));
@@ -30,13 +30,24 @@
       } else if (token.startsWith('`')) {
         node = createElement('code', '', token.slice(1, -1));
       } else {
-        const [, label, target] = token.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
-        const href = resolveUrl(target);
-        if (href) {
-          node = createElement('a', '', label);
-          node.href = href;
-          node.rel = 'noopener noreferrer';
-        } else node = document.createTextNode(label);
+        const image = token.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+        if (image) {
+          const src = resolveUrl(image[2]);
+          if (src) {
+            node = createElement('img', 'activity-document-inline-image');
+            node.src = src;
+            node.alt = image[1];
+            node.loading = 'lazy';
+          } else node = document.createTextNode(image[1]);
+        } else {
+          const [, label, target] = token.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+          const href = resolveUrl(target);
+          if (href) {
+            node = createElement('a', '', label);
+            node.href = href;
+            node.rel = 'noopener noreferrer';
+          } else node = document.createTextNode(label);
+        }
       }
       parent.append(node);
       cursor = match.index + token.length;

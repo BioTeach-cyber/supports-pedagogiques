@@ -150,7 +150,7 @@
           ]
         },
         {
-          "statut": "inactif",
+          "statut": "actif",
           "id": "activité 02",
           "titre": "Sol, eau, climat : chacun sa place !",
           "lottie": "assets/lotties/Numbers/02.json",

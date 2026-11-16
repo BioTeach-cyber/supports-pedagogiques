@@ -97,6 +97,7 @@
 .activity-document-text > :last-child { margin-bottom: 0; }
 .activity-document-text blockquote { margin: 16px 0; padding-left: 16px; border-left: 3px solid var(--course-color); color: var(--muted); }
 .activity-document-text a { color: var(--ink); text-underline-offset: 3px; }
+.activity-document-text img { display: block; max-width: 100%; max-height: 320px; margin: 12px auto; object-fit: contain; }
 .activity-document-text table { width: 100%; border-collapse: collapse; }
 .activity-document-text th, .activity-document-text td { min-width: 120px; padding: 11px 13px; border: 1px solid var(--line); text-align: left; }
 .activity-document-text th { background: color-mix(in srgb, var(--course-color) 12%, white); }
