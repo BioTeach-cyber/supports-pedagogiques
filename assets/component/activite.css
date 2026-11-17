@@ -118,6 +118,8 @@ video.activity-document-media { width: 100%; }
 .activity-image-zoom-label { min-width: 54px; color: var(--muted); font-size: .9rem; text-align: center; }
 .activity-image-viewport { max-height: 68vh; overflow: auto; text-align: center; }
 .activity-image-viewport .activity-document-media { display: inline-block; width: 100%; max-width: none; max-height: none; margin: 0 auto; vertical-align: top; }
+.activity-image-viewer-fit .activity-image-viewport { max-height: none; overflow: visible; }
+.activity-image-viewer-fit .activity-image-viewport .activity-document-media { width: auto; max-width: 100%; max-height: 68vh; object-fit: contain; }
 .activity-image-dialog { width: min(96vw, 1400px); height: min(96vh, 1000px); max-width: none; max-height: none; padding: 18px; border: 0; border-radius: 10px; background: #fff; color: var(--ink); }
 .activity-image-dialog::backdrop { background: #101820e8; }
 .activity-image-dialog[open] { display: flex; flex-direction: column; }
