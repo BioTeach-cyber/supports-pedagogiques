@@ -11,6 +11,18 @@
       "image": "formations/assets/Ifeap/Ifeap_logo.svg",
       "couleur": "#4980f2",
       "statut": "actif"
+    },
+    {
+      "id": "ifeap-2026-Les vergers",
+      "titre": "Co-construire la charte IA du Lycée",
+      "commanditaire": "IFEAP",
+      "date": "2026-11-20",
+      "type": "Formation d’enseignants",
+      "description": "INTRA - Lycée Les Vergers · co-construire la charte IA du lycée, développer l’esprit critique et construire des repères pédagogiques.",
+      "lien": "formations/Ifeap/2026_Lycee_les_Vergers/2026-Lycee-les-vergers-Support-Pedagogique.html",
+      "image": "formations/assets/Ifeap/Ifeap_logo.svg",
+      "couleur": "#4980f2",
+      "statut": "actif"
     }
   ]
 }
