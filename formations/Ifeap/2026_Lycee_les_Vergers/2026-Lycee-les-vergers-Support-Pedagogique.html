@@ -1,0 +1,1948 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#14274c">
+    <title>Co-construire la charte IA – Lycée Les Vergers</title>
+    <script type="text/javascript"
+        src="https://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=ybYI-tOb42He9z0Y9dA3x_j7TJoYylJp9--5kbEp53vS5Hws7xy9JoIzES1JdAdTVoG55a7_gaVBvJsE8Lr3IYqQ4CMdoIBcyunZPqPCe5jhf8fUFgoo117G3HPrCzij"
+        charset="UTF-8"></script>
+    <link rel="stylesheet" crossorigin="anonymous"
+        href="https://ff.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9tYW1tb3V0aC5haS9hcGkvYXR0YWNobWVudHMvMDk4NzNiN2ItMjJlNy00ZmVkLTkyNjMtOTYwZDhhZTgxMTY1L2ZpbGU" />
+    <style>
+        :root {
+            color-scheme: light;
+            --blue: #4980f2;
+            --blue-dark: #2858c7;
+            --blue-deep: #183975;
+            --blue-soft: #edf3ff;
+            --blue-pale: #f6f8ff;
+            --ink: #17233b;
+            --muted: #62708a;
+            --line: #e2e8f2;
+            --paper: #fff;
+            --canvas: #f3f6fc;
+            --green: #16835f;
+            --amber: #b87912;
+            --red: #bd4a56;
+            --navy: #14274c;
+            --radius: 14px;
+            --shadow: 0 8px 28px rgba(25, 49, 94, .07)
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+            background: var(--canvas);
+            color: var(--ink);
+            font: 15px/1.55 "Segoe UI", Inter, system-ui, -apple-system, sans-serif
+        }
+
+        button,
+        textarea,
+        input,
+        select {
+            font: inherit
+        }
+
+        button {
+            color: inherit
+        }
+
+        .sidebar {
+            width: 284px;
+            flex: 0 0 284px;
+            display: flex;
+            flex-direction: column;
+            background: var(--navy);
+            color: #f7f9ff;
+            overflow-y: auto
+        }
+
+        .brand {
+            padding: 22px 20px 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, .12)
+        }
+
+        .brand img {
+            display: block;
+            width: 112px;
+            height: 55px;
+            object-fit: contain;
+            object-position: left center;
+            padding: 4px 7px;
+            border-radius: 8px;
+            background: #fff
+        }
+
+        .brand-kicker {
+            margin-top: 15px;
+            color: #a9c2ff;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: .13em;
+            text-transform: uppercase
+        }
+
+        .brand h1 {
+            margin: 3px 0;
+            font-size: 17px;
+            line-height: 1.25
+        }
+
+        .brand p {
+            margin: 0;
+            color: #b8c4dd;
+            font-size: 12px
+        }
+
+        .brand-qr {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            width: 100%;
+            margin-top: 15px;
+            padding: 10px;
+            border: 1px solid rgba(255,255,255,.14);
+            border-radius: 10px;
+            background: rgba(255,255,255,.06);
+            color: #fff;
+            text-align: left;
+            cursor: pointer
+        }
+
+        .brand-qr:hover {
+            background: rgba(255,255,255,.12)
+        }
+
+        .brand-qr-code {
+            display: grid;
+            width: 92px;
+            height: 92px;
+            flex: 0 0 92px;
+            place-items: center;
+            padding: 5px;
+            border-radius: 7px;
+            background: #fff
+        }
+
+        .brand-qr-code img,
+        .brand-qr-code canvas {
+            display: block;
+            width: 82px !important;
+            height: 82px !important
+        }
+
+        .brand-qr-label {
+            color: #dce7ff;
+            font-size: 11px;
+            font-weight: 650;
+            line-height: 1.4
+        }
+
+        .qr-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 20;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(9,20,42,.78)
+        }
+
+        .qr-modal.open {
+            display: flex
+        }
+
+        .qr-modal-card {
+            position: relative;
+            width: min(100%, 500px);
+            padding: 28px;
+            border-radius: 18px;
+            background: #fff;
+            color: var(--ink);
+            text-align: center;
+            box-shadow: 0 24px 70px rgba(0,0,0,.28)
+        }
+
+        .qr-modal-close {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            width: 36px;
+            height: 36px;
+            border: 0;
+            border-radius: 8px;
+            background: #f1f4fa;
+            color: var(--ink);
+            font-size: 22px;
+            cursor: pointer
+        }
+
+        .qr-modal-card h2 {
+            margin: 0 0 5px;
+            font-size: 20px
+        }
+
+        .qr-modal-card p {
+            margin: 0 0 18px;
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        .qr-modal-large {
+            display: grid;
+            width: min(76vw, 360px);
+            height: min(76vw, 360px);
+            place-items: center;
+            margin: 0 auto 16px;
+            padding: 10px;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            background: #fff
+        }
+
+        .qr-modal-large img,
+        .qr-modal-large canvas {
+            display: block;
+            width: 100% !important;
+            height: 100% !important
+        }
+
+        .qr-modal-link {
+            display: block;
+            padding: 10px 12px;
+            border-radius: 8px;
+            background: var(--blue-pale);
+            color: var(--blue-dark);
+            font-size: 12px;
+            line-height: 1.5;
+            overflow-wrap: anywhere;
+            text-decoration: none
+        }
+
+        .qr-modal-link:hover {
+            text-decoration: underline
+        }
+
+        .qr-modal-hint {
+            display: block;
+            margin-top: 9px;
+            color: var(--muted);
+            font-size: 11px
+        }
+
+        .nav {
+            padding: 14px 10px 20px
+        }
+
+        .nav-label {
+            padding: 12px 10px 6px;
+            color: #8ea2c8;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase
+        }
+
+        .nav button {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 2px 0;
+            padding: 9px 10px;
+            border: 0;
+            border-radius: 9px;
+            background: transparent;
+            color: #d9e2f5;
+            text-align: left;
+            font-size: 12.5px;
+            cursor: pointer;
+            transition: background .15s, color .15s
+        }
+
+        .nav button:hover,
+        .nav button.active {
+            background: rgba(255, 255, 255, .12);
+            color: #fff
+        }
+
+        .nav button.active {
+            box-shadow: inset 3px 0 var(--blue)
+        }
+
+        .nav-num {
+            width: 22px;
+            height: 22px;
+            flex: 0 0 22px;
+            display: grid;
+            place-items: center;
+            border-radius: 7px;
+            background: rgba(255, 255, 255, .1);
+            color: #b9ceff;
+            font-size: 10px;
+            font-weight: 800
+        }
+
+        .nav button.active .nav-num {
+            background: var(--blue);
+            color: #fff
+        }
+
+        .nav-time {
+            margin-left: auto;
+            color: #97a9ca;
+            font-size: 10px;
+            white-space: nowrap
+        }
+
+        .sidebar-bottom {
+            margin-top: auto;
+            padding: 14px 16px 17px;
+            border-top: 1px solid rgba(255, 255, 255, .12)
+        }
+
+        .timer-label {
+            color: #9db0d2;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: .1em;
+            text-transform: uppercase
+        }
+
+        .timer-display {
+            margin: 3px 0 9px;
+            font-size: 30px;
+            font-variant-numeric: tabular-nums;
+            font-weight: 750;
+            letter-spacing: .03em
+        }
+
+        .timer-display.warning {
+            color: #ffd27c
+        }
+
+        .timer-controls {
+            display: flex;
+            gap: 7px
+        }
+
+        .timer-controls button {
+            flex: 1;
+            padding: 6px 8px;
+            border: 1px solid rgba(255, 255, 255, .2);
+            border-radius: 7px;
+            background: rgba(255, 255, 255, .08);
+            color: #fff;
+            font-size: 11px;
+            cursor: pointer
+        }
+
+        .timer-controls button:hover {
+            background: rgba(255, 255, 255, .17)
+        }
+
+        .timer-hint {
+            margin-top: 7px;
+            color: #9db0d2;
+            font-size: 10px
+        }
+
+        .main {
+            flex: 1;
+            overflow-y: auto;
+            min-width: 0
+        }
+
+        .mobile-bar {
+            display: none
+        }
+
+        .page {
+            display: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 40px 56px;
+            animation: appear .18s ease-out
+        }
+
+        .page.active {
+            display: block
+        }
+
+        @keyframes appear {
+            from {
+                opacity: .55;
+                transform: translateY(4px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 34px 36px;
+            border-radius: 20px;
+            background: linear-gradient(122deg, #244caa 0%, #4980f2 57%, #84aaff 100%);
+            color: #fff;
+            box-shadow: var(--shadow)
+        }
+
+        .hero:after {
+            content: "✳";
+            position: absolute;
+            right: 22px;
+            bottom: -92px;
+            color: #ffffff25;
+            font-size: 280px;
+            line-height: 1;
+            transform: rotate(-15deg);
+            pointer-events: none
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 830px
+        }
+
+        .eyebrow {
+            margin-bottom: 8px;
+            color: #dce7ff;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase
+        }
+
+        .hero h2 {
+            max-width: 760px;
+            margin: 0 0 10px;
+            font-size: clamp(28px, 4vw, 42px);
+            line-height: 1.12;
+            letter-spacing: -.035em
+        }
+
+        .hero p {
+            max-width: 760px;
+            margin: 0;
+            color: #e7edff;
+            font-size: 15px
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 21px
+        }
+
+        .hero-meta span {
+            padding: 5px 10px;
+            border: 1px solid #ffffff45;
+            border-radius: 99px;
+            background: #ffffff1a;
+            font-size: 11px;
+            font-weight: 650
+        }
+
+        .section-head {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 18px;
+            margin: 30px 0 14px
+        }
+
+        .section-head h3 {
+            margin: 0;
+            font-size: 20px;
+            letter-spacing: -.02em
+        }
+
+        .section-head p {
+            margin: 3px 0 0;
+            color: var(--muted);
+            font-size: 12.5px
+        }
+
+        .eyebrow-blue {
+            margin-bottom: 5px;
+            color: var(--blue-dark);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase
+        }
+
+        .grid {
+            display: grid;
+            gap: 14px
+        }
+
+        .grid.two {
+            grid-template-columns: repeat(2, minmax(0, 1fr))
+        }
+
+        .grid.three {
+            grid-template-columns: repeat(3, minmax(0, 1fr))
+        }
+
+        .grid.four {
+            grid-template-columns: repeat(4, minmax(0, 1fr))
+        }
+
+        .card {
+            min-width: 0;
+            padding: 18px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: var(--paper);
+            box-shadow: 0 2px 8px #19315e08
+        }
+
+        .card h3,
+        .card h4 {
+            margin: 0 0 7px;
+            line-height: 1.3
+        }
+
+        .card h3 {
+            font-size: 16px
+        }
+
+        .card h4 {
+            font-size: 14px
+        }
+
+        .card p {
+            margin: 6px 0;
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        .card ul,
+        .card ol {
+            margin: 8px 0 0;
+            padding-left: 19px;
+            color: var(--muted);
+            font-size: 12.5px
+        }
+
+        .card li+li {
+            margin-top: 4px
+        }
+
+        .soft-card {
+            background: var(--blue-pale);
+            border-color: #dce6ff
+        }
+
+        .callout {
+            display: flex;
+            gap: 12px;
+            padding: 15px 17px;
+            border: 1px solid #d9e4ff;
+            border-left: 4px solid var(--blue);
+            border-radius: 11px;
+            background: var(--blue-soft);
+            color: #263c69;
+            font-size: 13px
+        }
+
+        .callout strong {
+            color: var(--blue-deep)
+        }
+
+        .callout p {
+            margin: 2px 0
+        }
+
+        .timeline {
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: #fff
+        }
+
+        .timeline-row {
+            display: grid;
+            grid-template-columns: 116px minmax(0, 1fr) 78px;
+            gap: 14px;
+            align-items: center;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .timeline-row:last-child {
+            border-bottom: 0
+        }
+
+        .timeline-row:nth-child(even) {
+            background: #fafbfe
+        }
+
+        .timeline-time {
+            color: var(--blue-dark);
+            font-size: 12px;
+            font-weight: 800;
+            font-variant-numeric: tabular-nums
+        }
+
+        .timeline-title {
+            font-size: 13px;
+            font-weight: 700
+        }
+
+        .timeline-detail {
+            color: var(--muted);
+            font-size: 11.5px
+        }
+
+        .duration {
+            justify-self: end;
+            padding: 3px 8px;
+            border-radius: 99px;
+            background: var(--blue-soft);
+            color: var(--blue-dark);
+            font-size: 10px;
+            font-weight: 750;
+            white-space: nowrap
+        }
+
+        .page-header {
+            position: relative;
+            overflow: hidden;
+            padding: 26px 30px;
+            border-radius: 18px;
+            background: linear-gradient(115deg, #244caa, #4980f2);
+            color: white
+        }
+
+        .page-header:after {
+            content: "";
+            position: absolute;
+            width: 210px;
+            height: 115px;
+            right: -20px;
+            top: -24px;
+            border-radius: 50%;
+            background: #ffffff12
+        }
+
+        .page-header h2 {
+            position: relative;
+            z-index: 1;
+            margin: 0 0 5px;
+            font-size: 26px;
+            line-height: 1.2
+        }
+
+        .page-header p {
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            max-width: 820px;
+            color: #e3ebff;
+            font-size: 13px
+        }
+
+        .page-header .eyebrow {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 5px
+        }
+
+        .legend {
+            display: flex;
+            gap: 9px;
+            flex-wrap: wrap
+        }
+
+        .legend-item,
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 10px;
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            background: white;
+            font-size: 12px;
+            font-weight: 650
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%
+        }
+
+        .green {
+            background: #16835f
+        }
+
+        .orange {
+            background: #d97706
+        }
+
+        .red {
+            background: #bd4a56
+        }
+
+        .blue {
+            background: #4980f2
+        }
+
+        .question {
+            background: #8b5cf6
+        }
+
+        .work-label {
+            margin: 0 0 7px;
+            color: var(--muted);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: .09em;
+            text-transform: uppercase
+        }
+
+        .work-area {
+            width: 100%;
+            min-height: 100px;
+            resize: vertical;
+            padding: 11px 12px;
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            outline: none;
+            background: #fff;
+            color: var(--ink);
+            font-size: 12.5px;
+            line-height: 1.55
+        }
+
+        .work-area:focus,
+        input:focus,
+        select:focus {
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px #4980f21f;
+            outline: 0
+        }
+
+        .field-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px
+        }
+
+        .field-grid .full {
+            grid-column: 1/-1
+        }
+
+        .field {
+            display: grid;
+            gap: 5px
+        }
+
+        .field label {
+            color: #46536b;
+            font-size: 11px;
+            font-weight: 750
+        }
+
+        .field select,
+        .field input,
+        .filter-select {
+            width: 100%;
+            min-height: 40px;
+            padding: 8px 10px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            color: var(--ink);
+            font-size: 12px
+        }
+
+        .action-btn,
+        .primary-btn,
+        .secondary-btn,
+        .danger-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            padding: 9px 13px;
+            border: 1px solid #cad8fa;
+            border-radius: 8px;
+            background: #fff;
+            color: var(--blue-dark);
+            font-size: 12px;
+            font-weight: 750;
+            cursor: pointer;
+            transition: transform .15s, background .15s
+        }
+
+        .action-btn:hover,
+        .secondary-btn:hover {
+            background: var(--blue-soft);
+            transform: translateY(-1px)
+        }
+
+        .primary-btn {
+            border-color: var(--blue-dark);
+            background: var(--blue-dark);
+            color: #fff
+        }
+
+        .primary-btn:hover {
+            background: #214bad;
+            transform: translateY(-1px)
+        }
+
+        .danger-btn {
+            border-color: #efc4c8;
+            color: #a52f3a;
+            background: #fff
+        }
+
+        .danger-btn:hover {
+            background: #fff1f2
+        }
+
+        .atelier-nav {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 16px 0 14px
+        }
+
+        .atelier-nav button,
+        .group-switch button {
+            padding: 8px 11px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            color: #4f5f78;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer
+        }
+
+        .atelier-nav button.active,
+        .group-switch button.active {
+            border-color: #9db9fa;
+            background: var(--blue-soft);
+            color: var(--blue-dark);
+            box-shadow: inset 0 -2px var(--blue)
+        }
+
+        .group-switch {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 14px 0
+        }
+
+        .workshop {
+            display: none
+        }
+
+        .workshop.active {
+            display: block
+        }
+
+        .workshop-hero {
+            padding: 21px 24px;
+            border-radius: 17px;
+            background: linear-gradient(115deg, #244caa, #4980f2);
+            color: white;
+            box-shadow: 4px 4px 0 #14274c
+        }
+
+        .workshop-hero .eyebrow {
+            margin-bottom: 4px
+        }
+
+        .workshop-hero h3 {
+            margin: 0 0 6px;
+            font-size: 23px;
+            line-height: 1.2
+        }
+
+        .workshop-hero p {
+            margin: 0;
+            color: #e3ebff;
+            font-size: 13px
+        }
+
+        .workshop .work-content {
+            display: grid;
+            gap: 14px;
+            margin-top: 18px
+        }
+
+        .question-box {
+            padding: 15px 17px;
+            border: 1px solid #d9e4ff;
+            border-left: 4px solid var(--blue);
+            border-radius: 11px;
+            background: var(--blue-soft);
+            color: #263c69
+        }
+
+        .question-box b {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--blue-deep);
+            font-size: 10px;
+            letter-spacing: .1em;
+            text-transform: uppercase
+        }
+
+        .scenario {
+            position: relative;
+            padding: 14px 14px 14px 49px;
+            border: 1px solid var(--line);
+            border-radius: 11px;
+            background: #fff
+        }
+
+        .scenario:before {
+            content: attr(data-n);
+            position: absolute;
+            left: 13px;
+            top: 14px;
+            display: grid;
+            place-items: center;
+            width: 25px;
+            height: 25px;
+            border-radius: 8px;
+            background: var(--blue-soft);
+            color: var(--blue-dark);
+            font-size: 11px;
+            font-weight: 850
+        }
+
+        .scenario h4 {
+            margin: 0 0 5px;
+            font-size: 13px
+        }
+
+        .scenario p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 12px
+        }
+
+        .analogy {
+            padding: 14px 16px;
+            border: 1px dashed #c8d5f1;
+            border-radius: 11px;
+            background: #fbfcff;
+            color: #43516c;
+            font-size: 13px
+        }
+
+        .analogy strong {
+            color: var(--blue-deep)
+        }
+
+        .proposal-list {
+            display: grid;
+            gap: 8px
+        }
+
+        .proposal {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 12px;
+            align-items: start;
+            padding: 13px 14px;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: #fff
+        }
+
+        .proposal h4 {
+            margin: 0 0 5px;
+            font-size: 13px
+        }
+
+        .proposal p {
+            margin: 5px 0 0;
+            color: #4b5971;
+            font-size: 12.5px;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere
+        }
+
+        .proposal small {
+            color: var(--muted);
+            font-size: 10px
+        }
+
+        .empty {
+            padding: 18px;
+            border: 1px dashed var(--line);
+            border-radius: 10px;
+            color: var(--muted);
+            font-size: 12px;
+            text-align: center
+        }
+
+        .status-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 8px;
+            border-radius: 99px;
+            font-size: 10px;
+            font-weight: 750
+        }
+
+        .status-allowed {
+            background: #e6f5ef;
+            color: #126c4e
+        }
+
+        .status-guided {
+            background: #fff3da;
+            color: #945d00
+        }
+
+        .status-forbidden {
+            background: #fdebed;
+            color: #a73340
+        }
+
+        .status-principle {
+            background: #e9efff;
+            color: #2858c7
+        }
+
+        .status-question {
+            background: #f0eafe;
+            color: #653ca6
+        }
+
+        .content-copy {
+            max-width: 850px;
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        .repere-list {
+            display: grid;
+            gap: 12px
+        }
+
+        .repere-list li {
+            margin: 5px 0
+        }
+
+        .notice {
+            padding: 13px 15px;
+            border: 1px solid #f1d79f;
+            border-radius: 10px;
+            background: #fff8e8;
+            color: #735013;
+            font-size: 12px
+        }
+
+        .import-area {
+            width: 100%;
+            min-height: 110px;
+            padding: 11px 12px;
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            font: 12px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace
+        }
+
+        .toolbar {
+            display: flex;
+            gap: 9px;
+            flex-wrap: wrap;
+            align-items: center
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 14px 0
+        }
+
+        .filter-select {
+            width: auto;
+            min-width: 210px
+        }
+
+        .table-wrap {
+            overflow: auto;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            background: #fff
+        }
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px
+        }
+
+        .summary-table th {
+            text-align: left;
+            padding: 10px 12px;
+            background: #f8faff;
+            color: #596985;
+            font-size: 10px;
+            letter-spacing: .06em;
+            text-transform: uppercase
+        }
+
+        .summary-table td {
+            padding: 10px 12px;
+            border-top: 1px solid var(--line);
+            vertical-align: top
+        }
+
+        .summary-table tr:nth-child(even) td {
+            background: #fcfdff
+        }
+
+        .summary-table td:last-child {
+            white-space: nowrap
+        }
+
+        .coherence {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px
+        }
+
+        .coherence .card {
+            border-left: 3px solid var(--blue)
+        }
+
+        .toast {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            z-index: 1000;
+            padding: 10px 15px;
+            border-radius: 9px;
+            background: #17233b;
+            color: white;
+            font-size: 12px;
+            font-weight: 650;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all .2s;
+            pointer-events: none
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: none
+        }
+
+        .small {
+            font-size: 11px;
+            color: var(--muted)
+        }
+
+        .print-only {
+            display: none
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .resource-card {
+            min-width: 0;
+            padding: 18px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: var(--paper);
+            box-shadow: 0 2px 8px #19315e08
+        }
+
+        .resource-card h3 {
+            margin: 0 0 7px;
+            font-size: 15px
+        }
+
+        .resource-card p {
+            margin: 6px 0;
+            color: var(--muted);
+            font-size: 12.5px
+        }
+
+        .resource-links {
+            display: grid;
+            gap: 8px;
+            margin-top: 12px
+        }
+
+        .resource-link {
+            display: block;
+            padding: 10px 12px;
+            border: 1px solid #dce6ff;
+            border-radius: 9px;
+            background: var(--blue-pale);
+            color: var(--blue-dark);
+            font-size: 12px;
+            font-weight: 750;
+            text-decoration: none
+        }
+
+        .resource-link:hover {
+            border-color: var(--blue);
+            text-decoration: underline
+        }
+
+        .resource-link span {
+            display: block;
+            margin-top: 3px;
+            color: var(--muted);
+            font-size: 11px;
+            font-weight: 400
+        }
+
+        @media(max-width:1000px) {
+            .page {
+                padding: 25px 24px 44px
+            }
+
+            .grid.four {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+
+            .sidebar {
+                width: 250px;
+                flex-basis: 250px
+            }
+        }
+
+        @media(max-width:720px) {
+            body {
+                height: auto;
+                min-height: 100vh;
+                overflow: auto;
+                display: block
+            }
+
+            .sidebar {
+                display: none
+            }
+
+            .mobile-bar {
+                position: sticky;
+                top: 0;
+                z-index: 10;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                padding: 9px 14px;
+                background: var(--navy);
+                color: #fff
+            }
+
+            .mobile-title {
+                font-size: 12px;
+                font-weight: 750
+            }
+
+            .mobile-tabs {
+                display: flex;
+                gap: 4px;
+                overflow-x: auto
+            }
+
+            .mobile-tabs button {
+                white-space: nowrap;
+                padding: 7px 9px;
+                border: 0;
+                border-radius: 7px;
+                background: #ffffff14;
+                color: white;
+                font-size: 11px
+            }
+
+            .mobile-tabs button.active {
+                background: var(--blue)
+            }
+
+            .main {
+                overflow: visible
+            }
+
+            .page {
+                padding: 16px 14px 36px
+            }
+
+            .hero {
+                padding: 25px 21px
+            }
+
+            .hero:after {
+                font-size: 170px;
+                right: -5px;
+                bottom: -56px
+            }
+
+            .hero h2 {
+                font-size: 30px
+            }
+
+            .page-header {
+                padding: 22px 20px
+            }
+
+            .timeline-row {
+                grid-template-columns: 76px minmax(0, 1fr);
+                gap: 8px;
+                padding: 10px
+            }
+
+            .timeline-row .duration {
+                grid-column: 2;
+                justify-self: start
+            }
+
+            .grid.two,
+            .grid.three,
+            .grid.four,
+            .coherence,
+            .resource-grid {
+                grid-template-columns: 1fr
+            }
+
+            .field-grid {
+                grid-template-columns: 1fr
+            }
+
+            .field-grid .full {
+                grid-column: auto
+            }
+
+            .proposal {
+                grid-template-columns: 1fr
+            }
+
+            .filter-select {
+                width: 100%
+            }
+
+            .section-head {
+                align-items: flex-start;
+                flex-direction: column
+            }
+
+            .workshop-hero h3 {
+                font-size: 20px
+            }
+        }
+
+        @media print {
+            @page {
+                margin: 14mm
+            }
+
+            html,
+            body {
+                height: auto !important;
+                overflow: visible !important;
+                display: block !important;
+                background: #fff !important;
+                color: #111 !important;
+                font-size: 10pt
+            }
+
+            .sidebar,
+            .mobile-bar,
+            .qr-modal,
+            .nav,
+            .timer-controls,
+            .toolbar,
+            .filter-row,
+            .atelier-nav,
+            .group-switch,
+            .delete-proposal,
+            .proposal-form,
+            .no-print,
+            .toast {
+                display: none !important
+            }
+
+            .main {
+                overflow: visible !important
+            }
+
+            .page,
+            .page:not(.active) {
+                display: block !important;
+                max-width: none;
+                margin: 0;
+                padding: 0 0 12mm;
+                animation: none
+            }
+
+            .hero,
+            .page-header,
+            .workshop-hero {
+                box-shadow: none !important;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+                break-inside: avoid
+            }
+
+            .workshop {
+                display: block !important;
+                break-before: page
+            }
+
+            .workshop-hero {
+                break-after: avoid
+            }
+
+            .work-content,
+            .card,
+            .scenario,
+            .proposal,
+            .timeline,
+            .table-wrap,
+            .question-box,
+            .analogy {
+                break-inside: avoid
+            }
+
+            .proposal-list {
+                display: grid
+            }
+
+            .section-head {
+                margin-top: 18px
+            }
+
+            .page:not(#page-work) {
+                break-before: page
+            }
+
+            .print-only {
+                display: block
+            }
+
+            .status-tag {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <aside class="sidebar" aria-label="Navigation principale">
+        <div class="brand">
+            <img src="../../assets/Ifeap/Ifeap_logo.svg" alt="Logo IFEAP">
+            <div class="brand-kicker">Atelier IFEAP · 20 novembre 2026</div>
+            <h1>Co-construire<br>la charte IA</h1>
+            <p>Lycée Les Vergers · 9h45–12h30</p>
+            <button class="brand-qr" id="brandQrOpen" type="button" aria-label="Afficher le QR code de l’atelier en grand">
+                <span class="brand-qr-code" id="brandQrCode" aria-hidden="true"></span>
+                <span class="brand-qr-label">Scanner pour ouvrir<br>cet atelier<br><small>Agrandir le QR code</small></span>
+            </button>
+        </div>
+        <nav class="nav">
+            <div class="nav-label">L’atelier</div>
+            <button class="active" data-page="agenda"><span class="nav-num">01</span>Déroulé<span
+                    class="nav-time">2h45</span></button>
+            <button data-page="work"><span class="nav-num">02</span>Ateliers & chartes<span class="nav-time">4
+                    groupes</span></button>
+            <button data-page="repères"><span class="nav-num">03</span>Repères<span class="nav-time">à
+                    vérifier</span></button>
+            <button data-page="common"><span class="nav-num">04</span>Mise en commun<span class="nav-time"
+                    id="nav-count">0 idée</span></button>
+            <button data-page="resources"><span class="nav-num">05</span>Ressources fiables</button>
+        </nav>
+        <div class="sidebar-bottom">
+            <div class="timer-label">⏱ Minuteur d’atelier</div>
+            <div class="timer-display" id="timer">00:00</div>
+            <div class="timer-controls"><button data-min="10">10 min</button><button data-min="15">15
+                    min</button><button data-min="30">30 min</button><button data-min="40">40 min</button></div>
+            <div class="timer-controls" style="margin-top:7px"><button id="timer-start">▶ Démarrer</button><button
+                    id="timer-reset">↺ Réinitialiser</button></div>
+            <div class="timer-hint">Le compte à rebours continue pendant la navigation.</div>
+        </div>
+    </aside>
+    <div class="qr-modal" id="qrModal" aria-hidden="true">
+        <div class="qr-modal-card" role="dialog" aria-modal="true" aria-labelledby="qrModalTitle">
+            <button class="qr-modal-close" id="qrModalClose" type="button" aria-label="Fermer">×</button>
+            <h2 id="qrModalTitle">Ouvrir l’atelier</h2>
+            <p>Scannez ce QR code avec votre téléphone.</p>
+            <div class="qr-modal-large" id="largeQrCode" role="img" aria-label="QR code vers le support de l’atelier"></div>
+            <a class="qr-modal-link" id="qrModalLink" href="https://bioteach-cyber.github.io/supports-pedagogiques/formations/Ifeap/2026_Lycee_les_Vergers/2026-Lycee-les-vergers-Support-Pedagogique.html">https://bioteach-cyber.github.io/supports-pedagogiques/formations/Ifeap/2026_Lycee_les_Vergers/2026-Lycee-les-vergers-Support-Pedagogique.html</a>
+        </div>
+    </div>
+    <div class="mobile-bar"><span class="mobile-title">Charte IA · Vergers</span>
+        <div class="mobile-tabs"><button class="active" data-page="agenda">Déroulé</button><button
+                data-page="work">Ateliers</button><button data-page="repères">Repères</button><button
+                data-page="common">Commun</button><button data-page="resources">Ressources</button></div>
+    </div>
+    <main class="main" id="main">
+        <section class="page active" id="page-agenda">
+            <div class="hero">
+                <div class="hero-content">
+                    <div class="eyebrow">Atelier de co-construction · IFEAP</div>
+                    <h2>Co-construire la charte IA<br>du Lycée Les Vergers</h2>
+                    <p>Un temps de travail collectif pour proposer des règles simples, utiles et adaptées aux élèves
+                        comme aux adultes de l’établissement.</p>
+                    <div class="hero-meta"><span>20 novembre 2026</span><span>9h45 — 12h30</span><span>≈ 20
+                            participants</span><span>4 groupes</span></div>
+                </div>
+            </div>
+            <div class="section-head">
+                <div>
+                    <div class="eyebrow-blue">Notre objectif ce matin</div>
+                    <h3>Écrire des propositions, pas le document final</h3>
+                </div>
+            </div>
+            <div class="callout"><span aria-hidden="true">↗</span>
+                <div><strong>Le groupe de travail produit une liste de propositions.</strong>
+                    <p>Ces propositions seront ensuite soumises au conseil de direction, puis partagées à toute
+                        l’équipe. <b>Il n’y aura pas de charte finalisée ce matin.</b> Les questions qui demandent un
+                        arbitrage restent ouvertes.</p>
+                </div>
+            </div>
+            <div class="section-head">
+                <div>
+                    <h3>Repères de statut</h3>
+                    <p>Utilisez ces statuts pour rédiger vos propositions.</p>
+                </div>
+            </div>
+            <div class="legend"><span class="legend-item"><i class="legend-dot green"></i>🟢 Autorisé</span><span
+                    class="legend-item"><i class="legend-dot orange"></i>🟠 Encadré</span><span class="legend-item"><i
+                        class="legend-dot red"></i>🔴 Proscrit</span><span class="legend-item"><i
+                        class="legend-dot blue"></i>🔵 Principe / engagement</span><span class="legend-item"><i
+                        class="legend-dot question"></i>❓ Question pour la direction</span></div>
+            <div class="section-head">
+                <div>
+                    <h3>Le déroulé</h3>
+                    <p>Un fil conducteur commun aux quatre groupes.</p>
+                </div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-row">
+                    <div class="timeline-time">9h45 — 9h55</div>
+                    <div>
+                        <div class="timeline-title">Lancement</div>
+                        <div class="timeline-detail">Accueil, constitution des groupes ; chacun choisit un atelier.
+                        </div>
+                    </div><span class="duration">10 min</span>
+                </div>
+                <div class="timeline-row">
+                    <div class="timeline-time">9h55 — 10h35</div>
+                    <div>
+                        <div class="timeline-title">Ateliers</div>
+                        <div class="timeline-detail">Analyser les situations et rédiger des propositions.</div>
+                    </div><span class="duration">40 min</span>
+                </div>
+                <div class="timeline-row">
+                    <div class="timeline-time">10h35 — 10h50</div>
+                    <div>
+                        <div class="timeline-title">Partage dans le groupe</div>
+                        <div class="timeline-detail">Présenter les idées de chaque atelier, repérer les accords et les
+                            questions.</div>
+                    </div><span class="duration">15 min</span>
+                </div>
+                <div class="timeline-row">
+                    <div class="timeline-time">10h50 — 11h00</div>
+                    <div>
+                        <div class="timeline-title">Pause</div>
+                        <div class="timeline-detail">Reprise à 11h00.</div>
+                    </div><span class="duration">10 min</span>
+                </div>
+                <div class="timeline-row">
+                    <div class="timeline-time">11h00 — 11h30</div>
+                    <div>
+                        <div class="timeline-title">Mise en commun par charte</div>
+                        <div class="timeline-detail">Groupes 1 + 2 : élèves · Groupes 3 + 4 : enseignants et direction.
+                        </div>
+                    </div><span class="duration">30 min</span>
+                </div>
+                <div class="timeline-row">
+                    <div class="timeline-time">11h30 — 12h10</div>
+                    <div>
+                        <div class="timeline-title">Mise en commun globale</div>
+                        <div class="timeline-detail">Mettre en cohérence les deux chartes et repérer les questions à
+                            arbitrer.</div>
+                    </div><span class="duration">40 min</span>
+                </div>
+                <div class="timeline-row">
+                    <div class="timeline-time">12h10 — 12h30</div>
+                    <div>
+                        <div class="timeline-title">Feuille de route et évaluation</div>
+                        <div class="timeline-detail">Qui fait quoi ensuite ? Recueillir les retours sur l’atelier.</div>
+                    </div><span class="duration">20 min</span>
+                </div>
+            </div>
+            <div class="section-head">
+                <div>
+                    <h3>En pratique</h3>
+                    <p>Choisissez un atelier à explorer, puis formulez une règle compréhensible et applicable.</p>
+                </div>
+            </div>
+            <div class="grid three">
+                <div class="card">
+                    <h3>① Choisir</h3>
+                    <p>Chaque groupe peut ouvrir les ateliers proposés et s’emparer d’une question.</p>
+                </div>
+                <div class="card">
+                    <h3>② Discuter</h3>
+                    <p>Les situations sont des cas à discuter : cherchez ce qui les explique et quelle règle aiderait.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>③ Proposer</h3>
+                    <p>Une idée par proposition, avec son public, son statut et une formulation concrète.</p>
+                </div>
+            </div>
+        </section>
+        <section class="page" id="page-work">
+            <div class="page-header">
+                <div class="eyebrow">Deux textes distincts, un même dialogue</div>
+                <h2>Ateliers & chartes</h2>
+                <p>Choisissez une charte, un groupe puis un atelier. Les propositions sont enregistrées sur cet appareil
+                    et peuvent être exportées ou partagées à l’animateur.</p>
+            </div>
+            <div class="group-switch" role="tablist" aria-label="Choisir une charte"><button class="active"
+                    data-charter="eleves">Charte élèves · Groupes 1 et 2</button><button data-charter="adultes">Charte
+                    enseignants & direction · Groupes 3 et 4</button></div>
+            <div class="card soft-card" id="charter-info"></div>
+            <div class="group-switch" id="group-switch" aria-label="Choisir votre groupe"></div>
+            <div class="atelier-nav" id="atelier-nav" aria-label="Choisir un atelier"></div>
+            <div id="workshops"></div>
+            <div id="print-workshops" class="print-only"></div>
+        </section>
+        <section class="page" id="page-repères">
+            <div class="page-header">
+                <div class="eyebrow">Quelques points d’appui</div>
+                <h2>Repères pour la discussion</h2>
+                <p>Ces repères orientent les échanges, mais ne remplacent pas la vérification des textes, des outils et
+                    des pratiques de l’établissement.</p>
+            </div>
+            <div class="notice" style="margin-top:16px"><strong>⚠ À vérifier avant diffusion.</strong> Les règles
+                évoluent ; les âges minimaux dépendent aussi des conditions de chaque service. Faire valider les
+                formulations juridiques et les références par les personnes compétentes de l’établissement.</div>
+            <div class="repere-list" style="margin-top:16px">
+                <article class="card">
+                    <h3>🔐 RGPD, données et outils</h3>
+                    <p>Le RGPD ne se résume pas au choix du pays d’hébergement. Pour un outil scolaire, il faut notamment identifier la finalité, la base juridique, les données nécessaires, les destinataires, la durée de conservation, les sous-traitants et les conditions d’exercice des droits.</p>
+                    <p>Une information sur la santé, la situation sociale, un handicap ou une difficulté scolaire appelle une vigilance renforcée. Retirer le nom ne garantit pas l’anonymat si le contexte permet encore de reconnaître la personne.</p>
+                    <p>Le fait qu’un service soit gratuit, qu’un compte soit professionnel ou que l’option d’entraînement soit désactivée ne suffit pas, à lui seul, à rendre un traitement conforme. Faire valider l’usage et ses paramètres par les responsables compétents.</p>
+                    <ul>
+                        <li>L’établissement détermine les finalités et les moyens des traitements liés à ses activités :
+                            il est responsable de traitement, selon les cas et l’organisation locale.</li>
+                        <li>Le délégué à la protection des données (DPO) conseille l’établissement ; solliciter son avis
+                            avant de choisir un outil ou de traiter des données personnelles.</li>
+                        <li>La majorité numérique en France est fixée à 15 ans pour certains services de la société de
+                            l’information fondés sur le consentement. Cela ne signifie pas que tout outil d’IA est
+                            utilisable dès 15 ans : les conditions d’âge propres à chaque service s’appliquent.</li>
+                        <li>Vérifier l’âge minimum, les conditions d’utilisation, le devenir des données, les réglages
+                            d’entraînement et les règles de l’établissement. Ne pas déposer de données identifiantes
+                            d’élèves, de collègues ou de tiers dans un outil non autorisé.</li>
+                    </ul>
+                </article>
+                <article class="card">
+                    <h3>⚖ AI Act (règlement européen sur l’IA)</h3>
+                    <p>Le règlement suit une approche fondée sur les risques. Il distingue notamment les pratiques interdites, les systèmes à haut risque et les obligations de transparence. La qualification dépend de la fonction réellement exercée et du contexte, pas de l’étiquette commerciale « IA ».</p>
+                    <p>Dans l’éducation, des outils influençant l’admission, l’évaluation des acquis, le niveau auquel une personne peut accéder ou la surveillance d’examens peuvent relever de l’annexe III. Il ne faut pas conclure au statut juridique sans examiner l’usage précis et les dispositions applicables.</p>
+                    <p>Les outils génératifs peuvent produire des réponses vraisemblables mais fausses, des références inventées et des contenus biaisés. Un contrôle humain effectif consiste à examiner les résultats, les corriger et pouvoir ne pas les utiliser.</p>
+                    <ul>
+                        <li>L’article 4 prévoit des mesures de maîtrise de l’IA pour les personnes qui déploient ou
+                            utilisent des systèmes d’IA. Cette obligation s’applique depuis février 2025 ; les modalités
+                            de formation doivent être adaptées aux rôles et aux usages.</li>
+                        <li>Certains systèmes utilisés pour évaluer les acquis d’apprentissage ou orienter les parcours
+                            peuvent relever des systèmes à haut risque ; le statut dépend de l’usage et du contexte, pas
+                            seulement du nom de l’outil.</li>
+                        <li>La reconnaissance des émotions dans les établissements d’enseignement est en principe
+                            interdite par l’AI Act, sauf exceptions étroites prévues par le règlement (par exemple des
+                            raisons médicales ou de sécurité).</li>
+                        <li>Le calendrier d’application et certaines échéances font l’objet d’ajustements : vérifier la
+                            version consolidée et les informations officielles avant de publier la charte.</li>
+                    </ul>
+                </article>
+                <article class="card">
+                    <h3>✍ Droit d’auteur, transparence et intégrité</h3>
+                    <p>Pour les élèves, la règle utile est liée à la consigne : quels usages sont autorisés pour cette tâche, à quelles étapes et comment les déclarer ? Une courte déclaration peut préciser l’outil, l’aide demandée, les éléments repris et les vérifications réalisées.</p>
+                    <p>Pour les personnels, une production générée n’est pas prête à être diffusée : vérifier les faits, les sources, les biais, l’adaptation au public, les droits sur les contenus fournis et les conditions d’utilisation du résultat.</p>
+                    <p>Un score produit par un détecteur ne démontre pas à lui seul qu’un élève a triché. Privilégier les consignes explicites, les brouillons et traces disponibles, l’explication orale et le dialogue, selon les règles locales.</p>
+                    <ul>
+                        <li>Vérifier les droits sur les textes, images, sons et données fournis au service comme sur les
+                            productions utilisées ou diffusées. Respecter les consignes pédagogiques et les règles de
+                            citation applicables.</li>
+                        <li>Dire quand et comment l’IA a aidé peut clarifier le travail ; il faut définir une manière
+                            simple et adaptée à l’exercice de déclarer cet usage.</li>
+                        <li>Les détecteurs d’IA peuvent se tromper et ne constituent pas, à eux seuls, une preuve fiable
+                            d’un usage interdit. Privilégier le dialogue, les consignes explicites et la vérification du
+                            processus de travail.</li>
+                    </ul>
+                </article>
+                <article class="card">
+                    <h3>🏫 Cadres institutionnels à articuler</h3>
+                    <p>La charte doit traduire des repères généraux en règles compréhensibles localement : outils autorisés, niveaux et âges, usages pédagogiques, évaluations, comptes, données, signalement et alternatives accessibles.</p>
+                    <p>Pour le Lycée Les Vergers, vérifier en particulier le champ d’application des textes de l’Éducation nationale et les éventuelles instructions du ministère chargé de l’Agriculture (DGER), puis articuler les règles avec le statut de l’établissement, le règlement intérieur et les chartes informatiques existantes.</p>
+                    <ul>
+                        <li>Prendre en compte le Cadre d’usage de l’intelligence artificielle en éducation de
+                            l’Éducation nationale (2025), et vérifier sa version et son champ d’application pour
+                            l’établissement.</li>
+                        <li>Vérifier les notes et consignes DGER applicables au contexte agricole ; les références
+                            précises sont à confirmer.</li>
+                        <li>Articuler la future charte avec le règlement intérieur, la charte informatique et les
+                            procédures de protection des données.</li>
+                        <li>Identifier le circuit de validation et d’adoption (dont le conseil d’administration, selon
+                            le statut et les règles de l’établissement) et la façon d’informer élèves, familles et
+                            personnels.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+        <section class="page" id="page-common">
+            <div class="page-header">
+                <div class="eyebrow">Faire circuler les idées</div>
+                <h2>Mise en commun</h2>
+                <p>Rassemblez les propositions des groupes, repérez les doublons et exportez une base de travail à
+                    transmettre pour la suite.</p>
+            </div>
+            <div class="section-head">
+                <div>
+                    <h3>Partager et importer</h3>
+                    <p>Copie JSON des idées de cet appareil, ou import de plusieurs groupes avec déduplication par
+                        identifiant unique.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="toolbar"><button class="primary-btn" id="copy-mine">▣ Copier mes
+                        propositions</button><button class="secondary-btn" id="export-md">↓ Exporter en
+                        Markdown</button><button class="secondary-btn" id="print-all">▤ Imprimer / PDF</button><button
+                        class="danger-btn" id="clear-all">Tout effacer</button></div>
+                <p class="small" style="margin-top:10px">Si la copie est bloquée par le navigateur, le JSON apparaît
+                    dans la zone ci-dessous : sélectionnez-le et copiez-le.</p><textarea id="copy-fallback"
+                    class="import-area" aria-label="JSON à copier"
+                    placeholder="Le JSON à copier apparaîtra ici si le presse-papiers n’est pas accessible."
+                    style="min-height:70px;margin-top:8px"></textarea>
+            </div>
+            <div class="card" style="margin-top:14px">
+                <h3>Import animateur</h3>
+                <p>Collez ici le JSON obtenu auprès d’un groupe. Les propositions déjà importées (même uid) ne seront
+                    pas ajoutées une deuxième fois.</p><textarea id="import-json" class="import-area"
+                    placeholder='[ { "uid": "…", "charter": "eleves", "atelier": "E1", "status": "allowed", "text": "…" } ]'></textarea>
+                <div class="toolbar" style="margin-top:9px"><button class="primary-btn" id="import-btn">Importer les
+                        propositions</button><span class="small" id="import-status" aria-live="polite"></span></div>
+            </div>
+            <div class="section-head">
+                <div>
+                    <h3>Vue d’ensemble</h3>
+                    <p id="summary-count">0 proposition</p>
+                </div>
+            </div>
+            <div class="filter-row"><select id="filter-charter" class="filter-select" aria-label="Filtrer par charte">
+                    <option value="all">Toutes les chartes</option>
+                    <option value="eleves">Charte élèves</option>
+                    <option value="adultes">Charte enseignants & direction</option>
+                </select><select id="filter-status" class="filter-select" aria-label="Filtrer par statut">
+                    <option value="all">Tous les statuts</option>
+                    <option value="allowed">🟢 Autorisé</option>
+                    <option value="guided">🟠 Encadré</option>
+                    <option value="forbidden">🔴 Proscrit</option>
+                    <option value="principle">🔵 Principe / engagement</option>
+                    <option value="question">❓ Question pour la direction</option>
+                </select></div>
+            <div class="table-wrap">
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>Charte / atelier</th>
+                            <th>Public / niveau</th>
+                            <th>Statut</th>
+                            <th>Proposition</th>
+                            <th>Groupe</th>
+                        </tr>
+                    </thead>
+                    <tbody id="summary-body"></tbody>
+                </table>
+                <div class="empty" id="summary-empty">Aucune proposition pour ces filtres.</div>
+            </div>
+            <div class="section-head">
+                <div>
+                    <h3>Questions de cohérence</h3>
+                    <p>À garder en tête lors de la mise en commun globale.</p>
+                </div>
+            </div>
+            <div class="coherence">
+                <div class="card">
+                    <h3>↔ Règles cohérentes</h3>
+                    <p>Ce qu’on interdit aux élèves, se l’autorise-t-on aussi entre adultes ?</p>
+                </div>
+                <div class="card">
+                    <h3>↗ Progression</h3>
+                    <p>Comment faire évoluer les règles de la 4e au BTS ? Quelles différences sont justifiées ?</p>
+                </div>
+                <div class="card">
+                    <h3>◎ Encadrement</h3>
+                    <p>Qui encadre les usages, comment et avec quels outils ou moyens ?</p>
+                </div>
+                <div class="card">
+                    <h3>▤ Accessibilité</h3>
+                    <p>Faut-il une version FALC (facile à lire et à comprendre) ou des pictogrammes pour les élèves ?
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>⌂ Arbitrages</h3>
+                    <p>Quelles décisions ou validations sont attendues de la direction ?</p>
+                </div>
+            </div>
+        </section>
+        <section class="page" id="page-resources">
+            <div class="page-header">
+                <div class="eyebrow">Pour approfondir et vérifier les règles</div>
+                <h2>Ressources fiables sur l’IA en éducation</h2>
+                <p>Une sélection de textes officiels, recommandations et supports pédagogiques pour éclairer les deux chartes. Les règles évoluent : vérifiez la version et la date avant toute diffusion.</p>
+            </div>
+            <div class="notice" style="margin-top:16px"><strong>Repère de lecture.</strong> Les textes juridiques fixent des obligations ; les guides apportent des recommandations ; les ressources pédagogiques aident à expliquer et à débattre. Ces documents n’ont donc pas tous la même portée.</div>
+            <div class="section-head"><div><div class="eyebrow-blue">Textes et recommandations</div><h3>Cadre européen et institutionnel</h3></div></div>
+            <div class="resource-grid">
+                <article class="resource-card"><h3>AI Act — règlement européen sur l’intelligence artificielle</h3><p>Le règlement (UE) 2024/1689 pose une approche fondée sur les risques et des règles de transparence, de maîtrise de l’IA et de contrôle humain. Lire les articles et annexes directement dans le texte officiel.</p><div class="resource-links"><a class="resource-link" href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj?locale=fr" target="_blank" rel="noopener noreferrer">Consulter le règlement sur EUR-Lex<span>Texte officiel de l’Union européenne · version française</span></a></div></article>
+                <article class="resource-card"><h3>Cadre d’usage de l’IA en éducation</h3><p>Le cadre ministériel français propose des repères de formation et des conditions d’usage de l’IA en contexte éducatif. Vérifier le champ d’application pour l’établissement et les éventuelles instructions propres à l’enseignement agricole.</p><div class="resource-links"><a class="resource-link" href="https://www.education.gouv.fr/cadre-d-usage-de-l-ia-en-education-450647" target="_blank" rel="noopener noreferrer">Lire la page officielle du ministère<span>Cadre d’usage de l’IA en éducation</span></a><a class="resource-link" href="https://www.education.gouv.fr/sites/default/files/2025-06/l-ia-en-ducation-cadre-d-usage-440685.pdf" target="_blank" rel="noopener noreferrer">Ouvrir le cadre d’usage en PDF<span>Document ministériel · juin 2025</span></a></div></article>
+                <article class="resource-card"><h3>Commission européenne — lignes directrices pour les éducateurs</h3><p>Guide non contraignant pour analyser les usages de l’IA et des données dans l’enseignement : considérations éthiques, questions-guides et pistes de réflexion pour les équipes.</p><div class="resource-links"><a class="resource-link" href="https://op.europa.eu/en/publication-detail/-/publication/f692aa0b-17a7-11f1-8870-01aa75ed71a1/language-fr" target="_blank" rel="noopener noreferrer">Lire le guide en français<span>Office des publications de l’Union européenne</span></a></div></article>
+                <article class="resource-card"><h3>RGPD et données personnelles — CNIL</h3><p>Repères sur les principes du RGPD, les droits des personnes et les responsabilités liées aux traitements de données, complétés par les ressources de la CNIL sur l’intelligence artificielle.</p><div class="resource-links"><a class="resource-link" href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees" target="_blank" rel="noopener noreferrer">Comprendre le RGPD<span>Présentation et ressources CNIL</span></a><a class="resource-link" href="https://www.cnil.fr/fr/intelligence-artificielle" target="_blank" rel="noopener noreferrer">Consulter les ressources CNIL sur l’IA<span>Recommandations et actualités</span></a></div></article>
+                <article class="resource-card"><h3>Ressources pédagogiques — Éduscol</h3><p>Portail du ministère proposant des informations et ressources sur les intelligences artificielles et leurs usages en éducation.</p><div class="resource-links"><a class="resource-link" href="https://eduscol.education.gouv.fr/6702/les-intelligences-artificielles-et-leurs-usages-en-education" target="_blank" rel="noopener noreferrer">Explorer les ressources Éduscol<span>IA et usages en éducation</span></a></div></article>
+                <article class="resource-card"><h3>Compétences numériques des personnels — CRCN-Édu</h3><p>Repères pour situer les compétences numériques professionnelles, préparer une démarche de formation et relier la maîtrise de l’IA à des pratiques pédagogiques responsables.</p><div class="resource-links"><a class="resource-link" href="https://www.legifrance.gouv.fr/eli/arrete/2026/7/15/MENN2618309A/jo/texte" target="_blank" rel="noopener noreferrer">Consulter les ressources institutionnelles CRCN-Édu<span>Référentiel de compétences numériques pour l’éducation</span></a></div></article>
+            </div>
+            <div class="section-head"><div><div class="eyebrow-blue">Pour travailler les chartes</div><h3>Questions à poser en lisant ces ressources</h3></div></div>
+            <div class="grid two"><article class="card"><h3>Pour la charte élèves</h3><ul><li>Comment expliquer la différence entre apprendre avec l’IA et lui déléguer le travail ?</li><li>Quelles données personnelles ne faut-il jamais saisir dans un service non validé ?</li><li>Comment signaler simplement l’aide apportée par l’IA dans un devoir ?</li><li>Quels exemples et quels aménagements rendront les règles compréhensibles à chaque niveau ?</li></ul></article><article class="card"><h3>Pour la charte des personnels</h3><ul><li>Quels outils et usages sont effectivement validés par l’établissement ?</li><li>Qui consulter avant de traiter des données personnelles ou d’évaluer avec une IA ?</li><li>Comment documenter le contrôle humain, la vérification des sources et les biais possibles ?</li><li>Quelles voies institutionnelles s’appliquent pour l’incident, la validation et la révision de la charte ?</li></ul></article></div>
+            <div class="small" style="margin-top:18px">Liens externes issus des références du support. Ils ouvrent des sites tiers ; leur disponibilité et leur contenu peuvent évoluer. Vérifier la date et la version des ressources avant usage.</div>
+        </section>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="../../../assets/js/lib/qrcode.min.js"></script>
+    <script>
+        'use strict';
+        const formationUrl = 'https://bioteach-cyber.github.io/supports-pedagogiques/formations/Ifeap/2026_Lycee_les_Vergers/2026-Lycee-les-vergers-Support-Pedagogique.html';
+        const brandQrCode = document.getElementById('brandQrCode');
+        const largeQrCode = document.getElementById('largeQrCode');
+        const qrModal = document.getElementById('qrModal');
+        const brandQrOpen = document.getElementById('brandQrOpen');
+        const qrModalClose = document.getElementById('qrModalClose');
+        const qrModalLink = document.getElementById('qrModalLink');
+        if (qrModalLink) qrModalLink.href = formationUrl;
+        if (brandQrCode && window.QRCode) {
+            try {
+                new window.QRCode(brandQrCode, { text: formationUrl, width: 82, height: 82, correctLevel: window.QRCode.CorrectLevel.M });
+                new window.QRCode(largeQrCode, { text: formationUrl, width: 340, height: 340, correctLevel: window.QRCode.CorrectLevel.M });
+            } catch (error) {
+                brandQrCode.textContent = 'QR indisponible';
+            }
+        } else if (brandQrCode) {
+            brandQrCode.textContent = 'QR indisponible';
+        }
+        function openQrModal() {
+            qrModal.classList.add('open');
+            qrModal.setAttribute('aria-hidden', 'false');
+            qrModalClose.focus();
+        }
+        function closeQrModal() {
+            qrModal.classList.remove('open');
+            qrModal.setAttribute('aria-hidden', 'true');
+            brandQrOpen.focus();
+        }
+        brandQrOpen.addEventListener('click', openQrModal);
+        qrModalClose.addEventListener('click', closeQrModal);
+        qrModal.addEventListener('click', event => {
+            if (event.target === qrModal) closeQrModal();
+        });
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && qrModal.classList.contains('open')) closeQrModal();
+        });
+        const STATUS = { allowed: { label: '🟢 Autorisé', cls: 'status-allowed' }, guided: { label: '🟠 Encadré', cls: 'status-guided' }, forbidden: { label: '🔴 Proscrit', cls: 'status-forbidden' }, principle: { label: '🔵 Principe / engagement', cls: 'status-principle' }, question: { label: '❓ Question pour la direction', cls: 'status-question' } };
+        const CHARTERS = { eleves: { title: 'Charte élèves', groups: [1, 2], publics: ['Tous niveaux', '4e/3e', 'CAP', 'Bac pro/Bac techno', 'BTS'] }, adultes: { title: 'Charte enseignants & direction', groups: [3, 4], publics: ['Enseignants', 'Direction/établissement', 'Tous les personnels'] } };
+        const DATA = {
+            eleves: [
+                { id: 'E1', title: 'Usages selon les niveaux', question: 'Quels usages de l’IA peut-on autoriser ou encadrer selon l’âge, la formation et l’objectif d’apprentissage ?', ideas: ['Faire une progression lisible de la 4e au BTS, avec des exemples concrets.', 'Distinguer aide à apprendre et production à la place de l’élève.', 'Préciser quand un usage doit être autorisé par l’enseignant.'], analogy: 'La calculatrice : on apprend d’abord à raisonner, puis on choisit quand l’outil aide sans faire disparaître la compétence.', situations: [['Lucas, en 4e, recopie une rédaction écrite par l’IA.', 'Qu’est-ce qui n’a pas été appris ou montré ? Quelle aide aurait été acceptable ?'], ['Inès, en CAP SAPVER, demande à l’IA de reformuler son cours.', 'Est-ce un appui à la compréhension ? Comment vérifier qu’elle comprend la reformulation ?'], ['Un étudiant de BTS demande à l’IA de synthétiser 15 articles.', 'Quelles vérifications, citations et traces de lecture rendent ce travail fiable ?']] },
+                { id: 'E2', title: 'Transparence et intégrité', question: 'Comment dire simplement quand l’IA a aidé, sans confondre assistance, fraude et apprentissage ?', ideas: ['Prévoir une courte déclaration d’usage adaptée au travail demandé.', 'Expliquer les règles propres aux CCF et aux rapports de stage avant l’évaluation.', 'Ne pas traiter un résultat de détecteur comme une preuve isolée.'], analogy: 'Citer ses sources : l’IA est-elle une source, un outil ou un co-auteur ? La réponse peut changer selon l’usage et l’exercice.', situations: [['Un rapport de stage est parfait, mais l’élève ne peut pas l’expliquer à l’oral.', 'Quelles questions permettent de comprendre le travail réellement réalisé et l’aide reçue ?'], ['Un détecteur annonce « 87 % IA ».', 'Peut-on s’y fier ? Quelles autres informations faut-il réunir avant d’agir ?'], ['Une élève déclare avoir utilisé l’IA pour corriger l’orthographe.', 'Comment reconnaître une aide annoncée et distinguer les usages permis de ceux qui ne le sont pas ?']] },
+                { id: 'E3', title: 'Données personnelles et sécurité', question: 'Quelles informations ne faut-il jamais confier à un outil non validé, et comment protéger chacun ?', ideas: ['Ne saisir aucune information permettant d’identifier un élève ou un tiers dans un outil grand public.', 'Demander conseil avant d’utiliser un nouveau service ; vérifier l’âge minimum.', 'Prévoir une conduite à tenir face à une image truquée ou à un contenu blessant.'], analogy: 'Parler à un inconnu dans un lieu public : on choisit ce que l’on partage, et on ne donne pas des informations sensibles à quelqu’un qu’on ne connaît pas.', situations: [['En stage en EHPAD, un élève saisit le nom et les pathologies d’un résident dans une IA.', 'Qui peut être mis en danger ? Comment anonymiser ou demander une aide sûre ?'], ['Un élève crée un deepfake d’un camarade.', 'Quel consentement manque ? Quel impact pour la personne et quelle réponse collective prévoir ?'], ['Un élève de 4e ouvre un outil réservé aux 18 ans et plus.', 'Pourquoi l’âge indiqué compte-t-il ? Vers quel adulte ou outil autorisé se tourner ?']] },
+                { id: 'E4', title: 'Esprit critique et apprentissage', question: 'Comment utiliser l’IA sans lui faire confiance aveuglément ni renoncer à apprendre par soi-même ?', ideas: ['Vérifier les réponses à partir du cours, d’une source fiable ou d’un professionnel.', 'Garder des moments où l’élève explique son raisonnement sans IA.', 'Rédiger la charte avec des mots simples, des exemples, du FALC et des pictogrammes.'], analogy: 'Le GPS propose un chemin, mais la personne regarde la route et reste responsable de sa conduite.', situations: [['Une IA propose une dose phytosanitaire erronée.', 'Quelles conséquences possibles ? Quelles sources métier faut-il consulter avant toute décision ?'], ['Un élève utilise l’IA pour réviser.', 'Quelles questions lui faire poser pour apprendre plutôt que mémoriser une réponse fausse ?'], ['La charte est incompréhensible pour des élèves de 4e.', 'Comment la rendre lisible et utilisable : FALC, pictogrammes, exemples, test avec des élèves ?']] }
+            ],
+            adultes: [
+                { id: 'P1', title: 'Usages pédagogiques', question: 'Comment l’IA peut-elle soutenir l’enseignement, sans remplacer le jugement professionnel ni créer de contradictions ?', ideas: ['Relire et vérifier toute production avant de la partager.', 'Adapter les consignes pour dire quand l’usage par les élèves est possible.', 'Partager des exemples d’usages pédagogiques discutés en équipe.'], analogy: 'Le manuel : un support utile, mais l’enseignant choisit, vérifie et adapte ce qui convient à la classe.', situations: [['Un chapitre généré avec l’IA n’a pas été relu et contient une erreur.', 'Qui vérifie avant diffusion ? Quelle responsabilité garde l’enseignant ?'], ['Une enseignante adapte un document en FALC pour un élève dyslexique.', 'Quels gains possibles ? Comment vérifier que le résultat est accessible et juste ?'], ['Un professeur utilise l’IA tout en l’interdisant à ses élèves.', 'Quelle différence de contexte peut justifier des règles distinctes ? Comment l’expliquer sans contradiction ?']] },
+                { id: 'P2', title: 'Données, RGPD et outils', question: 'Quels outils et quelles données peuvent être utilisés dans un cadre autorisé et protecteur ?', ideas: ['Ne pas verser de données personnelles dans une IA grand public.', 'Demander un avis au DPO et à la direction avant toute mise en œuvre impliquant des données.', 'Vérifier les règles sur les copies, bulletins, CCF, conservation et réutilisation des données.'], analogy: 'Le dossier d’un élève posé sur une table de café : une donnée confidentielle ne devient pas publique parce qu’un outil la rend facile à traiter.', situations: [['30 copies nominatives sont envoyées à une IA grand public pour correction.', 'Quelles données sont communiquées ? Quel outil et quel cadre seraient acceptables ?'], ['Des appréciations de bulletin sont rédigées par une IA à partir des résultats d’élèves.', 'Quelles informations sont nécessaires ? Qui contrôle le contenu final et sa justesse ?'], ['Un sujet de CCF est déposé dans une IA.', 'Le sujet est-il confidentiel ou réutilisable ? Qui doit autoriser cet usage et vérifier le devenir des données ?']] },
+                { id: 'P3', title: 'Évaluation', question: 'Quelles tâches d’évaluation exigent une preuve du raisonnement et un contrôle humain réel ?', ideas: ['Ne jamais reporter mécaniquement une note ou un commentaire produit par une IA.', 'Clarifier les règles d’usage pour les CCF, dossiers et productions évaluées.', 'Construire une progression cohérente des règles entre disciplines et diplômes.'], analogy: 'La calculatrice aide à calculer, mais ne démontre pas à elle seule que l’élève maîtrise le raisonnement.', situations: [['Les notes proposées par une IA sont reportées telles quelles.', 'Quelles erreurs, biais ou explications manquent ? Qui prend la décision d’évaluation ?'], ['Des dossiers de BTS ont un style identique, possiblement issu d’un même outil.', 'Comment examiner les acquis de chacun sans tirer de conclusion hâtive sur la seule forme du texte ?'], ['Les équipes veulent harmoniser les règles IA pour les CCF.', 'Quels usages faut-il autoriser, encadrer ou proscrire, et comment l’annoncer clairement ?']] },
+                { id: 'P4', title: 'Gouvernance et rôle de la direction', question: 'Qui valide les outils, forme et accompagne les équipes, et porte les décisions dans l’établissement ?', ideas: ['Définir un circuit de validation des outils, en lien avec la direction et le DPO.', 'Prévoir formation et sensibilisation à la maîtrise de l’IA au titre de l’article 4 de l’AI Act.', 'Désigner les rôles utiles (référent IA, DPO, équipes) et préparer l’adoption, l’information et la mise à jour de la charte.'], analogy: 'Le code de la route : des règles communes, des responsabilités identifiées et des mises à jour, avec une marge de jugement dans les situations réelles.', situations: [['Des outils sont payés avec la carte personnelle de membres du personnel.', 'Quels risques de données, d’accès ou de continuité ? Quel circuit d’achat et de validation proposer ?'], ['Un parent demande si l’IA a corrigé le travail de son enfant.', 'Qui répond et avec quelles informations sur l’outil, les données et la décision pédagogique ?'], ['Un nouvel outil d’IA sort en cours d’année.', 'Qui l’évalue ? Qui peut autoriser un essai, informer les personnes et mettre à jour les consignes ?']] }
+            ]
+        };
+        const STORE = 'vergers-charte-ia-propositions-v1';
+        let proposals = loadProposals(), currentCharter = 'eleves', currentGroup = 1, currentAtelier = 'E1';
+        function loadProposals() { try { const x = JSON.parse(localStorage.getItem(STORE) || '[]'); return Array.isArray(x) ? x.filter(validProposal) : [] } catch (e) { return [] } }
+        function validProposal(p) { return p && typeof p === 'object' && typeof p.uid === 'string' && typeof p.text === 'string' && CHARTERS[p.charter] && STATUS[p.status] && typeof p.atelier === 'string' }
+        function save() { try { localStorage.setItem(STORE, JSON.stringify(proposals)) } catch (e) { toast('Stockage local indisponible ; exportez vos propositions.') } updateCounts(); renderSummary() }
+        function escapeHTML(v) { return String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])) }
+        function toast(msg) { const el = document.getElementById('toast'); el.textContent = msg; el.classList.add('show'); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove('show'), 2600) }
+        function updateCounts() { const n = proposals.length; document.getElementById('nav-count').textContent = n + ' idée' + (n === 1 ? '' : 's'); document.getElementById('summary-count').textContent = n + ' proposition' + (n === 1 ? '' : 's') }
+        function renderPrintWorkshops() { const root = document.getElementById('print-workshops'); root.innerHTML = ['eleves', 'adultes'].map(key => `<section><div class="section-head"><div><h2>${escapeHTML(CHARTERS[key].title)}</h2><p>Groupes ${CHARTERS[key].groups.join(' et ')}</p></div></div>${DATA[key].map(a => `<article class="card"><h3>${a.id} — ${escapeHTML(a.title)}</h3><p><b>Question clé :</b> ${escapeHTML(a.question)}</p><p><b>Pistes :</b> ${a.ideas.map(escapeHTML).join(' · ')}</p><p><b>Analogie :</b> ${escapeHTML(a.analogy)}</p><h4>Situations à analyser</h4><ol>${a.situations.map(x => '<li><b>' + escapeHTML(x[0]) + '</b> — ' + escapeHTML(x[1]) + '</li>').join('')}</ol><h4>Propositions recueillies</h4>${proposals.filter(p => p.charter === key && p.atelier === a.id).map(p => '<p><b>' + escapeHTML(STATUS[p.status].label) + ' · ' + escapeHTML(p.audience) + ' · Groupe ' + escapeHTML(p.group ?? '—') + '</b> — ' + escapeHTML(p.text) + '</p>').join('') || '<p>Aucune proposition.</p>'}</article>`).join('')}</section>`).join('') }
+        function renderWorkshop() {
+            const charter = CHARTERS[currentCharter], ateliers = DATA[currentCharter]; if (!ateliers.some(a => a.id === currentAtelier)) currentAtelier = ateliers[0].id;
+            document.getElementById('charter-info').innerHTML = '<div class="eyebrow-blue">' + escapeHTML(charter.title) + '</div><b>Groupes ' + charter.groups.join(' et ') + '</b><p>Public concerné : ' + escapeHTML(charter.publics.join(' · ')) + '. Choisissez le groupe qui porte votre proposition.</p>';
+            document.getElementById('group-switch').innerHTML = charter.groups.map(g => '<button class="' + (g === currentGroup ? 'active' : '') + '" data-group="' + g + '">Groupe ' + g + '</button>').join('');
+            document.getElementById('atelier-nav').innerHTML = ateliers.map(a => '<button class="' + (a.id === currentAtelier ? 'active' : '') + '" data-atelier="' + a.id + '">' + a.id + ' · ' + escapeHTML(a.title) + '</button>').join('');
+            document.getElementById('workshops').innerHTML = ateliers.map(a => `<article class="workshop ${a.id === currentAtelier ? 'active' : ''}" id="work-${a.id}"><header class="workshop-hero"><div class="eyebrow">${a.id} · Atelier de discussion</div><h3>${escapeHTML(a.title)}</h3><p>Examinez les situations, formulez des hypothèses et proposez une règle utile.</p></header><div class="work-content"><div class="question-box"><b>Question clé</b>${escapeHTML(a.question)}</div><div class="grid two"><div class="card"><h3>Pistes de discussion</h3><ul>${a.ideas.map(i => '<li>' + escapeHTML(i) + '</li>').join('')}</ul></div><div class="card soft-card"><h3>Analogie</h3><p class="analogy">${escapeHTML(a.analogy)}</p></div></div><div><div class="section-head" style="margin:4px 0 10px"><div><h3>Trois situations à analyser</h3><p>Raisonnement abductif : observez les indices, imaginez plusieurs explications, puis cherchez une règle qui résiste aux cas limites.</p></div></div><div class="grid three">${a.situations.map((s, i) => `<div class="scenario" data-n="${i + 1}"><h4>${escapeHTML(s[0])}</h4><p>${escapeHTML(s[1])}</p></div>`).join('')}</div></div><div class="card"><h3>Rédiger une proposition</h3><p>Une règle simple, précise et applicable. Ne rédigez pas la charte finale : notez une proposition à soumettre.</p><form class="proposal-form" data-form="${a.id}"><div class="field-grid"><div class="field"><label for="aud-${a.id}">Public / niveau</label><select id="aud-${a.id}" name="audience">${charter.publics.map(x => '<option>' + escapeHTML(x) + '</option>').join('')}</select></div><div class="field"><label for="status-${a.id}">Statut</label><select id="status-${a.id}" name="status">${Object.entries(STATUS).map(([k, v]) => '<option value="' + k + '">' + escapeHTML(v.label) + '</option>').join('')}</select></div><div class="field full"><label for="text-${a.id}">Texte de la proposition</label><textarea class="work-area" id="text-${a.id}" name="text" maxlength="3000" required placeholder="Ex. Pour un devoir évalué, l’élève indique si et comment il a utilisé une IA."></textarea></div></div><div class="toolbar" style="margin-top:10px"><button class="primary-btn" type="submit">＋ Ajouter la proposition</button><span class="small">Groupe ${currentGroup} · ${a.id}</span></div></form></div><div><div class="section-head" style="margin:4px 0 10px"><div><h3>Propositions de cet atelier</h3></div></div><div class="proposal-list" id="list-${a.id}"></div></div></div></article>`).join('');
+            document.querySelectorAll('.workshop').forEach(w => renderWorkshopList(w.querySelector('.proposal-list'))); renderPrintWorkshops();
+            document.querySelectorAll('.proposal-form').forEach(form => form.addEventListener('submit', e => { e.preventDefault(); const fd = new FormData(form), text = String(fd.get('text') || '').trim(); if (!text) { toast('Écrivez une proposition avant de l’ajouter.'); return } proposals.unshift({ uid: makeUid(), charter: currentCharter, atelier: form.dataset.form, group: currentGroup, audience: String(fd.get('audience')), status: String(fd.get('status')), text, created: new Date().toISOString() }); save(); form.reset(); renderWorkshop(); toast('Proposition ajoutée.') }));
+            document.querySelectorAll('[data-group]').forEach(b => b.addEventListener('click', () => { currentGroup = Number(b.dataset.group); renderWorkshop() })); document.querySelectorAll('[data-atelier]').forEach(b => b.addEventListener('click', () => { currentAtelier = b.dataset.atelier; renderWorkshop() }));
+        }
+        function makeUid() { return 'v-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10) }
+        function renderWorkshopList(el) { const items = proposals.filter(p => p.atelier === el.closest('.workshop').id.replace('work-', '')); if (!items.length) { el.innerHTML = '<div class="empty">Aucune proposition pour cet atelier. Soyez les premiers !</div>'; return } el.innerHTML = items.map(p => `<article class="proposal"><div><h4>${escapeHTML(p.audience)} <span class="status-tag ${STATUS[p.status].cls}">${escapeHTML(STATUS[p.status].label)}</span></h4><small>${escapeHTML(CHARTERS[p.charter]?.title || p.charter)} · Groupe ${escapeHTML(p.group ?? '—')}</small><p>${escapeHTML(p.text)}</p></div><button class="danger-btn delete-proposal" data-delete="${escapeHTML(p.uid)}" aria-label="Supprimer cette proposition">Supprimer</button></article>`).join(''); el.querySelectorAll('[data-delete]').forEach(b => b.addEventListener('click', () => { proposals = proposals.filter(p => p.uid !== b.dataset.delete); save(); renderWorkshop(); toast('Proposition supprimée.') })) }
+        function renderSummary() { renderPrintWorkshops(); const body = document.getElementById('summary-body'); if (!body) return; const fc = document.getElementById('filter-charter').value, fs = document.getElementById('filter-status').value; const rows = proposals.filter(p => (fc === 'all' || p.charter === fc) && (fs === 'all' || p.status === fs)).sort((a, b) => (a.charter + a.atelier).localeCompare(b.charter + b.atelier)); body.innerHTML = rows.map(p => `<tr><td><b>${escapeHTML(CHARTERS[p.charter]?.title || p.charter)}</b><br><span class="small">${escapeHTML(p.atelier)} · ${escapeHTML((DATA[p.charter] || []).find(a => a.id === p.atelier)?.title || '')}</span></td><td>${escapeHTML(p.audience || '')}</td><td><span class="status-tag ${STATUS[p.status]?.cls || ''}">${escapeHTML(STATUS[p.status]?.label || p.status)}</span></td><td>${escapeHTML(p.text)}</td><td>${escapeHTML(p.group ?? '—')}</td></tr>`).join(''); document.getElementById('summary-empty').style.display = rows.length ? 'none' : 'block'; updateCounts() }
+        function exportMarkdown() { const out = ['# Propositions pour la charte IA — Lycée Les Vergers', '', `Atelier IFEAP · 20 novembre 2026 · Export du ${new Date().toLocaleString('fr-FR')}`, '', '> Liste de propositions soumise ensuite au conseil de direction, puis partagée à l’équipe. Ce document n’est pas la charte finale.']; for (const key of ['eleves', 'adultes']) { out.push('', `## ${CHARTERS[key].title}`); for (const a of DATA[key]) { const ps = proposals.filter(p => p.charter === key && p.atelier === a.id); out.push('', `### ${a.id} — ${a.title}`); if (!ps.length) { out.push('_Aucune proposition._'); continue } for (const p of ps) out.push(`- **${STATUS[p.status]?.label || p.status} · ${p.audience} · Groupe ${p.group ?? '—'}** — ${p.text.replace(/\n/g, '\n  ')}`) } } const blob = new Blob([out.join('\n') + '\n'], { type: 'text/markdown;charset=utf-8' }); download(blob, 'propositions-charte-ia-lycee-les-vergers.md') }
+        function download(blob, name) { const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1000) }
+        async function copyMine() { const json = JSON.stringify(proposals, null, 2), box = document.getElementById('copy-fallback'); box.value = json; try { if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(json); toast('Propositions copiées en JSON.') } else { box.focus(); box.select(); toast('Presse-papiers indisponible : JSON sélectionnable ci-dessous.') } } catch (e) { box.focus(); box.select(); toast('Copie bloquée : sélectionnez le JSON ci-dessous.') } }
+        function importData() { const box = document.getElementById('import-json'), status = document.getElementById('import-status'); try { const parsed = JSON.parse(box.value), arr = Array.isArray(parsed) ? parsed : (Array.isArray(parsed.proposals) ? parsed.proposals : null); if (!arr) throw Error('Le JSON doit être une liste de propositions.'); let added = 0, skipped = 0; const ids = new Set(proposals.map(p => p.uid)); for (const raw of arr) { if (!raw || typeof raw !== 'object') { skipped++; continue } const p = { uid: typeof raw.uid === 'string' && raw.uid.trim() ? raw.uid : makeUid(), charter: raw.charter, atelier: raw.atelier, group: raw.group, audience: String(raw.audience || ''), status: raw.status, text: String(raw.text || '').trim(), created: raw.created || new Date().toISOString() }; if (!validProposal(p) || !(DATA[p.charter] || []).some(a => a.id === p.atelier) || !p.text) { skipped++; continue } if (ids.has(p.uid)) { skipped++; continue } ids.add(p.uid); proposals.push(p); added++ } save(); renderWorkshop(); status.textContent = `${added} ajoutée(s), ${skipped} ignorée(s) (doublon ou format invalide).`; toast(`${added} proposition(s) importée(s).`) } catch (e) { status.textContent = 'Import impossible : ' + e.message; toast('Vérifiez le JSON avant l’import.') } }
+        // Onglets principaux
+        function showPage(key) { document.querySelectorAll('.page').forEach(p => p.classList.toggle('active', p.id === 'page-' + key)); document.querySelectorAll('[data-page]').forEach(b => b.classList.toggle('active', b.dataset.page === key)); if (innerWidth < 721) window.scrollTo(0, 0) } document.querySelectorAll('[data-page]').forEach(b => b.addEventListener('click', () => showPage(b.dataset.page)));
+        document.querySelectorAll('[data-charter]').forEach(b => b.addEventListener('click', () => { currentCharter = b.dataset.charter; currentGroup = CHARTERS[currentCharter].groups[0]; currentAtelier = DATA[currentCharter][0].id; document.querySelectorAll('[data-charter]').forEach(x => x.classList.toggle('active', x === b)); renderWorkshop() }));
+        document.getElementById('filter-charter').addEventListener('change', renderSummary); document.getElementById('filter-status').addEventListener('change', renderSummary);
+        document.getElementById('copy-mine').addEventListener('click', copyMine); document.getElementById('export-md').addEventListener('click', exportMarkdown); document.getElementById('print-all').addEventListener('click', () => window.print()); document.getElementById('import-btn').addEventListener('click', importData);
+        document.getElementById('clear-all').addEventListener('click', () => { if (confirm('Effacer toutes les propositions enregistrées sur cet appareil ? Cette action ne peut pas être annulée.')) { proposals = []; save(); renderWorkshop(); toast('Toutes les propositions ont été effacées.') } });
+        // Minuteur
+        let timerRemaining = 0, timerRunning = false, timerEnd = 0; const timerEl = document.getElementById('timer'); function paintTimer() { const n = Math.max(0, timerRemaining), m = Math.floor(n / 60), s = n % 60; timerEl.textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0'); timerEl.classList.toggle('warning', n > 0 && n <= 60); if (!n && timerRunning) { timerRunning = false; toast('Temps écoulé !') } } function timerTick() { if (timerRunning) { timerRemaining = Math.max(0, Math.ceil((timerEnd - Date.now()) / 1000)); paintTimer() } } document.querySelectorAll('[data-min]').forEach(b => b.addEventListener('click', () => { timerRunning = false; timerRemaining = Number(b.dataset.min) * 60; paintTimer(); toast('Minuteur réglé sur ' + b.dataset.min + ' minutes.') })); document.getElementById('timer-start').addEventListener('click', () => { if (timerRunning) { timerRunning = false; timerRemaining = Math.max(0, Math.ceil((timerEnd - Date.now()) / 1000)); document.getElementById('timer-start').textContent = '▶ Reprendre' } else if (timerRemaining > 0) { timerRunning = true; timerEnd = Date.now() + timerRemaining * 1000; document.getElementById('timer-start').textContent = 'Ⅱ Pause' } else toast('Choisissez d’abord 10, 15, 30 ou 40 minutes.'); paintTimer() }); document.getElementById('timer-reset').addEventListener('click', () => { timerRunning = false; timerRemaining = 0; document.getElementById('timer-start').textContent = '▶ Démarrer'; paintTimer() }); setInterval(timerTick, 250);
+        renderWorkshop(); renderSummary();
+    </script>
+    <script type="module"
+        src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+        integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw=="
+        data-cf-beacon='{"version":"2024.11.0","token":"8607d2a720d14b038279025b2b5a82e5","spa":2}'
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
