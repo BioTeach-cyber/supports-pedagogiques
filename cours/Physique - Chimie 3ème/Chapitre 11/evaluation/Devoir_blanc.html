@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3912b">
+  <title>Devoir blanc — Mouvement et vitesse</title>
+  <link rel="stylesheet" href="../../../../assets/css/cours.css">
+  <link rel="stylesheet" href="../../../../assets/component/activite.css">
+  <script src="../../../../assets/js/lib/qrcode.min.js"></script>
+  <script src="../../../../assets/component/contexte-professionnel.js" defer></script>
+  <style>
+    :root { --course-color: #f3912b; }
+    .page-header { --course-color: #f3912b; }
+    .assessment-heading { margin: 0 0 12px; color: var(--course-color); font-size: clamp(1.35rem, 2.3vw, 2rem); }
+    .instructions { margin: 0 0 30px; padding: 14px 18px; border-left: 4px solid var(--course-color); background: #f7f9fa; line-height: 1.6; }
+    .assessment-question { margin: 0 0 30px; padding: 0 0 22px; border-bottom: 1px solid var(--line); break-inside: avoid; }
+    .assessment-question h3 { margin: 0 0 12px; color: var(--ink); font-size: 1.12rem; line-height: 1.5; }
+    .question-number { display: inline-grid; width: 31px; height: 31px; margin-right: 7px; place-items: center; border-radius: 50%; background: var(--course-color); color: #fff; font-size: .95rem; }
+    .question-body { line-height: 1.65; }
+    .question-body p { margin: 8px 0; }
+    .data-table-wrap { overflow-x: auto; margin: 16px 0; }
+    .data-table { width: 100%; border-collapse: collapse; text-align: center; }
+    .data-table th, .data-table td { min-width: 54px; padding: 10px 8px; border: 1px solid var(--line); }
+    .data-table th { background: color-mix(in srgb, var(--course-color) 14%, white); }
+    .assessment-documents { margin: 34px 0; }
+    .document-card { margin: 18px 0 24px; padding: clamp(14px, 2.5vw, 24px); border: 1px solid var(--line); border-radius: 8px; background: #fff; break-inside: avoid; }
+    .document-card h3 { margin: 0 0 16px; color: var(--course-color); font-size: 1.15rem; }
+    .document-visual { display: block; width: 100%; height: auto; }
+    .document-caption { margin: 10px 0 0; color: var(--muted); font-size: .92rem; line-height: 1.5; text-align: center; }
+    .axis-label { font: 14px Arial, sans-serif; }
+    .print-note { margin-top: 32px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; text-align: center; }
+    @media (max-width: 640px) {
+      .data-table th, .data-table td { min-width: 48px; padding: 8px 5px; }
+    }
+    @media print {
+      @page { size: A4; margin: 16mm; }
+      :root { background: #fff; }
+      body { background: #fff; }
+      .site-shell { width: 100%; margin: 0; }
+      .page-header { min-height: 74px; padding: 10px 16px; border-radius: 0; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .brand-mark { display: none; }
+      .page-header { grid-template-columns: 1fr 54px; }
+      .qr-wrap, .qr-dialog, .site-footer { display: none !important; }
+      .page-content { min-height: 0; padding: 14px 0; border: 0; }
+      .activity-section { margin-bottom: 24px; }
+      .activity-context { padding: 14px; }
+      .assessment-question { margin-bottom: 22px; padding-bottom: 15px; }
+      .document-card { padding: 12px; }
+      .print-note { display: none; }
+      * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body data-course="Physique - Chimie 3ème">
+  <div class="site-shell">
+    <header class="page-header" id="page-header">
+      <a class="brand-mark" href="../../../../cours/?cours=Physique%20-%20Chimie%203ème" aria-label="Retour au cours">
+        <span aria-hidden="true" style="color:#283443;font-size:2rem;font-weight:700">PC</span>
+      </a>
+      <h1>Devoir blanc — Mouvement et vitesse</h1>
+      <button class="qr-wrap" id="qr-open" type="button" aria-label="Agrandir le QR code de cette page" aria-haspopup="dialog">
+        <span id="page-qr" class="page-qr" aria-hidden="true"></span>
+      </button>
+      <dialog class="qr-dialog" id="qr-dialog" aria-label="QR code de cette page">
+        <button class="qr-dialog-close" id="qr-close" type="button" aria-label="Fermer le QR code">×</button>
+        <div id="page-qr-large" class="page-qr-large" aria-label="QR code agrandi"></div>
+        <p>Scannez pour ouvrir cette page</p>
+      </dialog>
+    </header>
+    <main class="page-content activity-page-content">
+      <div data-component="contexte-professionnel" data-title="Contexte professionnel">
+        <script type="text/markdown">
+Sarah, élève de 3e prépa-métiers, effectue son stage au restaurant **Le Petit Comptoir**, à Nantes. Elle est accueillie par Chef Rémi et travaille avec Théo, commis de cuisine. Pendant le service, Léa, serveuse, parcourt les **25 m** qui séparent le passe (comptoir où le chef dépose les plats) de la terrasse en **20 secondes**. En cuisine, un four à micro-ondes à plateau tournant sert à réchauffer les sauces, et Théo déplace un chariot de service chargé de bacs inox. Le restaurant propose aussi la livraison : Malik, livreur à vélo, emporte les commandes dans le quartier. L'application de livraison indique que sa vitesse moyenne est de **18 km/h**, mais Chef Rémi préfère raisonner en m/s pour estimer les délais.
+        </script>
+      </div>
+
+      <p class="instructions"><strong>Consignes :</strong> Répondre avec des phrases complètes. Détailler les calculs et indiquer les unités. Pour les questions 3 et 5, préciser clairement le référentiel utilisé.</p>
+
+      <h2 class="assessment-heading">Questions</h2>
+
+      <section class="assessment-question">
+        <h3><span class="question-number">1</span>Chef Rémi veut savoir si Léa sert les plats assez rapidement. Calculer la vitesse moyenne de Léa entre le passe et la terrasse. Écrire la formule utilisée, puis le résultat avec son unité.</h3>
+      </section>
+
+      <section class="assessment-question">
+        <h3><span class="question-number">2</span>Théo pousse le chariot de service jusqu'à la chambre froide. Sarah relève sa vitesse :</h3>
+        <div class="question-body">
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <caption class="visually-hidden">Vitesse du chariot en fonction du temps</caption>
+              <thead><tr><th scope="col">Temps (s)</th><th scope="col">0</th><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th><th scope="col">5</th><th scope="col">6</th><th scope="col">7</th></tr></thead>
+              <tbody><tr><th scope="row">Vitesse (m/s)</th><td>0</td><td>0,5</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0,5</td><td>0</td></tr></tbody>
+            </table>
+          </div>
+          <p>Distinguer les différentes étapes du déplacement du chariot en les classant en mouvement accéléré, uniforme ou ralenti. Indiquer pour chaque étape ce qui permet de la reconnaître dans le tableau.</p>
+        </div>
+      </section>
+
+      <section class="assessment-question">
+        <h3><span class="question-number">3</span>Sarah place un ramequin de sauce au bord du plateau tournant du micro-ondes. Décrire le mouvement du ramequin pendant le réchauffage, observé depuis le plan de travail de la cuisine. Préciser le référentiel et la forme de la trajectoire (Document 1).</h3>
+      </section>
+
+      <section class="assessment-question">
+        <h3><span class="question-number">4</span>Aider Chef Rémi en exprimant en m/s la vitesse moyenne de Malik affichée par l'application de livraison. Détailler la méthode de conversion.</h3>
+      </section>
+
+      <section class="assessment-question">
+        <h3><span class="question-number">5</span>Léa traverse la salle en portant une assiette sur son plateau. Elle dit à Sarah : « Regarde, mon assiette ne bouge pas, elle est bien stable ! » Un client assis à sa table voit pourtant l'assiette arriver vers lui. Expliquer à Sarah pourquoi Léa et le client ont tous les deux raison, en utilisant la notion de référentiel.</h3>
+      </section>
+
+
+
+      <section class="assessment-question">
+        <h3><span class="question-number">6</span>À partir du Document 2, analyser la livraison effectuée par Malik :</h3>
+        <div class="question-body">
+          <ul>
+            <li>repérer les moments où Malik est arrêté et proposer une raison à chaque arrêt ;</li>
+            <li>comparer sa vitesse dans la rue piétonne et sur la piste cyclable ;</li>
+            <li>justifier vos réponses à l'aide de l'allure de la courbe.</li>
+          </ul>
+        </div>
+      </section>
+      <section class="assessment-documents" aria-labelledby="documents-title">
+        <h2 class="assessment-heading" id="documents-title">Documents</h2>
+        <figure class="document-card" id="doc1">
+          <h3>Document 1 — Le micro-ondes de la cuisine</h3>
+          <img class="document-visual" src="../../../../assets/images/Cours/Physique-Chimie/Mouvement_et_vitesse_devoir_blanc_document_01.png" alt="Sarah observe un ramequin de sauce posé sur le plateau tournant d’un micro-ondes, installé au-dessus du plan de travail.">
+          <figcaption class="document-caption">Sarah observe le ramequin depuis le plan de travail de la cuisine.</figcaption>
+        </figure>
+        <figure class="document-card" id="doc2">
+          <h3>Document 2 — Le trajet de Malik</h3>
+          <svg class="document-visual" viewBox="0 0 1000 250" role="img" aria-labelledby="plan-title plan-desc">
+            <title id="plan-title">Plan schématique du trajet de Malik</title>
+            <desc id="plan-desc">Malik part du restaurant, traverse une rue piétonne jusqu’au feu tricolore, emprunte une piste cyclable et arrive chez le client. Les positions relevées sont indiquées sur l’axe gradué.</desc>
+            <rect x="12" y="12" width="976" height="112" rx="12" fill="#f4f7f8" stroke="#dce3e8"/>
+            <path d="M50 74 H228" stroke="#d8c49c" stroke-width="28" stroke-linecap="round"/>
+            <path d="M228 74 H942" stroke="#b8d8ec" stroke-width="28" stroke-linecap="round"/>
+            <path d="M50 74 H942" stroke="#fff" stroke-width="2" stroke-dasharray="10 9"/>
+            <rect x="21" y="40" width="58" height="66" rx="6" fill="#fff" stroke="#283443" stroke-width="2"/>
+            <path d="M31 57 L50 43 L69 57 V95 H31 Z" fill="#f3912b" stroke="#283443" stroke-width="2"/>
+            <text x="50" y="118" text-anchor="middle" class="axis-label">Restaurant</text>
+            <text x="139" y="51" text-anchor="middle" class="axis-label" font-weight="bold">Rue piétonne</text>
+            <rect x="210" y="39" width="36" height="70" rx="8" fill="#283443"/>
+            <circle cx="228" cy="53" r="7" fill="#e45858"/><circle cx="228" cy="74" r="7" fill="#f1c75b"/><circle cx="228" cy="95" r="7" fill="#7fbc48"/>
+            <text x="228" y="118" text-anchor="middle" class="axis-label">Feu tricolore</text>
+            <text x="585" y="51" text-anchor="middle" class="axis-label" font-weight="bold">Piste cyclable</text>
+            <circle cx="942" cy="69" r="19" fill="#fff" stroke="#283443" stroke-width="2"/><path d="M927 69 H957 M942 54 V84" stroke="#283443" stroke-width="2"/>
+            <text x="942" y="118" text-anchor="middle" class="axis-label">Maison du client</text>
+            <line x1="50" y1="184" x2="942" y2="184" stroke="#283443" stroke-width="2"/>
+            <path d="M942 184 l-12 -7 v14 z" fill="#283443"/>
+            <text x="943" y="222" text-anchor="end" class="axis-label" font-weight="bold">Position (m)</text>
+            <g class="axis-label" text-anchor="middle">
+              <g><line x1="50" y1="177" x2="50" y2="192" stroke="#283443"/><text x="50" y="211">0</text></g>
+              <g><line x1="228" y1="177" x2="228" y2="192" stroke="#283443"/><text x="228" y="211">300</text></g>
+              <g><line x1="406" y1="177" x2="406" y2="192" stroke="#283443"/><text x="406" y="211">600</text></g>
+              <g><line x1="585" y1="177" x2="585" y2="192" stroke="#283443"/><text x="585" y="211">900</text></g>
+              <g><line x1="763" y1="177" x2="763" y2="192" stroke="#283443"/><text x="763" y="211">1200</text></g>
+              <g><line x1="942" y1="177" x2="942" y2="192" stroke="#283443"/><text x="942" y="211">1500</text></g>
+            </g>
+            <g fill="#111">
+              <circle cx="50" cy="184" r="5"/><circle cx="139" cy="184" r="5"/><circle cx="228" cy="184" r="5"/><circle cx="228" cy="184" r="5"/><circle cx="347" cy="184" r="5"/><circle cx="585" cy="184" r="5"/><circle cx="823" cy="184" r="5"/><circle cx="942" cy="184" r="5"/><circle cx="942" cy="184" r="5"/><circle cx="942" cy="184" r="5"/>
+            </g>
+            <g class="axis-label" text-anchor="middle" font-weight="bold">
+              <text x="50" y="166">0 min</text><text x="139" y="166">1 min</text><text x="228" y="166">2 et 3 min</text><text x="347" y="166">4 min</text><text x="585" y="166">5 min</text><text x="823" y="166">6 min</text><text x="942" y="166">7, 8 et 9 min</text>
+            </g>
+          </svg>
+          <figcaption class="document-caption">● : position de Malik relevée toutes les minutes. Les positions sont exprimées en mètres depuis le restaurant. Le feu se trouve à la fin de la rue piétonne.</figcaption>
+        </figure>
+      </section>
+      <p class="print-note">Devoir blanc — Physique-Chimie 3e prépa-métiers</p>
+    </main>
+    <footer class="site-footer"><a href="../Chapitre.html">Retour au chapitre</a><span>Ressources pédagogiques</span></footer>
+  </div>
+  <script>
+    (() => {
+      const small = document.getElementById('page-qr');
+      const large = document.getElementById('page-qr-large');
+      const dialog = document.getElementById('qr-dialog');
+      if (window.QRCode && small && large) {
+        new window.QRCode(small, { text: location.href, width: 64, height: 64 });
+        new window.QRCode(large, { text: location.href, width: 280, height: 280 });
+      }
+      document.getElementById('qr-open')?.addEventListener('click', () => dialog?.showModal());
+      document.getElementById('qr-close')?.addEventListener('click', () => dialog?.close());
+      dialog?.addEventListener('click', (event) => {
+        if (event.target === dialog) dialog.close();
+      });
+    })();
+  </script>
+</body>
+</html>

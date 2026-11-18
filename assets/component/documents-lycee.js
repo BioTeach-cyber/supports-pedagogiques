@@ -301,6 +301,8 @@
 
   const renderImageViewer = (src, documentNode) => {
     const viewer = createElement('figure', 'activity-image-viewer');
+    const fitToViewport = documentNode.dataset.fit === 'contain';
+    if (fitToViewport) viewer.classList.add('activity-image-viewer-fit');
     const toolbar = createElement('div', 'activity-image-toolbar');
     const viewport = createElement('div', 'activity-image-viewport');
     const image = createElement('img', 'activity-document-media');

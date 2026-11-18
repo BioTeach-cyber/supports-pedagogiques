@@ -153,9 +153,9 @@
           ]
         },
         {
-          "statut": "inactif",
+          "statut": "actif",
           "id": "activité 02",
-          "titre": "",
+          "titre": "Pollution, bruit, réchauffement : l'océan sous pression humaine",
           "lottie": "assets/lotties/Numbers/02.json",
           "page": "Chapitre 02/cours/Activité_02.html",
           "objectifs pédagogiques": [
