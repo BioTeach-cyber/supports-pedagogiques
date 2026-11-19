@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#53a4db">
+  <title>Devoir 4 — Sécurité routière : les états de la matière</title>
+  <link rel="stylesheet" href="../../../../assets/css/cours.css">
+  <link rel="stylesheet" href="../../../../assets/component/activite.css">
+  <script src="../../../../assets/js/lib/lottie.min.js"></script>
+  <script src="../../../../assets/js/lib/qrcode.min.js"></script>
+  <script src="../../../../assets/component/contexte-professionnel.js" defer></script>
+  <style>
+    :root { --course-color: #53a4db; }
+    .assessment-question { margin: 0 0 30px; padding: 0 0 22px; border-bottom: 1px solid var(--line); }
+    .titre-q { display: flex; align-items: center; margin: 0 0 14px; color: var(--ink); font-size: 1.12rem; line-height: 1.5; }
+    .question-label { font-size: 1.12rem; }
+    .question-number { display: inline-grid; width: 31px; height: 31px; flex: 0 0 31px; margin-right: 9px; place-items: center; border-radius: 50%; background: var(--course-color); color: #fff; font-size: .95rem; }
+    .question-body { line-height: 1.65; }
+    .enonce { margin: 8px 0; line-height: 1.65; }
+    .sous { margin: 14px 0 8px 18px; line-height: 1.6; }
+    .sous b.lettre { color: var(--course-color); }
+    .answer-line { display: block; min-height: 1.8em; border-bottom: 1px dotted #9aa5ae; }
+    .answer-space { min-height: 60px; margin: 4px 0 8px; border-bottom: 1px solid var(--line); }
+    .answer-space.court { min-height: 40px; }
+    .answer-space.tall { min-height: 120px; }
+    table.rep { width: 100%; margin: 14px 0 18px; border-collapse: collapse; text-align: center; }
+    table.rep th, table.rep td { min-width: 54px; padding: 10px 8px; border: 1px solid var(--line); vertical-align: middle; }
+    table.rep th { background: color-mix(in srgb, var(--course-color) 14%, white); }
+    table.rep .answer-line { min-width: 60px; }
+    table.rep td.cocher { text-align: center; }
+    .answer-options { min-height: 1.8em; }
+    .doc { margin: 18px 0 24px; padding: clamp(14px, 2.5vw, 24px); border: 1px solid var(--line); border-radius: 8px; background: #fff; break-inside: avoid; }
+    .doc h3 { margin: 0 0 16px; color: var(--course-color); font-size: 1.15rem; }
+    .doc svg { display: block; width: 100%; height: auto; }
+    .liste-obs { margin: 10px 0 16px 24px; line-height: 1.65; }
+    .liste-obs li { margin: 4px 0; }
+    .pied { margin-top: 32px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; text-align: center; }
+    @media (max-width: 640px) {
+      table.rep { display: block; overflow-x: auto; white-space: nowrap; }
+      table.rep th, table.rep td { padding: 8px 5px; }
+      .sous { margin-left: 0; }
+    }
+    @media print {
+      @page { size: A4; margin: 16mm; }
+      :root { background: #fff; }
+      body { background: #fff; }
+      .site-shell { width: 100%; margin: 0; }
+      .page-header { min-height: 74px; padding: 10px 16px; border-radius: 0; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .brand-mark { display: none; }
+      .page-header { grid-template-columns: 1fr 54px; }
+      .qr-wrap, .qr-dialog, .site-footer { display: none !important; }
+      .page-content { min-height: 0; padding: 14px 0; border: 0; }
+      .assessment-question { margin-bottom: 22px; padding-bottom: 15px; }
+      .doc { padding: 12px; }
+      .pied { display: none; }
+      * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body data-course="Physique - Chimie 4ème">
+  <div class="site-shell">
+    <header class="page-header" id="page-header">
+      <a class="brand-mark" href="../../../../cours/?cours=Physique%20-%20Chimie%204ème" aria-label="Retour au réseau du cours">
+        <span class="brand-animation" id="course-lottie" aria-hidden="true"></span>
+      </a>
+      <h1>Sécurité routière : les états de la matière</h1>
+      <button class="qr-wrap" id="qr-open" type="button" aria-label="Agrandir le QR code de cette page" aria-haspopup="dialog">
+        <span id="page-qr" class="page-qr" aria-hidden="true"></span>
+      </button>
+      <dialog class="qr-dialog" id="qr-dialog" aria-label="QR code de cette page">
+        <button class="qr-dialog-close" id="qr-close" type="button" aria-label="Fermer le QR code">×</button>
+        <div id="page-qr-large" class="page-qr-large" aria-label="QR code agrandi"></div>
+        <p>Scannez pour ouvrir cette page</p>
+      </dialog>
+    </header>
+    <main class="page-content activity-page-content">
+      <div data-component="contexte-professionnel" data-title="Situation professionnelle">
+        <script type="text/markdown">
+Enzo, élève de 4e découverte des métiers, effectue son stage au **centre d'entretien routier de Pontarlier** (Doubs). Il accompagne Monsieur Girard, agent d'exploitation des routes, et Sofia, conductrice de la saleuse. En janvier, la météo annonce une pluie suivie d'une forte baisse des températures pendant la nuit. Une **station météo routière**, installée au bord de la RN57, mesure en continu la température de la chaussée. Avant de partir en tournée, Sofia vérifie la pression des pneus du camion avec de l'air comprimé, fait le plein de gasoil et remplit la saleuse de sel. Dans la cabine, le pare-brise se couvre de buée dès que l'équipe monte à bord. Sur la route, Enzo observe des plaques de verglas, du givre sur les panneaux et des flaques qui sèchent au soleil en fin de matinée.
+        </script>
+      </div>
+
+  <!-- ================= QUESTION 1 ================= -->
+  <h2 class="titre-q"><span class="question-number">1</span><span class="question-label">Question</span></h2>
+  <div class="question assessment-question question-body">
+    <p class="enonce">Pour la réunion de sécurité du matin, Monsieur Girard affiche le <b>Document 1</b>.
+      Il montre trois schémas de molécules d'eau, présents sur la RN57 : la plaque de verglas,
+      l'eau de pluie dans une flaque et la vapeur d'eau contenue dans l'air.</p>
+
+    <div class="doc">
+      <h3>📄 Document 1 – Les molécules d'eau vues « de très près »</h3>
+      <svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Trois loupes A, B et C montrant des molécules d'eau">
+        <rect x="0" y="0" width="720" height="260" fill="#f7fbff"/>
+        <!-- route -->
+        <rect x="0" y="215" width="720" height="45" fill="#555"/>
+        <line x1="0" y1="238" x2="720" y2="238" stroke="#fff" stroke-width="3" stroke-dasharray="25 18"/>
+        <!-- Loupe B (désordonné serré = liquide) -->
+        <g transform="translate(40,20)">
+          <circle cx="90" cy="90" r="82" fill="#fff" stroke="#1f4e79" stroke-width="4"/>
+          <g fill="#2a7fd4" stroke="#134f87" stroke-width="1">
+            <circle cx="45" cy="60" r="11"/><circle cx="70" cy="48" r="11"/><circle cx="98" cy="62" r="11"/>
+            <circle cx="125" cy="50" r="11"/><circle cx="140" cy="78" r="11"/><circle cx="55" cy="88" r="11"/>
+            <circle cx="82" cy="80" r="11"/><circle cx="112" cy="92" r="11"/><circle cx="40" cy="115" r="11"/>
+            <circle cx="68" cy="112" r="11"/><circle cx="95" cy="118" r="11"/><circle cx="125" cy="118" r="11"/>
+            <circle cx="148" cy="108" r="11"/><circle cx="60" cy="138" r="11"/><circle cx="90" cy="145" r="11"/>
+            <circle cx="118" cy="142" r="11"/>
+          </g>
+          <text x="90" y="205" text-anchor="middle" font-size="26" font-weight="bold" fill="#1f4e79">A</text>
+        </g>
+        <!-- Loupe A (éloignées = gaz) -->
+        <g transform="translate(270,20)">
+          <circle cx="90" cy="90" r="82" fill="#fff" stroke="#1f4e79" stroke-width="4"/>
+          <g fill="#2a7fd4" stroke="#134f87" stroke-width="1">
+            <circle cx="42" cy="55" r="11"/><circle cx="125" cy="45" r="11"/><circle cx="85" cy="85" r="11"/>
+            <circle cx="140" cy="100" r="11"/><circle cx="48" cy="125" r="11"/><circle cx="105" cy="140" r="11"/>
+          </g>
+          <text x="90" y="205" text-anchor="middle" font-size="26" font-weight="bold" fill="#1f4e79">B</text>
+        </g>
+        <!-- Loupe C (serrées et rangées = solide) -->
+        <g transform="translate(500,20)">
+          <circle cx="90" cy="90" r="82" fill="#fff" stroke="#1f4e79" stroke-width="4"/>
+          <g fill="#2a7fd4" stroke="#134f87" stroke-width="1">
+            <circle cx="50" cy="52" r="11"/><circle cx="74" cy="52" r="11"/><circle cx="98" cy="52" r="11"/><circle cx="122" cy="52" r="11"/>
+            <circle cx="50" cy="76" r="11"/><circle cx="74" cy="76" r="11"/><circle cx="98" cy="76" r="11"/><circle cx="122" cy="76" r="11"/>
+            <circle cx="50" cy="100" r="11"/><circle cx="74" cy="100" r="11"/><circle cx="98" cy="100" r="11"/><circle cx="122" cy="100" r="11"/>
+            <circle cx="50" cy="124" r="11"/><circle cx="74" cy="124" r="11"/><circle cx="98" cy="124" r="11"/><circle cx="122" cy="124" r="11"/>
+          </g>
+          <text x="90" y="205" text-anchor="middle" font-size="26" font-weight="bold" fill="#1f4e79">C</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="sous"><b class="lettre">a)</b> <span class="verbe">Associer</span> chaque schéma (A, B, C) à l'un de ces trois exemples.</div>
+    <table class="rep">
+      <tr><th>Schéma</th><th>Exemple correspondant</th></tr>
+      <tr><td style="text-align:center"><b>A</b></td><td><div class="answer-options">□ Plaque de verglas &nbsp; □ Eau de pluie dans une flaque &nbsp; □ Vapeur d'eau dans l'air</div></td></tr>
+      <tr><td style="text-align:center"><b>B</b></td><td><div class="answer-options">□ Plaque de verglas &nbsp; □ Eau de pluie dans une flaque &nbsp; □ Vapeur d'eau dans l'air</div></td></tr>
+      <tr><td style="text-align:center"><b>C</b></td><td><div class="answer-options">□ Plaque de verglas &nbsp; □ Eau de pluie dans une flaque &nbsp; □ Vapeur d'eau dans l'air</div></td></tr>
+    </table>
+
+    <div class="sous"><b class="lettre">b)</b> <span class="verbe">Comparer</span> les trois schémas en complétant le tableau ci-dessous.</div>
+    <table class="rep">
+      <tr><th></th><th>Rangement des molécules</th><th>Distance entre les molécules</th><th>Agitation</th></tr>
+      <tr><td><b>Verglas</b></td><td><span class="answer-line"></span></td><td><span class="answer-line"></span></td><td><span class="answer-line"></span></td></tr>
+      <tr><td><b>Eau de la flaque</b></td><td><span class="answer-line"></span></td><td><span class="answer-line"></span></td><td><span class="answer-line"></span></td></tr>
+      <tr><td><b>Vapeur d'eau</b></td><td><span class="answer-line"></span></td><td><span class="answer-line"></span></td><td><span class="answer-line"></span></td></tr>
+    </table>
+
+  </div>
+
+  <!-- ================= QUESTION 2 ================= -->
+  <h2 class="titre-q"><span class="question-number">2</span><span class="question-label">Question</span></h2>
+  <div class="question assessment-question question-body">
+    <p class="enonce">Sofia appuie sur un pneu bien gonflé : l'air à l'intérieur a été fortement serré par le compresseur.
+      Le gasoil versé dans le réservoir prend la forme du réservoir, mais 50 litres restent 50 litres.
+      Un bloc de sel tombé de la saleuse garde la même forme sur le sol du hangar.</p>
+
+    <div class="sous"><b class="lettre">a)</b> <span class="verbe">Déterminer</span> l'état physique de l'air des pneus, du gasoil et du bloc de sel.</div>
+    <table class="rep">
+      <tr><th>Matière</th><th>Solide</th><th>Liquide</th><th>Gaz</th></tr>
+      <tr><td>Air des pneus</td><td class="cocher">□</td><td class="cocher">□</td><td class="cocher">□</td></tr>
+      <tr><td>Gasoil</td><td class="cocher">□</td><td class="cocher">□</td><td class="cocher">□</td></tr>
+      <tr><td>Bloc de sel</td><td class="cocher">□</td><td class="cocher">□</td><td class="cocher">□</td></tr>
+    </table>
+
+    <div class="sous"><b class="lettre">b)</b> <span class="verbe">Justifier</span> chaque réponse en utilisant la forme, le volume et la compressibilité.</div>
+
+  </div>
+
+  <!-- ================= QUESTION 3 ================= -->
+  <h2 class="titre-q"><span class="question-number">3</span><span class="question-label">Question</span></h2>
+  <div class="question assessment-question question-body">
+    <p class="enonce">Enzo demande à Monsieur Girard : « Pourquoi la pluie d'hier soir est devenue une patinoire ce matin ? »</p>
+
+    <div class="sous"><b class="lettre">a)</b> <span class="verbe">Nommer</span> le changement d'état qui s'est produit sur la chaussée pendant la nuit.</div>
+
+    <div class="sous"><b class="lettre">b)</b> <span class="verbe">Décrire</span> ce qui arrive à l'agitation des molécules d'eau quand la chaussée devient très froide.</div>
+
+    <div class="sous"><b class="lettre">c)</b> <span class="verbe">Expliquer</span> à Enzo, avec les mots « rapprochement » et « organisation », pourquoi l'eau devient dure et glissante.</div>
+
+  </div>
+
+  <!-- ================= QUESTION 4 ================= -->
+  <h2 class="titre-q"><span class="question-number">4</span><span class="question-label">Question</span></h2>
+  <div class="question assessment-question question-body">
+    <p class="enonce">Avant le départ, Sofia demande à Enzo de contrôler la liste du matériel et des produits à bord :
+      sel de déneigement, gasoil, air des pneus, liquide lave-glace, gaz d'échappement, pelle à neige,
+      liquide de refroidissement, gilet de sécurité, saumure, vapeur d'eau de la cabine.</p>
+
+    <div class="sous"><b class="lettre">a)</b> <span class="verbe">Classer</span> ces dix éléments dans le tableau ci-dessous.</div>
+    <table class="rep">
+      <tr><th style="width:33%">Solide</th><th style="width:33%">Liquide</th><th style="width:33%">Gaz</th></tr>
+      <tr>
+        <td><div class="answer-space tall" aria-hidden="true"></div></td>
+        <td><div class="answer-space tall" aria-hidden="true"></div></td>
+        <td><div class="answer-space tall" aria-hidden="true"></div></td>
+      </tr>
+    </table>
+
+  </div>
+
+  <!-- ================= QUESTION 5 ================= -->
+  <h2 class="titre-q"><span class="question-number">5</span><span class="question-label">Question</span></h2>
+  <div class="question assessment-question question-body">
+    <p class="enonce">Le lendemain matin, la station météo routière enregistre la température d'une plaque de verglas
+      pendant que le soleil se lève (<b>Document 2</b>).</p>
+
+    <div class="doc">
+      <h3>📄 Document 2 – Relevé de la station météo routière (RN57)</h3>
+      <svg viewBox="0 0 700 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Courbe de température de la plaque de verglas en fonction de l'heure">
+        <rect width="700" height="340" fill="#fff"/>
+        <!-- zone graphique : x de 90 à 650 (6h -> 12h) ; y de 40 (6°C) à 280 (-6°C) -->
+        <!-- grille verticale : 6h,7h,...,12h => pas de 93.33 -->
+        <g stroke="#ddd" stroke-width="1">
+          <line x1="90" y1="40" x2="90" y2="280"/><line x1="183.3" y1="40" x2="183.3" y2="280"/>
+          <line x1="276.7" y1="40" x2="276.7" y2="280"/><line x1="370" y1="40" x2="370" y2="280"/>
+          <line x1="463.3" y1="40" x2="463.3" y2="280"/><line x1="556.7" y1="40" x2="556.7" y2="280"/>
+          <line x1="650" y1="40" x2="650" y2="280"/>
+          <!-- grille horizontale : 6,4,2,0,-2,-4,-6 -->
+          <line x1="90" y1="40" x2="650" y2="40"/><line x1="90" y1="80" x2="650" y2="80"/>
+          <line x1="90" y1="120" x2="650" y2="120"/><line x1="90" y1="160" x2="650" y2="160"/>
+          <line x1="90" y1="200" x2="650" y2="200"/><line x1="90" y1="240" x2="650" y2="240"/>
+          <line x1="90" y1="280" x2="650" y2="280"/>
+        </g>
+        <!-- axes -->
+        <line x1="90" y1="40" x2="90" y2="280" stroke="#000" stroke-width="2"/>
+        <line x1="90" y1="160" x2="650" y2="160" stroke="#000" stroke-width="2"/>
+        <!-- graduations température -->
+        <g font-size="13" fill="#000" text-anchor="end">
+          <text x="82" y="44">6</text><text x="82" y="84">4</text><text x="82" y="124">2</text>
+          <text x="82" y="164">0</text><text x="82" y="204">−2</text><text x="82" y="244">−4</text><text x="82" y="284">−6</text>
+        </g>
+        <!-- graduations heures (en bas) -->
+        <g font-size="13" fill="#000" text-anchor="middle">
+          <text x="90" y="302">6 h</text><text x="183.3" y="302">7 h</text><text x="276.7" y="302">8 h</text>
+          <text x="370" y="302">9 h</text><text x="463.3" y="302">10 h</text><text x="556.7" y="302">11 h</text><text x="650" y="302">12 h</text>
+        </g>
+        <text x="30" y="30" font-size="13" font-weight="bold">Température (°C)</text>
+        <text x="650" y="325" font-size="13" font-weight="bold" text-anchor="end">Heure de la journée</text>
+        <!-- courbe : (6h,-6) -> (8h,0) -> (10h30,0) -> (12h,4) -->
+        <polyline fill="none" stroke="#c55a11" stroke-width="3.5"
+          points="90,280 276.7,160 510,160 650,80"/>
+        <g fill="#c55a11">
+          <circle cx="90" cy="280" r="5"/><circle cx="276.7" cy="160" r="5"/>
+          <circle cx="510" cy="160" r="5"/><circle cx="650" cy="80" r="5"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="sous"><b class="lettre">a)</b> <span class="verbe">Relever</span> sur la courbe la température du palier.</div>
+
+    <div class="sous"><b class="lettre">b)</b> <span class="verbe">Calculer</span> la durée de ce palier en heures.</div>
+
+    <div class="sous"><b class="lettre">c)</b> <span class="verbe">Nommer</span> la transformation qui se produit pendant ce palier.</div>
+
+    <div class="sous"><b class="lettre">d)</b> <span class="verbe">Indiquer</span> à partir de quelle heure la chaussée ne présente plus de risque de verglas à cet endroit.</div>
+
+  </div>
+
+  <!-- ================= QUESTION 6 ================= -->
+  <h2 class="titre-q"><span class="question-number">6</span><span class="question-label">Question</span></h2>
+  <div class="question assessment-question question-body">
+    <p class="enonce">Pendant la tournée, Enzo note dans le carnet de bord du camion cinq observations :</p>
+    <ul class="liste-obs">
+      <li><b>a)</b> le pare-brise se couvre de buée quand l'équipe monte dans la cabine chauffée ;</li>
+      <li><b>b)</b> du givre apparaît sur les panneaux, alors qu'il n'a pas plu ;</li>
+      <li><b>c)</b> la plaque de verglas redevient de l'eau au soleil ;</li>
+      <li><b>d)</b> les flaques disparaissent en fin de matinée ;</li>
+      <li><b>e)</b> par grand froid sec, une fine couche de glace sur un panneau disparaît sans laisser d'eau.</li>
+    </ul>
+
+    <div class="sous"><b class="lettre">a)</b> <span class="verbe">Compléter</span> le tableau en indiquant, pour chaque observation, l'état de départ et l'état d'arrivée de l'eau.</div>
+    <div class="sous"><b class="lettre">b)</b> <span class="verbe">Nommer</span> le changement d'état correspondant à chaque observation (dernière colonne).</div>
+    <table class="rep">
+      <tr><th>Observation</th><th>État de départ</th><th>État d'arrivée</th><th>Nom du changement d'état</th></tr>
+      <tr><td style="text-align:center"><b>a</b> (buée)</td><td><span class="answer-line"></span></td><td><span class="answer-line"></span></td><td><span class="answer-line"></span></td></tr>
+      <tr><td style="text-align:center"><b>b</b> (givre)</td><td><span class="answer-line"></span></td><td><span class="answer-line"></span></td><td><span class="answer-line"></span></td></tr>
+      <tr><td style="text-align:center"><b>c</b> (verglas)</td><td><span class="answer-line"></span></td><td><span class="answer-line"></span></td><td><span class="answer-line"></span></td></tr>
+      <tr><td style="text-align:center"><b>d</b> (flaques)</td><td><span class="answer-line"></span></td><td><span class="answer-line"></span></td><td><span class="answer-line"></span></td></tr>
+      <tr><td style="text-align:center"><b>e</b> (glace)</td><td><span class="answer-line"></span></td><td><span class="answer-line"></span></td><td><span class="answer-line"></span></td></tr>
+    </table>
+
+  </div>
+
+      <p class="pied">Physique-chimie – 4e – Les états de la matière</p>
+    </main>
+    <footer class="site-footer"><a href="../Chapitre.html">Retour au chapitre</a><span>Ressources pédagogiques</span></footer>
+  </div>
+  <script>
+    (() => {
+      const small = document.getElementById('page-qr');
+      const large = document.getElementById('page-qr-large');
+      const dialog = document.getElementById('qr-dialog');
+      const header = document.getElementById('page-header');
+      const color = '#53a4db';
+      const rgb = color.match(/[\da-f]{2}/gi).slice(0, 3).map((channel) => parseInt(channel, 16) / 255);
+      const recolorAnimation = (data) => {
+        const recolor = (value) => {
+          if (!Array.isArray(value)) return value;
+          if ((value.length === 3 || value.length === 4) && value.every((channel) => typeof channel === 'number' && channel >= 0 && channel <= 1)) {
+            const isBlack = Math.max(value[0], value[1], value[2]) < 0.02;
+            return [...(isBlack ? [0, 0, 0] : rgb), value.length === 4 ? value[3] : 1];
+          }
+          return value.map(recolor);
+        };
+        const visit = (value) => {
+          if (Array.isArray(value)) return value.map(visit);
+          if (!value || typeof value !== 'object') return value;
+          if (Array.isArray(value.k)) {
+            const result = { ...value };
+            result.k = value.a === 1
+              ? value.k.map((frame) => frame && typeof frame === 'object' ? { ...frame, ...(Array.isArray(frame.s) ? { s: recolor(frame.s) } : {}), ...(Array.isArray(frame.e) ? { e: recolor(frame.e) } : {}) } : frame)
+              : recolor(value.k);
+            return result;
+          }
+          const result = { ...value };
+          for (const [key, item] of Object.entries(result)) {
+            result[key] = key === 'c' && item && typeof item === 'object' && 'k' in item
+              ? { ...item, k: recolor(item.k) }
+              : visit(item);
+          }
+          return result;
+        };
+        return visit(JSON.parse(JSON.stringify(data)));
+      };
+      const chapterAnimation = document.getElementById('course-lottie');
+      header.style.setProperty('--course-color', color);
+      document.documentElement.style.setProperty('--course-color', color);
+      if (window.lottie && chapterAnimation) {
+        fetch('../../../../assets/lotties/goutte-eau-tombant.json')
+          .then((response) => {
+            if (!response.ok) throw new Error('Animation indisponible');
+            return response.json();
+          })
+          .then((data) => window.lottie.loadAnimation({
+            container: chapterAnimation,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            animationData: recolorAnimation(data)
+          }))
+          .catch(() => {
+            chapterAnimation.classList.add('lottie-error');
+            chapterAnimation.textContent = '03';
+          });
+      }
+      if (window.QRCode && small && large) {
+        new window.QRCode(small, { text: location.href, width: 64, height: 64 });
+        new window.QRCode(large, { text: location.href, width: 280, height: 280 });
+      }
+      document.getElementById('qr-open')?.addEventListener('click', () => dialog?.showModal());
+      document.getElementById('qr-close')?.addEventListener('click', () => dialog?.close());
+      dialog?.addEventListener('click', (event) => {
+        if (event.target === dialog) dialog.close();
+      });
+    })();
+  </script>
+</body>
+</html>
