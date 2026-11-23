@@ -205,3 +205,30 @@ Autoévaluation individuelle (voir section 6\) et 3 phrases à compléter :
 7. **Comparer** un objet qui sécurise et un objet qui crée du lien social.  
 8. **Évaluer** si votre aménagement respecte l'intimité et la liberté de la personne.  
 9. **Argumenter** sur la question : « Un robot peut-il remplacer un humain auprès d'une personne âgée ? »
+
+---
+
+Sujet par groupe
+👵 Groupe 1 – Personne âgée isolée en milieu rural
+Madame Lucienne Berthier, 84 ans, vit seule dans une ferme rénovée à plusieurs kilomètres du premier village. Veuve depuis trois ans, elle tient à rester chez elle malgré une mobilité réduite et quelques pertes d'équilibre récentes. Ses enfants, qui habitent loin, s'inquiètent des risques de chute, surtout la nuit. L'aide à domicile ne passe que deux fois par jour. La famille souhaite sécuriser le logement et être rapidement alertée en cas de problème, sans pour autant donner à Lucienne le sentiment d'être « espionnée ». Vous êtes mobilisés pour proposer un aménagement de son domicile à l'aide d'objets connectés adaptés.
+
+🧠 Groupe 2 – Personne âgée atteinte de la maladie d'Alzheimer (stade débutant)
+Madame Paulette Nguyen, 79 ans, vit avec son mari dans un pavillon de plain-pied. Elle présente des troubles de la mémoire liés à un début de maladie d'Alzheimer. Il lui arrive d'oublier d'éteindre le gaz, de sortir seule et de se perdre, ou de se lever la nuit en étant désorientée. Son époux, fatigué, ne peut pas la surveiller en permanence. L'objectif est de sécuriser le domicile et de prévenir les situations dangereuses, tout en préservant sa dignité et son autonomie restante. Vous êtes sollicités pour réfléchir à un aménagement connecté répondant à ces besoins.
+
+🏥 Groupe 3 – Personne âgée de retour à domicile après hospitalisation
+Monsieur Robert Lefèvre, 68 ans, rentre chez lui après une opération du cœur et une longue hospitalisation. Il vit seul dans un appartement en ville. Pendant sa convalescence, il doit limiter ses efforts, surveiller certaines constantes (pouls, activité physique, prise de médicaments) et éviter tout effort dangereux. L'équipe médicale et les aidants souhaitent suivre son état à distance durant les premières semaines, pour réagir vite en cas d'alerte et le rassurer. Vous êtes chargés de proposer un environnement connecté facilitant ce suivi temporaire et sécurisant.
+
+🦻 Groupe 4 – Personne âgée malentendante et malvoyante
+Madame Simone Dacosta, 88 ans, vit dans un petit appartement au sein d'une résidence autonomie. Elle entend très mal et sa vue baisse fortement. Elle ne perçoit plus la sonnette, ni le téléphone, ni les alarmes sonores classiques, ce qui l'isole et l'inquiète (elle craint de ne pas entendre une alerte incendie). Le personnel de la résidence souhaite adapter son logement pour qu'elle reçoive les informations importantes autrement que par le son. Vous êtes mobilisés pour imaginer un environnement connecté reposant sur des signaux adaptés à ses capacités sensorielles.
+
+🏡 Groupe 5 – Personne âgée en EHPAD avec déambulation nocturne
+Monsieur André Vasseur, 91 ans, réside en EHPAD. Il se lève souvent la nuit, a déjà chuté à plusieurs reprises et a tendance à déambuler dans les couloirs en se désorientant. Le personnel, peu nombreux la nuit, ne peut pas surveiller chaque chambre en continu. La direction cherche à améliorer la sécurité des résidents tout en respectant leur liberté de mouvement et leur intimité. Vous êtes mobilisés pour proposer un aménagement connecté de la chambre et des espaces communs adapté à cette problématique.
+
+🌧️ Groupe 6 – Personne âgée isolée et fragile psychologiquement
+Madame Fatima Belkacem, 76 ans, vit seule dans un logement social après le décès de son mari. Elle souffre de solitude, mange mal, sort peu et présente des signes de dépression et de fragilité. Sa famille et l'assistante sociale s'inquiètent de son isolement et de la dégradation de son bien-être au quotidien. L'objectif est de rompre son isolement, de stimuler son activité et de suivre des signaux indiquant que tout va bien (ou non), sans la surveiller de façon intrusive. Vous êtes chargés de proposer un environnement connecté qui soutienne son bien-être et maintienne du lien.
+
+❤️ Groupe 7 – Personne âgée souffrant d'une maladie chronique (diabète)
+Monsieur Joseph Lambert, 73 ans, vit seul dans une maison de bourg. Il est diabétique et présente parfois des malaises liés à des variations de sa glycémie. Il oublie régulièrement de prendre ses médicaments et de s'alimenter correctement aux bons horaires. Son infirmière passe une fois par jour, mais le reste du temps personne ne peut vérifier que tout se passe bien. L'objectif est de l'aider à suivre son traitement, à surveiller son état de santé et à être alerté (lui et les soignants) en cas d'anomalie. Vous êtes mobilisés pour proposer un environnement connecté facilitant la gestion de sa maladie au quotidien.
+
+🚶 Groupe 8 – Couple de personnes âgées dont l'un est aidant de l'autre
+Monsieur et Madame Carvalho, 82 et 80 ans, vivent ensemble dans leur maison à étage. Madame s'occupe de son mari qui se déplace difficilement et se fatigue vite. Mais Madame Carvalho s'épuise et a elle-même des soucis de santé (tension, fatigue). Si elle venait à tomber ou à se trouver mal, son mari ne pourrait pas donner l'alerte facilement. La famille souhaite sécuriser le quotidien des deux époux et soulager l'aidante, tout en respectant leur intimité de couple. Vous êtes chargés de proposer un environnement connecté adapté à ce double besoin.
